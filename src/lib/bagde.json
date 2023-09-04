@@ -1,0 +1,114 @@
+{
+    "skill": [
+        {
+            "name": "javascript",
+            "level": 4,
+            "url": ""
+        },
+        {
+            "name": "c",
+            "level": 4,
+            "url": ""
+        },
+        {
+            "name": "c++",
+            "level": 4,
+            "url": ""
+        },
+        {
+            "name": "html",
+            "level": 3,
+            "url": ""
+        },
+        {
+            "name": "java",
+            "level": 3,
+            "url": ""
+        },
+        {
+            "name": "typescript",
+            "level": 2,
+            "url": ""
+        },
+        {
+            "name": "python",
+            "level": 3,
+            "url": ""
+        }
+    ],
+    "env": [
+        {
+            "name": "os",
+            "url": ""
+        },
+        {
+            "name": "cpu",
+            "url": ""
+        },
+        {
+            "name": "gpu",
+            "url": ""
+        },
+        {
+            "name": "machine",
+            "url": ""
+        }
+    ],
+    "epx": [
+        {
+            "name": "css",
+            "level": 2,
+            "url": ""
+        },
+        {
+            "name": "jquery",
+            "level": 2,
+            "url": ""
+        },
+        {
+            "name": "svelte",
+            "level": 2,
+            "url": ""
+        },
+        {
+            "name": "raspberrypi",
+            "level": 3,
+            "url": ""
+        },
+        {
+            "name": "mongodb",
+            "level": 2,
+            "url": ""
+        },
+        {
+            "name": "nodejs",
+            "level": 3,
+            "url": ""
+        },
+        {
+            "name": "mysql",
+            "level": 3,
+            "url": ""
+        },
+        {
+            "name": "arch",
+            "level": 2,
+            "url": ""
+        },
+        {
+            "name": "vuejs",
+            "level": 1,
+            "url": ""
+        },
+        {
+            "name": "abode ai",
+            "level": 3,
+            "url": ""
+        },
+        {
+            "name": "neovim",
+            "level": 2,
+            "url": ""
+        }
+    ]
+}
