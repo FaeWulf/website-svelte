@@ -1,6 +1,7 @@
 <script lang="ts">
 	import badges from '$lib/bagde.json';
-	import { onMount } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { descriptionText } from './store';
 
 	badges.skill.forEach((skill) => {
 		const url = new URL(`../lib/images/badges/${skill.name}.webp`, import.meta.url).href;
@@ -17,13 +18,22 @@
 		epx.url = url;
 	});
 
-	onMount(() => {});
+	function sendChangeText(text: string) {
+		descriptionText.set(text);
+	}
 </script>
 
 <div class="profile">
 	<div class="title">🚀 Languages</div>
 	{#each badges.skill as skill (skill.name)}
-		<img class="badge" src={skill.url} alt={skill.name} />
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+		<img
+			on:click={() => sendChangeText(skill.name)}
+			class="badge"
+			src={skill.url}
+			alt={skill.name}
+		/>
 	{/each}
 	<div class="title">🌟 Experienced with</div>
 	{#each badges.epx as epx (epx.name)}
@@ -49,6 +59,7 @@
 		overflow-y: auto;
 		overflow-x: hidden;
 
+		margin-top: 20px;
 		gap: 5px;
 
 		justify-content: flex-start;

@@ -46,6 +46,9 @@
 
 	font-family: var(--font-body);
 	color: var(--color-text);
+
+	scrollbar-color: rgb(210, 210, 210) rgb(46, 54, 69) !important;
+	scrollbar-width: 7px !important;
 }
 
 body {
@@ -131,4 +134,14 @@ button:focus:not(:focus-visible) {
 	position: absolute;
 	width: 1px;
 	white-space: nowrap;
+}
+
+*::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 15px;
+	border: 1px solid #636363;
 }

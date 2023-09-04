@@ -1,8 +1,10 @@
 <script>
 	import '../styles/styles.css';
+	import Background from './background.svelte';
 </script>
 
 <div class="app">
+	<Background />
 	<main>
 		<slot />
 	</main>
