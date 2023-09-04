@@ -6,4 +6,7 @@
 <Badges />
 
 <style>
+	h1 {
+		font-weight: 600;
+	}
 </style>

@@ -26,13 +26,13 @@
             "url": ""
         },
         {
-            "name": "typescript",
-            "level": 2,
+            "name": "python",
+            "level": 3,
             "url": ""
         },
         {
-            "name": "python",
-            "level": 3,
+            "name": "typescript",
+            "level": 2,
             "url": ""
         }
     ],
@@ -71,6 +71,11 @@
             "url": ""
         },
         {
+            "name": "vuejs",
+            "level": 1,
+            "url": ""
+        },
+        {
             "name": "raspberrypi",
             "level": 3,
             "url": ""
@@ -96,18 +101,13 @@
             "url": ""
         },
         {
-            "name": "vuejs",
-            "level": 1,
-            "url": ""
-        },
-        {
-            "name": "abode ai",
-            "level": 3,
-            "url": ""
-        },
-        {
             "name": "neovim",
             "level": 2,
+            "url": ""
+        },
+        {
+            "name": "adobe ai",
+            "level": 3,
             "url": ""
         }
     ]

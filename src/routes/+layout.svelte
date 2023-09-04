@@ -1,5 +1,5 @@
 <script>
-	import './styles.css';
+	import '../styles/styles.css';
 </script>
 
 <div class="app">
@@ -28,6 +28,9 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
+
+		justify-content: center;
+		align-items: center;
 	}
 
 	footer {
