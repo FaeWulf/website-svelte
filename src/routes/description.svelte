@@ -7,6 +7,7 @@
 	import { quintOut } from 'svelte/easing';
 
 	let level = -1;
+	let learner = false;
 	let text = '';
 
 	const anVowel = [0, 2];
@@ -23,7 +24,8 @@
 	onMount(() => {
 		descriptionText.subscribe((value) => {
 			level = value.value;
-			text = value.text;
+			text = value.text.replace(' ', '&nbsp;');
+			learner = value.learner;
 		});
 	});
 </script>
@@ -39,9 +41,18 @@
 			<span transition:slide={{ delay: 200, axis: 'x' }} class={colorLevel[index]}
 				>{@html textlvl}</span
 			>
-			<span out:slide={{ delay: 200, axis: 'x' }} in:slide={{ delay: 200, axis: 'x' }}>{text}</span>
+			<span
+				class="hueText-cycle description-info"
+				out:slide={{ delay: 200, axis: 'x' }}
+				in:slide={{ delay: 200, axis: 'x' }}>{@html text}</span
+			>
 		{/if}
-	{/each} developer on the sofa
+	{/each}
+	{#if learner}
+		learner
+	{:else}
+		developer
+	{/if} on the sofa
 </h2>
 
 <style>
@@ -53,5 +64,9 @@
 
 	.level {
 		display: none;
+	}
+
+	.description-info {
+		font-weight: 800;
 	}
 </style>

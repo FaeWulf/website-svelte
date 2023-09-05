@@ -7,6 +7,39 @@
     animation: hue 2s linear infinite;
 }
 
+.hueText-cycle {
+    animation: colorchange 8s infinite;
+    /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 8s infinite;
+    /* Chrome and Safari */
+    -moz-animation: colorchange 8s infinite;
+    -ms-animation: colorchange 8s infinite;
+    -o-animation: colorchange 8s infinite;
+}
+
+@keyframes colorchange {
+    0% {
+        color: #eb008b;
+    }
+
+    25% {
+        color: #fff100;
+    }
+
+    50% {
+        color: #01a54f;
+    }
+
+    75% {
+        color: #00adef;
+    }
+
+    100% {
+        color: #eb008b;
+    }
+}
+
 .hueText-green {
     background: linear-gradient(120deg, #00ff87, #60efff, #00ff87);
     background-size: 200%;
