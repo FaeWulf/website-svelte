@@ -1,0 +1,54 @@
+.hueText {
+    background: linear-gradient(120deg, #ff1b6b, #45caff, #ff1b6b);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 2s linear infinite;
+}
+
+.hueText-green {
+    background: linear-gradient(120deg, #00ff87, #60efff, #00ff87);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 1.5s linear infinite;
+}
+
+.hueText-blue {
+    background: linear-gradient(120deg, #0061ff, #60efff, #0061ff);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 1.5s linear infinite;
+}
+
+.hueText-purple {
+    background: linear-gradient(120deg, #40c9ff, #e81cff, #40c9ff);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 1.5s linear infinite;
+}
+
+.hueText-red {
+    background: linear-gradient(120deg, #ff0f7b, #f89b29, #ff0f7b);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 1.5s linear infinite;
+}
+
+@keyframes hue {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 200% 200%;
+    }
+}

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import badges from '$lib/bagde.json';
-	import { createEventDispatcher, onMount } from 'svelte';
 	import { descriptionText } from './store';
 
 	badges.skill.forEach((skill) => {
@@ -18,18 +17,17 @@
 		epx.url = url;
 	});
 
-	function sendChangeText(text: string) {
-		descriptionText.set(text);
+	function sendChangeText(value: number, text: string) {
+		descriptionText.set({ value, text });
 	}
 </script>
 
 <div class="profile">
 	<div class="title">🚀 Languages</div>
 	{#each badges.skill as skill (skill.name)}
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 		<img
-			on:click={() => sendChangeText(skill.name)}
+			on:mouseenter={() => sendChangeText(skill.level, skill.name)}
+			on:mouseleave={() => sendChangeText(0, '')}
 			class="badge"
 			src={skill.url}
 			alt={skill.name}
