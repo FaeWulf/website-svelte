@@ -1,5 +1,4 @@
 <script lang="ts">
-	import '../styles/hueText.css';
 	import { onMount } from 'svelte';
 	import { titleText } from './store';
 	import { slide } from 'svelte/transition';

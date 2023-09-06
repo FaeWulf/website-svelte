@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { titleText } from './store';
 
 	const badges = [
@@ -43,7 +42,7 @@
 			on:mouseenter={() => sendTitle(badge.name)}
 			on:mouseleave={() => sendTitle('')}
 		>
-			<img class="social" alt={badge.name} src="svgs/{badge.name}.svg" width="38" height="38" />
+			<img class="social hueSVG" alt={badge.name} src="svgs/{badge.name}.svg" />
 		</a>
 	{/each}
 </div>
@@ -67,22 +66,23 @@
 		align-items: center;
 	}
 
-	.container > a::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		background: rgb(var(--Base));
-		transition: 0.3s;
-		transform: scale(0.9);
-		z-index: -2;
+	.social {
+		position: relative;
+		width: 45px;
+		filter: invert(29%) sepia(22%) saturate(578%) hue-rotate(196deg) brightness(97%) contrast(88%);
+		cursor: pointer;
+		transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
-	.container > a:hover::before {
-		transform: scale(1);
-		box-shadow: 0 0 8px #ffee10;
+	.social:hover {
+		transform: scale(1.2);
+	}
+
+	.hueSVG {
+		border-radius: 50%;
+		background: linear-gradient(120deg, #ff1b6b, #45caff, #ff1b6b);
+		background-size: 200%;
+		color: transparent;
+		animation: hue 2s linear infinite;
 	}
 </style>

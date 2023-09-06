@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../styles/hueText.css';
 	import Badges from './badges.svelte';
 	import Description from './description.svelte';
 	import Title from './title.svelte';

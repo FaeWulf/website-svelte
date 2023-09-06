@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { descriptionText } from './store';
-	import '../styles/hueText.css';
 	import { slide } from 'svelte/transition';
 
 	let level = -1;
