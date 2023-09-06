@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { descriptionText } from './store';
-	import { typewriter, gibberish } from '$lib/utils';
 	import '../styles/hueText.css';
-	import { fly, slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
 
 	let level = -1;
 	let learner = false;

@@ -1,15 +1,11 @@
 <script lang="ts">
 	import Badges from './badges.svelte';
 	import Description from './description.svelte';
-	import '../styles/hueText.css';
+	import Title from './title.svelte';
+	import Social from './social.svelte';
 </script>
 
-<h1>👋 I'm <span class="hueText">Faewulf</span></h1>
+<Title />
 <Description />
 <Badges />
-
-<style>
-	h1 {
-		font-weight: 600;
-	}
-</style>
+<Social />
