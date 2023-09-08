@@ -145,3 +145,14 @@ button:focus:not(:focus-visible) {
 	border-radius: 15px;
 	border: 1px solid #636363;
 }
+
+
+.tippy-box[data-theme~='catppuccin'] {
+	background-color: rgb(var(--Surface0));
+	color: rgb(var(--Text));
+	border: 1px solid rgba(var(--Text), 0.2);
+}
+
+.tippy-box[data-theme~='catppuccin'][data-placement^='top']>.tippy-arrow::before {
+	border-top-color: rgb(var(--Surface0));
+}
