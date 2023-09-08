@@ -68,6 +68,7 @@
 
 <style>
 	.container {
+		margin-top: 40px;
 		position: relative;
 		max-width: 350px;
 		display: flex;
@@ -75,10 +76,6 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 8px;
-
-		border: 1px solid red;
-		padding: 10px;
-		border-radius: 50px;
 	}
 
 	.container > a {
