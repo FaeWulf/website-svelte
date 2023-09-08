@@ -58,6 +58,8 @@ body {
 	background-color: var(--color-bg-1);
 	background-size: 100vw 100vh;
 	background: radial-gradient(ellipse at top, #1b2735 0%, #090a0f 100%);
+
+	overflow-x: hidden;
 }
 
 h1,

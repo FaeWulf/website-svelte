@@ -5,6 +5,7 @@
 	import '../styles/hueText.css';
 
 	//comps
+	import Logo from './logo.svelte';
 	import Badges from './badges.svelte';
 	import Description from './description.svelte';
 	import Title from './title.svelte';
@@ -12,6 +13,7 @@
 	import Bonsai from './bonsai.svelte';
 </script>
 
+<Logo />
 <Title />
 <Description />
 <Badges />

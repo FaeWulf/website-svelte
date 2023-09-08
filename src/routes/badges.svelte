@@ -13,6 +13,7 @@
 		<img
 			on:mouseenter={() => sendChangeText(skill.level, skill.name, false)}
 			on:mouseleave={() => sendChangeText(0, '', false)}
+			draggable="false"
 			class="badge"
 			src={`images/badges/${skill.name}.webp`}
 			alt={skill.name}
@@ -22,6 +23,7 @@
 	{#each badges.epx as epx (epx.name)}
 		<img
 			class="badge"
+			draggable="false"
 			on:mouseenter={() => sendChangeText(epx.level, epx.name, true)}
 			on:mouseleave={() => sendChangeText(0, '', false)}
 			src={`images/badges/${epx.name}.webp`}
@@ -30,7 +32,7 @@
 	{/each}
 	<div class="title">💻 Battle Station</div>
 	{#each badges.env as envi (envi.name)}
-		<img src={`images/badges/${envi.name}.webp`} alt={envi.name} />
+		<img draggable="false" src={`images/badges/${envi.name}.webp`} alt={envi.name} />
 	{/each}
 	<div class="dummy" />
 </div>
@@ -41,14 +43,15 @@
 		padding: 5px;
 
 		width: 100%;
-		max-width: 520px;
-		height: 300px;
+		max-width: 420px;
+		height: 200px;
+		opacity: 0.6;
 
 		flex-wrap: wrap;
 		overflow-y: auto;
 		overflow-x: hidden;
 
-		margin-top: 20px;
+		margin-top: 25px;
 		gap: 5px;
 
 		justify-content: flex-start;
@@ -60,6 +63,16 @@
 		border: 1px rgba(var(--Text), 0.2) solid;
 		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
+
+		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+	}
+
+	.profile:hover {
+		opacity: 1;
 	}
 
 	.title {

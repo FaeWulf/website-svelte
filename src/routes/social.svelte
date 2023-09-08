@@ -10,6 +10,7 @@
 	import { tooltip } from '$lib/utils';
 	import 'tippy.js/animations/scale.css';
 	import { createSingleton } from 'tippy.js';
+	import { onMount } from 'svelte';
 
 	const badges = [
 		{
@@ -48,6 +49,17 @@
 	function sendTitle(text: string) {
 		titleText.set({ value: text });
 	}
+	let tippyInstances: any[] = [];
+
+	onMount(() => {
+		console.log(tippyInstances);
+		const singleton = createSingleton(tippyInstances, {
+			moveTransition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+			delay: 50,
+			theme: 'catppuccin',
+			animation: 'scale'
+		});
+	});
 </script>
 
 <div class="container">
@@ -55,10 +67,11 @@
 		<a
 			href={badge.url}
 			target="_blank"
+			draggable="false"
 			on:mouseenter={() => sendTitle(badge.name)}
 			on:mouseleave={() => sendTitle('')}
 			class="social"
-			use:tooltip={{ animation: 'scale', theme: 'catppuccin' }}
+			use:tooltip={{ instancesHolder: tippyInstances }}
 			title={badge.name}
 		>
 			<!--img class="social" alt={badge.name} src="svgs/{badge.name}.svg" /-->
@@ -69,7 +82,7 @@
 
 <style>
 	.container {
-		margin-top: 40px;
+		margin-top: 50px;
 		position: relative;
 		max-width: 350px;
 		display: flex;
@@ -85,6 +98,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		opacity: 0.5;
 	}
 
 	.social {

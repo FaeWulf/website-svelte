@@ -44,6 +44,8 @@
 		display: flex;
 		overflow: hidden;
 		line-height: 3rem;
+
+		margin-top: 10px;
 	}
 
 	.name {

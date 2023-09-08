@@ -22,6 +22,7 @@
 	<img
 		style="width: {size}px;"
 		src={url + '&' + scr}
+		draggable="false"
 		alt="bonsai"
 		on:click={restart}
 		use:tooltip={{
