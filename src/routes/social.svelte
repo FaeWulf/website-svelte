@@ -9,6 +9,7 @@
 
 	import { tooltip } from '$lib/utils';
 	import 'tippy.js/animations/scale.css';
+	import { createSingleton } from 'tippy.js';
 
 	const badges = [
 		{

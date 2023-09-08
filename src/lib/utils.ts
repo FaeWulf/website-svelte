@@ -64,7 +64,7 @@ function randomString(length: number) {
 
 
 // ultis funtion
-export function tooltip(node: HTMLElement, params: any = {}) {
+export function tooltip(node: HTMLElement, params: any = {}, instancesHolder?: any[]) {
     // Determine the title to show. We want to prefer
     //    the custom content passed in first, then the
     // HTML title attribute then the aria-label
@@ -87,6 +87,7 @@ export function tooltip(node: HTMLElement, params: any = {}) {
     // Support any of the Tippy props by forwarding all "params":
     // https://atomiks.github.io/tippyjs/v6/all-props/
     const tip = tippy(node, { content, ...params });
+    instancesHolder?.push(tip)
 
     return {
         // If the props change, let's update the Tippy instance:
