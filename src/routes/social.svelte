@@ -52,7 +52,6 @@
 	let tippyInstances: any[] = [];
 
 	onMount(() => {
-		console.log(tippyInstances);
 		const singleton = createSingleton(tippyInstances, {
 			moveTransition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
 			delay: 50,

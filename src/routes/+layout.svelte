@@ -1,14 +1,22 @@
 <script>
+	import { cubicOut } from 'svelte/easing';
 	import '../styles/styles.css';
 	import Background from './background.svelte';
 	import Header from './header.svelte';
+	import { fade } from 'svelte/transition';
+
+	export let data;
 </script>
 
 <div class="app">
 	<Background />
 	<Header />
 	<main>
-		<slot />
+		{#key data.url}
+			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">
+				<slot />
+			</div>
+		{/key}
 	</main>
 
 	<footer>
@@ -32,6 +40,13 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
+	}
+
+	.main {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		flex: 1;
 
 		justify-content: center;
 		align-items: center;

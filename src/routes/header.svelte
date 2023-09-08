@@ -1,65 +1,43 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { tooltip } from '$lib/utils';
+	import Search from '$lib/svgs/search.svelte';
+	import 'tippy.js/animations/shift-away-extreme.css';
+	import HeaderDroplist from './header_droplist.svelte';
 	import { onMount } from 'svelte';
-	import 'tippy.js/animations/scale.css';
 
-	const pages = [
-		{
-			name: 'Home',
-			url: '/'
-		},
-		{
-			name: 'About',
-			url: '/about'
-		}
-	];
-
-	$: outerWidth = 0;
-
+	let template: HTMLElement;
 	onMount(() => {
-		console.log(outerWidth);
+		template = <HTMLElement>document.getElementById('dropDownList');
+		template.style.display = 'flex';
 	});
 </script>
 
 <header>
 	<nav>
-		<!--svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg-->
 		<div
+			class="searchBar"
 			use:tooltip={{
-				content: `
-<div class="nav-dropdown" style="width: ${outerWidth}px">
-		<div class="nav-dropdown-item">test1</div>
-		<div class="nav-dropdown-item">test1</div>
-		<div class="nav-dropdown-item">test1</div>
-		<div class="nav-dropdown-item">test1</div>
-	</div>
-                `,
 				allowHTML: true,
 				theme: 'catppuccin',
-				animation: 'scale',
-				interactive: true
+				animation: 'shift-away-extreme',
+				interactive: true,
+				arrow: false,
+				content: template,
+				maxWidth: 400
 			}}
 		>
-			{$page.url.pathname == '/' ? 'Home Page' : $page.url.pathname.split('/')[1]}
+			<div class="searchIcon">
+				<Search size={25} color="#CAD3FF" />
+			</div>
+			<span>
+				{$page.url.pathname == '/' ? 'Home Page' : $page.url.pathname.split('/')[1]}
+			</span>
 		</div>
+		<img draggable="false" class="logo" src="logo.jpg" alt="logo" />
 	</nav>
+
+	<HeaderDroplist />
 
 	<!--div class="corner">
 		<a href="https://github.com/sveltejs/kit">
@@ -68,58 +46,78 @@
 	</div-->
 </header>
 
-<svelte:window bind:outerWidth />
-
 <style>
 	header {
+		/*
+		position: absolute;
+		width: 100%;
+		top: 0;
+        */
 		display: flex;
 		justify-content: center;
+		z-index: 10;
 	}
 
 	nav {
 		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	.nav-dropdown {
-		display: flex;
-		width: 100%;
-		max-width: 350px;
-		flex-wrap: wrap;
-		flex-direction: column;
-		padding: 3px;
-	}
-
-	.nav-dropdown-item {
-		width: 100%;
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
+		justify-content: flex-start;
 		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
+		max-width: 400px;
+		width: 100%;
+		height: 30px;
+		margin-top: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+
+		border: 1px solid rgba(var(--Lavender), 0.4);
+		border-radius: 50px;
+		padding: 4px;
+		background-color: rgba(var(--Surface0), 0.5);
+		backdrop-filter: blur(10px);
 	}
 
-	a:hover {
-		color: var(--color-theme-1);
+	span {
+		line-height: 30px;
+	}
+
+	.searchIcon {
+		margin-right: 10px;
+		margin-left: 10px;
+		padding-right: 9px;
+		border-right: 2px solid rgba(var(--Text), 0.2);
+	}
+
+	.searchBar {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.logo {
+		width: 30px;
+		border-radius: 50%;
+		animation: wobble 5s linear infinite;
+	}
+
+	@keyframes wobble {
+		3.33% {
+			transform: rotate(40deg);
+		}
+		6.66% {
+			transform: rotate(-30deg);
+		}
+		10% {
+			transform: rotate(20deg);
+		}
+		13.33% {
+			transform: rotate(-10deg);
+		}
+		16.66% {
+			transform: rotate(5deg);
+		}
+		20%,
+		100% {
+			transform: rotate(0deg);
+		}
 	}
 </style>

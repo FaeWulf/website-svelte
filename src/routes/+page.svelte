@@ -13,6 +13,11 @@
 	import Bonsai from './bonsai.svelte';
 </script>
 
+<svelte:head>
+	<title>Home Page</title>
+	<meta name="description" content="My Bio" />
+</svelte:head>
+
 <Logo />
 <Title />
 <Description />
