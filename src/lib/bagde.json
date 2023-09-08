@@ -42,15 +42,15 @@
             "url": ""
         },
         {
+            "name": "machine",
+            "url": ""
+        },
+        {
             "name": "cpu",
             "url": ""
         },
         {
             "name": "gpu",
-            "url": ""
-        },
-        {
-            "name": "machine",
             "url": ""
         }
     ],

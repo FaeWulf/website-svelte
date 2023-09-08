@@ -3,7 +3,7 @@
 
 <div class="logo-wrapper">
 	<div class="logo-bg" />
-	<div class="orbit">
+	<!--div class="orbit">
 		<div
 			style="top:-60px; width:25px; height:25px; background:rgba(var(--Surface1), 0.4); border-radius:50%; border:1px solid rgba(var(--Text), 0.2)"
 			class="satellite"
@@ -14,7 +14,7 @@
 			/>
 		</div>
 	</div>
-	<!--div class="orbit2">
+	<div class="orbit2">
 		<div
 			style="left: 350px; top:0px; width:45px; height:45px; background:rgba(var(--Overlay0), 0.4); border-radius:50%; border:1px solid rgba(var(--Text), 0.2)"
 			class="satellite"
@@ -52,6 +52,7 @@
 		animation: animateBackground 10s ease infinite;
 	}
 
+	/*
 	.orbit {
 		position: absolute;
 		top: 0px;
@@ -63,7 +64,6 @@
 		animation: orbit-rotate 60s linear infinite;
 	}
 
-	/*
 	.orbit2 {
 		position: absolute;
 		top: 0px;
@@ -74,7 +74,6 @@
 
 		animation: orbit-rotate 360s linear infinite;
 	}
-    */
 
 	.satellite {
 		position: absolute;
@@ -86,6 +85,7 @@
 			transform: rotate(360deg);
 		}
 	}
+    */
 
 	@keyframes animateBackground {
 		0% {
