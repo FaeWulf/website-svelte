@@ -24,11 +24,14 @@
 		width: 100vw;
 		flex-wrap: wrap;
 		flex-direction: column;
-		padding: 3px;
+		padding: 2px;
 	}
 
 	.nav-dropdown-item {
 		color: rgb(var(--Text));
+		padding: 3px;
+		padding-left: 7px;
+		padding-right: 7px;
 
 		-webkit-user-select: none;
 		-ms-user-select: none;

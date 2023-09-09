@@ -29,7 +29,8 @@
 				arrow: false,
 				content: template,
 				maxWidth: 400,
-				offset: [15, 6]
+				offset: [15, 6],
+				trigger: 'mouseenter click'
 			}}
 		>
 			<div class="searchIcon">
@@ -87,6 +88,13 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+
+		transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+	}
+
+	nav:hover {
+		transform: scale(1.05) translateY(5px);
+		filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
 	}
 
 	span {
@@ -104,6 +112,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: row;
+		cursor: text;
 	}
 
 	.blinking {
@@ -128,6 +137,7 @@
 		width: 30px;
 		border-radius: 50%;
 		animation: wobble 3s linear infinite;
+		cursor: pointer;
 	}
 
 	@keyframes wobble {

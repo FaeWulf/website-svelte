@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { Star, ShootingStar } from './background';
 	import type { bgItem } from './background';
+	import { spring } from 'svelte/motion';
+
 	export let background_color = '#110E19AA';
 
 	onMount(() => {
@@ -48,9 +50,30 @@
 
 		animate();
 	});
+
+	let coords = spring(
+		{ x: 50, y: 50 },
+		{
+			stiffness: 0.1,
+			damping: 0.25
+		}
+	);
+
+	let size = spring(2);
 </script>
 
 <canvas id="background" draggable="false" />
+
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<svg
+	on:mousemove={(e) => {
+		coords.set({ x: e.clientX, y: e.clientY });
+	}}
+	on:mousedown={() => size.set(8)}
+	on:mouseup={() => size.set(2)}
+>
+	<circle cx={$coords.x} cy={$coords.y} r={$size} />
+</svg>
 
 <style>
 	canvas {
@@ -58,5 +81,20 @@
 		top: 0;
 		left: 0;
 		z-index: -99;
+		width: 100%;
+		height: 100%;
+	}
+
+	svg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: 0;
+	}
+
+	circle {
+		fill: rgb(var(--Rosewater));
 	}
 </style>
