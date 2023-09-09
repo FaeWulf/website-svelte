@@ -2,15 +2,19 @@
 	import { page } from '$app/stores';
 	import { tooltip } from '$lib/utils';
 	import Search from '$lib/svgs/search.svelte';
-	import 'tippy.js/animations/shift-away-extreme.css';
+	import 'tippy.js/animations/perspective-subtle.css';
 	import HeaderDroplist from './header_droplist.svelte';
 	import { onMount } from 'svelte';
+	import { typewriter, capitalFirstLeter } from '$lib/utils';
 
 	let template: HTMLElement;
 	onMount(() => {
 		template = <HTMLElement>document.getElementById('dropDownList');
 		template.style.display = 'flex';
 	});
+
+	$: pathname =
+		$page.url.pathname == '/' ? 'Home Page' : capitalFirstLeter($page.url.pathname.split('/')[1]);
 </script>
 
 <header>
@@ -20,19 +24,24 @@
 			use:tooltip={{
 				allowHTML: true,
 				theme: 'catppuccin',
-				animation: 'shift-away-extreme',
+				animation: 'perspective-subtle',
 				interactive: true,
 				arrow: false,
 				content: template,
-				maxWidth: 400
+				maxWidth: 400,
+				offset: [15, 6]
 			}}
 		>
 			<div class="searchIcon">
 				<Search size={25} color="#CAD3FF" />
 			</div>
-			<span>
-				{$page.url.pathname == '/' ? 'Home Page' : $page.url.pathname.split('/')[1]}
-			</span>
+			{#key $page.url.pathname}
+				<span in:typewriter={{ speed: 2 }}>
+					{pathname}
+				</span>
+			{/key}
+
+			<span class="blinking">_</span>
 		</div>
 		<img draggable="false" class="logo" src="logo.jpg" alt="logo" />
 	</nav>
@@ -74,6 +83,10 @@
 		padding: 4px;
 		background-color: rgba(var(--Surface0), 0.5);
 		backdrop-filter: blur(10px);
+
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	span {
@@ -93,10 +106,28 @@
 		flex-direction: row;
 	}
 
+	.blinking {
+		animation: blink 1s step-end infinite;
+	}
+
+	@keyframes blink {
+		0% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
 	.logo {
 		width: 30px;
 		border-radius: 50%;
-		animation: wobble 5s linear infinite;
+		animation: wobble 3s linear infinite;
 	}
 
 	@keyframes wobble {

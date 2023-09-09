@@ -46,6 +46,10 @@
 		line-height: 3rem;
 
 		margin-top: 10px;
+
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	.name {

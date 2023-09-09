@@ -99,3 +99,7 @@ export function tooltip(node: HTMLElement, params: any = {}) {
         destroy: () => tip.destroy(),
     };
 };
+
+export function capitalFirstLeter(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1, str.length)
+}

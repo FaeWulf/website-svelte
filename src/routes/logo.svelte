@@ -26,6 +26,9 @@
 <style>
 	.logo-wrapper {
 		position: relative;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	img.logo {

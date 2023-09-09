@@ -57,6 +57,10 @@
 		margin-top: -20px;
 		display: flex;
 		gap: 5px;
+
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	.level {

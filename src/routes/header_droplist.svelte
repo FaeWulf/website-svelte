@@ -28,10 +28,18 @@
 	}
 
 	.nav-dropdown-item {
-		color: white;
+		color: rgb(var(--Text));
+
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	.nav-dropdown-item:hover {
-		background-color: rgba(var(--Overlay0), 1);
+		background-color: rgba(var(--Surface2), 0.6);
+	}
+
+	a:hover {
+		text-decoration: none;
 	}
 </style>
