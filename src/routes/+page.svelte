@@ -10,11 +10,11 @@
 	import Description from './description.svelte';
 	import Title from './title.svelte';
 	import Social from './social.svelte';
-	import Bonsai from './bonsai.svelte';
+	import Bonsai from '$lib/bonsai.svelte';
 </script>
 
 <svelte:head>
-	<title>Home Page</title>
+	<title>Faewulf's Basement | HQ</title>
 	<meta name="description" content="My Bio" />
 </svelte:head>
 

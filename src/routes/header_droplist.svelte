@@ -1,11 +1,33 @@
 <script lang="ts">
 	const pages = [
 		{
-			name: 'Home',
+			name: 'Home Page',
+			icon: '🏠',
 			url: '/'
 		},
 		{
+			name: 'My Blog',
+			icon: '📜',
+			url: '/blog'
+		},
+		{
+			name: 'My favorite music list',
+			icon: '🎵',
+			url: '/music'
+		},
+		{
+			name: 'Projects',
+			icon: '♿',
+			url: '/project'
+		},
+		{
+			name: 'Game library',
+			icon: '🎮',
+			url: '/game'
+		},
+		{
 			name: 'About',
+			icon: 'ℹ️',
 			url: '/about'
 		}
 	];
@@ -13,7 +35,7 @@
 
 <div id="dropDownList" class="nav-dropdown">
 	{#each pages as page (page.name)}
-		<a class="nav-dropdown-item" href={page.url}>{page.name}</a>
+		<a class="nav-dropdown-item" href={page.url}>{page.icon}| {page.name}</a>
 	{/each}
 </div>
 
@@ -25,6 +47,7 @@
 		flex-wrap: wrap;
 		flex-direction: column;
 		padding: 2px;
+		gap: 2px;
 	}
 
 	.nav-dropdown-item {

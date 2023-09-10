@@ -64,7 +64,7 @@
 
 <canvas id="background" draggable="false" />
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-no-static-element-interactions
 <svg
 	on:mousemove={(e) => {
 		coords.set({ x: e.clientX, y: e.clientY });
@@ -74,7 +74,7 @@
 >
 	<circle cx={$coords.x} cy={$coords.y} r={$size} />
 </svg>
-
+ -->
 <style>
 	canvas {
 		position: absolute;
@@ -91,7 +91,7 @@
 		height: 100%;
 		left: 0;
 		top: 0;
-		z-index: 0;
+		z-index: -1;
 	}
 
 	circle {

@@ -159,3 +159,10 @@ button:focus:not(:focus-visible) {
 .tippy-box[data-theme~='catppuccin'][data-placement^='top']>.tippy-arrow::before {
 	border-top-color: rgb(var(--Surface0));
 }
+
+.tippy-box[data-theme~='catppuccin-transparent'] {
+	background-color: rgba(var(--Mantle), 0.6);
+	color: rgb(var(--Text));
+	border: 1px solid rgba(var(--Text), 0.2);
+	backdrop-filter: blur(2px);
+}

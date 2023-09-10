@@ -23,7 +23,7 @@
 			class="searchBar"
 			use:tooltip={{
 				allowHTML: true,
-				theme: 'catppuccin',
+				theme: 'catppuccin-transparent',
 				animation: 'perspective-subtle',
 				interactive: true,
 				arrow: false,
@@ -94,7 +94,9 @@
 
 	nav:hover {
 		transform: scale(1.05) translateY(5px);
-		filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
+		/*
+        filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
+        */
 	}
 
 	span {

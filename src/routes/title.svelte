@@ -21,7 +21,6 @@
 </script>
 
 <h1>
-	<span />
 	{#if type == ''}
 		<span transition:slide={{ delay: 0, axis: 'x' }} class="wave">👋</span>
 		<span transition:slide={{ delay: 0, axis: 'x' }}>&nbsp;I'm&nbsp;</span>

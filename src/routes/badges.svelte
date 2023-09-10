@@ -69,6 +69,7 @@
 		user-select: none; /* Standard syntax */
 
 		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		backdrop-filter: blur(2px);
 	}
 
 	.profile:hover {
