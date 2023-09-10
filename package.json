@@ -30,6 +30,9 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/inter": "^5.0.8",
+		"@types/marked": "^5.0.1",
+		"@types/node": "^20.6.0",
+		"marked": "^9.0.0",
 		"tippy.js": "^6.3.7"
 	}
 }

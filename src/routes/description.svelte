@@ -21,7 +21,7 @@
 	onMount(() => {
 		descriptionText.subscribe((value) => {
 			level = value.value;
-			text = value.text.replace(' ', '&nbsp;');
+			text = value.text.replaceAll(' ', '&nbsp;');
 			learner = value.learner;
 		});
 	});

@@ -1,5 +1,15 @@
 @import '@fontsource/inter';
 
+@font-face {
+	font-family: 'Daydream';
+	src: url('/fonts/Daydream.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Pixel Nes';
+	src: url('/fonts/Pixel_NES.otf') format('opentype');
+}
+
 :root {
 	--Crust: 24, 25, 38;
 	--Base: 36, 39, 58;

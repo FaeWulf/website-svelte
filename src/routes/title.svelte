@@ -54,6 +54,8 @@
 	.name {
 		margin-left: 0px;
 		margin-right: 0px;
+		font-family: 'Daydream', 'Tahoma';
+		font-size: 2rem;
 	}
 
 	.wave {

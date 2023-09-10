@@ -1,13 +1,12 @@
 <h1>
 	<span class="hueText">Faewulf</span>
-	<p>'s blogs</p>
+	<p>'s blog</p>
 </h1>
 
 <style>
 	h1 {
 		display: flex;
 		font-weight: 600;
-		line-height: 3rem;
 		width: fit-content;
 		align-items: flex-end;
 
@@ -16,11 +15,14 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+
+		font-family: 'Daydream', 'Tahoma';
 	}
 
 	p {
 		font-weight: 600;
 		font-size: 1.5rem;
 		margin: 0;
+		font-family: 'Pixel Nes', 'Tahoma';
 	}
 </style>

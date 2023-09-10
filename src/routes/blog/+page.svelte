@@ -10,6 +10,8 @@
 
 <div class="main">
 	<Title />
+
+	<a href="/blog/cake">lmao</a>
 </div>
 
 <style>

@@ -13,6 +13,7 @@
 		template.style.display = 'flex';
 	});
 
+	//making sub path in main path
 	$: pathname =
 		$page.url.pathname == '/' ? 'Home Page' : capitalFirstLeter($page.url.pathname.split('/')[1]);
 </script>
@@ -44,7 +45,7 @@
 
 			<span class="blinking">_</span>
 		</div>
-		<img draggable="false" class="logo" src="logo.jpg" alt="logo" />
+		<img draggable="false" class="logo" src="/logo.jpg" alt="logo" />
 	</nav>
 
 	<HeaderDroplist />
@@ -115,6 +116,8 @@
 		display: flex;
 		flex-direction: row;
 		cursor: text;
+
+		overflow-x: hidden;
 	}
 
 	.blinking {

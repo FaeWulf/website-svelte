@@ -6,14 +6,17 @@
 
 	export let background_color = '#110E19AA';
 
+	let innerHeight: number, innerWidth: number;
+
 	onMount(() => {
 		let requestAnimationFrame = window.requestAnimationFrame;
 		window.requestAnimationFrame = requestAnimationFrame;
 
 		let background = <HTMLCanvasElement>document.getElementById('background'),
 			bgCtx = background?.getContext('2d')!,
-			width = window.innerWidth,
-			height = window.innerHeight;
+			width = innerWidth,
+			height = innerHeight;
+
 		background.width = width;
 		background.height = height;
 
@@ -64,6 +67,10 @@
 
 <canvas id="background" draggable="false" />
 
+<p>{innerHeight} x {innerWidth}</p>
+
+<svelte:window bind:innerHeight bind:innerWidth />
+
 <!-- svelte-ignore a11y-no-static-element-interactions
 <svg
 	on:mousemove={(e) => {
@@ -85,16 +92,10 @@
 		height: 100%;
 	}
 
-	svg {
+	p {
 		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: 0;
 		top: 0;
-		z-index: -1;
-	}
-
-	circle {
-		fill: rgb(var(--Rosewater));
+		left: 0;
+		font-size: 15px;
 	}
 </style>
