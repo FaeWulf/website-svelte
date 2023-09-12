@@ -20,35 +20,38 @@
 	});
 </script>
 
-<h1>
+<div class="title">
 	{#if type == ''}
 		<span transition:slide={{ delay: 0, axis: 'x' }} class="wave">👋</span>
-		<span transition:slide={{ delay: 0, axis: 'x' }}>&nbsp;I'm&nbsp;</span>
+		<span class="adjust-height" transition:slide={{ delay: 0, axis: 'x' }}>&nbsp;I'm&nbsp;</span>
 	{/if}
 	{#each [...infoMap] as [key, value]}
 		{#if type == key && value.first.length > 0}
-			<span transition:slide={{ delay: 0, axis: 'x' }}>{value.first}</span>
+			<span class="adjust-height" transition:slide={{ delay: 0, axis: 'x' }}>{value.first}</span>
 		{/if}
 	{/each}<span class="hueText name">Faewulf</span>
 	{#each [...infoMap] as [key, value]}
 		{#if type == key && value.last.length > 0}
-			<span transition:slide={{ delay: 0, axis: 'x' }}>{value.last}</span>
+			<span class="adjust-height" transition:slide={{ delay: 0, axis: 'x' }}>{value.last}</span>
 		{/if}
 	{/each}
-</h1>
+</div>
 
 <style>
-	h1 {
+	.title {
 		font-weight: 600;
 		display: flex;
 		overflow: hidden;
 		line-height: 3rem;
+		font-size: 2.4rem;
 
 		margin-top: 10px;
+		align-items: flex-end;
 
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+		padding-bottom: 5px;
 	}
 
 	.name {
@@ -65,6 +68,10 @@
 		transform-origin: 70% 70%;
 		display: inline-block;
 		text-align: center;
+	}
+
+	.adjust-height {
+		line-height: 2.6rem;
 	}
 
 	@keyframes wave-animation {

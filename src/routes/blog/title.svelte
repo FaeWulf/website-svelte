@@ -22,7 +22,15 @@
 	p {
 		font-weight: 600;
 		font-size: 1.5rem;
+		line-height: 1.5rem;
 		margin: 0;
 		font-family: 'Pixel Nes', 'Tahoma';
+	}
+
+	@media (max-width: 720px) {
+		p {
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+		}
 	}
 </style>

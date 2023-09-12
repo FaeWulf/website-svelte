@@ -44,6 +44,18 @@
     text-align: left;
 }
 
+
+#blog-content blockquote:before,
+#blog-content blockquote:after {
+    content: "";
+}
+
+#blog-content blockquote {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-left: 5px solid rgb(var(--Overlay2));
+}
+
 /*
  *  Others
 */

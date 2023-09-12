@@ -54,7 +54,7 @@
 
 <style>
 	h2 {
-		margin-top: -20px;
+		margin-top: 5px;
 		display: flex;
 		gap: 5px;
 
