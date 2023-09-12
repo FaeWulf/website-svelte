@@ -1,6 +1,8 @@
 <script>
 	import { cubicOut } from 'svelte/easing';
-	import '../styles/styles.css';
+	import '$lib/styles/reset.css';
+	import '$lib/styles/styles.css';
+	import '$lib/styles/hueText.css';
 	import Background from './background.svelte';
 	import Header from './header.svelte';
 	import { fade } from 'svelte/transition';
@@ -39,6 +41,7 @@
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;
+		margin-top: 50px;
 		box-sizing: border-box;
 	}
 

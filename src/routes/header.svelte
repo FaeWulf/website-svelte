@@ -19,34 +19,36 @@
 </script>
 
 <header>
-	<nav>
-		<div
-			class="searchBar"
-			use:tooltip={{
-				allowHTML: true,
-				theme: 'catppuccin-transparent',
-				animation: 'perspective-subtle',
-				interactive: true,
-				arrow: false,
-				content: template,
-				maxWidth: 400,
-				offset: [15, 6],
-				trigger: 'mouseenter click'
-			}}
-		>
-			<div class="searchIcon">
-				<Search size={25} color="#CAD3FF" />
-			</div>
-			{#key $page.url.pathname}
-				<span in:typewriter={{ speed: 2 }}>
-					{pathname}
-				</span>
-			{/key}
+	<div class="nav-container">
+		<nav>
+			<div
+				class="searchBar"
+				use:tooltip={{
+					allowHTML: true,
+					theme: 'catppuccin-transparent',
+					animation: 'perspective-subtle',
+					interactive: true,
+					arrow: false,
+					content: template,
+					maxWidth: 400,
+					offset: [15, 6],
+					trigger: 'mouseenter click'
+				}}
+			>
+				<div class="searchIcon">
+					<Search size={25} color="#CAD3FF" />
+				</div>
+				{#key $page.url.pathname}
+					<span in:typewriter={{ speed: 2 }}>
+						{pathname}
+					</span>
+				{/key}
 
-			<span class="blinking">_</span>
-		</div>
-		<img draggable="false" class="logo" src="/logo.jpg" alt="logo" />
-	</nav>
+				<span class="blinking">_</span>
+			</div>
+			<img draggable="false" class="logo" src="/logo.jpg" alt="logo" />
+		</nav>
+	</div>
 
 	<HeaderDroplist />
 
@@ -59,14 +61,24 @@
 
 <style>
 	header {
-		/*
-		position: absolute;
+		position: fixed;
 		width: 100%;
 		top: 0;
-        */
 		display: flex;
 		justify-content: center;
 		z-index: 10;
+	}
+
+	.nav-container {
+		max-width: 550px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background-color: rgba(0, 0, 0, 0.8);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 	}
 
 	nav {
@@ -76,7 +88,8 @@
 		max-width: 400px;
 		width: 100%;
 		height: 30px;
-		margin-top: 10px;
+		margin-top: 8px;
+		margin-bottom: 8px;
 		margin-left: 10px;
 		margin-right: 10px;
 
@@ -93,12 +106,12 @@
 		transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 	}
 
+	/*
 	nav:hover {
 		transform: scale(1.05) translateY(5px);
-		/*
         filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
-        */
 	}
+	*/
 
 	span {
 		line-height: 30px;

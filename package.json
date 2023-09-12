@@ -32,7 +32,9 @@
 		"@fontsource/inter": "^5.0.8",
 		"@types/marked": "^5.0.1",
 		"@types/node": "^20.6.0",
+		"highlight.js": "^11.8.0",
 		"marked": "^9.0.0",
+		"marked-highlight": "^2.0.6",
 		"tippy.js": "^6.3.7"
 	}
 }

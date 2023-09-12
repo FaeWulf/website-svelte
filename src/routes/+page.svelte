@@ -2,7 +2,6 @@
 	//some main styles
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/dist/border.css';
-	import '../styles/hueText.css';
 
 	//comps
 	import Logo from './logo.svelte';

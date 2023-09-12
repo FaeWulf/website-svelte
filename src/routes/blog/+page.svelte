@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Title from './title.svelte';
-	import '../../styles/hueText.css';
 </script>
 
 <svelte:head>

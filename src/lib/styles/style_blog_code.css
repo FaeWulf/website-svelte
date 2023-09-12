@@ -1,0 +1,83 @@
+pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+}
+
+code.hljs {
+    padding: 3px 5px
+}
+
+.hljs {
+    color: rgb(var(--Text));
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: rgb(var(--Overlay0));
+    font-style: italic
+}
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+    color: rgb(var(--Mauve))
+}
+
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+    color: rgb(var(--Peach))
+}
+
+.hljs-literal {
+    color: rgb(var(--Peach))
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+    color: rgb(var(--Green))
+}
+
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+    color: rgb(var(--Teal))
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+    color: rgb(var(--Blue))
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+    color: rgb(var(--Red))
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs-strong {
+    font-weight: 700
+}
+
+.hljs-link {
+    text-decoration: underline
+}

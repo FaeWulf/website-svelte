@@ -1,14 +1,26 @@
 <script>
+	import '$lib/styles/styles_blog.css';
+	import '$lib/styles/style_blog_code.css';
 	export let data;
 </script>
 
 <h1>{data.callback.name}</h1>
-<div class="content">{@html data.callback.content}</div>
+<div id="blog-content">{@html data.callback.content}</div>
+<div id="blog-bg" />
 
 <style>
-	.content {
-		border: 1px red solid;
+	#blog-content {
+		border: 1px solid rgba(var(--Text), 0.2);
 		width: 100%;
-		overflow-y: scroll;
+		height: 100%;
+		background-color: rgba(var(--Mantle), 0.5);
+		backdrop-filter: blur(10px);
+
+		border-radius: 10px;
+	}
+
+	#blog-bg {
+		position: absolute;
+		z-index: -100;
 	}
 </style>

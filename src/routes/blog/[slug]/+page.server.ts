@@ -1,9 +1,29 @@
 import { error } from '@sveltejs/kit';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from "marked-highlight";
+//import { markedEmoji } from "marked-emoji";
+//import emojis from '$lib/emoji.json'
+
+import hljs from 'highlight.js';
 import fs from 'node:fs/promises'
 import path from 'path';
 
+const marked = new Marked(
+	markedHighlight({
+		langPrefix: 'hljs language-',
+		highlight(code, lang) {
+			const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+			return hljs.highlight(code, { language }).value;
+		}
+	})
+);
 
+/*
+marked.use(markedEmoji({
+	emojis,
+	unicode: false
+}));
+*/
 
 export async function load({ params }) {
 	const pathname = path.resolve()

@@ -2,23 +2,20 @@
 	import { onMount } from 'svelte';
 	import { Star, ShootingStar } from './background';
 	import type { bgItem } from './background';
-	import { spring } from 'svelte/motion';
+	//import { spring } from 'svelte/motion';
 
 	export let background_color = '#110E19AA';
 
 	let innerHeight: number, innerWidth: number;
+	let background: HTMLCanvasElement;
 
 	onMount(() => {
 		let requestAnimationFrame = window.requestAnimationFrame;
 		window.requestAnimationFrame = requestAnimationFrame;
 
-		let background = <HTMLCanvasElement>document.getElementById('background'),
-			bgCtx = background?.getContext('2d')!,
+		let bgCtx = background.getContext('2d')!,
 			width = innerWidth,
 			height = innerHeight;
-
-		background.width = width;
-		background.height = height;
 
 		let entities: bgItem[] = [];
 
@@ -38,6 +35,9 @@
 
 		//animate background
 		function animate() {
+			width = innerWidth;
+			height = innerHeight;
+
 			bgCtx.fillStyle = background_color;
 			bgCtx.clearRect(0, 0, width, height);
 			bgCtx.fillStyle = '#ffffff';
@@ -53,19 +53,9 @@
 
 		animate();
 	});
-
-	let coords = spring(
-		{ x: 50, y: 50 },
-		{
-			stiffness: 0.1,
-			damping: 0.25
-		}
-	);
-
-	let size = spring(2);
 </script>
 
-<canvas id="background" draggable="false" />
+<canvas bind:this={background} width={innerWidth} height={innerHeight} draggable="false" />
 
 <p>{innerHeight} x {innerWidth}</p>
 
@@ -84,7 +74,7 @@
  -->
 <style>
 	canvas {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: -99;
