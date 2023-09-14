@@ -35,7 +35,7 @@
 }
 
 #blog-content table tr:nth-child(even) {
-    background-color: rgb(var(--Base));
+    background-color: rgb(var(--Surface0));
 }
 
 #blog-content table th {

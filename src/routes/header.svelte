@@ -1,25 +1,68 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { tooltip } from '$lib/utils';
 	import Search from '$lib/svgs/search.svelte';
 	import 'tippy.js/animations/perspective-subtle.css';
 	import HeaderDroplist from './header_droplist.svelte';
 	import { onMount } from 'svelte';
-	import { typewriter, capitalFirstLeter } from '$lib/utils';
+	import { typewriter, capitalFirstLeter, tooltip } from '$lib/utils';
+
+	//import toolbar comps
+	import Volume from '$lib/volume.svelte';
+	import Theme from '$lib/theme.svelte';
 
 	let template: HTMLElement;
 	onMount(() => {
 		template = <HTMLElement>document.getElementById('dropDownList');
 		template.style.display = 'flex';
+		spaceSound.volume = 0.07;
+		thinkfast.volume = 0.5;
 	});
 
 	//making sub path in main path
 	$: pathname =
 		$page.url.pathname == '/' ? 'Home Page' : capitalFirstLeter($page.url.pathname.split('/')[1]);
+
+	let volumeToggle: boolean, themeToggle: boolean;
+	let pauseSFX = false;
+	let spaceSound: HTMLAudioElement;
+	let thinkfast: HTMLAudioElement;
+
+	$: {
+		if (volumeToggle && !pauseSFX) spaceSound?.play();
+		else spaceSound?.pause();
+	}
 </script>
 
 <header>
 	<div class="nav-container">
+		<div class="toolbar">
+			<div
+				use:tooltip={{
+					content: 'Toggle mysterious sound',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
+			>
+				<Volume bind:toggle={volumeToggle} />
+			</div>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div
+				use:tooltip={{
+					content: 'Chagne theme',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
+				on:click={() => {
+					thinkfast.play();
+					setTimeout((E) => {
+						themeToggle = true;
+					}, 4500);
+				}}
+			>
+				<Theme bind:toggle={themeToggle} />
+			</div>
+		</div>
 		<nav>
 			<div
 				class="searchBar"
@@ -51,13 +94,20 @@
 	</div>
 
 	<HeaderDroplist />
-
+	<audio src="/sfx/space-sound.mp3" preload="auto" bind:this={spaceSound} loop />
+	<audio src="/sfx/think-fast.mp3" preload="auto" bind:this={thinkfast} />
 	<!--div class="corner">
 		<a href="https://github.com/sveltejs/kit">
 			<img src={github} alt="GitHub" />
 		</a>
 	</div-->
 </header>
+
+{#if !themeToggle}
+	<div class="flashbang" class:play={!themeToggle} />
+{/if}
+
+<svelte:window on:blur={() => (pauseSFX = true)} on:focus={() => (pauseSFX = false)} />
 
 <style>
 	header {
@@ -76,17 +126,17 @@
 		justify-content: center;
 		align-items: center;
 
-		background-color: rgba(0, 0, 0, 0.8);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
+		border-radius: 50px;
 	}
 
 	nav {
+		flex: 1;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
 		max-width: 400px;
-		width: 100%;
 		height: 30px;
 		margin-top: 8px;
 		margin-bottom: 8px;
@@ -106,6 +156,64 @@
 		transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 	}
 
+	.toolbar {
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: row;
+		align-items: center;
+		height: 30px;
+		margin-top: 8px;
+		margin-bottom: 8px;
+		margin-left: 10px;
+		width: fit-content;
+
+		column-gap: 10px;
+
+		border: 1px solid rgba(var(--Lavender), 0.4);
+		border-radius: 50px;
+		padding: 4px;
+		background-color: rgba(var(--Surface0), 0.5);
+		backdrop-filter: blur(10px);
+	}
+
+	.toolbar > div:first-child {
+		margin-left: 10px;
+	}
+	.toolbar > div:last-child {
+		margin-right: 10px;
+	}
+
+	.flashbang {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		background: white;
+	}
+
+	.flashbang.play {
+		animation: flash 5s cubic-bezier(0.165, 0.84, 0.44, 1);
+	}
+
+	@keyframes flash {
+		0% {
+			opacity: 0;
+		}
+
+		10% {
+			opacity: 1;
+		}
+
+		70% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+		}
+	}
 	/*
 	nav:hover {
 		transform: scale(1.05) translateY(5px);
@@ -134,6 +242,7 @@
 	}
 
 	.blinking {
+		color: rgb(var(--Rosewater));
 		animation: blink 1s step-end infinite;
 	}
 

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { titleText } from './store';
 	import { slide } from 'svelte/transition';
+	import { tooltip } from '$lib/utils';
 
 	let type = '';
 
@@ -29,7 +30,17 @@
 		{#if type == key && value.first.length > 0}
 			<span class="adjust-height" transition:slide={{ delay: 0, axis: 'x' }}>{value.first}</span>
 		{/if}
-	{/each}<span class="hueText name">Faewulf</span>
+	{/each}<span class="hueText name"
+		>Faewulf
+		<div
+			class="status"
+			use:tooltip={{
+				content: "I'm Offline!",
+				theme: 'catppuccin',
+				animation: 'scale'
+			}}
+		/>
+	</span>
 	{#each [...infoMap] as [key, value]}
 		{#if type == key && value.last.length > 0}
 			<span class="adjust-height" transition:slide={{ delay: 0, axis: 'x' }}>{value.last}</span>
@@ -55,6 +66,7 @@
 	}
 
 	.name {
+		position: relative;
 		margin-left: 0px;
 		margin-right: 0px;
 		font-family: 'Daydream', 'Tahoma';
@@ -72,6 +84,18 @@
 
 	.adjust-height {
 		line-height: 2.6rem;
+	}
+
+	.status {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 10px;
+		height: 10px;
+		background: red;
+		border: 2px solid rgba(var(--Overlay0), 0.4);
+		border-radius: 50%;
+		cursor: pointer;
 	}
 
 	@keyframes wave-animation {

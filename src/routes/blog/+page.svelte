@@ -48,7 +48,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		flex-direction: column;
-		border: 1px red solid;
+		border: 1px solid rgba(var(--Text), 0.2);
 
 		font-family: 'Pixel Nes', 'Tahoma';
 	}
@@ -59,7 +59,7 @@
 		justify-content: flex-start;
 		width: 100%;
 		row-gap: 20px;
-		margin-top: 30px;
+		margin-top: 20px;
 		flex: 1;
 	}
 

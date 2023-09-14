@@ -6,6 +6,7 @@
 
 	export let background_color = '#110E19AA';
 
+	// background
 	let innerHeight: number, innerWidth: number;
 	let background: HTMLCanvasElement;
 

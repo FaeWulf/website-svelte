@@ -1,6 +1,6 @@
 <h1>
 	<span class="hueText">Faewulf</span>
-	<p>'s blog</p>
+	<!--p>'s playlist</p-->
 </h1>
 
 <style>

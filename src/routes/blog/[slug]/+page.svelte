@@ -1,12 +1,13 @@
 <script>
 	import '$lib/styles/styles_blog.css';
 	import '$lib/styles/style_blog_code.css';
+	import { page } from '$app/stores';
 	export let data;
 </script>
 
 <h1>{data.callback.name}</h1>
 <div id="blog-content">{@html data.callback.content}</div>
-<div id="blog-bg" />
+<a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
 
 <style>
 	#blog-content {
@@ -16,11 +17,12 @@
 		background-color: rgba(var(--Surface0), 0.4);
 		backdrop-filter: blur(10px);
 
-		border-radius: 10px;
+		border-radius: 5px;
 	}
 
-	#blog-bg {
-		position: absolute;
-		z-index: -100;
+	a {
+		margin: 20px;
+		font-family: 'Pixel Nes', 'Tahoma';
+		font-size: 1.4rem;
 	}
 </style>
