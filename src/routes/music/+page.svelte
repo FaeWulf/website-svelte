@@ -46,7 +46,7 @@
 						bind:value={search}
 						placeholder="Search with track, artist"
 					/>
-					<div>Last update {data.lastUpdatePlaylistDate}</div>
+					<div>{data.lastUpdatePlaylistDate}</div>
 				</div>
 				<div class="tab-track-playlist">
 					<svelte:component

@@ -1,9 +1,15 @@
 <script lang="ts">
-	import badges from '$lib/bagde.json';
-	import { descriptionText } from './store';
+	import badges from '$lib/data/bagde.json';
+	export let descriptionChanger = {
+		value: 0,
+		text: '',
+		learner: false
+	};
 
 	function sendChangeText(value: number, text: string, learner: boolean) {
-		descriptionText.set({ value, text, learner });
+		descriptionChanger.value = value;
+		descriptionChanger.text = text;
+		descriptionChanger.learner = learner;
 	}
 </script>
 

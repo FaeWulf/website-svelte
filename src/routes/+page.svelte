@@ -9,7 +9,15 @@
 	import Description from './description.svelte';
 	import Title from './title.svelte';
 	import Social from './social.svelte';
-	import Bonsai from '$lib/bonsai.svelte';
+	import Bonsai from '$lib/sveltes/bonsai.svelte';
+
+	let descriptionChanger = {
+		value: 0,
+		text: '',
+		learner: false
+	};
+
+	let titleChanger = '';
 </script>
 
 <svelte:head>
@@ -18,8 +26,8 @@
 </svelte:head>
 
 <Logo />
-<Title />
-<Description />
-<Badges />
-<Social />
+<Title bind:titleChanger />
+<Description bind:descriptionChanger />
+<Badges bind:descriptionChanger />
+<Social bind:titleChanger />
 <Bonsai />

@@ -7,8 +7,8 @@
 	import { typewriter, capitalFirstLeter, tooltip } from '$lib/utils';
 
 	//import toolbar comps
-	import Volume from '$lib/volume.svelte';
-	import Theme from '$lib/theme.svelte';
+	import Volume from '$lib/sveltes/volume.svelte';
+	import Theme from '$lib/sveltes/theme.svelte';
 
 	let template: HTMLElement;
 	onMount(() => {
@@ -202,7 +202,7 @@
 			opacity: 0;
 		}
 
-		10% {
+		2% {
 			opacity: 1;
 		}
 

@@ -1,11 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { descriptionText } from './store';
 	import { slide } from 'svelte/transition';
 
-	let level = -1;
-	let learner = false;
-	let text = '';
+	export let descriptionChanger = {
+		value: 0,
+		text: '',
+		learner: false
+	};
+
+	$: level = descriptionChanger.value;
+	$: learner = descriptionChanger.learner;
+	$: text = descriptionChanger.text.replaceAll(' ', '&nbsp;');
 
 	const anVowel = [0, 2];
 	const colorLevel = ['', '', 'hueText-green', 'hueText-blue', 'hueText-purple', 'hueText-red'];
@@ -18,6 +22,7 @@
 		'Expert'
 	];
 
+	/*
 	onMount(() => {
 		descriptionText.subscribe((value) => {
 			level = value.value;
@@ -25,6 +30,7 @@
 			learner = value.learner;
 		});
 	});
+	*/
 </script>
 
 <h2>

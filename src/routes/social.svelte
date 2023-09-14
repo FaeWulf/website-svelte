@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { titleText } from './store';
 	import discord from '$lib/svgs/discord.svelte';
 	import email from '$lib/svgs/email.svelte';
 	import steam from '$lib/svgs/steam.svelte';
@@ -11,6 +10,8 @@
 	import 'tippy.js/animations/scale.css';
 	import { createSingleton } from 'tippy.js';
 	import { onMount } from 'svelte';
+
+	export let titleChanger = '';
 
 	const badges = [
 		{
@@ -46,8 +47,9 @@
 		//"facebook",
 	];
 
+	//this function will change title
 	function sendTitle(text: string) {
-		titleText.set({ value: text });
+		titleChanger = text;
 	}
 	let tippyInstances: any[] = [];
 

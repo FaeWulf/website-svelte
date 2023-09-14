@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { titleText } from './store';
 	import { slide } from 'svelte/transition';
 	import { tooltip } from '$lib/utils';
 
-	let type = '';
+	export let titleChanger = '';
+
+	//dynamic var to change title when titleChangeer changed value
+	$: type = titleChanger;
 
 	let infoMap: Map<string, { first: string; last: string }> = new Map([
 		['email', { first: 'contact@', last: '.xyz' }],
@@ -14,11 +15,6 @@
 		['github', { first: 'github.com/', last: '' }],
 		['youtube', { first: '', last: '' }]
 	]);
-	onMount(() => {
-		titleText.subscribe((value) => {
-			type = value.value;
-		});
-	});
 </script>
 
 <div class="title">

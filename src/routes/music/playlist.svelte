@@ -1,8 +1,15 @@
 <script lang="ts">
-	import VirtualList from '$lib/virtualList.svelte';
+	import VirtualList from '$lib/sveltes/virtualList.svelte';
 	export let id;
 	export let search = '';
-	export let playList;
+	export let playList: {
+		title: 'Lily';
+		time: string;
+		ID: string;
+		url: string;
+		artist: string;
+		fav: number;
+	}[];
 
 	let selectedItem: string | null = null;
 	$: list =
