@@ -58,8 +58,6 @@
 
 <canvas bind:this={background} width={innerWidth} height={innerHeight} draggable="false" />
 
-<p>{innerHeight} x {innerWidth}</p>
-
 <svelte:window bind:innerHeight bind:innerWidth />
 
 <!-- svelte-ignore a11y-no-static-element-interactions
