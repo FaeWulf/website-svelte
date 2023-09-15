@@ -9,6 +9,8 @@
 	// read-only, but visible to consumers via bind:start
 	export let start = 0;
 	export let end = 0;
+
+	export let scrollToIdx: number;
 	// local state
 	let height_map: any[] = [];
 	let rows: any;
@@ -21,6 +23,8 @@
 	let top = 0;
 	let bottom = 0;
 	let average_height: number;
+
+	$: if (scrollToIdx && scrollToIdx != -1) scrollToIndex(scrollToIdx, { behavior: 'auto' });
 
 	$: visible = items.slice(start, end).map((data, i) => {
 		return { index: i + start, data };
@@ -156,6 +160,7 @@
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
 		display: block;
+		scroll-behavior: smooth;
 	}
 
 	svelte-virtual-list-contents,

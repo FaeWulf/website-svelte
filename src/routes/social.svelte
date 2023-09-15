@@ -51,6 +51,7 @@
 	function sendTitle(text: string) {
 		titleChanger = text;
 	}
+
 	let tippyInstances: any[] = [];
 
 	onMount(() => {

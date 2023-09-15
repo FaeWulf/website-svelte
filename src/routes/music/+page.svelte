@@ -1,13 +1,19 @@
 <script lang="ts">
+	import type { track } from '$lib/types';
 	import Title from './title.svelte';
 	import Screen from './screen.svelte';
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 	import { onMount } from 'svelte';
+	import MenuBar from './menuBar.svelte';
 
 	export let data;
-	//export let data;
 
+	let currentList: track[];
+	//playlist vars
 	let id: string, autoPlay: boolean, player: YouTubePlayer;
+
+	//toolbar vars
+	let autoNextActive: boolean, randomActive: boolean;
 
 	//lazy load
 	let lazyLoadPlaylist: any;
@@ -34,26 +40,34 @@
 
 <div class="main">
 	<Title />
+	<div class="statistic">
+		<div>
+			Updated: {data.lastUpdatePlaylistDate}
+		</div>
+		<div>
+			{data.playList.length + 1} tracks
+		</div>
+	</div>
 	<div class="container" bind:clientHeight={containerHeight}>
 		<div class="scrollable" style="height: {containerHeight}px;">
-			<Screen bind:autoPlay bind:id bind:player />
+			<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
 
 			<div class="tab-track">
-				<div class="tab-track-title">
-					<input
-						class="searchBar"
-						type="search"
-						bind:value={search}
-						placeholder="Search with track, artist"
-					/>
-					<div>{data.lastUpdatePlaylistDate}</div>
-				</div>
+				<MenuBar
+					bind:search
+					bind:autoNextActive
+					bind:autoplayActive={autoPlay}
+					bind:randomActive
+					bind:id
+					bind:currentList
+				/>
 				<div class="tab-track-playlist">
 					<svelte:component
 						this={lazyLoadPlaylist}
 						{...$$props}
 						bind:id
 						bind:search
+						bind:currentList
 						playList={data.playList}
 					/>
 				</div>
@@ -64,6 +78,7 @@
 
 <style>
 	.main {
+		position: relative;
 		flex: 1;
 		width: 100%;
 		display: flex;
@@ -76,6 +91,21 @@
         */
 	}
 
+	.statistic {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		top: 0;
+		left: 0;
+		margin: 10px;
+		font-size: 0.7rem;
+
+		color: rgba(var(--Text), 0.6);
+
+		z-index: -1;
+	}
+
 	.container {
 		width: 100%;
 		margin-top: 20px;
@@ -86,30 +116,6 @@
 		width: 100%;
 		height: 100%;
 		margin: 0px 20px 0px 20px;
-	}
-
-	.tab-track-title {
-		width: 100%;
-		height: 50px;
-		border-bottom: 1px solid rgba(var(--Overlay0), 0.4);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		column-gap: 20px;
-	}
-
-	.searchBar {
-		width: 100%;
-		height: 30px;
-		margin: 0 20px 0 20px;
-		border: 1px solid rgba(var(--Overlay0), 0.4);
-		color: var(--Text);
-		background: rgba(var(--Overlay2), 0.4);
-	}
-
-	.searchBar:focus {
-		outline: 1px solid rgba(var(--Lavender), 0.8);
-		border: none;
 	}
 
 	.tab-track-playlist {

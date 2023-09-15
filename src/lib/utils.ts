@@ -1,7 +1,6 @@
 import tippy from "tippy.js";
 // place files you want to import through the `$lib` alias in this folder.
-
-export function typewriter(node: Node, { delay = 0, speed = 1 }: any) {
+function typewriter(node: Node, { delay = 0, speed = 1 }: any) {
     const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
 
     if (!valid) {
@@ -21,7 +20,7 @@ export function typewriter(node: Node, { delay = 0, speed = 1 }: any) {
     };
 }
 
-export function gibberish(node: Node, { delay = 0, speed = 1 }: any) {
+function gibberish(node: Node, { delay = 0, speed = 1 }: any) {
     const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
 
     if (!valid) {
@@ -64,7 +63,7 @@ function randomString(length: number) {
 
 
 // ultis funtion
-export function tooltip(node: HTMLElement, params: any = {}) {
+function tooltip(node: HTMLElement, params: any = {}) {
     // Determine the title to show. We want to prefer
     //    the custom content passed in first, then the
     // HTML title attribute then the aria-label
@@ -100,6 +99,19 @@ export function tooltip(node: HTMLElement, params: any = {}) {
     };
 };
 
-export function capitalFirstLeter(str: string) {
+function capitalFirstLeter(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1, str.length)
 }
+
+
+//Fisher-Yates (Knuth) Shuffle Algorithm
+function shuffleArray(array: any[]) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+export { typewriter, gibberish, shuffleArray, tooltip, capitalFirstLeter, randomString }

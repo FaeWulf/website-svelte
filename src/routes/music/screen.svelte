@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import type { track } from '$lib/types';
 	import YoutubePlayer from 'youtube-player';
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
 	export let id = 'qWNQUvIk954';
 	export let autoPlay = false;
+	export let autoNext = false;
 	export let player: YouTubePlayer;
+
+	//readonly
+	export let currentList: track[];
 
 	$: play(id);
 
@@ -24,6 +29,13 @@
 		player.on('error', (value) => {});
 		player.on('stateChange', (value) => {
 			if (value.data == -1 && autoPlay) player.playVideo();
+
+			if (value.data == 0 && autoNext) {
+				const currentIndex = currentList.findIndex((E) => E.ID == id);
+				if (currentIndex != -1 && currentIndex + 1 <= currentList.length) {
+					id = currentList[currentIndex + 1].ID;
+				}
+			}
 		});
 
 		// Tear down player when done

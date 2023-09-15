@@ -1,8 +1,13 @@
 <script>
 	import { cubicOut } from 'svelte/easing';
+
+	//some main styles
 	import '$lib/styles/reset.css';
 	import '$lib/styles/styles.css';
 	import '$lib/styles/hueText.css';
+	import 'tippy.js/dist/tippy.css';
+	import 'tippy.js/dist/border.css';
+
 	import Background from './background.svelte';
 	import Header from './header.svelte';
 	import { fade } from 'svelte/transition';

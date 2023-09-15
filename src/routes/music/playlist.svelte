@@ -1,17 +1,18 @@
 <script lang="ts">
 	import VirtualList from '$lib/sveltes/virtualList.svelte';
-	export let id;
+	import type { track } from '$lib/types';
+	export let id: string;
 	export let search = '';
-	export let playList: {
-		title: 'Lily';
-		time: string;
-		ID: string;
-		url: string;
-		artist: string;
-		fav: number;
-	}[];
+	export let playList: track[];
 
+	//for random choose function
+	export let currentList: any;
+
+	//vars
 	let selectedItem: string | null = null;
+	let scrollToIdx: number;
+
+	//dynamic
 	$: list =
 		search.length > 0
 			? playList.filter((track) => {
@@ -21,11 +22,37 @@
 					);
 			  })
 			: playList;
+
+	$: currentList = list;
+	$: currentList = currentList;
+	$: selectedItem = id;
+	$: jump(id);
+
+	function jump(id: string) {
+		const idx = currentList.findIndex((E: any) => E.ID == id);
+		if (idx != -1) scrollToIdx = idx;
+
+		//dump idea
+		/*
+		let correctPosition = document.getElementById(id);
+		let delta = new Date().getTime();
+		while (!correctPosition) {
+			correctPosition = document.getElementById(id);
+			if (correctPosition) {
+				correctPosition.scrollIntoView();
+				console.log(delta);
+			}
+			const tick = new Date().getTime();
+
+			if (tick - delta > 500) break;
+		}
+		*/
+	}
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<VirtualList items={list} let:item>
+<VirtualList items={list} let:item bind:scrollToIdx>
 	<div
 		class="track"
 		class:active={selectedItem == item.ID}
@@ -33,6 +60,7 @@
 			id = item.ID;
 			selectedItem = item.ID;
 		}}
+		id={item.ID}
 	>
 		{item.title}
 		<div class="duration">

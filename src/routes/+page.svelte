@@ -1,8 +1,4 @@
 <script lang="ts">
-	//some main styles
-	import 'tippy.js/dist/tippy.css';
-	import 'tippy.js/dist/border.css';
-
 	//comps
 	import Logo from './logo.svelte';
 	import Badges from './badges.svelte';
