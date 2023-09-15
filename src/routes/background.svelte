@@ -10,6 +10,9 @@
 	let innerHeight: number, innerWidth: number;
 	let background: HTMLCanvasElement;
 
+	//background entity
+	let entities: bgItem[] = [];
+
 	onMount(() => {
 		let requestAnimationFrame = window.requestAnimationFrame;
 		window.requestAnimationFrame = requestAnimationFrame;
@@ -18,21 +21,7 @@
 			width = innerWidth,
 			height = innerHeight;
 
-		let entities: bgItem[] = [];
-
-		// init stars
-		for (var i = 0; i < height / 2; i++) {
-			entities.push(
-				new Star({
-					x: Math.random() * width,
-					y: Math.random() * height
-				})
-			);
-		}
-
-		// Add 2 shooting stars to array
-		entities.push(new ShootingStar(width, height));
-		entities.push(new ShootingStar(width, height));
+		refreshOnSizeChange(innerHeight, innerWidth);
 
 		//animate background
 		function animate() {
@@ -54,6 +43,30 @@
 
 		animate();
 	});
+
+	function refreshOnSizeChange(innerHeight: number, innerWidth: number) {
+		let width = innerWidth,
+			height = innerHeight;
+
+		entities = [];
+
+		// init stars
+		for (var i = 0; i < height / 2; i++) {
+			entities.push(
+				new Star({
+					x: Math.random() * width,
+					y: Math.random() * height
+				})
+			);
+		}
+
+		// Add 2 shooting stars to array
+		entities.push(new ShootingStar(width, height));
+		entities.push(new ShootingStar(width, height));
+	}
+
+	//dynamic vars
+	$: refreshOnSizeChange(innerHeight, innerWidth);
 </script>
 
 <canvas bind:this={background} width={innerWidth} height={innerHeight} draggable="false" />

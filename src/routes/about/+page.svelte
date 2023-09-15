@@ -4,23 +4,32 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1>About this app</h1>
+	<h1>About this website</h1>
 
 	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
+		This is a simple website that I have made to learn, practice and research about webdev since
+		2019.<br />
+		<br />
+		First version was purely HTML/CSS/JS (served with GitHub Pages).<br />
+		-&gt; Then I rebuilt it with Node.js (Express.js/EJS, served with a self-hosted server).<br />
+		-&gt; Then I reimplemented it using some popular web frameworks (Reactjs -&gt; Vuejs).<br />
+		-&gt; <strong>Then</strong> recently, I discovered a very interesting framework and wanted to
+		give it a try.<br />
 	</p>
 
-	<pre>npm create svelte@latest</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
+	<p class="center">
+		This website made with <a href="https://kit.svelte.dev">SvelteKit</a> with ❤️.
 	</p>
 
 	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
+		Yet simple, consistent and legible - in fact, it's incredibly fast.<br />
+		In my opinion, Svelte requires less code to accomplish the same task compared to other frameworks.
+		(Too ideal to get a job, I hate svelte)
 	</p>
 </div>
+
+<style>
+	.center {
+		text-align: center;
+	}
+</style>
