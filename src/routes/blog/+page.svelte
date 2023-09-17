@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import Title from './title.svelte';
+	import Title from '$lib/sveltes/neonTitle.svelte';
 	export let data;
 
 	function gotoParams(index: number) {
@@ -14,7 +14,7 @@
 </svelte:head>
 
 <div class="main">
-	<Title />
+	<Title subtitle="Blog" />
 
 	<div class="container">
 		{#each data.posts as post (post.name)}

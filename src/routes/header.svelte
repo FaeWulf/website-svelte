@@ -184,6 +184,7 @@
 	.toolbar > div:last-child {
 		margin-right: 10px;
 	}
+
 	#ufo_home {
 		width: 30px;
 		height: 30px;

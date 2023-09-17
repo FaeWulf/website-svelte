@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { track } from '$lib/types';
-	import Title from './title.svelte';
+	import Title from '$lib/sveltes/neonTitle.svelte';
 	import Screen from './screen.svelte';
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 	import { onMount } from 'svelte';
@@ -39,7 +39,7 @@
 </svelte:head>
 
 <div class="main">
-	<Title />
+	<Title subtitle="music" />
 	<div class="statistic">
 		<div>
 			Updated: {data.lastUpdatePlaylistDate}

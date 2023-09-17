@@ -10,6 +10,17 @@
 	src: url('/fonts/Pixel_NES.otf') format('opentype');
 }
 
+@font-face {
+	font-family: 'Sunday Pizza';
+	src: url('/fonts/Sunday Pizza.otf') format('opentype');
+}
+
+
+@font-face {
+	font-family: 'handwrite';
+	src: url('/fonts/handwrite.ttf') format('truetype');
+}
+
 :root {
 	--Crust: 24, 25, 38;
 	--Base: 36, 39, 58;
@@ -168,8 +179,8 @@ button:focus:not(:focus-visible) {
 }
 
 .tippy-box[data-theme~='catppuccin-transparent'] {
-	background-color: rgba(var(--Mantle), 0.6);
+	background-color: rgba(var(--Mantle), 0.8);
 	color: rgb(var(--Text));
 	border: 1px solid rgba(var(--Text), 0.2);
-	backdrop-filter: blur(2px);
+	backdrop-filter: blur(4px);
 }

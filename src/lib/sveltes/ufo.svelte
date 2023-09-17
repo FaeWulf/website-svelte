@@ -5,6 +5,7 @@
 		mouseY = 0,
 		mouseOnScreen = false;
 
+	let innerHeight: number, innerWidth: number;
 	//ufo
 	let ufo = spring(
 		{ x: -50, y: -50 },
@@ -51,7 +52,7 @@
 		mouseY = E.clientY;
 	};
 	function setUFOCoords(x: number, y: number) {
-		ufo.set({ x: x, y: y });
+		if (x >= 0 && x <= innerWidth && y >= 0 && y <= innerHeight) ufo.set({ x: x, y: y });
 	}
 
 	//dynamic
@@ -78,11 +79,6 @@
 	});
 </script>
 
-{#if mouseOnScreen}
-	<p>
-		{mouseX} : {mouseY}
-	</p>
-{/if}
 <img
 	src="/gifs/ufo.gif"
 	alt="ufo"
@@ -94,10 +90,11 @@
 		? '30deg'
 		: '0deg'});"
 />
+<svelte:window bind:innerHeight bind:innerWidth />
 
 <style>
 	.ufo {
-		position: absolute;
+		position: fixed;
 		pointer-events: none;
 		z-index: 10;
 	}

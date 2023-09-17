@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Title from './title.svelte';
+	import Title from '$lib/sveltes/neonTitle.svelte';
 </script>
 
 <svelte:head>
@@ -8,7 +8,7 @@
 </svelte:head>
 
 <div class="main">
-	<Title />
+	<Title subtitle="Games" />
 </div>
 
 <style>
