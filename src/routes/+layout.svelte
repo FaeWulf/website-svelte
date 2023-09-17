@@ -7,6 +7,7 @@
 	import '$lib/styles/hueText.css';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/dist/border.css';
+	import Ufo from '$lib/sveltes/ufo.svelte';
 
 	import Background from './background.svelte';
 	import Header from './header.svelte';
@@ -18,6 +19,7 @@
 <div class="app">
 	<Background />
 	<Header />
+	<Ufo />
 	<main>
 		{#key data.url}
 			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">

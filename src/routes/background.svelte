@@ -14,6 +14,7 @@
 	let entities: bgItem[] = [];
 
 	onMount(() => {
+		//background
 		let requestAnimationFrame = window.requestAnimationFrame;
 		window.requestAnimationFrame = requestAnimationFrame;
 
@@ -92,12 +93,5 @@
 		z-index: -99;
 		width: 100%;
 		height: 100%;
-	}
-
-	p {
-		position: absolute;
-		top: 0;
-		left: 0;
-		font-size: 15px;
 	}
 </style>

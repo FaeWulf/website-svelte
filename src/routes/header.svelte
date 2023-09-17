@@ -62,6 +62,8 @@
 			>
 				<Theme bind:toggle={themeToggle} />
 			</div>
+
+			<div id="ufo_home" />
 		</div>
 		<nav>
 			<div
@@ -181,6 +183,10 @@
 	}
 	.toolbar > div:last-child {
 		margin-right: 10px;
+	}
+	#ufo_home {
+		width: 30px;
+		height: 30px;
 	}
 
 	.flashbang {
