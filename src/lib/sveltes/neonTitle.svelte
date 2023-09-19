@@ -25,7 +25,7 @@
 
 		font-family: 'Daydream', 'Tahoma';
 
-		border: 0.4rem solid #fffe;
+		border: 5px solid rgba(255, 255, 255, 1);
 		border-radius: 1rem;
 
 		padding: 15px;
@@ -50,10 +50,11 @@
 		color: white;
 		-webkit-text-stroke: 1px magenta;
 
-		text-shadow: -0.2rem -0.2rem 1rem magenta, 0.2rem 0.2rem 1rem magenta,
-			0 0 2rem rgba(var(--Mauve), 1), 0 0 4rem rgba(var(--Mauve), 1), 0 0 8rem rgba(var(--Mauve), 1);
+		text-shadow: -0.2rem -0.2rem 1rem rgba(255, 0, 255, 0.7),
+			0.2rem 0.2rem 1rem rgba(255, 0, 255, 0.7), 0 0 2rem rgba(var(--Mauve), 1),
+			0 0 4rem rgba(var(--Mauve), 1), 0 0 8rem rgba(var(--Mauve), 1);
 
-		-webkit-text-stroke: 1px magenta;
+		-webkit-text-stroke: 1px rgba(magenta, 0.5);
 
 		animation: subtext 3s infinite alternate;
 	}
@@ -81,8 +82,9 @@
 		19%,
 		21%,
 		100% {
-			box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem rgb(var(--Blue)),
-				inset 0 0 1rem rgba(var(--Blue), 0.5), 0 0 2rem rgba(var(--Blue), 0.5);
+			box-shadow: 0 0 10px #e4f1ffaa, inset 0 0 10px rgb(148, 0, 255),
+				inset 0 0 2rem rgba(174, 210, 255, 0.5), inset 0 0 1rem rgba(39, 0, 93, 0.2),
+				0 0 2rem rgba(39, 0, 93, 0.6), 0 0 8rem rgba(148, 0, 255, 0.5);
 
 			-webkit-text-stroke: 1px rgba(var(--Blue), 0.5);
 		}

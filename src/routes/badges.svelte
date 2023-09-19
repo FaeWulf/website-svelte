@@ -19,6 +19,8 @@
 		<img
 			on:mouseenter={() => sendChangeText(skill.level, skill.name, false)}
 			on:mouseleave={() => sendChangeText(0, '', false)}
+			on:touchstart={() => setTimeout(() => sendChangeText(skill.level, skill.name, false), 10)}
+			on:touchend={() => sendChangeText(0, '', false)}
 			draggable="false"
 			class="badge"
 			src={`images/badges/${skill.name}.webp`}
@@ -32,6 +34,7 @@
 			draggable="false"
 			on:mouseenter={() => sendChangeText(epx.level, epx.name, true)}
 			on:mouseleave={() => sendChangeText(0, '', false)}
+			on:touchstart={() => sendChangeText(epx.level, epx.name, true)}
 			src={`images/badges/${epx.name}.webp`}
 			alt={epx.name}
 		/>

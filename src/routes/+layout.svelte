@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { cubicOut } from 'svelte/easing';
 
 	//some main styles
@@ -7,20 +7,27 @@
 	import '$lib/styles/hueText.css';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/dist/border.css';
+	import Bonsai from '$lib/sveltes/bonsai.svelte';
 	import Ufo from '$lib/sveltes/ufo.svelte';
+	import Console from '$lib/sveltes/console.svelte';
 
 	import Background from './background.svelte';
 	import Header from './header.svelte';
 	import { fade } from 'svelte/transition';
 
 	export let data;
+
+	// for console open between header and console
+	let openConsole: boolean;
 </script>
 
 <div class="app">
 	<Background />
-	<Header />
+	<Console bind:openConsole />
+	<Header bind:openConsole />
 	<Ufo />
-	<main>
+	<Bonsai />
+	<main id="main">
 		{#key data.url}
 			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">
 				<slot />

@@ -34,8 +34,6 @@
 		setInterval(() => {
 			const currentTime = new Date();
 
-			console.log(currentTime.getTime() - ufoLastMove?.getTime());
-
 			if (currentTime.getTime() - ufoLastMove?.getTime() > 500) {
 				const ret = document.getElementById('ufo_home');
 				if (ret) {

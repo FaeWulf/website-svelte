@@ -10,6 +10,8 @@
 	import Volume from '$lib/sveltes/volume.svelte';
 	import Theme from '$lib/sveltes/theme.svelte';
 
+	export let openConsole: boolean;
+
 	let template: HTMLElement;
 	onMount(() => {
 		template = <HTMLElement>document.getElementById('dropDownList');
@@ -91,7 +93,23 @@
 
 				<span class="blinking">_</span>
 			</div>
-			<img draggable="false" class="logo" src="/logo.jpg" alt="logo" />
+
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+			<img
+				draggable="false"
+				class="logo"
+				src="/logo.jpg"
+				alt="logo"
+				use:tooltip={{
+					content: 'Open Console',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
+				on:click={() => {
+					openConsole = true;
+				}}
+			/>
 		</nav>
 	</div>
 

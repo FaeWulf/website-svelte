@@ -5,7 +5,6 @@
 	import Description from './description.svelte';
 	import Title from './title.svelte';
 	import Social from './social.svelte';
-	import Bonsai from '$lib/sveltes/bonsai.svelte';
 
 	let descriptionChanger = {
 		value: 0,
@@ -26,4 +25,3 @@
 <Description bind:descriptionChanger />
 <Badges bind:descriptionChanger />
 <Social bind:titleChanger />
-<Bonsai />
