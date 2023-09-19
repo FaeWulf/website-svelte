@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Title from '$lib/sveltes/neonTitle.svelte';
+
+	import GameTab from './gameTab.svelte';
 </script>
 
 <svelte:head>
@@ -9,6 +11,7 @@
 
 <div class="main">
 	<Title subtitle="Games" />
+	<GameTab />
 </div>
 
 <style>

@@ -2,6 +2,7 @@
 	import { slide } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
 	import Command from './console/command.svelte';
+	import { onMount } from 'svelte';
 
 	export let openConsole: boolean = false;
 
@@ -28,12 +29,30 @@
 			switch (keyPressed) {
 				case 'Enter': {
 					triggerEnter = true;
+					//make ConsoleTab scroll to the bottom
+					consoleTab.scrollTop = consoleTab.scrollHeight;
 					break;
 				}
 
 				case 'Backspace':
 					if (input.length <= 0) return;
 					input = input.slice(0, -1);
+					break;
+
+				//case for up arrow
+				case 'ArrowUp':
+					if (memmoryIndex == -1) memmoryIndex = memmory.length;
+					memmoryIndex--;
+					memmoryIndex = memmoryIndex < 0 ? 0 : memmoryIndex;
+					input = memmory[memmoryIndex];
+					break;
+
+				//case for down arrow
+				case 'ArrowDown':
+					if (memmoryIndex == -1) memmoryIndex = memmory.length;
+					memmoryIndex++;
+					memmoryIndex = memmoryIndex > memmory.length - 1 ? memmory.length - 1 : memmoryIndex;
+					input = memmory[memmoryIndex];
 					break;
 			}
 	}
@@ -44,6 +63,13 @@
 				consoleTab.focus();
 			}, 500);
 	}
+
+	onMount(() => {
+		setTimeout(() => {
+			input = 'whoami';
+			triggerEnter = true;
+		}, 2000);
+	});
 
 	//dynamic
 	$: focusConsole(openConsole);
@@ -68,7 +94,7 @@
 			bind:this={consoleTab}
 		>
 			<div>
-				<Command bind:output bind:input bind:triggerEnter />
+				<Command bind:output bind:input bind:triggerEnter bind:memmory bind:memmoryIndex />
 			</div>
 		</div>
 	</div>
@@ -106,6 +132,7 @@
 
 		display: flex;
 		flex-direction: column;
+		overflow: auto;
 	}
 
 	.console-container:focus {
@@ -114,9 +141,10 @@
 	}
 
 	.console-container :global(pre) {
-		margin: 0;
+		margin: 5px;
 		white-space: pre-line;
 		background: none;
+		overflow-y: hidden;
 	}
 
 	.console-container :global(span) {
