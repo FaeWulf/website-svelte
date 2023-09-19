@@ -1,61 +1,171 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
+	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+	import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 	const games = [
-		'dota2',
-		'caveblazers',
-		'yomihustle',
-		'projectzomboid',
-		'dwarffortress',
-		'risetoruins'
+		{
+			name: 'Dota 2',
+			img: 'dota2',
+			description:
+				"Very good moba game, complex and very interactive game mechanics, highly recommend. I'm tired of buggy unbalanced LoL.",
+			url: 'https://store.steampowered.com/app/570/Dota_2/'
+		},
+		{
+			name: 'Caveblazers',
+			img: 'caveblazers',
+			description:
+				'Pixel roguelike platformer game, super fun, easy to play, hard to master. Unfortunately dev drops the game.',
+			url: 'https://store.steampowered.com/app/452060/Caveblazers/'
+		},
+		{
+			name: 'Your Only Move Is HUSTLE',
+			img: 'yomihustle',
+			description: 'Unique turn base "action" game, like chest but... more',
+			url: 'https://store.steampowered.com/app/2212330/Your_Only_Move_Is_HUSTLE/'
+		},
+		{
+			name: 'The Binding of Isaac',
+			img: 'isaac',
+			description: '2d RPG shooter game, but with a twist.',
+			url: 'https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/'
+		},
+		{
+			name: 'Barony',
+			img: 'barony',
+			description: 'A first-person roguelike voxel? game.',
+			url: 'https://store.steampowered.com/app/371970/Barony/'
+		},
+		{
+			name: 'Streets of Rogue',
+			img: 'streetsofrogue',
+			description:
+				'A rogue-like dungeon crawler game. Nuclear Throne meets Deus Ex, mixed with the anarchy of GTA. Fun to play. Laugh all the times with friends',
+			url: 'https://store.steampowered.com/app/512900/Streets_of_Rogue/'
+		},
+		{
+			name: 'Baba is you',
+			img: 'baba',
+			description:
+				'A puzzle game with rules in the form of blocks, and you can change those rules!',
+			url: 'https://store.steampowered.com/app/736260/Baba_Is_You/'
+		},
+		{
+			name: 'Vagante',
+			img: 'vagante',
+			description: 'A pixel art roguelike game. Decent game mechanic, stick to it for like months.',
+			url: 'https://store.steampowered.com/app/323220/Vagante/'
+		},
+		{
+			name: 'Vampire Survival',
+			img: 'vampire',
+			description:
+				'A rogue-lite hack and slash game, with vampires. Hidden elements is what makes it special. But where are vampires? They are in another coffin.',
+			url: 'https://store.steampowered.com/app/1794680/Vampire_Survivors/'
+		},
+		{
+			name: 'Superfighters Deluxe',
+			img: 'superfighters',
+			description: 'A retro-style arcade fighting game with 2D graphics.',
+			url: 'https://store.steampowered.com/app/855860/Superfighters_Deluxe/'
+		},
+		{
+			name: 'Wayward',
+			img: 'wayward',
+			description: 'A turn-based, top-down, wilderness survival roguelike.',
+			url: 'https://store.steampowered.com/app/379210/Wayward/'
+		},
+		{
+			name: 'Super Cane Magic ZERO',
+			img: 'supercanemagic',
+			description: 'Comedy gold andventure RPG game.',
+			url: 'https://store.steampowered.com/app/336440/Super_Cane_Magic_ZERO__Legend_of_the_Cane_Cane/'
+		},
+		{
+			name: 'Lover in a Dangerous Spacetime',
+			img: 'lovers',
+			description: 'A game you should play with friends or family. SHOULD TRY IT.',
+			url: 'https://store.steampowered.com/app/252110/Lovers_in_a_Dangerous_Spacetime/'
+		},
+		{
+			name: 'Project Zomboid',
+			img: 'projectzomboid',
+			description:
+				'An ultimate zombie "survival" game with complex machanics, not only zombies can kill you, but everything can...',
+			url: 'https://store.steampowered.com/app/108600/Project_Zomboid/'
+		},
+		{
+			name: 'Dwarf Fortress',
+			img: 'dwarffortress',
+			description:
+				'A construction and management simulation and roguelike game. Very very very complex, original is a ASCII version, should check out if you want.',
+			url: 'https://store.steampowered.com/app/975370/Dwarf_Fortress/'
+		},
+		{
+			name: 'Rise to Ruins',
+			img: 'risetoruins',
+			description: 'A godlike village simulator pixel game.',
+			url: 'https://store.steampowered.com/app/328080/Rise_to_Ruins/'
+		}
 	];
 
-	let gameCardContainer: HTMLElement;
-	let forceReset = false;
+	let gameCardContainerCLientWidth = 0;
+	let chosenGame: {
+		name: string;
+		img: string;
+		description: string;
+		url: string;
+	};
 
-	//create an interval that add value to games-container.scrollLeft, if scrollLeft == scrollWidth, reset to 0
-	let gameCardInterval = setInterval(() => {
-		if (!gameCardContainer) return;
-
-		if (forceReset) {
-			if (gameCardContainer.scrollLeft != 0) return (gameCardContainer.scrollLeft = 0);
-			if (gameCardContainer.scrollLeft == 0) forceReset = false;
-		}
-
-		if (
-			gameCardContainer.scrollLeft + gameCardContainer.clientWidth >=
-			gameCardContainer.scrollWidth
-		) {
-			gameCardContainer.scrollLeft = 0;
-			forceReset = true;
-		} else {
-			gameCardContainer.scrollLeft += 5;
-		}
-	}, 100);
-
-	onMount(() => {});
-
-	onDestroy(() => {
-		clearInterval(gameCardInterval);
-	});
-
-	// recalculate lastGame and nextGame based on currentGame
+	//dyanmic
+	//calculate max item per page (perPage) with gameCardContainer.clientWidth
+	$: maxItem = Math.round(gameCardContainerCLientWidth / (213 + 20));
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-
 <div class="games-contaier-wrapper">
-	<div class="games-container" bind:this={gameCardContainer}>
-		{#each games as game}
-			<div class="game-card-cover">
-				<div class="game-card-wrapper">
-					<img class="game-card" src="/images/games/{game}.png" alt={game} />
-				</div>
-			</div>
-		{/each}
+	<div class="games-container" bind:clientWidth={gameCardContainerCLientWidth}>
+		<Splide
+			extensions={{ AutoScroll: AutoScroll }}
+			aria-label="My Favorite Games"
+			options={{
+				type: 'loop',
+				rewind: true,
+				perPage: maxItem,
+				snap: true,
+				arrows: false,
+				pagination: false,
+				wheel: true,
+				focus: 'center',
+				autoScroll: {
+					pauseOnFocus: true,
+					pauseOnHover: true
+				}
+			}}
+		>
+			{#each games as game}
+				<SplideSlide>
+					<div
+						class="game-card-cover"
+						tabindex="-1"
+						on:focus={() => {
+							chosenGame = game;
+						}}
+					>
+						<div class="game-card-wrapper">
+							<img class="game-card" src="/images/games/{game.img}.png" alt={game.name} />
+						</div>
+					</div>
+				</SplideSlide>
+			{/each}
+		</Splide>
 	</div>
-	<div class="games-description">lmao</div>
+	<div class="games-description">
+		{#if chosenGame}
+			<a href={chosenGame.url}>
+				<h1>{chosenGame.name}</h1>
+			</a>
+			<div class="description">{chosenGame.description}</div>
+		{/if}
+	</div>
 </div>
 
 <style>
@@ -66,24 +176,15 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		margin-top: -10px;
 	}
 
 	.games-container {
-		display: flex;
 		width: 100%;
-		height: 350px;
-		align-items: center;
-		overflow-x: auto;
+		height: fit-content;
 		margin-top: 30px;
 		border-top: 1px solid rgba(var(--Text), 0.5);
 		border-bottom: 1px solid rgba(var(--Text), 0.5);
-
-		scroll-behavior: smooth;
-	}
-
-	.games-description {
-		flex: 1;
-		width: 100%;
 	}
 
 	.game-card {
@@ -91,6 +192,30 @@
 		height: 300px;
 		width: auto;
 		z-index: 1;
+	}
+
+	.games-description {
+		flex: 1;
+		width: 100%;
+		text-align: center;
+	}
+
+	:global(.splide__slide) {
+		display: flex;
+		justify-content: center;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	.description {
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 
 	.game-card-cover {
@@ -133,12 +258,15 @@
 		transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
 	}
 
+	.game-card-cover:focus .game-card-wrapper,
 	.game-card-cover:hover .game-card-wrapper::after {
 		width: 100%;
 		height: 150%;
 	}
 
+	.game-card-cover:focus .game-card-wrapper,
 	.game-card-cover:hover .game-card-wrapper {
-		transform: rotateX(10deg) translateY(-6px) scale(1.05);
+		transform: rotateX(7deg) translateY(-6px) scale(1.05);
+		border: 1px solid rgba(var(--Rosewater), 1);
 	}
 </style>

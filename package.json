@@ -30,6 +30,8 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/inter": "^5.0.8",
+		"@splidejs/splide-extension-auto-scroll": "^0.5.3",
+		"@splidejs/svelte-splide": "^0.2.9",
 		"@types/marked": "^5.0.1",
 		"@types/node": "^20.6.0",
 		"@types/youtube-player": "^5.5.7",

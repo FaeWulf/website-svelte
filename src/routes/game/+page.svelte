@@ -22,7 +22,6 @@
 		justify-content: flex-start;
 		align-items: center;
 		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
 
 		font-family: 'Pixel Nes', 'Tahoma';
 	}

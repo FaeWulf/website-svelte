@@ -7,6 +7,8 @@
 	import '$lib/styles/hueText.css';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/dist/border.css';
+	import '@splidejs/svelte-splide/css';
+
 	import Bonsai from '$lib/sveltes/bonsai.svelte';
 	import Ufo from '$lib/sveltes/ufo.svelte';
 	import Console from '$lib/sveltes/console.svelte';
