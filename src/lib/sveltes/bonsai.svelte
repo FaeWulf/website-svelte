@@ -59,7 +59,7 @@
 
 <style>
 	img {
-		position: absolute;
+		position: fixed;
 		right: 0;
 		bottom: 0;
 		cursor: pointer;

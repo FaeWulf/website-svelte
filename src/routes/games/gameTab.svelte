@@ -14,7 +14,7 @@
 			name: 'Caveblazers',
 			img: 'caveblazers',
 			description:
-				'Pixel roguelike platformer game, super fun, easy to play, hard to master. Unfortunately dev drops the game.',
+				"Caveblazers is a super fun pixelated roguelike platformer. It's easy to pick up. Sadly, the developer has stopped updating it.",
 			url: 'https://store.steampowered.com/app/452060/Caveblazers/'
 		},
 		{
@@ -77,33 +77,35 @@
 		{
 			name: 'Super Cane Magic ZERO',
 			img: 'supercanemagic',
-			description: 'Comedy gold andventure RPG game.',
+			description: 'Comedy gold andventure RPG game. Get ready for a good laugh!',
 			url: 'https://store.steampowered.com/app/336440/Super_Cane_Magic_ZERO__Legend_of_the_Cane_Cane/'
 		},
 		{
 			name: 'Lover in a Dangerous Spacetime',
 			img: 'lovers',
-			description: 'A game you should play with friends or family. SHOULD TRY IT.',
+			description:
+				'A game best enjoyed with friends or family. You absolutely have to give it a try',
 			url: 'https://store.steampowered.com/app/252110/Lovers_in_a_Dangerous_Spacetime/'
 		},
 		{
 			name: 'Project Zomboid',
 			img: 'projectzomboid',
 			description:
-				'An ultimate zombie "survival" game with complex machanics, not only zombies can kill you, but everything can...',
+				'An ultimate zombie "survival" game with complex machanics, it\'s not just zombies that can get you; everything is a threat!',
 			url: 'https://store.steampowered.com/app/108600/Project_Zomboid/'
 		},
 		{
 			name: 'Dwarf Fortress',
 			img: 'dwarffortress',
 			description:
-				'A construction and management simulation and roguelike game. Very very very complex, original is a ASCII version, should check out if you want.',
+				" a unique construction and management simulation with roguelike elements. It's incredibly complex, and the original version uses ASCII graphics. Definitely worth checking out!",
 			url: 'https://store.steampowered.com/app/975370/Dwarf_Fortress/'
 		},
 		{
 			name: 'Rise to Ruins',
 			img: 'risetoruins',
-			description: 'A godlike village simulator pixel game.',
+			description:
+				'A charming godlike village simulator with pixel art graphics. Have fun building your own little world',
 			url: 'https://store.steampowered.com/app/328080/Rise_to_Ruins/'
 		}
 	];
@@ -176,7 +178,6 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin-top: -10px;
 	}
 
 	.games-container {
@@ -258,7 +259,7 @@
 		transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
 	}
 
-	.game-card-cover:focus .game-card-wrapper,
+	.game-card-cover:focus .game-card-wrapper::after,
 	.game-card-cover:hover .game-card-wrapper::after {
 		width: 100%;
 		height: 150%;

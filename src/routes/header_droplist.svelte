@@ -18,12 +18,12 @@
 		{
 			name: 'Projects',
 			icon: '♿',
-			url: '/project'
+			url: '/projects'
 		},
 		{
 			name: 'Game library',
 			icon: '🎮',
-			url: '/game'
+			url: '/games'
 		},
 		{
 			name: 'About',
