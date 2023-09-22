@@ -38,7 +38,7 @@
 	</main>
 
 	<footer>
-		<!--p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p-->
+		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 	</footer>
 </div>
 
@@ -77,13 +77,13 @@
 		justify-content: center;
 		align-items: center;
 		padding: 0px;
+		margin: 5px;
+		margin-bottom: 10px;
 	}
 
-	/*
-	footer a {
-		font-weight: bold;
+	footer p {
+		margin: 0;
 	}
-	*/
 
 	@media (min-width: 480px) {
 		footer {

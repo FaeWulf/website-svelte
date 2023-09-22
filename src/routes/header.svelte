@@ -9,6 +9,7 @@
 	//import toolbar comps
 	import Volume from '$lib/sveltes/volume.svelte';
 	import Theme from '$lib/sveltes/theme.svelte';
+	import tippy from 'tippy.js';
 
 	export let openConsole: boolean;
 
@@ -18,6 +19,14 @@
 		template.style.display = 'flex';
 		spaceSound.volume = 0.07;
 		thinkfast.volume = 0.5;
+
+		const consoleOpener = tippy('.logo', {
+			content: 'Open Console',
+			theme: 'catppuccin',
+			animation: 'scale'
+		});
+
+		consoleOpener[0]?.show();
 	});
 
 	//making sub path in main path
@@ -35,6 +44,8 @@
 	}
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <header>
 	<div class="nav-container">
 		<div class="toolbar">
@@ -47,8 +58,6 @@
 			>
 				<Volume bind:toggle={volumeToggle} />
 			</div>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				use:tooltip={{
 					content: 'Chagne theme',
@@ -101,11 +110,6 @@
 				class="logo"
 				src="/logo.jpg"
 				alt="logo"
-				use:tooltip={{
-					content: 'Open Console',
-					theme: 'catppuccin',
-					animation: 'scale'
-				}}
 				on:click={() => {
 					openConsole = true;
 				}}

@@ -49,18 +49,15 @@
 <style>
 	.profile {
 		display: flex;
-		padding: 5px;
 
-		width: 100%;
-		max-width: 420px;
-		height: 200px;
-		opacity: 0.6;
+		width: calc(100% - 12px);
+		height: calc(100% - 12px);
 
 		flex-wrap: wrap;
 		overflow-y: auto;
 		overflow-x: hidden;
 
-		margin-top: 25px;
+		padding: 5px;
 		gap: 5px;
 
 		justify-content: flex-start;
@@ -73,16 +70,9 @@
 		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 
-		-webkit-user-select: none; /* Safari */
-		-ms-user-select: none; /* IE 10 and IE 11 */
-		user-select: none; /* Standard syntax */
-
-		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-		backdrop-filter: blur(2px);
-	}
-
-	.profile:hover {
-		opacity: 1;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	.title {
@@ -100,6 +90,7 @@
 		border-radius: 5px;
 		width: auto;
 		height: 28px;
+		cursor: help;
 	}
 
 	.dummy {

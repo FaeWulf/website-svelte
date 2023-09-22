@@ -114,4 +114,45 @@ function shuffleArray(array: any[]) {
     }
 }
 
-export { typewriter, gibberish, shuffleArray, tooltip, capitalFirstLeter, randomString }
+const asyncIntervals: any[] = [];
+
+const runAsyncInterval = async (cb: () => any, interval: number | undefined, intervalIndex: number) => {
+    await cb();
+    if (asyncIntervals[intervalIndex].run) {
+        asyncIntervals[intervalIndex].id = setTimeout(() => runAsyncInterval(cb, interval, intervalIndex), interval)
+    }
+};
+
+/**
+ * Sets an asynchronous interval that repeatedly calls a callback function at a specified interval.
+ *
+ * @param {() => any} cb - The callback function to be called at the specified interval.
+ * @param {number | undefined} interval - The interval in milliseconds at which the callback function should be called.
+ * @return {number} - The index of the interval that can be used to stop the interval later.
+ * @throws {Error} - Throws an error if the callback function is not provided or is not a function.
+ */
+const setAsyncInterval = (cb: () => any, interval: number | undefined) => {
+    if (cb && typeof cb === "function") {
+        const intervalIndex = asyncIntervals.length;
+        asyncIntervals.push(true);
+        asyncIntervals.push({ run: true, id: 0 })
+        runAsyncInterval(cb, interval, intervalIndex);
+        return intervalIndex;
+    } else {
+        throw new Error('Callback must be a function');
+    }
+};
+
+/**
+ * Clears an asynchronous interval by stopping the specified interval with the given index.
+ *
+ * @param {number} intervalIndex - The index of the interval to be cleared.
+ */
+const clearAsyncInterval = (intervalIndex: number) => {
+    if (asyncIntervals[intervalIndex].run) {
+        clearTimeout(asyncIntervals[intervalIndex].id)
+        asyncIntervals[intervalIndex].run = false
+    }
+}
+
+export { typewriter, gibberish, shuffleArray, tooltip, capitalFirstLeter, randomString, clearAsyncInterval, setAsyncInterval };

@@ -16,28 +16,32 @@
 <div class="main">
 	<Title subtitle="Blog" />
 
-	<div class="container">
-		{#each data.posts as post (post.name)}
-			<a class="post" href="/blog/{post.name.replaceAll(' ', '-')}">
-				<div class="post-title">{post.name}</div>
-				<span class="post-date"
-					>Posted on {post.date.toLocaleDateString('en-us', {
-						weekday: 'long',
-						year: 'numeric',
-						month: 'short',
-						day: 'numeric'
-					})}</span
-				>
-			</a>
-		{/each}
-	</div>
-	<div class="pagination">
-		<button disabled={data.idx <= 1} on:click={() => gotoParams(data.idx - 1)}> Prev </button>
-		<div>{data.idx} / {data.totalPage}</div>
-		<button disabled={data.idx >= data.totalPage} on:click={() => gotoParams(data.idx + 1)}>
-			Next
-		</button>
-	</div>
+	{#await data.callback.data}
+		Loading...
+	{:then data}
+		<div class="container">
+			{#each data.posts as post (post.name)}
+				<a class="post" href="/blog/{post.name.replaceAll(' ', '-')}">
+					<div class="post-title">{post.name}</div>
+					<span class="post-date"
+						>Posted on {post.date.toLocaleDateString('en-us', {
+							weekday: 'long',
+							year: 'numeric',
+							month: 'short',
+							day: 'numeric'
+						})}</span
+					>
+				</a>
+			{/each}
+		</div>
+		<div class="pagination">
+			<button disabled={data.idx <= 1} on:click={() => gotoParams(data.idx - 1)}> Prev </button>
+			<div>{data.idx} / {data.totalPage}</div>
+			<button disabled={data.idx >= data.totalPage} on:click={() => gotoParams(data.idx + 1)}>
+				Next
+			</button>
+		</div>
+	{/await}
 </div>
 
 <style>

@@ -5,8 +5,12 @@
 	export let data;
 </script>
 
-<h1>{data.callback.name}</h1>
-<div id="blog-content">{@html data.callback.content}</div>
+{#await data.streamed.callback}
+	Loading...
+{:then dat}
+	<h1>{dat.name}</h1>
+	<div id="blog-content">{@html dat.content}</div>
+{/await}
 <a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
 
 <style>

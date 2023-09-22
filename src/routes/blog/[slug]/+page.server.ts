@@ -6,7 +6,7 @@ import { markedHighlight } from "marked-highlight";
 
 import hljs from 'highlight.js';
 
-import { files, posts_data } from '$lib/files.js';
+import { getPosts, getPostsData } from '$lib/files.js';
 
 const marked = new Marked(
 	markedHighlight({
@@ -20,20 +20,25 @@ const marked = new Marked(
 
 export async function load({ params }) {
 	//finding post matches params
-	const post = files.find((name) => name.replaceAll(" ", "-").replace('.md', "") === params.slug);
+	const post = (await getPosts()).find((name) => name.replaceAll(" ", "-").replace('.md', "") === params.slug);
 
 	//if not found any exist post
 	if (!post) throw error(404, "Ehh, I don't think I made this post.. yet..");
 
 	//read file
-	const data = posts_data[params.slug]
+	const callback = async () => {
+		const data = await getPostsData()
+		const result = data[params.slug]
 
-	const callback = {
-		name: post.replace('.md', ""),
-		content: marked.parse(data)
+		return ({
+			name: post.replace('.md', ""),
+			content: marked.parse(result)
+		})
 	}
 
 	return {
-		callback
+		streamed: {
+			callback: callback()
+		}
 	};
 }

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
-	import { ufoBubble } from '$lib/store';
-	import { beforeUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import BubbleChat from './ufo/bubbleChat.svelte';
 
 	let mouseX = 0,
@@ -12,12 +11,12 @@
 
 	//ufo
 	let ufoOptions = {
-		stiffness: 0.03,
-		damping: 1
+		stiffness: 0.04,
+		damping: 0.8
 	};
 	let ufo = spring({ x: -50, y: -50 }, ufoOptions);
-	let ufoX = -50,
-		ufoY = -50;
+	let ufoX = 50,
+		ufoY = 50;
 	let ufoLean = 0;
 	let ufoLastMove: Date = new Date();
 	let ufoIdle = false;
@@ -37,7 +36,7 @@
 		setInterval(() => {
 			const currentTime = new Date();
 
-			if (currentTime.getTime() - ufoLastMove?.getTime() > 500 && !ufoIdle) {
+			if (currentTime.getTime() - ufoLastMove?.getTime() > 5000 && !ufoIdle) {
 				const ret = document.getElementById('ufo_home');
 				if (ret) {
 					const pos = ret.getBoundingClientRect();
@@ -56,25 +55,33 @@
 	};
 
 	function setUFOCoords(x: number, y: number) {
-		if (x >= 0 && x <= innerWidth && y >= 0 && y <= innerHeight) ufo.update(() => ({ x: x, y: y }));
+		if (x >= 0 && x <= innerWidth && y >= 0 && y <= innerHeight) ufo.set({ x: x, y: y });
+		else
+			ufo.update(
+				() => ({
+					x: x > innerWidth ? innerWidth - 5 : x < 0 ? 5 : x,
+					y: y > innerHeight ? innerHeight - 5 : y < 0 ? 5 : y
+				}),
+				{ hard: true }
+			);
 	}
 
 	//dynamic
 	$: setUFOCoords(mouseX, mouseY);
-	$: temp(ufoX, ufoY);
-	$: updateUFO($ufo.x, $ufo.y);
 
-	function temp(x: number, y: number) {
-		if (x < 0 || y < 0 || x > innerWidth || y > innerHeight) console.log(x + ', ' + y);
-	}
+	ufo.subscribe((val) => {
+		let x = val.x,
+			y = val.y;
 
-	function updateUFO(x: number, y: number) {
 		if (x < 0 || y < 0 || x > innerWidth || y > innerHeight) {
-			ufo.set({
-				x: x > innerWidth ? innerWidth : x < 0 ? 0 : x,
-				y: y > innerHeight ? innerHeight : y < 0 ? 0 : y
-			});
-			console.log($ufo.x + ', ' + $ufo.y);
+			ufo.update(
+				() => ({
+					x: x > innerWidth ? innerWidth - 5 : x < 0 ? 5 : x,
+					y: y > innerHeight ? innerHeight - 5 : y < 0 ? 5 : y
+				}),
+				{ hard: true }
+			);
+			//console.log($ufo.x + ', ' + $ufo.y);
 			return;
 		}
 
@@ -97,24 +104,9 @@
 		//idle time calculate
 		ufoLastMove = new Date();
 		ufoIdle = false;
-	}
+	});
 </script>
 
-<button
-	on:click={() => {
-		ufoBubble.set('Also Check my playlist! I think this is good! A lot of songs are good :)');
-	}}
-	style="position: absolute; z-index: 100;"
-	>reset
-</button>
-
-<button
-	on:click={() => {
-		ufoBubble.set('Also Check my project!');
-	}}
-	style="position: absolute; z-index: 100; left: 100px"
-	>set
-</button>
 <div
 	class="ufo"
 	style="

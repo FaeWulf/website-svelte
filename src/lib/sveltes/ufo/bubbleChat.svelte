@@ -3,6 +3,8 @@
 	import { quintOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
 
+	import { onDestroy } from 'svelte';
+
 	let toggleBubbbleChat0 = false;
 	let toggleBubbbleChat1 = false;
 	let toggleBubbbleChat2 = false;
@@ -39,6 +41,20 @@
 			toggleBubble(false);
 		}
 	}
+
+	let bubbleInterval = setInterval(() => {
+		if (
+			(toggleBubbbleChat3 == true || toggleBubbbleChat0 == true) &&
+			(!storeContent || storeContent.length < 1)
+		) {
+			toggleBubbbleChat3 = false;
+			toggleBubbbleChat0 = false;
+		}
+	}, 10 * 1000);
+
+	onDestroy(() => {
+		clearInterval(bubbleInterval);
+	});
 
 	//dynamics
 	$: toggleBubbleChat(storeContent);
@@ -94,8 +110,8 @@
 			transition:fade={{ duration: 300 }}
 			class="bubble-chat-wrapper"
 		>
-			<a href="https://github.com/ngola" target="_blank">Github</a>
-			{bubbleChatContent}
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			{@html bubbleChatContent}
 		</div>
 	{/if}
 </div>
@@ -105,6 +121,12 @@
 		position: absolute;
 		top: 0;
 		right: 0;
+
+		opacity: 0.8;
+	}
+
+	.bubble-chat > div {
+		border: 1px black solid;
 	}
 
 	.bubble-chat-wrapper {

@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { tooltip } from '$lib/utils';
+	import StatusDot from '$lib/sveltes/page-comps/root/statusDot.svelte';
+	import { invalidate } from '$app/navigation';
+	import { onDestroy, onMount } from 'svelte';
 
 	export let titleChanger = '';
+	export let discordStatus: Promise<number>;
 
 	//dynamic var to change title when titleChangeer changed value
 	$: type = titleChanger;
@@ -15,6 +18,18 @@
 		['github', { first: 'github.com/', last: '' }],
 		['youtube', { first: '', last: '' }]
 	]);
+
+	//invalidate discord Status every 30 seconds
+	let invalidateInterval: string | number | NodeJS.Timeout | undefined;
+	onMount(() => {
+		invalidateInterval = setInterval(() => {
+			invalidate('title:discordStatus');
+		}, 30 * 1000);
+	});
+
+	onDestroy(() => {
+		clearInterval(invalidateInterval);
+	});
 </script>
 
 <div class="title">
@@ -28,14 +43,7 @@
 		{/if}
 	{/each}<span class="hueText name"
 		>Faewulf
-		<div
-			class="status"
-			use:tooltip={{
-				content: "I'm Offline!",
-				theme: 'catppuccin',
-				animation: 'scale'
-			}}
-		/>
+		<StatusDot bind:status={discordStatus} />
 	</span>
 	{#each [...infoMap] as [key, value]}
 		{#if type == key && value.last.length > 0}
@@ -80,18 +88,6 @@
 
 	.adjust-height {
 		line-height: 2.6rem;
-	}
-
-	.status {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		width: 10px;
-		height: 10px;
-		background: red;
-		border: 2px solid rgba(var(--Overlay0), 0.4);
-		border-radius: 50%;
-		cursor: pointer;
 	}
 
 	@keyframes wave-animation {

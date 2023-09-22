@@ -74,17 +74,6 @@
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
-<!-- svelte-ignore a11y-no-static-element-interactions
-<svg
-	on:mousemove={(e) => {
-		coords.set({ x: e.clientX, y: e.clientY });
-	}}
-	on:mousedown={() => size.set(8)}
-	on:mouseup={() => size.set(2)}
->
-	<circle cx={$coords.x} cy={$coords.y} r={$size} />
-</svg>
- -->
 <style>
 	canvas {
 		position: fixed;

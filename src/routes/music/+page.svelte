@@ -5,6 +5,7 @@
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 	import { onMount } from 'svelte';
 	import MenuBar from './menuBar.svelte';
+	import { ufoBubble } from '$lib/store';
 
 	export let data;
 
@@ -28,6 +29,7 @@
 		import('./playlist.svelte').then((module) => {
 			lazyLoadPlaylist = module.default;
 		});
+		ufoBubble.set('Favorite playlist!');
 	});
 
 	//auto play and shuffle. random music
@@ -40,40 +42,44 @@
 
 <div class="main">
 	<Title subtitle="music" />
-	<div class="statistic">
-		<div>
-			Updated: {data.lastUpdatePlaylistDate}
+	{#await data.streamed.playlist}
+		Loading...
+	{:then data}
+		<div class="statistic">
+			<div>
+				Updated: {data.lastUpdatePlaylistDate}
+			</div>
+			<div>
+				{data.playList.length + 1} tracks
+			</div>
 		</div>
-		<div>
-			{data.playList.length + 1} tracks
-		</div>
-	</div>
-	<div class="container" bind:clientHeight={containerHeight}>
-		<div class="scrollable" style="height: {containerHeight}px;">
-			<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
+		<div class="container" bind:clientHeight={containerHeight}>
+			<div class="scrollable" style="height: {containerHeight}px;">
+				<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
 
-			<div class="tab-track">
-				<MenuBar
-					bind:search
-					bind:autoNextActive
-					bind:autoplayActive={autoPlay}
-					bind:randomActive
-					bind:id
-					bind:currentList
-				/>
-				<div class="tab-track-playlist">
-					<svelte:component
-						this={lazyLoadPlaylist}
-						{...$$props}
-						bind:id
+				<div class="tab-track">
+					<MenuBar
 						bind:search
+						bind:autoNextActive
+						bind:autoplayActive={autoPlay}
+						bind:randomActive
+						bind:id
 						bind:currentList
-						playList={data.playList}
 					/>
+					<div class="tab-track-playlist">
+						<svelte:component
+							this={lazyLoadPlaylist}
+							{...$$props}
+							bind:id
+							bind:search
+							bind:currentList
+							playList={data.playList}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	{/await}
 </div>
 
 <style>
