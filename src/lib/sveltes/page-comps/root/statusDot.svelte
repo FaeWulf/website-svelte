@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { tooltip } from '$lib/utils';
+	import { onMount } from 'svelte';
 	export let status: Promise<number>;
 
 	const statusText = ["I'm Offline!", "I'm Online!", "I'm Resting...", "Don't Disturb!"];

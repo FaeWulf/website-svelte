@@ -108,7 +108,7 @@
 			<img
 				draggable="false"
 				class="logo"
-				src="/logo.jpg"
+				src="/logo.png"
 				alt="logo"
 				on:click={() => {
 					openConsole = true;

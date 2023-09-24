@@ -1,15 +1,19 @@
 import { client } from "$lib/discordStatus.js";
-import { getPlaylist, lastUpdatePlaylistDate } from './music/playlist';
+import { getPlaylist, lastUpdatePlaylistDate } from '../lib/playlist';
 import { getPostsInfos } from '$lib/files.js';
 
 export async function load({ params, depends }) {
     depends('title:discordStatus');
 
     //await reload();
-    const fortuneCookies = async () => {
-        const res = await fetch("http://yerkee.com/api/fortune/all")
-        return await res.json()
-    }
+    const fortuneCookies = new Promise((resolve) => {
+        async function temp() {
+            const res = await fetch("http://yerkee.com/api/fortune/all")
+            const result = await res.json()
+            resolve(result)
+        }
+        temp()
+    })
 
     const discordStatus = async () => {
         const serverId = '1102279635468832768';
@@ -34,7 +38,7 @@ export async function load({ params, depends }) {
 
     return {
         streamed: {
-            fortuneCookies: fortuneCookies(),
+            fortuneCookies: fortuneCookies,
             discord: discordStatus(),
             blog: recentBlog(),
             playlist: playlist()

@@ -1,9 +1,11 @@
 import path from 'path'
 import fs from 'fs/promises'
 
+const defaultPath = "/documents/playlist.json"
+
 const lastUpdatePlaylistDate = async () => {
     const pathname = path.resolve()
-    const lastUpdatePlaylist = await fs.stat(pathname + "/src/lib/data/playlist.json")
+    const lastUpdatePlaylist = await fs.stat(pathname + defaultPath)
     return lastUpdatePlaylist.ctime.toLocaleDateString('en-us', {
         year: 'numeric',
         month: 'short',
@@ -14,7 +16,7 @@ const lastUpdatePlaylistDate = async () => {
 
 const getPlaylist = async () => {
     const pathname = path.resolve()
-    const jsonData = await fs.readFile(pathname + "/src/lib/data/playlist.json", 'utf-8')
+    const jsonData = await fs.readFile(pathname + defaultPath, 'utf-8')
     return JSON.parse(jsonData)
 }
 

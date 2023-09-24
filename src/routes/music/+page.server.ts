@@ -1,4 +1,4 @@
-import { getPlaylist, lastUpdatePlaylistDate } from './playlist';
+import { getPlaylist, lastUpdatePlaylistDate } from '../../lib/playlist';
 
 export async function load({ params }) {
 

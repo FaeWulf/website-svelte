@@ -38,7 +38,10 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>
+			<a href="https://hotlinewebring.club/faewulf/prev">←</a> Hotline Webring
+			<a href="https://hotlinewebring.club/faewulf/next">→</a>
+		</p>
 	</footer>
 </div>
 

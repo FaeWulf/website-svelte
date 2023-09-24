@@ -38,11 +38,11 @@
     ],
     "env": [
         {
-            "name": "os",
+            "name": "machine",
             "url": ""
         },
         {
-            "name": "machine",
+            "name": "os",
             "url": ""
         },
         {
@@ -107,7 +107,7 @@
         },
         {
             "name": "adobe ai",
-            "level": 3,
+            "level": 2,
             "url": ""
         }
     ]

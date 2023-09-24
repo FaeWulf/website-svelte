@@ -20,7 +20,7 @@
 			class="satellite"
 		/>
 	</div-->
-	<img draggable="false" class="logo" src="/logo.jpg" alt="logo" />
+	<img draggable="false" class="logo" src="/logo.png" alt="logo" />
 </div>
 
 <style>

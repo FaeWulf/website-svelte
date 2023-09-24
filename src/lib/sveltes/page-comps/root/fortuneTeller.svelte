@@ -4,10 +4,10 @@
 
 <div class="tab">
 	{#await fortune}
-		Searching...
+		<div>Searching...</div>
 	{:then data}
 		<div class="title">🔮 Fortune Teller</div>
-		<div class="text">{data.fortune}</div>
+		<div class="text">{@html data.fortune.replaceAll(/\n/g, '<br />')}</div>
 	{/await}
 
 	<div class="dummy" />
@@ -56,7 +56,7 @@
 
 	.text {
 		width: 100%;
-		text-align: center;
+		text-align: left;
 	}
 
 	.dummy {

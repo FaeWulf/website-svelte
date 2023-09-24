@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import { Star, ShootingStar } from './background';
 	import type { bgItem } from './background';
 	//import { spring } from 'svelte/motion';
@@ -15,17 +16,15 @@
 
 	onMount(() => {
 		//background
-		let requestAnimationFrame = window.requestAnimationFrame;
-		window.requestAnimationFrame = requestAnimationFrame;
-
 		let bgCtx = background.getContext('2d')!,
 			width = innerWidth,
 			height = innerHeight;
 
 		refreshOnSizeChange(innerHeight, innerWidth);
 
-		//animate background
-		function animate() {
+		let frame = requestAnimationFrame(function loop(t) {
+			frame = requestAnimationFrame(loop);
+
 			width = innerWidth;
 			height = innerHeight;
 
@@ -39,10 +38,13 @@
 			while (entLen--) {
 				entities[entLen].update(bgCtx, width, height);
 			}
-			requestAnimationFrame(animate);
-		}
+		});
 
-		animate();
+		return {
+			destroy() {
+				cancelAnimationFrame(frame);
+			}
+		};
 	});
 
 	function refreshOnSizeChange(innerHeight: number, innerWidth: number) {

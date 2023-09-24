@@ -5,7 +5,7 @@
 <div class="tab">
 	<div class="title">📝 Recent blog</div>
 	{#await blogs}
-		Loading...
+		<div>Loading...</div>
 	{:then data}
 		{#each data as blog (blog.name)}
 			<a class="post" href="/blog/{blog.name.replaceAll(' ', '-')}">

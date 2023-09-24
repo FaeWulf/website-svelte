@@ -4,7 +4,7 @@
 
 <div class="tab">
 	{#await recentTracks}
-		Searching...
+		<div>Searching...</div>
 	{:then data}
 		<div class="title">
 			🎵 Recent Added Tracks <br />

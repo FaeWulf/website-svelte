@@ -20,7 +20,7 @@
 
 	export let data;
 
-	onMount(async () => {
+	onMount(() => {
 		const greetings = ["Welcome to Faewulf's Basement!", 'Hello!', 'Greetings!'];
 		ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
 	});

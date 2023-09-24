@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import BubbleChat from './ufo/bubbleChat.svelte';
 
 	let mouseX = 0,
@@ -15,15 +15,15 @@
 		damping: 0.8
 	};
 	let ufo = spring({ x: -50, y: -50 }, ufoOptions);
-	let ufoX = 50,
-		ufoY = 50;
+	let ufoX = 200,
+		ufoY = 200;
 	let ufoLean = 0;
 	let ufoLastMove: Date = new Date();
 	let ufoIdle = false;
 
-	onMount(() => {
-		//mouse
+	let intervalInstance: any;
 
+	function handleUfo(node: HTMLElement) {
 		window.addEventListener('mousemove', eventMouseMove);
 		window.addEventListener('mouseover', function (E) {
 			mouseOnScreen = true;
@@ -33,7 +33,7 @@
 			mouseOnScreen = false;
 		});
 
-		setInterval(() => {
+		intervalInstance = setInterval(() => {
 			const currentTime = new Date();
 
 			if (currentTime.getTime() - ufoLastMove?.getTime() > 5000 && !ufoIdle) {
@@ -46,6 +46,17 @@
 				}
 			}
 		}, 500);
+
+		return {
+			onDestroy() {
+				clearInterval(intervalInstance);
+				window.removeEventListener('mousemove', eventMouseMove);
+			}
+		};
+	}
+
+	onDestroy(() => {
+		clearInterval(intervalInstance);
 	});
 
 	//functions
@@ -109,10 +120,9 @@
 
 <div
 	class="ufo"
-	style="
-	top: {ufoY < 0 ? 0 : ufoY > innerHeight ? innerHeight : ufoY}px;
-	left: {ufoX < 0 ? 0 : ufoX > innerWidth ? innerWidth : ufoX}px;
-	"
+	style:top="{ufoY < 0 ? 0 : ufoY > innerHeight ? innerHeight : ufoY}px"
+	style:left="{ufoX < 0 ? 0 : ufoX > innerWidth ? innerWidth : ufoX}px"
+	use:handleUfo
 >
 	<img
 		src="/gifs/ufo.gif"
