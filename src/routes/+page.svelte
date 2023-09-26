@@ -20,9 +20,12 @@
 
 	export let data;
 
-	onMount(() => {
+	onMount(async () => {
 		const greetings = ["Welcome to Faewulf's Basement!", 'Hello!', 'Greetings!'];
 		ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
+
+		const temp = await fetch('http://localhost:3000/api/v1/discord/').then((res) => res.json());
+		console.log(temp);
 	});
 
 	let descriptionChanger = {
