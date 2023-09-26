@@ -18,14 +18,9 @@
 	import { onMount } from 'svelte';
 	import FortuneTeller from '$lib/sveltes/page-comps/root/fortuneTeller.svelte';
 
-	export let data;
-
 	onMount(async () => {
 		const greetings = ["Welcome to Faewulf's Basement!", 'Hello!', 'Greetings!'];
 		ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
-
-		const temp = await fetch('http://localhost:3000/api/v1/discord/').then((res) => res.json());
-		console.log(temp);
 	});
 
 	let descriptionChanger = {
@@ -35,12 +30,6 @@
 	};
 
 	let titleChanger = '';
-
-	//dynamic
-	$: playlist = data.streamed.playlist;
-	$: blogs = data.streamed.blog;
-	$: discord = data.streamed.discord;
-	$: fortune = data.streamed.fortuneCookies;
 </script>
 
 <svelte:head>
@@ -49,7 +38,7 @@
 </svelte:head>
 
 <Logo />
-<Title bind:titleChanger bind:discordStatus={discord} />
+<Title bind:titleChanger />
 <Description bind:descriptionChanger />
 <div class="infoSlide">
 	<Splide
@@ -80,17 +69,17 @@
 			</SplideSlide>
 			<SplideSlide>
 				<div class="infoTab">
-					<RecentTracks bind:recentTracks={playlist} />
+					<RecentTracks />
 				</div>
 			</SplideSlide>
 			<SplideSlide>
 				<div class="infoTab">
-					<RecentBlog bind:blogs />
+					<RecentBlog />
 				</div>
 			</SplideSlide>
 			<SplideSlide>
 				<div class="infoTab">
-					<FortuneTeller bind:fortune />
+					<FortuneTeller />
 				</div>
 			</SplideSlide>
 		</SplideTrack>

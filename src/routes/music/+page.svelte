@@ -5,9 +5,9 @@
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 	import { onMount } from 'svelte';
 	import MenuBar from './menuBar.svelte';
-	import { ufoBubble } from '$lib/store';
+	import { apiURL, ufoBubble } from '$lib/store';
 
-	export let data;
+	//export let data;
 
 	let currentList: track[];
 	//playlist vars
@@ -24,12 +24,21 @@
 
 	//search string for track search
 	let search: string;
+	let dataPlaylist: any;
+	let lastUpdatePlaylistDate: string;
 
-	onMount(() => {
+	onMount(async () => {
 		import('./playlist.svelte').then((module) => {
 			lazyLoadPlaylist = module.default;
 		});
 		ufoBubble.set('Favorite playlist!');
+
+		const url = $apiURL;
+
+		const fetchPLaylist = await fetch(url + '/api/v1/playlist/').then((res) => res.json());
+		dataPlaylist = fetchPLaylist.data.reverse();
+		const fetchDate = await fetch(url + '/api/v1/playlist/lastupdate').then((res) => res.json());
+		lastUpdatePlaylistDate = fetchDate.data;
 	});
 
 	//auto play and shuffle. random music
@@ -42,17 +51,19 @@
 
 <div class="main">
 	<Title subtitle="music" />
-	{#await data.streamed.playlist}
-		Loading...
-	{:then data}
+	{#if lastUpdatePlaylistDate && dataPlaylist}
 		<div class="statistic">
 			<div>
-				Updated: {data.lastUpdatePlaylistDate}
+				Updated: {lastUpdatePlaylistDate}
 			</div>
 			<div>
-				{data.playList.length + 1} tracks
+				{dataPlaylist.length + 1} tracks
 			</div>
 		</div>
+	{:else}
+		...Loading
+	{/if}
+	{#if dataPlaylist}
 		<div class="container" bind:clientHeight={containerHeight}>
 			<div class="scrollable" style="height: {containerHeight}px;">
 				<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
@@ -73,13 +84,15 @@
 							bind:id
 							bind:search
 							bind:currentList
-							playList={data.playList}
+							playList={dataPlaylist}
 						/>
 					</div>
 				</div>
 			</div>
 		</div>
-	{/await}
+	{:else}
+		...Loading
+	{/if}
 </div>
 
 <style>

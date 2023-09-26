@@ -1,23 +1,40 @@
 <script lang="ts">
-	export let recentTracks: Promise<{ tracks: any; lastUpdate: string }>;
+	import { onMount } from 'svelte';
+	import { apiURL } from '$lib/store';
+
+	let last5: any;
+	let lastUpdate: string;
+	onMount(async () => {
+		const url = $apiURL;
+
+		const fetchRecentTrack = await fetch(url + '/api/v1/playlist/last5').then((res) => res.json());
+
+		last5 = fetchRecentTrack.data;
+
+		const fetchlastUpdate = await fetch(url + '/api/v1/playlist/lastupdate').then((res) =>
+			res.json()
+		);
+
+		lastUpdate = fetchlastUpdate.data;
+	});
 </script>
 
 <div class="tab">
-	{#await recentTracks}
-		<div>Searching...</div>
-	{:then data}
+	{#if last5 && lastUpdate}
 		<div class="title">
 			🎵 Recent Added Tracks <br />
-			<span style="font-size: 0.7rem;">Last update: {data.lastUpdate}</span>
+			<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
 		</div>
-		{#each data.tracks as track (track.ID)}
+		{#each last5 as track (track.ID)}
 			<div class="track">
 				<div class="name">{track.title}</div>
 				<div class="artist">{track.artist}</div>
 				<div class="duration">{track.time}</div>
 			</div>
 		{/each}
-	{/await}
+	{:else}
+		<div>Searching...</div>
+	{/if}
 
 	<div class="dummy" />
 </div>

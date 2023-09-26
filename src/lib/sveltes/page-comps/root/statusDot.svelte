@@ -1,13 +1,44 @@
 <script lang="ts">
+	import { apiURL } from '$lib/store';
 	import { tooltip } from '$lib/utils';
-	import { onMount } from 'svelte';
-	export let status: Promise<number>;
+	import { onDestroy, onMount } from 'svelte';
+	let statusValue: number;
 
 	const statusText = ["I'm Offline!", "I'm Online!", "I'm Resting...", "Don't Disturb!"];
 	const statusColor = ['#747F8D', '#3BA55C', '#FAA61A', '#ED4245'];
+	const statusList = [undefined, 'online', 'idle', 'dnd'];
+
+	//define an interval for later cancel
+	let interval: any;
+
+	onMount(async () => {
+		const url = $apiURL;
+
+		const fetchStatus = await fetch(url + '/api/v1/discord').then((res) => res.json());
+		statusValue = statusList.indexOf(fetchStatus.data);
+
+		interval = setInterval(async () => {
+			const fetchStatus = await fetch(url + '/api/v1/discord').then((res) => res.json());
+			statusValue = statusList.indexOf(fetchStatus.data);
+		}, 30 * 1000);
+	});
+
+	onDestroy(() => {
+		clearInterval(interval);
+	});
 </script>
 
-{#await status}
+{#if statusValue}
+	<div
+		class="status"
+		use:tooltip={{
+			content: statusText[statusValue],
+			theme: 'catppuccin',
+			animation: 'scale'
+		}}
+		style="background: {statusColor[statusValue]};"
+	/>
+{:else}
 	<div
 		class="status"
 		use:tooltip={{
@@ -17,17 +48,7 @@
 		}}
 		style="background: {statusColor[0]};"
 	/>
-{:then value}
-	<div
-		class="status"
-		use:tooltip={{
-			content: statusText[value],
-			theme: 'catppuccin',
-			animation: 'scale'
-		}}
-		style="background: {statusColor[value]};"
-	/>
-{/await}
+{/if}
 
 <style>
 	.status {

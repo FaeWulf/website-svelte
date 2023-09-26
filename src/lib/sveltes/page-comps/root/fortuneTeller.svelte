@@ -1,14 +1,23 @@
 <script lang="ts">
-	export let fortune: Promise<any>;
+	import { apiURL } from '$lib/store';
+	import { onMount } from 'svelte';
+
+	let fortune: string;
+
+	onMount(async () => {
+		const url = $apiURL;
+		const fetchFortune = await fetch(url + '/api/v1/misc/fortune').then((res) => res.json());
+		fortune = fetchFortune.data.fortune;
+	});
 </script>
 
 <div class="tab">
-	{#await fortune}
-		<div>Searching...</div>
-	{:then data}
+	{#if fortune}
 		<div class="title">🔮 Fortune Teller</div>
-		<div class="text">{@html data.fortune.replaceAll(/\n/g, '<br />')}</div>
-	{/await}
+		<div class="text">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
+	{:else}
+		<div>Searching...</div>
+	{/if}
 
 	<div class="dummy" />
 </div>

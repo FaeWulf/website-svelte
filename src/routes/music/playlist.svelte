@@ -23,7 +23,7 @@
 
 	//dynamic
 	$: list =
-		search.length > 0
+		search && search.length > 0
 			? playList.filter((track) => {
 					return (
 						track.title.toLocaleLowerCase().match(`${search}.*`) ||

@@ -5,7 +5,6 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	export let titleChanger = '';
-	export let discordStatus: Promise<number>;
 
 	//dynamic var to change title when titleChangeer changed value
 	$: type = titleChanger;
@@ -20,16 +19,6 @@
 	]);
 
 	//invalidate discord Status every 30 seconds
-	let invalidateInterval: string | number | NodeJS.Timeout | undefined;
-	onMount(() => {
-		invalidateInterval = setInterval(() => {
-			invalidate('title:discordStatus');
-		}, 30 * 1000);
-	});
-
-	onDestroy(() => {
-		clearInterval(invalidateInterval);
-	});
 </script>
 
 <div class="title">
@@ -43,7 +32,7 @@
 		{/if}
 	{/each}<span class="hueText name"
 		>Faewulf
-		<StatusDot bind:status={discordStatus} />
+		<StatusDot />
 	</span>
 	{#each [...infoMap] as [key, value]}
 		{#if type == key && value.last.length > 0}

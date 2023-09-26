@@ -1,17 +1,23 @@
 <script lang="ts">
-	export let blogs: Promise<{ name: string; date: Date }[]>;
+	import { apiURL } from '$lib/store';
+	import { onMount } from 'svelte';
+
+	let blogs: any;
+	onMount(async () => {
+		const url = $apiURL;
+		const fetchBlogs = await fetch(url + '/api/v1/blog').then((res) => res.json());
+		blogs = fetchBlogs.data;
+	});
 </script>
 
 <div class="tab">
 	<div class="title">📝 Recent blog</div>
-	{#await blogs}
-		<div>Loading...</div>
-	{:then data}
-		{#each data as blog (blog.name)}
+	{#if blogs}
+		{#each blogs as blog (blog.name)}
 			<a class="post" href="/blog/{blog.name.replaceAll(' ', '-')}">
 				<div class="name">{blog.name}</div>
 				<div class="date">
-					{blog.date.toLocaleDateString('en-us', {
+					{new Date(blog.date).toLocaleDateString('en-us', {
 						weekday: 'long',
 						year: 'numeric',
 						month: 'short',
@@ -20,7 +26,9 @@
 				</div>
 			</a>
 		{/each}
-	{/await}
+	{:else}
+		<div>Loading...</div>
+	{/if}
 
 	<div class="dummy" />
 </div>

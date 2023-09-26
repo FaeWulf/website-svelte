@@ -1,17 +1,17 @@
-import { getPlaylist, lastUpdatePlaylistDate } from '../../lib/playlist';
+//import { getPlaylist, lastUpdatePlaylistDate } from '../../lib/playlist';
 
 export async function load({ params }) {
 
-    const playlistData = async () => {
-        return {
-            playList: await getPlaylist(),
-            lastUpdatePlaylistDate: await lastUpdatePlaylistDate()
-        }
-    }
+    // const playlistData = async () => {
+    //     return {
+    //         playList: await getPlaylist(),
+    //         lastUpdatePlaylistDate: await lastUpdatePlaylistDate()
+    //     }
+    // }
 
     return {
-        streamed: {
-            playlist: playlistData()
-        }
+        // streamed: {
+        //     playlist: playlistdata()
+        // }
     };
 }
