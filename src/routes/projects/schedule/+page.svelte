@@ -11,10 +11,6 @@
 
 	let rowAvailableEntry: any = {};
 
-	function rowDayNames() {
-		return rowAvailableEntry;
-	}
-
 	function onClick() {
 		let data: any[] = [];
 		const forms = document.getElementsByClassName('form');

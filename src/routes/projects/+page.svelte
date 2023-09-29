@@ -11,6 +11,11 @@
 	let isMounted = false;
 	const projects: project[] = [
 		{
+			name: 'Bonsai API',
+			description: 'cbonsai but api.',
+			path: '/projects/bonsai'
+		},
+		{
 			name: 'Schedule generator',
 			description: 'Simple schedule generator.',
 			path: '/projects/schedule'
