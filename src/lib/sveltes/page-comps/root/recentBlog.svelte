@@ -5,8 +5,10 @@
 	let blogs: any;
 	onMount(async () => {
 		const url = $apiURL;
-		const fetchBlogs = await fetch(url + '/api/v1/blog').then((res) => res.json());
-		blogs = fetchBlogs.data;
+		const fetchBlogs = await fetch(url + '/api/v1/blog?page=1&maxPerPage=5').then((res) =>
+			res.json()
+		);
+		blogs = fetchBlogs.data.data;
 	});
 </script>
 
@@ -14,7 +16,7 @@
 	<div class="title">📝 Recent blog</div>
 	{#if blogs}
 		{#each blogs as blog (blog.name)}
-			<a class="post" href="/blog/{blog.name.replaceAll(' ', '-')}">
+			<a class="post" href="/blog/{blog.path}">
 				<div class="name">{blog.name}</div>
 				<div class="date">
 					{new Date(blog.date).toLocaleDateString('en-us', {

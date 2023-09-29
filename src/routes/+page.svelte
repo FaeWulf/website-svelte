@@ -209,4 +209,11 @@
 			transform: translateX(-7px) scale(1.5);
 		}
 	}
+
+	@media only screen and (max-width: 620px) {
+		:global(.splide__arrow--prev.prev-arrow),
+		:global(.splide__arrow--next.next-arrow) {
+			display: none;
+		}
+	}
 </style>

@@ -1,10 +1,54 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { apiURL } from '$lib/store.js';
 	import Title from '$lib/sveltes/neonTitle.svelte';
+	import { onMount } from 'svelte';
+
 	export let data;
 
+	const url = $apiURL;
+	const max = 5;
+
+	let postData: any;
+	let totalPage: number;
+	let index: number;
+
+	onMount(async () => {
+		const pseudoFetch = await fetch(url + '/api/v1/blog' + `?page=1&maxPerPage=${max}`).then(
+			(res) => res.json()
+		);
+		const maxPage = pseudoFetch.data.maxPage;
+
+		index = Math.max(1, Math.min(data.idx, maxPage)) || 1;
+
+		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then(
+			(res) => res.json()
+		);
+		postData = fetchBlogs.data.data;
+		totalPage = fetchBlogs.data.maxPage;
+	});
+
+	//dynamic
+	$: gotoIndex(data.idx);
+
+	//function
 	function gotoParams(index: number) {
 		goto(`?idx=${index}`);
+	}
+
+	async function gotoIndex(idx: number) {
+		const pseudoFetch = await fetch(url + '/api/v1/blog' + `?page=1&maxPerPage=${max}`).then(
+			(res) => res.json()
+		);
+		const maxPage = pseudoFetch.data.maxPage;
+
+		index = Math.max(1, Math.min(idx, maxPage)) || 1;
+
+		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then(
+			(res) => res.json()
+		);
+		postData = fetchBlogs.data.data;
+		totalPage = fetchBlogs.data.maxPage;
 	}
 </script>
 
@@ -15,16 +59,13 @@
 
 <div class="main">
 	<Title subtitle="Blog" />
-
-	{#await data.callback.data}
-		Loading...
-	{:then data}
+	{#if postData}
 		<div class="container">
-			{#each data.posts as post (post.name)}
-				<a class="post" href="/blog/{post.name.replaceAll(' ', '-')}">
+			{#each postData as post (post.name)}
+				<a class="post" href="/blog/{post.path}">
 					<div class="post-title">{post.name}</div>
 					<span class="post-date"
-						>Posted on {post.date.toLocaleDateString('en-us', {
+						>Posted on {new Date(post.date).toLocaleDateString('en-us', {
 							weekday: 'long',
 							year: 'numeric',
 							month: 'short',
@@ -35,13 +76,13 @@
 			{/each}
 		</div>
 		<div class="pagination">
-			<button disabled={data.idx <= 1} on:click={() => gotoParams(data.idx - 1)}> Prev </button>
-			<div>{data.idx} / {data.totalPage}</div>
-			<button disabled={data.idx >= data.totalPage} on:click={() => gotoParams(data.idx + 1)}>
-				Next
-			</button>
+			<button disabled={index <= 1} on:click={() => gotoParams(index - 1)}> Prev </button>
+			<div>{index} / {totalPage}</div>
+			<button disabled={index >= totalPage} on:click={() => gotoParams(index + 1)}> Next </button>
 		</div>
-	{/await}
+	{:else}
+		Loading...
+	{/if}
 </div>
 
 <style>

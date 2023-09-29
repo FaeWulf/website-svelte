@@ -20,11 +20,11 @@
 			icon: '♿',
 			url: '/projects'
 		},
-		{
-			name: 'Game library',
-			icon: '🎮',
-			url: '/games'
-		},
+		// {
+		// 	name: 'Game library',
+		// 	icon: '🎮',
+		// 	url: '/games'
+		// },
 		{
 			name: 'About',
 			icon: 'ℹ️',

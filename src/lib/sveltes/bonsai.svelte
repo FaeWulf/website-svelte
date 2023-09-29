@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { apiURL } from '$lib/store';
 	import { tooltip } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import 'tippy.js/animations/scale.css';
 
+	const api = $apiURL;
 	export let size = 340;
-	export let url = 'https://faewulf.xyz/api/bonsai?live=true&width=500&height=500&background=false';
+	export let url = api + '/api/v1/misc/bonsai?time=40&width=500&height=500&background=0';
 	let innerWidth = 0;
 
 	let shouldHide = false;

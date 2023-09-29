@@ -1,16 +1,25 @@
-<script>
+<script lang="ts">
 	import '$lib/styles/styles_blog.css';
 	import '$lib/styles/style_blog_code.css';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { apiURL } from '$lib/store';
+
 	export let data;
+	let postData: any;
+	onMount(async () => {
+		const url = $apiURL;
+		const fetchBlog = await fetch(url + '/api/v1/blog/' + data.id).then((res) => res.json());
+		postData = fetchBlog.data;
+	});
 </script>
 
-{#await data.streamed.callback}
-	Loading...
-{:then dat}
-	<h1>{dat.name}</h1>
-	<div id="blog-content">{@html dat.content}</div>
-{/await}
+{#if postData}
+	<h1>{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>
+	<div id="blog-content">{@html postData.content}</div>
+{:else}
+	<div>Loading...</div>
+{/if}
 <a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
 
 <style>

@@ -16,8 +16,8 @@
 			description: 'Who am I?',
 			output: `
         <pre>
- He/him, from Vietnam ♥
- ~want to learn to code everything, sleep, enjoy musics~
+He/him, hailing from Vietnam ♥
+Aspires to master coding, relish sleep and savor music
         </pre>
         `
 		},
