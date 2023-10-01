@@ -170,7 +170,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.games-contaier-wrapper {
 		display: flex;
 		width: 100%;
@@ -178,14 +178,14 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	}
 
-	.games-container {
-		width: 100%;
-		height: fit-content;
-		margin-top: 30px;
-		border-top: 1px solid rgba(var(--Text), 0.5);
-		border-bottom: 1px solid rgba(var(--Text), 0.5);
+		.games-container {
+			width: 100%;
+			height: fit-content;
+			margin-top: 30px;
+			border-top: 1px solid rgba(var(--Text), 0.5);
+			border-bottom: 1px solid rgba(var(--Text), 0.5);
+		}
 	}
 
 	.game-card {
@@ -199,6 +199,11 @@
 		flex: 1;
 		width: 100%;
 		text-align: center;
+
+		.description {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
 	}
 
 	:global(.splide__slide) {
@@ -208,15 +213,10 @@
 
 	a {
 		text-decoration: underline;
-	}
 
-	a:hover {
-		text-decoration: none;
-	}
-
-	.description {
-		margin-left: 10px;
-		margin-right: 10px;
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 	.game-card-cover {
@@ -229,34 +229,34 @@
 		margin: 10px;
 
 		transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
-	}
 
-	.game-card-wrapper {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
-	}
+		.game-card-wrapper {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
 
-	.game-card-wrapper::after {
-		display: block;
-		content: '';
-		position: absolute;
-		z-index: 100;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(
-			226deg,
-			rgba(255, 255, 255, 0.4) 0%,
-			rgba(255, 255, 255, 0.2) 20%,
-			rgba(255, 255, 255, 0.2) 30%,
-			rgba(255, 255, 255, 0) 44%
-		);
-		will-change: transform;
-		transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+			&::after {
+				display: block;
+				content: '';
+				position: absolute;
+				z-index: 100;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					226deg,
+					rgba(255, 255, 255, 0.4) 0%,
+					rgba(255, 255, 255, 0.2) 20%,
+					rgba(255, 255, 255, 0.2) 30%,
+					rgba(255, 255, 255, 0) 44%
+				);
+				will-change: transform;
+				transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+			}
+		}
 	}
 
 	.game-card-cover:focus .game-card-wrapper::after,

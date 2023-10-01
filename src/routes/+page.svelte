@@ -106,7 +106,7 @@
 </div>
 <Social bind:titleChanger />
 
-<style>
+<style lang="scss">
 	.infoSlide {
 		margin-top: 25px;
 		opacity: 0.6;
@@ -115,20 +115,20 @@
 		width: 100%;
 		max-width: 420px;
 		height: 200px;
-	}
 
-	.infoSlide:hover {
-		opacity: 1;
-	}
+		&:hover {
+			opacity: 1;
+		}
 
-	.infoTab {
-		width: 100%;
-		max-width: 420px;
-		height: 200px;
+		.infoTab {
+			width: 100%;
+			max-width: 420px;
+			height: 200px;
 
-		display: flex;
-		justify-content: center;
-		align-items: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 
 	:global(.splide__arrow svg),

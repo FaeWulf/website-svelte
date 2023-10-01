@@ -67,12 +67,12 @@
 <div class="container">
 	{#each badges as badge (badge.name)}
 		<a
+			class="social"
 			href={badge.url}
 			target="_blank"
 			draggable="false"
 			on:mouseenter={() => sendTitle(badge.name)}
 			on:mouseleave={() => sendTitle('')}
-			class="social"
 			use:tooltip={{ instancesHolder: tippyInstances }}
 			title={badge.name}
 		>
@@ -82,7 +82,7 @@
 	{/each}
 </div>
 
-<style>
+<style lang="scss">
 	.container {
 		margin-top: 50px;
 		position: relative;
@@ -92,25 +92,25 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 8px;
-	}
 
-	.container > a {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		opacity: 0.5;
-	}
+		> a {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			opacity: 0.5;
+		}
 
-	.social {
-		position: relative;
-		width: 45px;
-		cursor: pointer;
-		transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-	}
+		.social {
+			position: relative;
+			width: 45px;
+			cursor: pointer;
+			transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-	.social:hover {
-		transform: scale(1.2);
+			&:hover {
+				transform: scale(1.2);
+			}
+		}
 	}
 </style>

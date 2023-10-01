@@ -133,7 +133,7 @@
 
 <svelte:window on:blur={() => (pauseSFX = true)} on:focus={() => (pauseSFX = false)} />
 
-<style>
+<style lang="scss">
 	header {
 		position: fixed;
 		width: 100%;
@@ -153,58 +153,77 @@
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
 		border-radius: 50px;
-	}
 
-	nav {
-		flex: 1;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		max-width: 400px;
-		height: 30px;
-		margin-top: 8px;
-		margin-bottom: 8px;
-		margin-left: 10px;
-		margin-right: 10px;
+		.toolbar {
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: row;
+			align-items: center;
 
-		border: 1px solid rgba(var(--Lavender), 0.4);
-		border-radius: 50px;
-		padding: 4px;
-		background-color: rgba(var(--Surface0), 0.5);
-		backdrop-filter: blur(10px);
+			height: 30px;
+			width: fit-content;
 
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
+			column-gap: 10px;
 
-		transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-	}
+			border: 1px solid rgba(var(--Lavender), 0.4);
+			border-radius: 50px;
+			padding: 4px;
+			margin: 8px 10px 8px 10px;
+			background-color: rgba(var(--Surface0), 0.5);
+			backdrop-filter: blur(10px);
 
-	.toolbar {
-		display: flex;
-		justify-content: flex-start;
-		flex-direction: row;
-		align-items: center;
-		height: 30px;
-		margin-top: 8px;
-		margin-bottom: 8px;
-		margin-left: 10px;
-		width: fit-content;
+			> div:first-child {
+				margin-left: 10px;
+			}
 
-		column-gap: 10px;
+			> div:last-child {
+				margin-right: 10px;
+			}
+		}
 
-		border: 1px solid rgba(var(--Lavender), 0.4);
-		border-radius: 50px;
-		padding: 4px;
-		background-color: rgba(var(--Surface0), 0.5);
-		backdrop-filter: blur(10px);
-	}
+		nav {
+			flex: 1;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			max-width: 400px;
+			height: 30px;
 
-	.toolbar > div:first-child {
-		margin-left: 10px;
-	}
-	.toolbar > div:last-child {
-		margin-right: 10px;
+			margin: 8px 10px 8px 10px;
+
+			border: 1px solid rgba(var(--Lavender), 0.4);
+			border-radius: 50px;
+			padding: 4px;
+			background-color: rgba(var(--Surface0), 0.5);
+			backdrop-filter: blur(10px);
+
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+
+			transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+			.searchIcon {
+				margin-right: 10px;
+				margin-left: 10px;
+				padding-right: 9px;
+				border-right: 2px solid rgba(var(--Text), 0.2);
+			}
+
+			.searchBar {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				cursor: text;
+
+				overflow-x: hidden;
+			}
+
+			.blinking {
+				color: rgb(var(--Rosewater));
+				animation: blink 1s step-end infinite;
+			}
+		}
 	}
 
 	#ufo_home {
@@ -220,10 +239,10 @@
 		height: 100%;
 		z-index: 100;
 		background: white;
-	}
 
-	.flashbang.play {
-		animation: flash 5s cubic-bezier(0.165, 0.84, 0.44, 1);
+		&.play {
+			animation: flash 5s cubic-bezier(0.165, 0.84, 0.44, 1);
+		}
 	}
 
 	@keyframes flash {
@@ -252,27 +271,6 @@
 
 	span {
 		line-height: 30px;
-	}
-
-	.searchIcon {
-		margin-right: 10px;
-		margin-left: 10px;
-		padding-right: 9px;
-		border-right: 2px solid rgba(var(--Text), 0.2);
-	}
-
-	.searchBar {
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		cursor: text;
-
-		overflow-x: hidden;
-	}
-
-	.blinking {
-		color: rgb(var(--Rosewater));
-		animation: blink 1s step-end infinite;
 	}
 
 	@keyframes blink {

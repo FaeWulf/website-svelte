@@ -169,7 +169,7 @@
 
 				if (name && alreadyHaveJob(result_schedule, day, name)) {
 					name = 'M';
-					console.log('have');
+					//console.log('have');
 					continue;
 				}
 
@@ -182,41 +182,8 @@
 			result_schedule[row][day] = name;
 			//r.push(row + ' - ' + day + ': ' + name);
 		});
-		/*
-		rows.forEach((row) => {
-			result_schedule[row] = {};
 
-			//sort weekDay based on rowAvailableEntry[row][weekday] sum count
-			let priorityWeekDaySort = weekDay.toSorted((a, b) => {
-				return rowAvailableEntry[row][a].length - rowAvailableEntry[row][b].length;
-			});
-
-			//console.log(priorityWeekDaySort);
-
-			priorityWeekDaySort.forEach((day) => {
-				let list = rowAvailableEntry[row][day].sort(() => 0.5 - Math.random());
-
-				let name: string | undefined = undefined;
-				while (list.length > 0) {
-					name = getLowestCount(entryAvailableJobCount, list, row);
-					//remove name from list
-					list = list.filter((n: any) => n != name);
-
-					let currentJobVal = checkCount(entryAvailableJobCount, row);
-
-					if (name && entryAvailableJobCount[name][row] < currentJobVal) {
-						entryAvailableJobCount[name][row] += 1;
-						break;
-					}
-				}
-
-				result_schedule[row][day] = name;
-				//r.push(row + ' - ' + day + ': ' + name);
-			});
-		});
-        */
-
-		console.log('result: ', result_schedule);
+		//console.log('result: ', result_schedule);
 	}
 	let index = 2;
 	let formElements = [1];
@@ -360,7 +327,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.main {
 		flex: 1;
 		width: 100%;
@@ -369,18 +336,18 @@
 		align-items: center;
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
-	}
 
-	.controller {
-		width: calc(100% - 10px);
-		min-height: 200px;
-		border: 1px solid rgba(var(--Text), 0.2);
-		margin-bottom: 10px;
-		padding: 5px;
-	}
+		.controller {
+			width: calc(100% - 10px);
+			min-height: 200px;
+			border: 1px solid rgba(var(--Text), 0.2);
+			margin-bottom: 10px;
+			padding: 5px;
 
-	.controller-button {
-		font-size: 1.5rem;
+			.controller-button {
+				font-size: 1.5rem;
+			}
+		}
 	}
 
 	.forms-container {
@@ -392,55 +359,55 @@
 		justify-content: space-around;
 		align-items: flex-start;
 		align-content: flex-start;
-	}
 
-	.forms-container input {
-		background-color: rgba(var(--Overlay0), 0.5);
-		border: 1px solid rgba(var(--Text), 0.2);
-		color: rgb(var(--Text));
-	}
+		input {
+			background-color: rgba(var(--Overlay0), 0.5);
+			border: 1px solid rgba(var(--Text), 0.2);
+			color: rgb(var(--Text));
 
-	.forms-container input:focus {
-		outline: none;
-	}
+			&:focus {
+				outline: none;
+			}
+		}
 
-	.form {
-		position: relative;
-		width: fit-content;
-		max-width: calc(100% / 2 - 20px);
-		min-width: 380px;
-		min-height: 200px;
-		height: fit-content;
-		border: 1px solid rgba(var(--Overlay0), 0.5);
-	}
+		.form {
+			position: relative;
+			width: fit-content;
+			max-width: calc(100% / 2 - 20px);
+			min-width: 380px;
+			min-height: 200px;
+			height: fit-content;
+			border: 1px solid rgba(var(--Overlay0), 0.5);
 
-	.delete-button-form {
-		margin-right: 10px;
-		margin-top: 10px;
-		position: absolute;
-		right: 0;
-		top: 0;
+			.name-container {
+				margin-left: 10px;
+				margin-top: 10px;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+			}
 
-		background-color: rgb(var(--Overlay2));
-		width: 20px;
-		height: 20px;
-		text-align: center;
-		border: red;
+			.delete-button-form {
+				margin-right: 10px;
+				margin-top: 10px;
+				position: absolute;
+				right: 0;
+				top: 0;
 
-		cursor: pointer;
-	}
+				background-color: rgb(var(--Overlay2));
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				border: red;
 
-	.delete-button-form:hover {
-		background-color: rgb(var(--Red));
-		color: rgb(var(--Text));
-	}
+				cursor: pointer;
 
-	.name-container {
-		margin-left: 10px;
-		margin-top: 10px;
-		display: flex;
-		align-items: center;
-		gap: 5px;
+				&:hover {
+					background-color: rgb(var(--Red));
+					color: rgb(var(--Text));
+				}
+			}
+		}
 	}
 
 	table,
@@ -454,11 +421,23 @@
 		border-collapse: collapse;
 		table-layout: fixed;
 		margin: 10px;
-	}
 
-	td {
-		text-align: center;
-		vertical-align: middle;
+		td {
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		tr {
+			height: 30px;
+		}
+
+		tr:nth-child(odd) {
+			background-color: rgba(var(--Overlay0), 0.2);
+		}
+
+		th {
+			background-color: rgba(var(--Red), 0.3);
+		}
 	}
 
 	.checkBox {
@@ -479,17 +458,5 @@
 
 		text-align: center;
 		cursor: pointer;
-	}
-
-	tr {
-		height: 30px;
-	}
-
-	tr:nth-child(odd) {
-		background-color: rgba(var(--Overlay0), 0.2);
-	}
-
-	th {
-		background-color: rgba(var(--Red), 0.3);
 	}
 </style>

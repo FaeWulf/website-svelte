@@ -11,6 +11,11 @@
 	let isMounted = false;
 	const projects: project[] = [
 		{
+			name: 'Amogusify',
+			description: 'Turn your link into a bunch of sus crewmates.',
+			path: '/amogus'
+		},
+		{
 			name: 'Bonsai API',
 			description: 'cbonsai but api.',
 			path: '/projects/bonsai'
@@ -51,7 +56,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.main {
 		flex: 1;
 		width: 100%;
@@ -69,38 +74,38 @@
 		margin-top: 40px;
 		width: 100%;
 		flex: 1;
-	}
 
-	.container-fixed-size {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: flex-start;
-		align-content: flex-start;
-		gap: 0;
-		overflow: auto;
-	}
+		.container-fixed-size {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			align-content: flex-start;
+			gap: 0;
+			overflow: auto;
 
-	.project {
-		width: 100%;
-		height: fit-content;
-		border-top: 1px solid rgba(var(--Text), 0.4);
-		border-bottom: 1px solid rgba(var(--Text), 0.4);
-		transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
-		margin-left: 20px;
-		margin-right: 20px;
-	}
+			.project {
+				width: 100%;
+				height: fit-content;
+				border-top: 1px solid rgba(var(--Text), 0.4);
+				border-bottom: 1px solid rgba(var(--Text), 0.4);
+				transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+				margin-left: 20px;
+				margin-right: 20px;
 
-	.card-title {
-		font-size: 1rem;
-		margin-left: 20px;
-		color: rgb(var(--Text));
-	}
-	.card-description {
-		font-size: 0.8rem;
-		margin-left: 30px;
-		color: rgba(var(--Text), 0.6);
+				.card-title {
+					font-size: 1rem;
+					margin-left: 20px;
+					color: rgb(var(--Text));
+				}
+				.card-description {
+					font-size: 0.8rem;
+					margin-left: 30px;
+					color: rgba(var(--Text), 0.6);
+				}
+			}
+		}
 	}
 </style>

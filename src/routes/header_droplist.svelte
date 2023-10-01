@@ -44,7 +44,7 @@
 	{/each}
 </div>
 
-<style>
+<style lang="scss">
 	.nav-dropdown {
 		display: none;
 		max-width: 350px;
@@ -53,21 +53,21 @@
 		flex-direction: column;
 		padding: 2px;
 		gap: 2px;
-	}
 
-	.nav-dropdown-item {
-		color: rgb(var(--Text));
-		padding: 3px;
-		padding-left: 7px;
-		padding-right: 7px;
+		.nav-dropdown-item {
+			color: rgb(var(--Text));
+			padding: 3px;
+			padding-left: 7px;
+			padding-right: 7px;
 
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 
-	.nav-dropdown-item:hover {
-		background-color: rgba(var(--Surface2), 0.6);
+			&:hover {
+				background-color: rgba(var(--Surface2), 0.6);
+			}
+		}
 	}
 
 	a:hover {

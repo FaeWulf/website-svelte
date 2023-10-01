@@ -97,6 +97,11 @@
 		border: 1px solid rgba(var(--Overlay0), 0.4);
 		color: var(--Text);
 		background: rgba(var(--Overlay2), 0.4);
+
+		&:focus {
+			outline: 1px solid rgba(var(--Lavender), 0.8);
+			border: none;
+		}
 	}
 
 	button {
@@ -106,18 +111,13 @@
 		color: rgb(var(--Text));
 		font-family: 'Pixel Nes', 'Tahoma';
 		border: 1px solid rgba(var(--Yellow), 0.6);
-	}
 
-	button:hover {
-		background: rgba(var(--Surface0), 1);
-	}
+		&:hover {
+			background: rgba(var(--Surface0), 1);
+		}
 
-	button.active {
-		border: 2px solid rgba(var(--Green), 1);
-	}
-
-	.searchBar:focus {
-		outline: 1px solid rgba(var(--Lavender), 0.8);
-		border: none;
+		&.active {
+			background: rgba(var(--Green), 1);
+		}
 	}
 </style>

@@ -85,7 +85,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	.main {
 		flex: 1;
 		width: 100%;
@@ -96,16 +96,40 @@
 		border: 1px solid rgba(var(--Text), 0.2);
 
 		font-family: 'Pixel Nes', 'Tahoma';
-	}
 
-	.container {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		width: 100%;
-		row-gap: 20px;
-		margin-top: 20px;
-		flex: 1;
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			width: 100%;
+			row-gap: 20px;
+			margin-top: 20px;
+			flex: 1;
+
+			.post {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				width: calc(100% - 130px);
+				margin-left: 50px;
+				margin-right: 50px;
+
+				border-top: 4px solid rgba(var(--Text), 0.2);
+				padding-left: 30px;
+				padding-top: 10px;
+
+				row-gap: 5px;
+
+				.post-title {
+					font-size: 1.7rem;
+					word-spacing: -0.5rem;
+				}
+
+				.post-date {
+					color: rgb(var(--Text));
+				}
+			}
+		}
 	}
 
 	.pagination {
@@ -117,36 +141,12 @@
 		align-items: center;
 	}
 
-	.post {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		width: calc(100% - 130px);
-		margin-left: 50px;
-		margin-right: 50px;
-
-		border-top: 4px solid rgba(var(--Text), 0.2);
-		padding-left: 30px;
-		padding-top: 10px;
-
-		row-gap: 5px;
-	}
-
 	a {
 		color: rgb(var(--Peach));
-	}
 
-	a:hover {
-		color: rgb(var(--Red));
-	}
-
-	.post-title {
-		font-size: 1.7rem;
-		word-spacing: -0.5rem;
-	}
-
-	.post-date {
-		color: rgb(var(--Text));
+		&:hover {
+			color: rgb(var(--Red));
+		}
 	}
 
 	@media only screen and (max-width: 720px) {
@@ -154,14 +154,14 @@
 			margin: 0;
 			padding-left: 15px;
 			width: calc(100% - 15px);
-		}
 
-		.post-title {
-			font-size: 1.2rem;
-		}
+			.post-title {
+				font-size: 1.2rem;
+			}
 
-		.post-date {
-			font-size: 0.8rem;
+			.post-date {
+				font-size: 0.8rem;
+			}
 		}
 	}
 </style>

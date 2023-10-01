@@ -72,7 +72,7 @@
 	</p>
 </div>
 
-<style>
+<style lang="scss">
 	.main {
 		flex: 1;
 		width: 100%;
@@ -99,23 +99,23 @@
 		border-collapse: collapse;
 		table-layout: fixed;
 		margin: 10px;
-	}
 
-	td {
-		text-align: center;
-		vertical-align: middle;
-	}
+		td {
+			text-align: center;
+			vertical-align: middle;
+		}
 
-	tr:nth-child(odd) {
-		background-color: rgba(var(--Overlay0), 0.2);
-	}
+		td,
+		th {
+			padding: 5px 10px 5px 10px;
+		}
 
-	th {
-		background-color: rgba(var(--Red), 0.3);
-	}
+		tr:nth-child(odd) {
+			background-color: rgba(var(--Overlay0), 0.2);
+		}
 
-	td,
-	th {
-		padding: 5px 10px 5px 10px;
+		th {
+			background-color: rgba(var(--Red), 0.3);
+		}
 	}
 </style>

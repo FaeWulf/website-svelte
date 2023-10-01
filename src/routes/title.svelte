@@ -41,7 +41,7 @@
 	{/each}
 </div>
 
-<style>
+<style lang="scss">
 	.title {
 		font-weight: 600;
 		display: flex;
@@ -56,27 +56,27 @@
 		-ms-user-select: none;
 		user-select: none;
 		padding-bottom: 5px;
-	}
 
-	.name {
-		position: relative;
-		margin-left: 0px;
-		margin-right: 0px;
-		font-family: 'Daydream', 'Tahoma';
-		font-size: 2rem;
-	}
+		.adjust-height {
+			line-height: 2.6rem;
+		}
 
-	.wave {
-		animation-name: wave-animation;
-		animation-duration: 2.5s;
-		animation-iteration-count: infinite;
-		transform-origin: 70% 70%;
-		display: inline-block;
-		text-align: center;
-	}
+		.name {
+			position: relative;
+			margin-left: 0px;
+			margin-right: 0px;
+			font-family: 'Daydream', 'Tahoma';
+			font-size: 2rem;
+		}
 
-	.adjust-height {
-		line-height: 2.6rem;
+		.wave {
+			animation-name: wave-animation;
+			animation-duration: 2.5s;
+			animation-iteration-count: infinite;
+			transform-origin: 70% 70%;
+			display: inline-block;
+			text-align: center;
+		}
 	}
 
 	@keyframes wave-animation {
