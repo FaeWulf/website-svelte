@@ -26,6 +26,11 @@
 			path: '/projects/bonsai'
 		},
 		{
+			name: 'Boids',
+			description: 'Boids simulation.',
+			path: '/projects/boids'
+		},
+		{
 			name: 'Schedule generator',
 			description: 'Simple schedule generator.',
 			path: '/projects/schedule'

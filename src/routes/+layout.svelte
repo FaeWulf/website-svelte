@@ -24,11 +24,15 @@
 </script>
 
 <div class="app">
-	<Background />
+	{#if data.hideDistractingComps}
+		<Background />
+	{/if}
 	<Console bind:openConsole />
 	<Header bind:openConsole />
 	<Ufo />
-	<Bonsai />
+	{#if data.hideDistractingComps}
+		<Bonsai />
+	{/if}
 	<main id="main">
 		{#key data.url}
 			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">
