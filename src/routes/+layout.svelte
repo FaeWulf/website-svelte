@@ -45,7 +45,7 @@
 	</footer>
 </div>
 
-<style>
+<style lang="scss">
 	.app {
 		display: flex;
 		flex-direction: column;
@@ -62,16 +62,16 @@
 		margin: 0 auto;
 		margin-top: 50px;
 		box-sizing: border-box;
-	}
 
-	.main {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		flex: 1;
+		.main {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			flex: 1;
 
-		justify-content: center;
-		align-items: center;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 
 	footer {
@@ -82,10 +82,10 @@
 		padding: 0px;
 		margin: 5px;
 		margin-bottom: 10px;
-	}
 
-	footer p {
-		margin: 0;
+		p {
+			margin: 0;
+		}
 	}
 
 	@media (min-width: 480px) {

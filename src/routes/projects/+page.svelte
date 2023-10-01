@@ -16,6 +16,11 @@
 			path: '/amogus'
 		},
 		{
+			name: 'Ninym Ralei',
+			description: 'Personal discod bot.',
+			path: '/ninym'
+		},
+		{
 			name: 'Bonsai API',
 			description: 'cbonsai but api.',
 			path: '/projects/bonsai'

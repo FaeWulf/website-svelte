@@ -46,7 +46,7 @@
 	<div class="dummy" />
 </div>
 
-<style>
+<style lang="scss">
 	.profile {
 		display: flex;
 
@@ -73,28 +73,28 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-	}
 
-	.title {
-		flex-basis: 100%;
-		text-align: center;
-		background-color: rgb(var(--Base));
-		border: 1px rgba(var(--Text), 0.2) solid;
-		border-radius: 5px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		font-weight: 600;
-	}
+		.title {
+			flex-basis: 100%;
+			text-align: center;
+			background-color: rgb(var(--Base));
+			border: 1px rgba(var(--Text), 0.2) solid;
+			border-radius: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			font-weight: 600;
+		}
 
-	img {
-		border-radius: 5px;
-		width: auto;
-		height: 28px;
-		cursor: help;
-	}
+		img {
+			border-radius: 5px;
+			width: auto;
+			height: 28px;
+			cursor: help;
+		}
 
-	.dummy {
-		height: 50px;
-		flex-basis: 100%;
+		.dummy {
+			height: 50px;
+			flex-basis: 100%;
+		}
 	}
 </style>

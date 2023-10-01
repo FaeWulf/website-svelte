@@ -1,31 +1,35 @@
 <script lang="ts">
-	import { apiURL } from '$lib/store';
-	import { onMount } from 'svelte';
-
-	let fortune: string;
-
-	onMount(async () => {
-		const url = $apiURL;
-		const fetchFortune = await fetch(url + '/api/v1/misc/fortune').then((res) => res.json());
-		fortune = fetchFortune.data.fortune;
-	});
+	const features = [
+		'Music player',
+		'Youtube',
+		'Soundcloud',
+		'Chat',
+		'Minigames',
+		'Images search',
+		'MoonbaseTTS',
+		'Anime search',
+		'TTS',
+		'Manga search'
+	];
 </script>
 
-<div class="tab">
-	{#if fortune}
-		<div class="title">🔮 Fortune Teller</div>
-		<div class="text">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
-	{:else}
-		<div>Searching...</div>
-	{/if}
-
+<div class="profile">
+	<div class="title">⭐ Features</div>
+	{#each features as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
 	<div class="dummy" />
 </div>
 
 <style lang="scss">
-	.tab {
+	.profile {
+		display: flex;
+
 		width: calc(100% - 12px);
 		height: calc(100% - 12px);
+
+		max-width: 350px;
+		max-height: 200px;
 
 		flex-wrap: wrap;
 		overflow-y: auto;
@@ -34,7 +38,6 @@
 		padding: 5px;
 		gap: 5px;
 
-		display: flex;
 		justify-content: flex-start;
 		align-items: flex-start;
 		align-content: flex-start;
@@ -45,11 +48,15 @@
 		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 
-		/*
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-        */
+		opacity: 0.6;
+		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+		&:hover {
+			opacity: 1;
+		}
 
 		.title {
 			flex-basis: 100%;
@@ -62,9 +69,20 @@
 			font-weight: 600;
 		}
 
-		.text {
-			width: 100%;
-			text-align: left;
+		.feature {
+			box-sizing: border-box;
+
+			border-radius: 5px;
+			padding: 5px 10px 5px 10px;
+			width: auto;
+			height: 28px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			border: 1px solid rgba(var(--Text), 0.2);
+			background: rgba(var(--Overlay0), 0.4);
 		}
 
 		.dummy {

@@ -101,37 +101,37 @@ Aspires to master coding, relish sleep and savor music
 	</div>
 </div>
 
-<style>
-	.cursor {
-		color: rgb(var(--Rosewater));
-		animation: blink 1s step-end infinite;
-	}
-
+<style lang="scss">
 	.current-line {
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-	}
 
-	.command-helper {
-		margin: 5px;
-		display: flex;
-		gap: 5px;
-	}
+		.cursor {
+			color: rgb(var(--Rosewater));
+			animation: blink 1s step-end infinite;
+		}
 
-	.command-helper button {
-		color: rgb(var(--Text));
-		background: rgba(var(--Overlay0), 0.7);
-		border: 1px solid rgba(var(--Text), 0.3);
-		font-size: 0.7rem;
-		border-radius: 4px;
-		opacity: 0.7;
-		cursor: pointer;
-	}
+		.command-helper {
+			margin: 5px;
+			display: flex;
+			gap: 5px;
 
-	.command-helper button:hover {
-		opacity: 1;
-		border: 1px solid rgba(var(--Lavender), 1);
+			button {
+				color: rgb(var(--Text));
+				background: rgba(var(--Overlay0), 0.7);
+				border: 1px solid rgba(var(--Text), 0.3);
+				font-size: 0.7rem;
+				border-radius: 4px;
+				opacity: 0.7;
+				cursor: pointer;
+
+				&:hover {
+					opacity: 1;
+					border: 1px solid rgba(var(--Lavender), 1);
+				}
+			}
+		}
 	}
 
 	@keyframes blink {

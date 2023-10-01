@@ -100,7 +100,7 @@
 	</div>
 {/if}
 
-<style>
+<style lang="scss">
 	.console-holder {
 		position: fixed;
 		top: 0;
@@ -113,41 +113,41 @@
 		align-items: flex-start;
 
 		z-index: 15;
-	}
 
-	.console-container {
-		width: 100%;
-		height: 100%;
-		max-width: 600px;
-		max-height: 500px;
-		border: 1px solid rgba(var(--Text), 0.3);
-		border-radius: 2px;
-		margin: 5px;
-		padding: 5px;
+		.console-container {
+			width: 100%;
+			height: 100%;
+			max-width: 600px;
+			max-height: 500px;
+			border: 1px solid rgba(var(--Text), 0.3);
+			border-radius: 2px;
+			margin: 5px;
+			padding: 5px;
 
-		background: rgba(var(--Crust), 0.7);
+			background: rgba(var(--Crust), 0.7);
 
-		backdrop-filter: blur(15px);
-		-webkit-backdrop-filter: blur(15px);
+			backdrop-filter: blur(15px);
+			-webkit-backdrop-filter: blur(15px);
 
-		display: flex;
-		flex-direction: column;
-		overflow: auto;
-	}
+			display: flex;
+			flex-direction: column;
+			overflow: auto;
 
-	.console-container:focus {
-		outline: none;
-		border: 1px solid rgba(var(--Lavender), 0.8);
-	}
+			&:focus {
+				outline: none;
+				border: 1px solid rgba(var(--Lavender), 0.8);
+			}
 
-	.console-container :global(pre) {
-		margin: 5px;
-		white-space: pre-line;
-		background: none;
-		overflow-y: hidden;
-	}
+			:global(pre) {
+				margin: 5px;
+				white-space: pre-line;
+				background: none;
+				overflow-y: hidden;
+			}
 
-	.console-container :global(span) {
-		margin: 0;
+			:global(span) {
+				margin: 0;
+			}
+		}
 	}
 </style>

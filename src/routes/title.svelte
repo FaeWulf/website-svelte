@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import StatusDot from '$lib/sveltes/page-comps/root/statusDot.svelte';
-	import { invalidate } from '$app/navigation';
-	import { onDestroy, onMount } from 'svelte';
 
 	export let titleChanger = '';
 
