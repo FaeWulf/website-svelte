@@ -9,12 +9,12 @@
 	import 'tippy.js/dist/border.css';
 	import '@splidejs/svelte-splide/css';
 
-	import Bonsai from '$lib/sveltes/bonsai.svelte';
-	import Ufo from '$lib/sveltes/ufo.svelte';
-	import Console from '$lib/sveltes/console.svelte';
+	import Bonsai from '$lib/sveltes/page-comps/layout/bonsai.svelte';
+	import Ufo from '$lib/sveltes/page-comps/layout/ufo.svelte';
+	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
 
-	import Background from './background.svelte';
-	import Header from './header.svelte';
+	import Background from '$lib/sveltes/page-comps/layout/background.svelte';
+	import Header from '$lib/sveltes/page-comps/layout/header.svelte';
 	import { fade } from 'svelte/transition';
 
 	export let data;

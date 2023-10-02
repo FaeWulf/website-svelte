@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
-	import Command from './console/command.svelte';
+	import Command from '$lib/sveltes/console/command.svelte';
 	import { onMount } from 'svelte';
 
 	export let openConsole: boolean = false;

@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-	import { Star, ShootingStar } from './background';
-	import type { bgItem } from './background';
+	import { Star, ShootingStar } from '$lib/scripts/page-comps/layout/background';
+	import type { bgItem } from '$lib/scripts/page-comps/layout/background';
 	//import { spring } from 'svelte/motion';
 
 	export let background_color = '#110E19AA';

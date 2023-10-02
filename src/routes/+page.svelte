@@ -4,10 +4,10 @@
 	import { tooltip } from '$lib/utils';
 
 	//comps
-	import Logo from './logo.svelte';
-	import Description from './description.svelte';
-	import Title from './title.svelte';
-	import Social from './social.svelte';
+	import Logo from '$lib/sveltes/page-comps/root/logo.svelte';
+	import Description from '$lib/sveltes/page-comps/root/description.svelte';
+	import Title from '$lib/sveltes/page-comps/root/title.svelte';
+	import Social from '$lib/sveltes/page-comps/root/social.svelte';
 
 	//tabs
 	import Badges from '$lib/sveltes/page-comps/root/badges.svelte';

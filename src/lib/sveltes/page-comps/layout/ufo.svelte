@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
 	import { onDestroy, onMount } from 'svelte';
-	import BubbleChat from './ufo/bubbleChat.svelte';
+	import BubbleChat from '$lib/sveltes/ufo/bubbleChat.svelte';
 
 	let mouseX = 0,
 		mouseY = 0,

@@ -2,13 +2,13 @@
 	import { page } from '$app/stores';
 	import Search from '$lib/svgs/search.svelte';
 	import 'tippy.js/animations/perspective-subtle.css';
-	import HeaderDroplist from './header_droplist.svelte';
+	import HeaderDroplist from '$lib/sveltes/page-comps/layout/header_droplist.svelte';
 	import { onMount } from 'svelte';
 	import { typewriter, capitalFirstLeter, tooltip } from '$lib/utils';
 
 	//import toolbar comps
-	import Volume from '$lib/sveltes/volume.svelte';
-	import Theme from '$lib/sveltes/theme.svelte';
+	import Volume from '$lib/sveltes/page-comps/layout/volume.svelte';
+	import Theme from '$lib/sveltes/page-comps/layout/theme.svelte';
 	import tippy from 'tippy.js';
 
 	export let openConsole: boolean;
