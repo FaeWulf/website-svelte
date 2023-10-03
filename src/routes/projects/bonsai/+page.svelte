@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { apiURL } from '$lib/store';
 
 	let respone: any;
 	onMount(async () => {
-		respone = 'http://localhost:3000/api/v1/misc/bonsai?background=0.5&time=40&seed="faewulf"';
+		respone = $apiURL + '/api/v1/misc/bonsai?background=0.5&time=40&seed="faewulf"';
 	});
 </script>
 

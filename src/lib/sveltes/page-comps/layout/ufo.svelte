@@ -139,6 +139,10 @@
 	.ufo {
 		position: fixed;
 		pointer-events: none;
-		z-index: 10;
+		z-index: 20;
+
+		user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
 	}
 </style>

@@ -3,24 +3,7 @@
 
 <div class="logo-wrapper">
 	<div class="logo-bg" />
-	<!--div class="orbit">
-		<div
-			style="top:-60px; width:25px; height:25px; background:rgba(var(--Surface1), 0.4); border-radius:50%; border:1px solid rgba(var(--Text), 0.2)"
-			class="satellite"
-		>
-			<div
-				style="top:-30px; width:10px; height:10px; background:rgba(var(--Text), 0.4); border-radius:50%"
-				class="satellite"
-			/>
-		</div>
-	</div>
-	<div class="orbit2">
-		<div
-			style="left: 350px; top:0px; width:45px; height:45px; background:rgba(var(--Overlay0), 0.4); border-radius:50%; border:1px solid rgba(var(--Text), 0.2)"
-			class="satellite"
-		/>
-	</div-->
-	<img draggable="false" class="logo" src="/logo.png" alt="logo" />
+	<img draggable="false" src="/logo.png" alt="logo" />
 </div>
 
 <style lang="scss">
@@ -47,12 +30,12 @@
 
 			animation: animateBackground 10s ease infinite;
 		}
-	}
 
-	img.logo {
-		border-radius: 50%;
-		width: 200px;
-		height: 200px;
+		img {
+			border-radius: 50%;
+			width: 200px;
+			height: 200px;
+		}
 	}
 
 	@keyframes animateBackground {

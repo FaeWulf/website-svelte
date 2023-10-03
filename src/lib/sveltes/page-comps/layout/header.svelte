@@ -9,9 +9,10 @@
 	//import toolbar comps
 	import Volume from '$lib/sveltes/page-comps/layout/volume.svelte';
 	import Theme from '$lib/sveltes/page-comps/layout/theme.svelte';
+	import WindowIcon from './window-icon.svelte';
 	import tippy from 'tippy.js';
 
-	export let openConsole: boolean;
+	export let windowToggle: boolean;
 
 	let template: HTMLElement;
 	onMount(() => {
@@ -19,14 +20,6 @@
 		template.style.display = 'flex';
 		spaceSound.volume = 0.07;
 		thinkfast.volume = 0.5;
-
-		const consoleOpener = tippy('.logo', {
-			content: 'Open Console',
-			theme: 'catppuccin',
-			animation: 'scale'
-		});
-
-		consoleOpener[0]?.show();
 	});
 
 	//making sub path in main path
@@ -75,6 +68,9 @@
 			</div>
 
 			<div id="ufo_home" />
+			<div>
+				<WindowIcon bind:windowToggle />
+			</div>
 		</div>
 		<nav>
 			<div
@@ -102,18 +98,6 @@
 
 				<span class="blinking">_</span>
 			</div>
-
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-			<img
-				draggable="false"
-				class="logo"
-				src="/logo.png"
-				alt="logo"
-				on:click={() => {
-					openConsole = true;
-				}}
-			/>
 		</nav>
 	</div>
 
@@ -140,7 +124,7 @@
 		top: 0;
 		display: flex;
 		justify-content: center;
-		z-index: 10;
+		z-index: 9;
 	}
 
 	.nav-container {
@@ -171,6 +155,12 @@
 			margin: 8px 10px 8px 10px;
 			background-color: rgba(var(--Surface0), 0.5);
 			backdrop-filter: blur(10px);
+
+			> div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 
 			> div:first-child {
 				margin-left: 10px;
@@ -284,35 +274,6 @@
 
 		100% {
 			opacity: 1;
-		}
-	}
-
-	.logo {
-		width: 30px;
-		border-radius: 50%;
-		animation: wobble 3s linear infinite;
-		cursor: pointer;
-	}
-
-	@keyframes wobble {
-		3.33% {
-			transform: rotate(40deg);
-		}
-		6.66% {
-			transform: rotate(-30deg);
-		}
-		10% {
-			transform: rotate(20deg);
-		}
-		13.33% {
-			transform: rotate(-10deg);
-		}
-		16.66% {
-			transform: rotate(5deg);
-		}
-		20%,
-		100% {
-			transform: rotate(0deg);
 		}
 	}
 </style>

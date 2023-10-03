@@ -9,9 +9,9 @@
 	import 'tippy.js/dist/border.css';
 	import '@splidejs/svelte-splide/css';
 
-	import Bonsai from '$lib/sveltes/page-comps/layout/bonsai.svelte';
 	import Ufo from '$lib/sveltes/page-comps/layout/ufo.svelte';
 	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
+	import Window from '$lib/sveltes/page-comps/layout/window.svelte';
 
 	import Background from '$lib/sveltes/page-comps/layout/background.svelte';
 	import Header from '$lib/sveltes/page-comps/layout/header.svelte';
@@ -21,18 +21,23 @@
 
 	// for console open between header and console
 	let openConsole: boolean;
+	let windowToggle: boolean = true;
+
+	$: onHideDistractingComps_Changes(data.hideDistractingComps);
+
+	function onHideDistractingComps_Changes(pseudo: any) {
+		if (windowToggle) windowToggle = pseudo;
+	}
 </script>
 
 <div class="app">
 	{#if data.hideDistractingComps}
 		<Background />
 	{/if}
-	<Console bind:openConsole />
-	<Header bind:openConsole />
+	<Header bind:windowToggle />
 	<Ufo />
-	{#if data.hideDistractingComps}
-		<Bonsai />
-	{/if}
+
+	<Window bind:windowToggle />
 	<main id="main">
 		{#key data.url}
 			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">
@@ -43,7 +48,7 @@
 
 	<footer>
 		<p>
-			<a href="https://hotlinewebring.club/faewulf/prev">←</a> Hotline Webring
+			<a href="https://hotlinewebring.club/faewulf/previous">←</a> Hotline Webring
 			<a href="https://hotlinewebring.club/faewulf/next">→</a>
 		</p>
 	</footer>
@@ -86,6 +91,10 @@
 		padding: 0px;
 		margin: 5px;
 		margin-bottom: 10px;
+
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
 
 		p {
 			margin: 0;

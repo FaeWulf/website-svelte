@@ -25,6 +25,12 @@
 </div>
 
 <style>
+	div {
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+	}
+
 	svg {
 		width: 20px;
 		height: 30px;
