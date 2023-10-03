@@ -31,6 +31,7 @@
 		import('./playlist.svelte').then((module) => {
 			lazyLoadPlaylist = module.default;
 		});
+
 		ufoBubble.set('Favorite playlist!');
 
 		const url = $apiURL;
@@ -84,7 +85,7 @@
 							bind:id
 							bind:search
 							bind:currentList
-							playList={dataPlaylist}
+							bind:playList={dataPlaylist}
 						/>
 					</div>
 				</div>
