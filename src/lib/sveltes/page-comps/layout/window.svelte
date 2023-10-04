@@ -1,20 +1,30 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { quintInOut } from 'svelte/easing';
-	import { scale } from 'svelte/transition';
-
 	import Bonsai from '$lib/sveltes/page-comps/layout/bonsai.svelte';
+	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
 
 	export let windowToggle: boolean = true;
-	let innerWidth: number, innerHeight: number;
+
+	let innerWidth: number, innerHeight: number, innerWidthb4: number, innerHeightb4: number;
 	let windowEl: HTMLElement;
 	let window_x = -500;
 	let window_y = -500;
+
+	let selectTab = 0;
+	const totalTabs = [
+		{ id: 0, name: 'Bonsai' },
+		{ id: 1, name: 'Console' }
+	];
+
 	//for mouseDrag
-
+	let initialMouseX: number, initialMouseY: number, initialWindowX: number, initialWindowY: number;
 	//function
+	function onMouseDown(event: MouseEvent) {
+		initialMouseX = event.clientX;
+		initialMouseY = event.clientY;
+		initialWindowX = windowEl.offsetLeft;
+		initialWindowY = windowEl.offsetTop;
 
-	function onMouseDown() {
 		document.addEventListener('mousemove', onMouseMove);
 		document.addEventListener('mouseup', onMouseUp);
 	}
@@ -26,8 +36,10 @@
 
 	function onMouseMove(e: MouseEvent) {
 		const windowSize = windowEl.getBoundingClientRect();
-		let newX = window_x + e.movementX,
-			newY = window_y + e.movementY;
+		// let newX = window_x + e.movementX,
+		// 	newY = window_y + e.movementY;
+		let newX = initialWindowX + e.clientX - initialMouseX,
+			newY = initialWindowY + e.clientY - initialMouseY;
 
 		let top = 0,
 			left = 0,
@@ -37,10 +49,34 @@
 		// window_x value will in between left and right
 		window_x = Math.min(Math.max(newX, left), right);
 		window_y = Math.min(Math.max(newY, top), bottom);
+
+		innerHeightb4 = innerHeight;
+		innerWidthb4 = innerWidth;
 	}
 
 	function onToggleButtonClick() {
 		windowToggle = false;
+	}
+
+	function onWindowResize(e: UIEvent) {
+		console.log(window_x, window_y);
+		const windowSize = windowEl.getBoundingClientRect();
+		let deltaWidth = innerWidth - innerWidthb4;
+		let deltaHeight = innerHeight - innerHeightb4;
+
+		let newX = windowSize.left + deltaWidth,
+			newY = windowSize.top + deltaHeight;
+
+		let top = 0,
+			left = 0,
+			bottom = innerHeight - windowSize.height,
+			right = innerWidth - windowSize.width;
+
+		window_x = Math.min(Math.max(newX, left), right);
+		window_y = Math.min(Math.max(newY, top), bottom);
+
+		innerWidthb4 = innerWidth;
+		innerHeightb4 = innerHeight;
 	}
 
 	onMount(() => {
@@ -58,28 +94,49 @@
 	});
 </script>
 
-{#if windowToggle}
-	<div
-		transition:scale={{ duration: 300, start: 0.5, easing: quintInOut }}
-		id="window"
-		class="window"
-		style:top="{window_y}px"
-		style:left="{window_x}px"
-		bind:this={windowEl}
-	>
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div class="titlebar" on:mousedown={onMouseDown}>
-			<div class="toggle">
-				<button class="button" on:click={onToggleButtonClick} />
-			</div>
+<div
+	tabindex="-1"
+	id="window"
+	class="window"
+	class:hide={!windowToggle}
+	style:top="{window_y}px"
+	style:left="{window_x}px"
+	bind:this={windowEl}
+>
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div class="titlebar" on:mousedown={onMouseDown}>
+		<div class="tab">
+			{#each totalTabs as tab}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<div
+					class="item"
+					class:selected={selectTab == tab.id}
+					on:click={() => (selectTab = tab.id)}
+				>
+					<div>
+						{tab.name}
+					</div>
+					{#if selectTab == tab.id}
+						<div class="dummy" />
+					{/if}
+				</div>
+			{/each}
 		</div>
-		<div class="content">
-			<Bonsai />
+		<div class="toggle">
+			<button class="button" on:click={onToggleButtonClick}>-</button>
 		</div>
 	</div>
-{/if}
+	<div class="content">
+		<div class:selected={selectTab == 0}>
+			<Bonsai />
+		</div>
+		<div class:selected={selectTab == 1}>
+			<Console />
+		</div>
+	</div>
+</div>
 
-<svelte:window bind:innerHeight bind:innerWidth />
+<svelte:window bind:innerHeight bind:innerWidth on:resize={onWindowResize} />
 
 <style lang="scss">
 	.window {
@@ -88,11 +145,11 @@
 		height: 350px;
 		min-width: 180px;
 		min-height: 180px;
-		z-index: 10;
+		z-index: 0;
+		opacity: 0.6;
 
 		border: 1px solid rgba(var(--Green), 0.3);
 		border-radius: 4px;
-		box-shadow: 0 0 20px #000;
 
 		resize: both;
 		overflow: scroll;
@@ -104,42 +161,160 @@
 			'titlebar'
 			'content';
 
+		transition: backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		transition: box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+		animation: 0.3s show ease-in-out;
+
+		&.hide {
+			pointer-events: none;
+			animation: 0.3s hide ease-in-out forwards;
+		}
+
+		&:focus,
+		&:hover {
+			border: 1px solid rgba(var(--Green), 0.4);
+			opacity: 1;
+			background: rgba(var(--Crust), 0.4);
+			backdrop-filter: blur(2px);
+			-webkit-backdrop-filter: blur(2px);
+			z-index: 10;
+			box-shadow: 0 0 20px #000;
+		}
+
 		.titlebar {
 			grid-area: titlebar;
+			position: relative;
 			background: rgb(var(--Crust));
 			cursor: grab;
 
-			display: grid;
-			grid-template-columns: 1fr 30px;
-			grid-template-rows: 1fr;
-			grid-template-areas: 'tab toggle';
-
 			.toggle {
-				grid-area: toggle;
+				position: absolute;
+				right: 0;
+				top: 0;
+				aspect-ratio: 1 / 1;
+				height: 100%;
+				width: auto;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+
+				.button {
+					width: 50%;
+					height: 50%;
+
+					border: none;
+					border-radius: 50%;
+					background: rgb(var(--Red));
+					color: rgb(var(--Crust));
+					cursor: pointer;
+
+					line-height: 0;
+
+					&:hover {
+						opacity: 0.5;
+					}
+				}
+			}
+
+			.tab {
+				box-sizing: border-box;
+				padding-left: 10px;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-wrap: nowrap;
+
+				justify-content: flex-start;
+				align-items: end;
+				gap: 1px;
+
+				user-select: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+
+				.item {
+					position: relative;
+					height: 20px;
+					width: 20%;
+
+					border: 1px solid rgba(var(--Text), 0.3);
+					border-bottom: none;
+					border-radius: 5px 5px 0px 0;
+
+					text-align: center;
+					font-size: 0.8rem;
+					font-weight: 600;
+
+					background: none;
+					color: rgba(var(--Text), 0.5);
+					opacity: 0.5;
+					cursor: pointer;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					> div {
+						overflow: hidden;
+						box-sizing: border-box;
+						padding-left: 5px;
+						padding-right: 5px;
+					}
+
+					&.selected {
+						color: rgba(var(--Green), 1);
+						border: 1px solid rgba(var(--Green), 0.3);
+						border-bottom: none;
+						opacity: 1;
+						min-width: fit-content;
+					}
+
+					.dummy {
+						position: absolute;
+						bottom: -1px;
+						left: 0;
+						display: block;
+						width: 100%;
+						height: 1px;
+						background: rgb(var(--Crust));
+					}
+				}
 			}
 		}
 
 		.content {
+			border-top: 1px solid rgba(var(--Green), 0.3);
 			grid-area: content;
 			overflow: scroll;
-		}
 
-		.button {
-			width: 50%;
-			height: 50%;
-
-			border: none;
-			border-radius: 50%;
-			background: rgb(var(--Yellow));
-
-			cursor: pointer;
-
-			&:hover {
-				opacity: 0.5;
+			> div {
+				display: none;
+				&.selected {
+					display: inline;
+				}
 			}
+		}
+	}
+
+	@keyframes hide {
+		0% {
+			opacity: 0.6;
+			transform: scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0.4);
+		}
+	}
+
+	@keyframes show {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 0.6;
 		}
 	}
 </style>
