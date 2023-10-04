@@ -10,7 +10,6 @@
 	import '@splidejs/svelte-splide/css';
 
 	import Ufo from '$lib/sveltes/page-comps/layout/ufo.svelte';
-	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
 	import Window from '$lib/sveltes/page-comps/layout/window.svelte';
 
 	import Background from '$lib/sveltes/page-comps/layout/background.svelte';
@@ -20,7 +19,6 @@
 	export let data;
 
 	// for console open between header and console
-	let openConsole: boolean;
 	let windowToggle: boolean = true;
 
 	$: onHideDistractingComps_Changes(data.hideDistractingComps);
@@ -56,6 +54,7 @@
 
 <style lang="scss">
 	.app {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
