@@ -81,7 +81,7 @@
 			<button disabled={index >= totalPage} on:click={() => gotoParams(index + 1)}> Next </button>
 		</div>
 	{:else}
-		Loading...
+		<div>Loading...</div>
 	{/if}
 </div>
 

@@ -62,7 +62,7 @@
 			</div>
 		</div>
 	{:else}
-		...Loading
+		<div>Loading...</div>
 	{/if}
 	{#if dataPlaylist}
 		<div class="container" bind:clientHeight={containerHeight}>
@@ -92,7 +92,7 @@
 			</div>
 		</div>
 	{:else}
-		...Loading
+		<div>Loading...</div>
 	{/if}
 </div>
 
@@ -106,6 +106,9 @@
 		align-items: center;
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
+
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
 		/*
 		font-family: 'Pixel Nes', 'Tahoma';
         */
