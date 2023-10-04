@@ -41,7 +41,7 @@ Aspires to master coding, relish sleep and savor music
 			description: 'Github status',
 			output: `
         <div>&nbsp;</div>
-        <img align="center" src="https://github-readme-stats.vercel.app/api?username=faewulf&show_icons=true&theme=dracula&locale=en" alt="faewulf" />
+        <img align="center" style="width: 100%;" src="https://github-readme-stats.vercel.app/api?username=faewulf&show_icons=true&theme=dracula&locale=en" alt="faewulf" />
         <div>&nbsp;</div>
         `
 		}

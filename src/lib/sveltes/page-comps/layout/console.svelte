@@ -75,79 +75,48 @@
 	$: focusConsole(openConsole);
 </script>
 
-{#if openConsole}
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div
-		on:click={() => {
-			openConsole = false;
-		}}
-		transition:slide={{ duration: 300, easing: quintInOut, axis: 'y' }}
-		class="console-holder"
-	>
-		<div
-			on:click={onclickConsole}
-			class="console-container"
-			role="textbox"
-			tabindex="-1"
-			on:keydown={handleKeyDown}
-			bind:this={consoleTab}
-		>
-			<div>
-				<Command bind:output bind:input bind:triggerEnter bind:memmory bind:memmoryIndex />
-			</div>
-		</div>
+<div
+	on:click={onclickConsole}
+	class="console-container"
+	role="textbox"
+	tabindex="-1"
+	on:keydown={handleKeyDown}
+	bind:this={consoleTab}
+>
+	<div>
+		<Command bind:output bind:input bind:triggerEnter bind:memmory bind:memmoryIndex />
 	</div>
-{/if}
+</div>
 
 <style lang="scss">
-	.console-holder {
-		position: fixed;
-		top: 0;
-		left: 0;
+	.console-container {
+		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
 
+		padding: 5px;
+
 		display: flex;
-		justify-content: center;
-		align-items: flex-start;
+		flex-direction: column;
+		overflow: auto;
+		opacity: 0.6;
 
-		z-index: 15;
+		&:focus {
+			box-sizing: border-box;
+			border: 0.5px solid rgba(var(--Lavender), 0.4);
+			outline: none;
+			opacity: 1;
+		}
 
-		.console-container {
-			width: 100%;
-			height: 100%;
-			max-width: 600px;
-			max-height: 500px;
-			border: 1px solid rgba(var(--Text), 0.3);
-			border-radius: 2px;
+		:global(pre) {
 			margin: 5px;
-			padding: 5px;
+			white-space: pre-line;
+			background: none;
+			overflow-y: hidden;
+		}
 
-			background: rgba(var(--Crust), 0.7);
-
-			backdrop-filter: blur(15px);
-			-webkit-backdrop-filter: blur(15px);
-
-			display: flex;
-			flex-direction: column;
-			overflow: auto;
-
-			&:focus {
-				outline: none;
-				border: 1px solid rgba(var(--Lavender), 0.8);
-			}
-
-			:global(pre) {
-				margin: 5px;
-				white-space: pre-line;
-				background: none;
-				overflow-y: hidden;
-			}
-
-			:global(span) {
-				margin: 0;
-			}
+		:global(span) {
+			margin: 0;
 		}
 	}
 </style>
