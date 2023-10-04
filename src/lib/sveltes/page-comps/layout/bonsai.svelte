@@ -44,7 +44,8 @@
 	use:tooltip={{
 		content: 'Click to grow another bonsai!',
 		theme: 'catppuccin',
-		animation: 'scale'
+		animation: 'scale',
+		offset: [0, 40]
 	}}
 />
 
