@@ -26,14 +26,9 @@
 			path: '/projects/bonsai'
 		},
 		{
-			name: 'Boids',
+			name: 'Boids (WIP)',
 			description: 'Boids simulation.',
 			path: '/projects/boids'
-		},
-		{
-			name: 'Schedule generator',
-			description: 'Simple schedule generator.',
-			path: '/projects/schedule'
 		}
 	];
 

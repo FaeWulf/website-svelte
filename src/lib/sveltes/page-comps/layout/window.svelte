@@ -5,7 +5,9 @@
 
 	export let windowToggle: boolean = true;
 
-	let innerWidth: number, innerHeight: number, innerWidthb4: number, innerHeightb4: number;
+	let innerHeightb4 = 0;
+	let innerWidthb4 = 0;
+	let innerHeight: number, innerWidth: number;
 	let windowEl: HTMLElement;
 	let window_x = -500;
 	let window_y = -500;
@@ -59,7 +61,6 @@
 	}
 
 	function onWindowResize(e: UIEvent) {
-		console.log(window_x, window_y);
 		const windowSize = windowEl.getBoundingClientRect();
 		let deltaWidth = innerWidth - innerWidthb4;
 		let deltaHeight = innerHeight - innerHeightb4;
@@ -83,6 +84,9 @@
 		if (innerWidth < 1000) {
 			windowToggle = false;
 		}
+
+		innerHeightb4 = innerHeight;
+		innerWidthb4 = innerWidth;
 
 		const windowSizeQuery = Math.min(innerWidth / 3, innerHeight / 2);
 		windowEl.style.width = Math.max(180, Math.min(windowSizeQuery, 350)) + 'px';
