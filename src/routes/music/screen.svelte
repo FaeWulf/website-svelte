@@ -10,7 +10,7 @@
 	export let player: YouTubePlayer;
 
 	//readonly
-	export let currentList: track[];
+	export let currentList: { index: number; data: track }[];
 
 	$: play(id);
 
@@ -31,9 +31,9 @@
 			if (value.data == -1 && autoPlay) player.playVideo();
 
 			if (value.data == 0 && autoNext) {
-				const currentIndex = currentList.findIndex((E) => E.ID == id);
+				const currentIndex = currentList.findIndex((E) => E.data.ID == id);
 				if (currentIndex != -1 && currentIndex + 1 <= currentList.length) {
-					id = currentList[currentIndex + 1].ID;
+					id = currentList[currentIndex + 1].data.ID;
 				}
 			}
 		});

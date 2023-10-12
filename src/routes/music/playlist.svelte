@@ -1,9 +1,10 @@
 <script lang="ts">
 	import VirtualList from '$lib/sveltes/virtualList.svelte';
 	import type { track } from '$lib/types';
+	import { onMount } from 'svelte';
 	export let id: string;
 	export let search = '';
-	export let playList: track[];
+	export let playList: { index: number; data: track }[];
 
 	//for random choose function
 	export let currentList: any;
@@ -11,6 +12,10 @@
 	//vars
 	let selectedItem: string | null = null;
 	let scrollToIdx: number;
+
+	onMount(() => {
+		currentList = playList;
+	});
 
 	/**
 	 * 1 Nolgastic
@@ -26,19 +31,21 @@
 		search && search.length > 0
 			? playList.filter((track) => {
 					return (
-						track.title.toLocaleLowerCase().match(`${search}.*`) ||
-						track.artist.toLocaleLowerCase().match(`${search}.*`)
+						track.data.title.toLocaleLowerCase().match(`${search}.*`) ||
+						track.data.artist.toLocaleLowerCase().match(`${search}.*`) ||
+						search.includes(track.index.toString())
 					);
 			  })
 			: playList;
 
 	$: currentList = list;
+	//toamkeit when shuffle, the list will be refresh
 	$: currentList = currentList;
 	$: selectedItem = id;
 	$: jump(id);
 
 	function jump(id: string) {
-		const idx = currentList.findIndex((E: any) => E.ID == id);
+		const idx = currentList.findIndex((E: any) => E.data.ID == id);
 		if (idx != -1) scrollToIdx = idx;
 
 		//dump idea
@@ -64,40 +71,40 @@
 <VirtualList items={list} let:item bind:scrollToIdx>
 	<div
 		class="track"
-		class:active={selectedItem == item.ID}
+		class:active={selectedItem == item.data.ID}
 		on:click={() => {
-			id = item.ID;
-			selectedItem = item.ID;
+			id = item.data.ID;
+			selectedItem = item.data.ID;
 		}}
-		id={item.ID}
+		id={item.data.ID}
 	>
 		<img
 			draggable="false"
 			class="thumbnail"
-			src="https://img.youtube.com/vi/{item.ID}/default.jpg"
+			src="https://img.youtube.com/vi/{item.data.ID}/default.jpg"
 			alt="thumbnail"
 		/>
 		<div class="description">
 			<div class="title">
-				{item.title}
+				<span class="index">{item.index}</span> - {item.data.title}
 			</div>
 			<div class="artist">
-				{item.artist}
+				{item.data.artist}
 			</div>
 		</div>
 		<div class="duration">
 			<div>
-				{item.time}
+				{item.data.time}
 			</div>
-			<img draggable="false" class="level" src="/gifs/{gif[item.fav - 1]}.gif" alt="rating" />
+			<img draggable="false" class="level" src="/gifs/{gif[item.data.fav - 1]}.gif" alt="rating" />
 		</div>
-		{#if selectedItem == item.ID}
+		{#if selectedItem == item.data.ID}
 			<div class="playing">➤</div>
 		{/if}
 	</div>
 </VirtualList>
 
-<style>
+<style lang="scss">
 	.track {
 		position: relative;
 		display: flex;
@@ -108,6 +115,17 @@
 		padding: 5px 20px 5px 20px;
 
 		cursor: pointer;
+
+		.index {
+			opacity: 0.6;
+		}
+
+		.duration {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 5px;
+		}
 	}
 
 	.track:hover,
@@ -137,13 +155,6 @@
 		top: 50%;
 		transform: translateY(-50%);
 		-webkit-transform: translateY(-50%);
-	}
-
-	.duration {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 5px;
 	}
 
 	.description {

@@ -9,12 +9,13 @@
 	export let autoplayActive = false;
 	export let autoNextActive = false;
 	export let randomActive = false;
-	export let currentList: track[];
+	export let currentList: { index: number; data: track }[];
 
 	//track id
 	export let id;
 
 	let tippyInstances: any[] = [];
+
 	onMount(() => {
 		const singleton = createSingleton(tippyInstances, {
 			moveTransition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
@@ -27,7 +28,7 @@
 	//function
 	function chooseRandom() {
 		const randomIndex = Math.floor(Math.random() * currentList.length);
-		id = currentList[randomIndex].ID;
+		id = currentList[randomIndex].data.ID;
 	}
 
 	function shuffleList() {
@@ -79,7 +80,7 @@
 	</button>
 </div>
 
-<style>
+<style lang="scss">
 	.tab-track-toolbar {
 		width: 100%;
 		height: 50px;
@@ -118,6 +119,7 @@
 
 		&.active {
 			background: rgba(var(--Green), 1);
+			color: rgb(var(--Crust));
 		}
 	}
 </style>

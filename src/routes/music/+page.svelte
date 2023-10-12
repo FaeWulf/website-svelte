@@ -9,7 +9,7 @@
 
 	//export let data;
 
-	let currentList: track[];
+	let currentList: { index: number; data: track }[];
 	//playlist vars
 	let id: string, autoPlay: boolean, player: YouTubePlayer;
 
@@ -37,7 +37,15 @@
 		const url = $apiURL;
 
 		const fetchPLaylist = await fetch(url + '/api/v1/playlist/').then((res) => res.json());
-		dataPlaylist = fetchPLaylist.data.reverse();
+		dataPlaylist = [];
+		const rawPlaylist: any[] = fetchPLaylist.data;
+		for (let i = 0; i < rawPlaylist.length; i++) {
+			dataPlaylist.push({
+				index: i,
+				data: rawPlaylist[i]
+			});
+		}
+		dataPlaylist = dataPlaylist.reverse();
 		const fetchDate = await fetch(url + '/api/v1/playlist/lastupdate').then((res) => res.json());
 		lastUpdatePlaylistDate = fetchDate.data;
 	});
@@ -58,7 +66,7 @@
 				Updated: {lastUpdatePlaylistDate}
 			</div>
 			<div>
-				{dataPlaylist.length + 1} tracks
+				{dataPlaylist.length} tracks
 			</div>
 		</div>
 	{:else}
