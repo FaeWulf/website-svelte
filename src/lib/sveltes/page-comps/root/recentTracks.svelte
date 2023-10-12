@@ -26,11 +26,11 @@
 			<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
 		</div>
 		{#each last5 as track (track.ID)}
-			<div class="track">
+			<a class="track" href={track.url} target="_blank">
 				<div class="name">{track.title}</div>
 				<div class="artist">{track.artist}</div>
 				<div class="duration">{track.time}</div>
-			</div>
+			</a>
 		{/each}
 	{:else}
 		<div>Searching...</div>
@@ -92,6 +92,14 @@
 
 			border: 1px rgba(var(--Text), 0.2) solid;
 			border-radius: 5px;
+
+			text-decoration: none;
+			color: rgb(var(--Text));
+
+			&:hover {
+				color: rgb(var(--Green));
+				font-weight: bold;
+			}
 
 			> .duration {
 				position: absolute;

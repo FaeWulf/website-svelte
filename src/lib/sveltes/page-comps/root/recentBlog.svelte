@@ -90,6 +90,12 @@
 			border-radius: 5px;
 			color: rgb(var(--Text));
 			text-decoration: none;
+
+			&:hover {
+				color: rgb(var(--Green));
+				font-weight: bold;
+			}
+
 			> .date {
 				font-size: 0.8rem;
 				opacity: 0.6;
