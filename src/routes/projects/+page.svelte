@@ -6,6 +6,7 @@
 		name: string;
 		description: string;
 		path: string;
+		old: boolean;
 	}
 
 	let isMounted = false;
@@ -13,22 +14,32 @@
 		{
 			name: 'Amogusify',
 			description: 'Turn your link into a bunch of sus crewmates.',
-			path: '/amogus'
+			path: '/amogus',
+			old: false
 		},
 		{
 			name: 'Ninym Ralei',
 			description: 'Personal discod bot.',
-			path: '/ninym'
+			path: '/ninym',
+			old: false
 		},
 		{
 			name: 'Bonsai API',
 			description: 'cbonsai but api.',
-			path: '/projects/bonsai'
+			path: '/projects/bonsai',
+			old: false
 		},
 		{
 			name: 'Boids (WIP)',
 			description: 'Boids simulation.',
-			path: '/projects/boids'
+			path: '/projects/boids',
+			old: false
+		},
+		{
+			name: 'Scheduler',
+			description: 'Very first project on freshman year.',
+			path: '/projects/schedule',
+			old: true
 		}
 	];
 
@@ -51,7 +62,7 @@
 		<div class="container-fixed-size" style="height: {containerCLientHeight}px;">
 			{#if isMounted}
 				{#each projects as project (project)}
-					<a href={project.path} class="project">
+					<a href={project.path} class="project" class:abandoned={project.old}>
 						<p class="card-title">{project.name}</p>
 						<p class="card-description">{project.description}</p>
 					</a>
@@ -72,6 +83,9 @@
 		border: 1px solid rgba(var(--Text), 0.2);
 
 		font-family: 'Pixel Nes', 'Tahoma';
+
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
 	}
 
 	.container {
@@ -96,19 +110,33 @@
 				height: fit-content;
 				border-top: 1px solid rgba(var(--Text), 0.4);
 				border-bottom: 1px solid rgba(var(--Text), 0.4);
-				transition: all 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+				transition: all 0.1s ease-in-out;
 				margin-left: 20px;
 				margin-right: 20px;
+				color: rgba(var(--Text));
+
+				&.abandoned {
+					opacity: 0.5;
+					text-decoration: line-through;
+					text-decoration-color: rgb(var(--Red));
+				}
+
+				&:hover {
+					color: rgb(var(--Green));
+					text-decoration: none;
+					transform: scale(1.01);
+				}
 
 				.card-title {
 					font-size: 1rem;
 					margin-left: 20px;
-					color: rgb(var(--Text));
 				}
+
 				.card-description {
 					font-size: 0.8rem;
-					margin-left: 30px;
-					color: rgba(var(--Text), 0.6);
+					margin-left: 20px;
+					margin-top: -5px;
+					opacity: 0.5;
 				}
 			}
 		}
