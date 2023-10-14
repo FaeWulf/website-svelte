@@ -14,7 +14,7 @@
 		stiffness: 0.04,
 		damping: 0.8
 	};
-	let ufo = spring({ x: -50, y: -50 }, ufoOptions);
+	let ufo = spring({ x: 100, y: 100 }, ufoOptions);
 	let ufoX = 200,
 		ufoY = 200;
 	let ufoLean = 0;
