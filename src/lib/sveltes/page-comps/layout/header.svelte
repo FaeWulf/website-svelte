@@ -10,7 +10,6 @@
 	import Volume from '$lib/sveltes/page-comps/layout/volume.svelte';
 	import Theme from '$lib/sveltes/page-comps/layout/theme.svelte';
 	import WindowIcon from './window-icon.svelte';
-	import tippy from 'tippy.js';
 
 	export let windowToggle: boolean;
 
@@ -83,7 +82,7 @@
 					arrow: false,
 					content: template,
 					maxWidth: 400,
-					offset: [15, 6],
+					offset: [0, 6],
 					trigger: 'mouseenter click'
 				}}
 			>

@@ -39,7 +39,7 @@
 			class="nav-dropdown-item"
 			href={page.url}
 			data-sveltekit-preload-code="tap"
-			data-sveltekit-preload-data="tap">{page.icon}| {page.name}</a
+			data-sveltekit-preload-data="tap">{page.icon}| &nbsp;{page.name}</a
 		>
 	{/each}
 </div>
@@ -47,7 +47,7 @@
 <style lang="scss">
 	.nav-dropdown {
 		display: none;
-		max-width: 350px;
+		max-width: 300px;
 		width: 100vw;
 		flex-wrap: wrap;
 		flex-direction: column;
@@ -65,6 +65,7 @@
 			user-select: none;
 
 			&:hover {
+				color: rgb(var(--Green));
 				background-color: rgba(var(--Surface2), 0.6);
 			}
 		}
