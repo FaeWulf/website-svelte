@@ -162,4 +162,12 @@ function isMobile(window: any, navigator: any) {
     return check;
 }
 
-export { typewriter, gibberish, shuffleArray, tooltip, capitalFirstLeter, randomString, clearAsyncInterval, setAsyncInterval, isMobile };
+function angleBetween2Points(x1: number, y1: number, x2: number, y2: number) {
+    let result = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI
+    if (result < 0) {
+        result += 360;
+    }
+    return result;
+}
+
+export { typewriter, gibberish, shuffleArray, tooltip, capitalFirstLeter, randomString, clearAsyncInterval, setAsyncInterval, isMobile, angleBetween2Points };
