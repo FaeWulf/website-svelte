@@ -4,6 +4,7 @@
 	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
 
 	export let windowToggle: boolean = true;
+	export let windowOntop: boolean = false;
 
 	let innerHeightb4 = 0;
 	let innerWidthb4 = 0;
@@ -103,6 +104,7 @@
 	id="window"
 	class="window"
 	class:hide={!windowToggle}
+	class:ontop={windowOntop}
 	style:top="{window_y}px"
 	style:left="{window_x}px"
 	bind:this={windowEl}
@@ -149,7 +151,6 @@
 		height: 350px;
 		min-width: 180px;
 		min-height: 180px;
-		z-index: 0;
 		opacity: 0.6;
 
 		border: 1px solid rgba(var(--Green), 0.3);
@@ -174,6 +175,10 @@
 		&.hide {
 			pointer-events: none;
 			animation: 0.3s hide ease-in-out forwards;
+		}
+
+		&.ontop {
+			z-index: 5;
 		}
 
 		&:focus,

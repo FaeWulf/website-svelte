@@ -20,8 +20,10 @@
 
 	// for console open between header and console
 	let windowToggle: boolean = true;
+	let windowOntop: boolean = false;
 
 	$: onHideDistractingComps_Changes(data.hideDistractingComps);
+	$: windowOntop = data.windowOnTop;
 
 	function onHideDistractingComps_Changes(pseudo: any) {
 		if (windowToggle) windowToggle = pseudo;
@@ -35,7 +37,7 @@
 	<Header bind:windowToggle />
 	<Ufo />
 
-	<Window bind:windowToggle />
+	<Window bind:windowToggle bind:windowOntop />
 	<main id="main">
 		{#key data.url}
 			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">
@@ -94,6 +96,8 @@
 		-webkit-user-select: none; /* Safari */
 		-ms-user-select: none; /* IE 10 and IE 11 */
 		user-select: none; /* Standard syntax */
+
+		z-index: 0;
 
 		p {
 			margin: 0;
