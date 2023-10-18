@@ -22,9 +22,6 @@ export function load({ url }) {
         app3rd.set("")
     }
 
-
-
-
     return {
         url: url.pathname,
         hideDistractingComps,
