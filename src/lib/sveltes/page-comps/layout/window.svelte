@@ -23,8 +23,13 @@
 		{ id: 2, name: '...' }
 	];
 
+	app3rd.subscribe((value) => {
+		if (value != '') selectTab = 2;
+	});
+
 	//for mouseDrag
 	let initialMouseX: number, initialMouseY: number, initialWindowX: number, initialWindowY: number;
+
 	//function
 	function onMouseDown(event: MouseEvent) {
 		initialMouseX = event.clientX;
