@@ -1,92 +1,193 @@
 <script lang="ts">
 	import * as PIXI from 'pixi.js';
-	import { onMount } from 'svelte';
+	import { afterUpdate, beforeUpdate, onDestroy, onMount } from 'svelte';
+	import { boids } from './boids';
+	import { obstacle } from './obstacle';
+	import Quadtree from '@timohausmann/quadtree-js';
+	import type { boidSettings } from './controller';
+	import { rulesHandler } from './scripts/rulesHandler';
+
+	import {
+		S_boidsCount,
+		S_boidsSettings,
+		S_boidChooseOption,
+		S_boidsType,
+		S_boidBorder,
+		S_boidResetSignal
+	} from '$lib/store';
 
 	let view: HTMLCanvasElement;
+	let app: PIXI.Application;
+	let boidSetting: boidSettings;
+	let boidTotalType = 1;
+	let boidBorder = false;
+	let onFirstLoad = true;
 
-	class boids {
-		public element: PIXI.Graphics;
-		private speed: number;
-		private angle: number;
-		private minX: number;
-		private maxX: number;
-		private minY: number;
-		private maxY: number;
+	let elementList: boids[] = [];
+	let elementQuadTree: Quadtree;
 
-		constructor(speed: number, angle: number, width: number, height: number) {
-			this.element = new PIXI.Graphics();
-			this.element.beginFill(0xffffff);
-			this.element.drawPolygon(0, -20, -10, 20, 10, 20);
-			this.element.endFill();
+	$: S_boidsCount.set(elementList.length);
 
-			this.element.scale.set(0.3);
+	S_boidBorder.subscribe((value) => {
+		boidBorder = value;
+	});
 
-			this.speed = speed;
-			this.angle = angle;
+	S_boidsType.subscribe((value) => {
+		boidTotalType = value;
+	});
 
-			this.minX = 0;
-			this.minY = 0;
-			this.maxX = width;
-			this.maxY = height;
-		}
+	S_boidsSettings.subscribe((value) => {
+		boidSetting = value;
 
-		public setAngle(angle: number) {
-			angle = angle % 360;
-			this.angle = angle;
-			this.element.angle = angle;
-		}
+		elementList.forEach((element) => {
+			element.visionRadius = boidSetting.visionRadius;
+			element.visionAngle = boidSetting.visionAngle;
+			element.localRadius = boidSetting.localRadius;
+			element.rivalRadius = boidSetting.rivalRadius;
+			element.flockRadius = boidSetting.flockRadius;
+		});
+	});
 
-		public getAngle() {
-			return this.angle;
-		}
-
-		public setSandBox(width: number, height: number) {
-			this.minX = 0;
-			this.maxX = width;
-			this.minY = 0;
-			this.maxY = height;
-		}
-
-		public update() {
-			this.element.x += Math.sin(this.angle * (Math.PI / 180)) * this.speed;
-			this.element.y += -Math.cos(this.angle * (Math.PI / 180)) * this.speed;
-
-			if (this.element.x < this.minX) this.element.x = this.maxX;
-			if (this.element.x > this.maxX) this.element.x = this.minX;
-			if (this.element.y < this.minY) this.element.y = this.maxY;
-			if (this.element.y > this.maxY) this.element.y = this.minY;
-		}
+	function visibilitychange() {
+		let onFocus = document.visibilityState;
+		if (onFirstLoad || onFocus == 'visible') {
+			onFirstLoad = false;
+			app.start();
+		} else app.stop();
 	}
 
 	onMount(() => {
-		const app = new PIXI.Application({
+		document.addEventListener('visibilitychange', visibilitychange);
+
+		app = new PIXI.Application({
 			view: view,
 			resizeTo: document.body,
 			backgroundColor: 0x141414
 		});
 
-		let elementList: boids[] = [];
+		elementQuadTree = new Quadtree(
+			{
+				x: 0,
+				y: 0,
+				width: app.view.width,
+				height: app.view.height
+			},
+			5
+		);
 
-		let boidCount = 100;
+		let obstacleList: obstacle[] = [];
+
+		app.stage.hitArea = new PIXI.Rectangle(0, 0, view.width, view.height);
+		app.stage.eventMode = 'static';
+
+		/*
+		const count = new PIXI.Text(elementList.objects.length, {
+			fontFamily: 'Arial',
+			fontSize: 20,
+			fill: 0xff1010,
+			align: 'center'
+		});
+
+		count.x = 10;
+		count.y = 10;
+
+		app.stage.addChild(count);
+		*/
+		const color = [0xffffff, 0xff1010, 0x10ff10, 0xff10ff];
+
+		app.stage.on('pointertap', (event) => {
+			switch ($S_boidChooseOption) {
+				case 'boid': {
+					let element = new boids(
+						event.global.x,
+						event.global.y,
+						Math.random() * 1 + 0.5,
+						Math.random() * 360,
+						view.width,
+						view.height,
+						1
+					);
+
+					elementList = [...elementList, element];
+					elementQuadTree.insert(element);
+					element.boidType = Math.floor(Math.random() * boidTotalType);
+					element.setColor(color[element.boidType]);
+					app.stage.addChild(element.element);
+
+					break;
+				}
+				case 'obstacle': {
+					let obs = new obstacle(event.global.x, event.global.y, 50);
+					app.stage.addChild(obs.element);
+					obstacleList.push(obs);
+					break;
+				}
+			}
+		});
+
+		let boidCount = 400;
 		for (let i = 0; i < boidCount; i++) {
-			let element = new boids(Math.random() * 1 + 1, Math.random() * 360,  view.width, view.height);
-			element.element.x = Math.random() * view.width;
-			element.element.y = Math.random() * view.height;
-			elementList.push(element);
+			let element = new boids(
+				Math.random() * view.width,
+				Math.random() * view.height,
+				Math.random() * 0.5 + 1,
+				Math.random() * 360,
+				view.width,
+				view.height,
+				1
+			);
 
+			elementList = [...elementList, element];
+			elementQuadTree.insert(element);
+
+			element.boidType = Math.floor(Math.random() * boidTotalType);
+			element.setColor(color[element.boidType]);
 			app.stage.addChild(element.element);
+			//app.stage.addChild(element.debugText);
 		}
+
+		//on reset
+		S_boidResetSignal.subscribe(() => {
+			//clear old datas
+			for (let i = 0; i < elementList.length; i++) {
+				app.stage.removeChild(elementList[i].element);
+				//app.stage.removeChild(elementList[i].debugText);
+			}
+
+			//insert new
+			elementList = [];
+			elementQuadTree.clear();
+
+			for (let i = 0; i < boidCount; i++) {
+				let element = new boids(
+					Math.random() * view.width,
+					Math.random() * view.height,
+					Math.random() * 0.5 + 1,
+					Math.random() * 360,
+					view.width,
+					view.height,
+					1
+				);
+
+				elementList = [...elementList, element];
+				elementQuadTree.insert(element);
+
+				element.boidType = Math.floor(Math.random() * boidTotalType);
+				element.setColor(color[element.boidType]);
+				app.stage.addChild(element.element);
+				//app.stage.addChild(element.debugText);
+			}
+		});
 
 		// Listen for animate update
 		app.ticker.add((delta) => {
-			// delta is 1 if running at 100% performance
-
-			for (let i = 0; i < elementList.length; i++) {
-				let angle = elementList[i].getAngle() + delta * (Math.random() * 10 - 5);
-				elementList[i].setAngle(angle);
-				elementList[i].update();
-			}
+			rulesHandler(elementList, elementQuadTree, obstacleList, delta, boidBorder);
 		});
+	});
+
+	onDestroy(() => {
+		app.destroy();
+		document.removeEventListener('visibilitychange', visibilitychange);
 	});
 </script>
 
@@ -97,6 +198,6 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: -1;
+		z-index: 0;
 	}
 </style>
