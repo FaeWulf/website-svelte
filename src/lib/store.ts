@@ -11,8 +11,13 @@ export const S_boidsSettings = writable({
     visionRadius: 20,
     visionAngle: 120,
     localRadius: 80,
-    rivalRadius: 100
+    rivalRadius: 100,
+    flockRadius: 0
 })
 export const S_boidsCount = writable(0)
+export const S_boidsType = writable(1)
 export const S_boidChooseOption = writable("none")
+export const S_boidBorder = writable(false)
+export const S_boidResetSignal = writable(false)
+
 
