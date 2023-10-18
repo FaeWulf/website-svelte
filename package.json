@@ -36,6 +36,7 @@
 		"@fontsource/inter": "^5.0.8",
 		"@splidejs/splide-extension-auto-scroll": "^0.5.3",
 		"@splidejs/svelte-splide": "^0.2.9",
+		"@timohausmann/quadtree-js": "^1.2.5",
 		"detritus-client": "^0.16.3",
 		"pixi.js": "^7.3.1",
 		"tippy.js": "^6.3.7",

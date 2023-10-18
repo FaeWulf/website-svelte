@@ -14,6 +14,9 @@ dependencies:
   '@splidejs/svelte-splide':
     specifier: ^0.2.9
     version: 0.2.9
+  '@timohausmann/quadtree-js':
+    specifier: ^1.2.5
+    version: 1.2.5
   detritus-client:
     specifier: ^0.16.3
     version: 0.16.3
@@ -933,6 +936,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@timohausmann/quadtree-js@1.2.5:
+    resolution: {integrity: sha512-WcH3pouYtpyLjTCRvNP0WuSV4m7mRyYhLzW44egveFryT7pJhpDsdIJASEe37iCFNA0vmEpqTYGoG0siyXEthA==}
+    dev: false
 
   /@types/cookie@0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
