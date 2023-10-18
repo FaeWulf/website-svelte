@@ -1,7 +1,9 @@
+import { app3rd } from '$lib/store.js'
+
 export function load({ url }) {
 
     const routeHide = [
-        "/projects/boids"
+        "/projects/boo"
     ]
 
     let hideDistractingComps = true
@@ -13,6 +15,11 @@ export function load({ url }) {
 
     if (url.pathname == "/projects/boids") {
         windowOnTop = true
+        app3rd.set("boids")
+    }
+    else {
+        windowOnTop = false
+        app3rd.set("")
     }
 
 

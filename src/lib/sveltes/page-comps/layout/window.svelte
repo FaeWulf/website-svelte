@@ -2,6 +2,9 @@
 	import { onMount } from 'svelte';
 	import Bonsai from '$lib/sveltes/page-comps/layout/bonsai.svelte';
 	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
+	import { app3rd } from '$lib/store';
+
+	import Controller from '$lib/sveltes/page-comps/boids/controller.svelte';
 
 	export let windowToggle: boolean = true;
 	export let windowOntop: boolean = false;
@@ -14,9 +17,10 @@
 	let window_y = -500;
 
 	let selectTab = 0;
-	const totalTabs = [
+	let totalTabs = [
 		{ id: 0, name: 'Bonsai' },
-		{ id: 1, name: 'Console' }
+		{ id: 1, name: 'Console' },
+		{ id: 2, name: '...' }
 	];
 
 	//for mouseDrag
@@ -139,6 +143,11 @@
 		<div class:selected={selectTab == 1}>
 			<Console />
 		</div>
+		<div class:selected={selectTab == 2}>
+			{#if $app3rd == 'boids'}
+				<Controller />
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -149,8 +158,8 @@
 		position: fixed;
 		width: 350px;
 		height: 350px;
-		min-width: 180px;
-		min-height: 180px;
+		min-width: 220px;
+		min-height: 220px;
 		opacity: 0.6;
 
 		border: 1px solid rgba(var(--Green), 0.3);
