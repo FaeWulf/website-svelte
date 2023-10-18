@@ -1,0 +1,482 @@
+[
+    {
+        "name": "The Fool",
+        "path": "0_The_Fool.png",
+        "description": ""
+    },
+    {
+        "name": "The Magician",
+        "path": "I_The_Magician.png",
+        "description": ""
+    },
+    {
+        "name": "The High Priestess",
+        "path": "II_The_High_Priestess.png",
+        "description": ""
+    },
+    {
+        "name": "The Empress",
+        "path": "III_The_Empress.png",
+        "description": ""
+    },
+    {
+        "name": "The Emperor",
+        "path": "IV_The_Emperor.png",
+        "description": ""
+    },
+    {
+        "name": "The Hierophant",
+        "path": "V_The_Hierophant.png",
+        "description": ""
+    },
+    {
+        "path": "VI_The_Lovers.png",
+        "name": "The Lovers",
+        "description": ""
+    },
+    {
+        "path": "VII_The_Chariot.png",
+        "name": "The Chariot",
+        "description": ""
+    },
+    {
+        "path": "VIII_Justice.png",
+        "name": "The Justice",
+        "description": ""
+    },
+    {
+        "path": "IX_The_Hermit.png",
+        "name": "The Hermit",
+        "description": ""
+    },
+    {
+        "path": "X_Wheel_of_Fortune.png",
+        "name": "Wheel of Fortune",
+        "description": ""
+    },
+    {
+        "path": "XI_Strength.png",
+        "name": "Strength",
+        "description": ""
+    },
+    {
+        "path": "XII_The_Hanged_Man.png",
+        "name": "The Hanged Man",
+        "description": ""
+    },
+    {
+        "path": "XIII_Death.png",
+        "name": "Death",
+        "description": ""
+    },
+    {
+        "path": "XIV_Temperance.png",
+        "name": "Temperance",
+        "description": ""
+    },
+    {
+        "path": "XV_The_Devil.png",
+        "name": "The Devil",
+        "description": ""
+    },
+    {
+        "path": "XVI_The_Tower.png",
+        "name": "The Tower",
+        "description": ""
+    },
+    {
+        "path": "XVII_The_Stars.png",
+        "name": "The Stars",
+        "description": ""
+    },
+    {
+        "path": "XVIII_The_Moon.png",
+        "name": "The Moon",
+        "description": ""
+    },
+    {
+        "path": "XIX_The_Sun.png",
+        "name": "The Sun",
+        "description": ""
+    },
+    {
+        "path": "XX_Judgement.png",
+        "name": "Judgement",
+        "description": ""
+    },
+    {
+        "path": "XXI_The_World.png",
+        "name": "The World",
+        "description": ""
+    },
+    {
+        "path": "0_The_Fool_R.png",
+        "name": "The Fool?",
+        "description": ""
+    },
+    {
+        "path": "I_The_Magician_R.png",
+        "name": "The Magician?",
+        "description": ""
+    },
+    {
+        "path": "II_The_High_Priestess_R.png",
+        "name": "The High Priestess?",
+        "description": ""
+    },
+    {
+        "path": "III_The_Empress_R.png",
+        "name": "The Empress?",
+        "description": ""
+    },
+    {
+        "path": "IV_The_Emperor_R.png",
+        "name": "The Emperor?",
+        "description": ""
+    },
+    {
+        "path": "V_The_Hierophant_R.png",
+        "name": "The Hierophant?",
+        "description": ""
+    },
+    {
+        "path": "VI_The_Lovers_R.png",
+        "name": "The Lovers?",
+        "description": ""
+    },
+    {
+        "path": "VII_The_Chariot_R.png",
+        "name": "The Chariot?",
+        "description": ""
+    },
+    {
+        "path": "VIII_Justice_R.png",
+        "name": "The Justice?",
+        "description": ""
+    },
+    {
+        "path": "IX_The_Hermit_R.png",
+        "name": "The Hermit?",
+        "description": ""
+    },
+    {
+        "path": "X_Wheel_of_Fortune_R.png",
+        "name": "Wheel of Fortune?",
+        "description": ""
+    },
+    {
+        "path": "XI_Strength_R.png",
+        "name": "Strength?",
+        "description": ""
+    },
+    {
+        "path": "XII_The_Hanged_Man_R.png",
+        "name": "The Hanged Man?",
+        "description": ""
+    },
+    {
+        "path": "XIII_Death_R.png",
+        "name": "Death?",
+        "description": ""
+    },
+    {
+        "path": "XIV_Temperance_R.png",
+        "name": "Temperance?",
+        "description": ""
+    },
+    {
+        "path": "XV_The_Devil_R.png",
+        "name": "The Devil?",
+        "description": ""
+    },
+    {
+        "path": "XVI_The_Tower_R.png",
+        "name": "The Tower?",
+        "description": ""
+    },
+    {
+        "path": "XVII_The_Stars_R.png",
+        "name": "The Stars?",
+        "description": ""
+    },
+    {
+        "path": "XVIII_The_Moon_R.png",
+        "name": "The Moon?",
+        "description": ""
+    },
+    {
+        "path": "XIX_The_Sun_R.png",
+        "name": "The Sun?",
+        "description": ""
+    },
+    {
+        "path": "XX_Judgement_R.png",
+        "name": "Judgement?",
+        "description": ""
+    },
+    {
+        "path": "XXI_The_World_R.png",
+        "name": "The World?",
+        "description": ""
+    },
+    {
+        "path": "2_of_Clubs.png",
+        "name": "2 of Clubs",
+        "description": ""
+    },
+    {
+        "path": "2_of_Diamonds.png",
+        "name": "2 of Diamonds",
+        "description": ""
+    },
+    {
+        "path": "2_of_Spades.png",
+        "name": "2 of Spades",
+        "description": ""
+    },
+    {
+        "path": "2_of_Hearts.png",
+        "name": "2 of Hearts",
+        "description": ""
+    },
+    {
+        "path": "Ace_of_Clubs.png",
+        "name": "Ace of Clubs",
+        "description": ""
+    },
+    {
+        "path": "Ace_of_Diamonds.png",
+        "name": "Ace of Diamonds",
+        "description": ""
+    },
+    {
+        "path": "Ace_of_Spades.png",
+        "name": "Ace of Spades",
+        "description": ""
+    },
+    {
+        "path": "Ace_of_Hearts.png",
+        "name": "Ace of Hearts",
+        "description": ""
+    },
+    {
+        "path": "Joker.png",
+        "name": "Joker",
+        "description": ""
+    },
+    {
+        "path": "Suicide_King.png",
+        "name": "Suicide King",
+        "description": ""
+    },
+    {
+        "path": "Queen_of_Hearts.png",
+        "name": "Queen of Hearts",
+        "description": ""
+    },
+    {
+        "path": "Chaos_Card.png",
+        "name": "Chaos Card",
+        "description": ""
+    },
+    {
+        "path": "Huge_Growth.png",
+        "name": "Huge Growth",
+        "description": ""
+    },
+    {
+        "path": "Ancient_Recall.png",
+        "name": "Ancient Recall",
+        "description": ""
+    },
+    {
+        "path": "Era_Walk.png",
+        "name": "Era Walk",
+        "description": ""
+    },
+    {
+        "path": "Credit_Card.png",
+        "name": "Credit Card",
+        "description": ""
+    },
+    {
+        "path": "Rules_Card.png",
+        "name": "Rules Card",
+        "description": ""
+    },
+    {
+        "path": "Q_Card.png",
+        "name": "Q Card",
+        "description": ""
+    },
+    {
+        "path": "A_Card_Against_Humanity.png",
+        "name": "A Card Against Humanity",
+        "description": ""
+    },
+    {
+        "path": "Get_out_of_Jail_Free_Card.png",
+        "name": "Get out of Jail",
+        "description": ""
+    },
+    {
+        "path": "Holy_Card.png",
+        "name": "Holy Card",
+        "description": ""
+    },
+    {
+        "path": "Wild_Card.png",
+        "name": "Wild Card",
+        "description": ""
+    },
+    {
+        "path": "Hagalaz_Icon.png",
+        "name": "Hagonaz",
+        "description": ""
+    },
+    {
+        "path": "Jera_Icon.png",
+        "name": "Jera",
+        "description": ""
+    },
+    {
+        "path": "Ehwaz_Icon.png",
+        "name": "Ehwaz",
+        "description": ""
+    },
+    {
+        "path": "Dagaz_Icon.png",
+        "name": "Dagaz",
+        "description": ""
+    },
+    {
+        "path": "Ansuz_Icon.png",
+        "name": "Ansuz",
+        "description": ""
+    },
+    {
+        "path": "Perthro_Icon.png",
+        "name": "Perthro",
+        "description": ""
+    },
+    {
+        "path": "Berkano_Icon.png",
+        "name": "Berkano",
+        "description": ""
+    },
+    {
+        "path": "Algiz_Icon.png",
+        "name": "Algiz",
+        "description": ""
+    },
+    {
+        "path": "Blank_Rune.png",
+        "name": "Blank Rune",
+        "description": ""
+    },
+    {
+        "path": "Black_Rune.png",
+        "name": "Black Rune",
+        "description": ""
+    },
+    {
+        "path": "Rune_Shard.png",
+        "name": "Rune Shard",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Isaac.png",
+        "name": "Soul of Isaac",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Magdalene.png",
+        "name": "Soul of Magdalene",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Cain.png",
+        "name": "Soul of Cain",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Judas.png",
+        "name": "Soul of Judas",
+        "description": ""
+    },
+    {
+        "path": "Soul_of__RRR.png",
+        "name": "Soul of ???",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Eve.png",
+        "name": "Soul of Eve",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Samson.png",
+        "name": "Soul of Samson",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Azazel.png",
+        "name": "Soul of Azazel",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Lazarus.png",
+        "name": "Soul of Lazarus",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Eden.png",
+        "name": "Soul of Eden",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_the_Lost.png",
+        "name": "Soul of the Lost",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Lilith.png",
+        "name": "Soul of Lilith",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_the_Keeper.png",
+        "name": "Soul of the Keeper",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Apollyon.png",
+        "name": "Soul of Apollyon",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_the_Forgotten.png",
+        "name": "Soul of the Forgotten",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Bethany.png",
+        "name": "Soul of Bethany",
+        "description": ""
+    },
+    {
+        "path": "Soul_of_Jacob_and_Esau.png",
+        "name": "Soul of Jacob and Esau",
+        "description": ""
+    },
+    {
+        "path": "Dice_Shard.png",
+        "name": "Dice Shard",
+        "description": ""
+    },
+    {
+        "path": "Emergency_Contact.png",
+        "name": "Emergency Contact",
+        "description": ""
+    }
+]
