@@ -19,7 +19,7 @@
 		},
 		{
 			name: 'Ninym Ralei',
-			description: 'Personal discod bot.',
+			description: 'Personal discord bot.',
 			path: '/ninym',
 			old: false
 		},
@@ -30,7 +30,7 @@
 			old: false
 		},
 		{
-			name: 'Boids (WIP)',
+			name: 'Boids Sim',
 			description: 'Boids simulation.',
 			path: '/projects/boids',
 			old: false
