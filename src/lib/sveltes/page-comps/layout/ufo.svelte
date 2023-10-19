@@ -10,16 +10,19 @@
 	let innerHeight: number, innerWidth: number;
 
 	//ufo
-	let ufoOptions = {
-		stiffness: 0.04,
-		damping: 0.8
-	};
-	let ufo = spring({ x: 100, y: 100 }, ufoOptions);
+	let ufo = spring(
+		{ x: 100, y: 100 },
+		{
+			stiffness: 0.04,
+			damping: 0.8
+		}
+	);
 	let ufoX = 200,
 		ufoY = 200;
 	let ufoLean = 0;
 	let ufoLastMove: Date = new Date();
 	let ufoIdle = false;
+	let ufoReady = false;
 
 	let intervalInstance: any;
 
@@ -54,10 +57,6 @@
 			}
 		};
 	}
-
-	onDestroy(() => {
-		clearInterval(intervalInstance);
-	});
 
 	//functions
 	const eventMouseMove = (E: MouseEvent) => {
@@ -116,22 +115,50 @@
 		ufoLastMove = new Date();
 		ufoIdle = false;
 	});
+
+	onMount(() => {
+		const ret = document.getElementById('ufo_home');
+		if (ret) {
+			const pos = ret.getBoundingClientRect();
+			//setUFOCoords(pos.x - 8, pos.y - 10);
+			const ufoHomeX = pos.x - 8;
+			const ufoHomeY = pos.y - 10;
+			ufo.update(
+				() => ({
+					x: ufoHomeX,
+					y: ufoHomeY
+				}),
+				{ hard: true }
+			);
+			let newDate = new Date();
+			newDate.setSeconds(newDate.getSeconds() - 10);
+			ufoLastMove = newDate;
+			ufoIdle = false;
+		}
+		ufoReady = true;
+	});
+
+	onDestroy(() => {
+		clearInterval(intervalInstance);
+	});
 </script>
 
-<div
-	class="ufo"
-	style:top="{ufoY < 0 ? 0 : ufoY > innerHeight ? innerHeight : ufoY}px"
-	style:left="{ufoX < 0 ? 0 : ufoX > innerWidth ? innerWidth : ufoX}px"
-	use:handleUfo
->
-	<img
-		src="/gifs/ufo.gif"
-		alt="ufo"
-		draggable="false"
-		style="transform: rotateZ({ufoLean == -1 ? '-30deg' : ufoLean == 1 ? '30deg' : '0deg'});"
-	/>
-	<BubbleChat />
-</div>
+{#if ufoReady}
+	<div
+		class="ufo"
+		style:top="{ufoY < 0 ? 0 : ufoY > innerHeight ? innerHeight : ufoY}px"
+		style:left="{ufoX < 0 ? 0 : ufoX > innerWidth ? innerWidth : ufoX}px"
+		use:handleUfo
+	>
+		<img
+			src="/gifs/ufo.gif"
+			alt="ufo"
+			draggable="false"
+			style="transform: rotateZ({ufoLean == -1 ? '-30deg' : ufoLean == 1 ? '30deg' : '0deg'});"
+		/>
+		<BubbleChat />
+	</div>
+{/if}
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
