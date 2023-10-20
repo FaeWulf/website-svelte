@@ -37,13 +37,13 @@
 		initialWindowX = windowEl.offsetLeft;
 		initialWindowY = windowEl.offsetTop;
 
-		document.addEventListener('mousemove', onMouseMove);
-		document.addEventListener('mouseup', onMouseUp);
+		document.addEventListener('pointermove', onMouseMove);
+		document.addEventListener('pointerup', onMouseUp);
 	}
 
 	function onMouseUp() {
-		document.removeEventListener('mousemove', onMouseMove);
-		document.removeEventListener('mouseup', onMouseUp);
+		document.removeEventListener('pointermove', onMouseMove);
+		document.removeEventListener('pointerup', onMouseUp);
 	}
 
 	function onMouseMove(e: MouseEvent) {
@@ -119,7 +119,7 @@
 	bind:this={windowEl}
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div class="titlebar" on:mousedown={onMouseDown}>
+	<div class="titlebar" on:pointerdown={onMouseDown}>
 		<div class="tab">
 			{#each totalTabs as tab}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -180,9 +180,9 @@
 			'titlebar'
 			'content';
 
-		transition: backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-		transition: box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		transition: backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1),
+			opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1),
+			box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
 		animation: 0.3s show ease-in-out;
 
