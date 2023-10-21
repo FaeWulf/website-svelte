@@ -30,6 +30,12 @@
 			old: false
 		},
 		{
+			name: "Isaac's Tarot",
+			description: 'Tarot card but Isaac',
+			path: '/projects/isaactarot',
+			old: false
+		},
+		{
 			name: 'Boids Sim',
 			description: 'Boids simulation.',
 			path: '/projects/boids',
