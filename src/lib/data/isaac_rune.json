@@ -1,42 +1,74 @@
 [
     {
         "path": "Hagalaz_Icon.png",
-        "name": "Hagonaz",
-        "description": ""
+        "name": "Hagalaz",
+        "description": "Destruction: Forget about advices, just destroy everything!",
+        "sprite": {
+            "x": -90,
+            "y": -45
+        }
     },
     {
         "path": "Jera_Icon.png",
         "name": "Jera",
-        "description": ""
+        "description": "Abundance: Double it and give it to the next person",
+        "sprite": {
+            "x": -0,
+            "y": -90
+        }
     },
     {
         "path": "Ehwaz_Icon.png",
         "name": "Ehwaz",
-        "description": ""
+        "description": "Passage: Just avoid your problems and move on",
+        "sprite": {
+            "x": -90,
+            "y": -0
+        }
     },
     {
         "path": "Dagaz_Icon.png",
         "name": "Dagaz",
-        "description": ""
+        "description": "Purity: Cleanse yourself and your surroundings",
+        "sprite": {
+            "x": -45,
+            "y": -45
+        }
     },
     {
         "path": "Ansuz_Icon.png",
         "name": "Ansuz",
-        "description": ""
+        "description": "Vision: Yes, just read what the ball says",
+        "sprite": {
+            "x": -45,
+            "y": -0
+        }
     },
     {
         "path": "Perthro_Icon.png",
         "name": "Perthro",
-        "description": ""
+        "description": "Change: You should draw another cards",
+        "sprite": {
+            "x": -45,
+            "y": -90
+        }
     },
     {
         "path": "Berkano_Icon.png",
         "name": "Berkano",
-        "description": ""
+        "description": "Companionship: If you can't do it alone, make someone join with you",
+        "sprite": {
+            "x": -0,
+            "y": -45
+        }
     },
     {
         "path": "Algiz_Icon.png",
         "name": "Algiz",
-        "description": ""
+        "description": "Resistance: ignore what the balls says, facing it like a boss",
+        "sprite": {
+            "x": -0,
+            "y": -0
+        }
     }
 ]
