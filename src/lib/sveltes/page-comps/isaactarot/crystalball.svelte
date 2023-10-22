@@ -22,7 +22,7 @@
 	let fortuneLine: string = '';
 	//funcitons
 	function fortuneTell(cards: cardData[]) {
-		if (cards.length != 3) return 'Need 3 cards...';
+		if (cards.length != 3) return 'Need 3 cards near me...';
 
 		if (cards.some((card) => card.position.facing == false)) {
 			return 'Please flip the cards around';
@@ -199,13 +199,14 @@
 		.card-holder {
 			position: absolute;
 			width: 300px;
-			height: 120px;
-			bottom: -140px;
-			left: -100px;
+			height: 300px;
+			top: -105px;
+			left: -110px;
 
 			pointer-events: none;
 
-			border: 1px red solid;
+			border: 1px dashed rgba(var(--Text), 0.2);
+			border-radius: 50%;
 		}
 	}
 
