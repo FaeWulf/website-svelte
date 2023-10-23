@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import type { card, cardData } from './type';
+	import type { cardData } from './type';
 	import { tooltip } from '$lib/utils';
+	import { fade } from 'svelte/transition';
 
 	export let cardList: cardData[] = [];
 
@@ -131,9 +132,11 @@
 	//events
 	onMount(() => {
 		const crystalBoundingClientRect = crystalWrapper.getBoundingClientRect();
-		offsetX = crystalBoundingClientRect.left;
+		offsetX = crystalBoundingClientRect.left - crystalBoundingClientRect.width - 20;
 		offsetY = crystalBoundingClientRect.top;
 
+		crystalWrapper.style.left = `${offsetX}px`;
+		crystalWrapper.style.top = `${offsetY}px`;
 		document.addEventListener('pointermove', checkCardInside);
 	});
 

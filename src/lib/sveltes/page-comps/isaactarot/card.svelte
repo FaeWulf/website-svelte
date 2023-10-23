@@ -15,6 +15,7 @@
 		glow: boolean;
 		//false == back, true == front
 		facing: boolean;
+		selecting: boolean;
 	};
 
 	let offsetX = position.x;
@@ -35,8 +36,22 @@
 		initialX = event.clientX - offsetX;
 		initialY = event.clientY - offsetY;
 
+		position.selecting = true;
+
 		window.addEventListener('pointermove', handleMouseMove);
 		window.addEventListener('pointerup', handleMouseUp);
+
+		//bring moving card to top
+		//get card index from cardList
+		let cardIndex = cardList.findIndex((cardItem, index) => {
+			return cardItem.data.name == card.name;
+		});
+
+		if (cardIndex > -1) {
+			//remove card from cardList
+			cardList.splice(cardIndex, 1);
+			cardList = [...cardList, { position, data: card }];
+		}
 	}
 
 	function handleMouseMove(event: MouseEvent) {
@@ -70,23 +85,15 @@
 		if (isClicked) {
 			position.facing = !position.facing;
 		} else {
-			//bring moving card to top
-			//get card index from cardList
-			let cardIndex = cardList.findIndex((cardItem, index) => {
-				return cardItem.data.name == card.name;
-			});
-
-			if (cardIndex > -1) {
-				//remove card from cardList
-				cardList.splice(cardIndex, 1);
-				cardList = [...cardList, { position, data: card }];
-			}
+			//asdf
 		}
 
 		isClicked = false;
 		isClickedThreshold = 0;
 		isDragging = false;
 		card_Zindex = 1;
+
+		position.selecting = false;
 
 		window.removeEventListener('pointermove', handleMouseMove);
 		window.removeEventListener('pointerup', handleMouseUp);
@@ -112,6 +119,9 @@
 		y: position.deckY - position.y,
 		x: position.deckX - position.x,
 		duration: 500
+	}}
+	out:fly={{
+		y: 10
 	}}
 	on:pointerdown={handleMouseDown}
 	bind:this={cardWrapper}

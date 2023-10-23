@@ -1,50 +1,87 @@
 <script lang="ts">
-	import cards from '$lib/data/isaac_card.json';
+	import stone from '$lib/data/isaac_stone.json';
+	import runes from '$lib/data/isaac_rune.json';
 	import { onMount } from 'svelte';
 	import { shuffleArray, tooltip } from '$lib/utils';
-	import type { cardData } from './type';
-	import { fade } from 'svelte/transition';
+	import type { runeData } from './type';
 
-	export let cardList: cardData[] = [];
+	export let runeList: runeData[] = [];
 
-	let cardDeck = cards;
-	shuffleDeck();
+	let runesData: {
+		name: string;
+		path: string;
+		description: string;
+		sprite: { x: number; y: number };
+	}[] = [];
+
+	stone.forEach((element) => {
+		if (element.name == 'Rune1') {
+			const runesName = ['Hagalaz', 'Jera', 'Ehwaz', 'Dagaz'];
+
+			runesName.forEach((name) => {
+				runesData.push({
+					name: 'Rune of ' + name,
+					path: name,
+					description: runes[runes.findIndex((rune) => rune.name == name)].description,
+					sprite: {
+						x: -60,
+						y: -0
+					}
+				});
+			});
+		} else if (element.name == 'Rune2') {
+			const runesName = ['Ansuz', 'Perthro', 'Berkano', 'Algiz'];
+			runesName.forEach((name) => {
+				runesData.push({
+					name: 'Rune of ' + name,
+					path: name,
+					description: runes[runes.findIndex((rune) => rune.name == name)].description,
+					sprite: {
+						x: -120,
+						y: -0
+					}
+				});
+			});
+		} else {
+			runesData.push(element);
+		}
+	});
+
+	shuffleBag();
 
 	let isDragging = false;
 	let initialX = 0;
 	let initialY = 0;
 	let offsetX = 0;
 	let offsetY = 0;
-	let book_Zindex = 1;
+	let rune_Zindex = 1;
 	let isClickedThreshold = 0;
 	let isClicked = false;
 	let wobble = false;
 
-	let bookWrapper: HTMLElement;
+	let runeWrapper: HTMLElement;
 
 	//funcitona
-	function drawCard() {
-		let card = cardDeck.pop();
-		if (card)
-			cardList = [
-				...cardList,
+	function drawRune() {
+		let rune = runesData.pop();
+		if (rune)
+			runeList = [
+				...runeList,
 				{
 					position: {
 						x: offsetX + (Math.random() * 40 - 40) + 50,
 						y: offsetY - (Math.random() * 50 + 100),
-						deckX: offsetX + 30,
-						deckY: offsetY,
-						glow: false,
-						facing: false,
+						bagX: offsetX,
+						bagY: offsetY,
 						selecting: false
 					},
-					data: card
+					data: rune
 				}
 			];
 	}
 
-	function shuffleDeck() {
-		shuffleArray(cardDeck);
+	function shuffleBag() {
+		shuffleArray(runesData);
 	}
 
 	//document function event
@@ -71,12 +108,12 @@
 
 			let top = 0,
 				left = 0,
-				bottom = window.innerHeight - bookWrapper.getBoundingClientRect().height,
-				right = window.innerWidth - bookWrapper.getBoundingClientRect().width;
+				bottom = window.innerHeight - runeWrapper.getBoundingClientRect().height,
+				right = window.innerWidth - runeWrapper.getBoundingClientRect().width;
 
-			book_Zindex = 2;
-			bookWrapper.style.top = `${Math.min(Math.max(newY, top), bottom)}px`;
-			bookWrapper.style.left = `${Math.min(Math.max(newX, left), right)}px`;
+			rune_Zindex = 2;
+			runeWrapper.style.top = `${Math.min(Math.max(newY, top), bottom)}px`;
+			runeWrapper.style.left = `${Math.min(Math.max(newX, left), right)}px`;
 
 			if (isClickedThreshold > 10) {
 				isClicked = false;
@@ -92,47 +129,45 @@
 				wobble = false;
 			}, 500);
 
-			drawCard();
+			drawRune();
 		}
 
 		//reset
 		isClicked = false;
 		isClickedThreshold = 0;
 		isDragging = false;
-		book_Zindex = 1;
+		rune_Zindex = 1;
 
 		window.removeEventListener('pointermove', handleMouseMove);
 		window.removeEventListener('pointerup', handleMouseUp);
 	}
 
 	onMount(() => {
-		const bookBoundingClientRect = bookWrapper.getBoundingClientRect();
-		offsetX = bookBoundingClientRect.left;
-		offsetY = bookBoundingClientRect.top;
+		const runeBoundingClientRect = runeWrapper.getBoundingClientRect();
+		offsetX = runeBoundingClientRect.left + 80;
+		offsetY = runeBoundingClientRect.top;
 
-		bookWrapper.style.top = `${offsetY}px`;
-		bookWrapper.style.left = `${offsetX}px`;
+		runeWrapper.style.top = `${offsetY}px`;
+		runeWrapper.style.left = `${offsetX}px`;
 	});
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <img
 	on:pointerdown={handleMouseDown}
-	bind:this={bookWrapper}
-	class="book"
+	bind:this={runeWrapper}
+	class="rune"
 	class:active={wobble}
 	draggable="false"
-	src="/images/isaac/items/The_Book_of_Sin.png"
-	style:z-index={book_Zindex}
-	alt="The Book of Sin"
-	use:tooltip={{ content: 'Click to draw a card', animation: 'scale', theme: 'catppuccin' }}
+	src="/images/isaac/items/rune_bag.png"
+	style:z-index={rune_Zindex}
+	alt="Rune bag"
+	use:tooltip={{ content: 'Click to get a rune/soul', animation: 'scale', theme: 'catppuccin' }}
 />
 
 <style lang="scss">
-	.book {
+	.rune {
 		position: absolute;
-
-		width: 120px;
 
 		image-rendering: pixelated;
 		image-rendering: -moz-crisp-edges;
