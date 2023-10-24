@@ -1,11 +1,7 @@
 <script lang="ts">
-	import cards from '$lib/data/isaac_card.json';
-	import { onDestroy, onMount } from 'svelte';
-	import { shuffleArray, tooltip } from '$lib/utils';
+	import { onMount } from 'svelte';
+	import { tooltip } from '$lib/utils';
 	import type { cardData, runeData } from './type';
-	import Card from './card.svelte';
-
-	let cardDeck = cards;
 
 	export let cardList: cardData[] = [];
 	export let runeList: runeData[] = [];

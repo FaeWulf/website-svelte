@@ -139,10 +139,6 @@
 		crystalWrapper.style.top = `${offsetY}px`;
 		document.addEventListener('pointermove', checkCardInside);
 	});
-
-	onDestroy(() => {
-		//document.removeEventListener('pointermove', checkCardInside);
-	});
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
