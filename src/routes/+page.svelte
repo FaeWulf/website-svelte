@@ -35,6 +35,7 @@
 <svelte:head>
 	<title>Faewulf's Basement | HQ</title>
 	<meta name="description" content="My Bio" />
+	<link rel="preload" as="image" href="/images/badges/css_sprites.png" />
 </svelte:head>
 
 <Logo />
