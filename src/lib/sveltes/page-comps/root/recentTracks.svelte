@@ -19,103 +19,72 @@
 	});
 </script>
 
-<div class="tab">
-	{#if last5 && lastUpdate}
-		<div class="title">
-			🎵 Recent Added Tracks <br />
-			<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
-		</div>
-		{#each last5 as track (track.ID)}
-			<a class="track" href={track.url} target="_blank">
-				<div class="name">{track.title}</div>
-				<div class="artist">{track.artist}</div>
-				<div class="duration">{track.time}</div>
-			</a>
-		{/each}
-	{:else}
-		<div>Searching...</div>
-	{/if}
+{#if last5 && lastUpdate}
+	<div class="title">
+		🎵 Recent Added Tracks <br />
+		<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
+	</div>
+	{#each last5 as track (track.ID)}
+		<a class="track" href={track.url} target="_blank">
+			<div class="name">{track.title}</div>
+			<div class="artist">{track.artist}</div>
+			<div class="duration">{track.time}</div>
+		</a>
+	{/each}
+{:else}
+	<div>Searching...</div>
+{/if}
 
-	<div class="dummy" />
-</div>
+<div class="dummy" />
 
 <style lang="scss">
-	.tab {
-		width: calc(100% - 12px);
-		height: calc(100% - 12px);
+	.title {
+		flex-basis: 100%;
+		text-align: center;
+		background-color: rgb(var(--Base));
+		border: 1px rgba(var(--Text), 0.2) solid;
+		border-radius: 5px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+	}
 
-		flex-wrap: wrap;
-		overflow-y: auto;
-		overflow-x: hidden;
-
-		padding: 5px;
-		gap: 5px;
-
+	.track {
+		position: relative;
+		width: 100%;
 		display: flex;
+		flex-direction: column;
 		justify-content: flex-start;
 		align-items: flex-start;
 		align-content: flex-start;
 
-		border-radius: 8px;
+		padding: 5px;
 
 		border: 1px rgba(var(--Text), 0.2) solid;
-		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-		-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+		border-radius: 5px;
 
-		/*
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-        */
+		text-decoration: none;
+		color: rgb(var(--Text));
 
-		.title {
-			flex-basis: 100%;
-			text-align: center;
-			background-color: rgb(var(--Base));
-			border: 1px rgba(var(--Text), 0.2) solid;
-			border-radius: 5px;
-			padding-top: 5px;
-			padding-bottom: 5px;
-			font-weight: 600;
+		&:hover {
+			color: rgb(var(--Green));
+			font-weight: bold;
 		}
 
-		.track {
-			position: relative;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: flex-start;
-			align-content: flex-start;
-
-			padding: 5px;
-
-			border: 1px rgba(var(--Text), 0.2) solid;
-			border-radius: 5px;
-
-			text-decoration: none;
-			color: rgb(var(--Text));
-
-			&:hover {
-				color: rgb(var(--Green));
-				font-weight: bold;
-			}
-
-			> .duration {
-				position: absolute;
-				top: 30%;
-				right: 10px;
-			}
-
-			> .artist {
-				font-size: 0.8rem;
-				opacity: 0.6;
-			}
+		> .duration {
+			position: absolute;
+			top: 30%;
+			right: 10px;
 		}
 
-		.dummy {
-			height: 50px;
-			flex-basis: 100%;
+		> .artist {
+			font-size: 0.8rem;
+			opacity: 0.6;
 		}
+	}
+
+	.dummy {
+		height: 20px;
+		flex-basis: 100%;
 	}
 </style>

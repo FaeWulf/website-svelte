@@ -11,65 +11,34 @@
 	});
 </script>
 
-<div class="tab">
-	{#if fortune}
-		<div class="title">🔮 Fortune Teller</div>
-		<div class="text">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
-	{:else}
-		<div>Searching...</div>
-	{/if}
+{#if fortune}
+	<div class="title">🔮 Fortune Teller</div>
+	<div class="text">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
+{:else}
+	<div>Searching...</div>
+{/if}
 
-	<div class="dummy" />
-</div>
+<div class="dummy" />
 
 <style lang="scss">
-	.tab {
-		width: calc(100% - 12px);
-		height: calc(100% - 12px);
-
-		flex-wrap: wrap;
-		overflow-y: auto;
-		overflow-x: hidden;
-
-		padding: 5px;
-		gap: 5px;
-
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
-		align-content: flex-start;
-
-		border-radius: 8px;
-
+	.title {
+		flex-basis: 100%;
+		text-align: center;
+		background-color: rgb(var(--Base));
 		border: 1px rgba(var(--Text), 0.2) solid;
-		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-		-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+		border-radius: 5px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-weight: 600;
+	}
 
-		/*
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-        */
+	.text {
+		width: 100%;
+		text-align: left;
+	}
 
-		.title {
-			flex-basis: 100%;
-			text-align: center;
-			background-color: rgb(var(--Base));
-			border: 1px rgba(var(--Text), 0.2) solid;
-			border-radius: 5px;
-			padding-top: 5px;
-			padding-bottom: 5px;
-			font-weight: 600;
-		}
-
-		.text {
-			width: 100%;
-			text-align: left;
-		}
-
-		.dummy {
-			height: 50px;
-			flex-basis: 100%;
-		}
+	.dummy {
+		height: 50px;
+		flex-basis: 100%;
 	}
 </style>
