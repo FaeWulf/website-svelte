@@ -113,8 +113,11 @@
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
 
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
+		background-color: rgba(var(--Crust), 0.7);
+		z-index: 5;
+
+		//backdrop-filter: blur(2px);
+		//-webkit-backdrop-filter: blur(2px);
 	}
 
 	input {
@@ -136,7 +139,7 @@
 	textarea,
 	input {
 		resize: none;
-		background: rgba(var(--Overlay0), 0.2);
+		background: rgba(var(--Mantle), 1);
 		border: 1px solid rgba(var(--Text), 0.2);
 		color: rgb(var(--Text));
 

@@ -133,8 +133,8 @@
 		justify-content: center;
 		align-items: center;
 
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
+		//backdrop-filter: blur(10px);
+		//-webkit-backdrop-filter: blur(10px);
 		border-radius: 50px;
 
 		.toolbar {
@@ -153,7 +153,7 @@
 			padding: 4px;
 			margin: 8px 10px 8px 10px;
 			background-color: rgba(var(--Surface0), 0.5);
-			backdrop-filter: blur(10px);
+			//backdrop-filter: blur(10px);
 
 			> div {
 				display: flex;
@@ -184,7 +184,7 @@
 			border-radius: 50px;
 			padding: 4px;
 			background-color: rgba(var(--Surface0), 0.5);
-			backdrop-filter: blur(10px);
+			//backdrop-filter: blur(10px);
 
 			-webkit-user-select: none;
 			-ms-user-select: none;

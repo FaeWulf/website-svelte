@@ -104,7 +104,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	.main {
 		position: relative;
 		flex: 1;
@@ -114,12 +114,11 @@
 		align-items: center;
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
+		background-color: rgba(var(--Crust), 1);
 
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
-		/*
-		font-family: 'Pixel Nes', 'Tahoma';
-        */
+		//backdrop-filter: blur(2px);
+		//-webkit-backdrop-filter: blur(2px);
+		//font-family: 'Pixel Nes', 'Tahoma';
 	}
 
 	.statistic {

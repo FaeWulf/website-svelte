@@ -99,8 +99,9 @@
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
 
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
+		background-color: rgba(var(--Crust), 0.7);
+		//backdrop-filter: blur(2px);
+		//-webkit-backdrop-filter: blur(2px);
 	}
 
 	h3 {
@@ -115,7 +116,7 @@
 	button {
 		margin: 10px;
 		margin-top: 50px;
-		border: 1px solid rgba(var(--Lavender), 0.6);
+		border: 1px solid rgba(var(--Mantle), 1);
 		background: rgba(var(--Overlay0), 0.5);
 		color: rgb(var(--Text));
 		padding: 5px;

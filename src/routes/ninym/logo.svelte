@@ -20,7 +20,6 @@
 			border-radius: 50%;
 			z-index: -1;
 			transform: scale(1);
-			filter: blur(15px);
 
 			background: linear-gradient(90deg, #0fffc1, #7e0fff);
 			background-size: 200% 200%;

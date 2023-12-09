@@ -22,15 +22,17 @@
 {/if}
 <a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
 
-<style>
+<style lang="scss">
 	#blog-content {
 		border: 1px solid rgba(var(--Text), 0.2);
 		width: 100%;
 		height: 100%;
-		background-color: rgba(var(--Surface0), 0.4);
-		backdrop-filter: blur(10px);
+		background-color: rgba(var(--Mantle), 1);
+		//backdrop-filter: blur(10px);
 
 		border-radius: 5px;
+
+		z-index: 5;
 	}
 
 	a {

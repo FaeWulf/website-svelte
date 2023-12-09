@@ -46,7 +46,7 @@
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
 
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
+		//backdrop-filter: blur(2px);
+		//-webkit-backdrop-filter: blur(2px);
 	}
 </style>

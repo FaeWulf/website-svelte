@@ -180,7 +180,8 @@
 			'titlebar'
 			'content';
 
-		transition: backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1),
+		transition:
+		//	backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1),
 			opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1),
 			box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -200,8 +201,8 @@
 			border: 1px solid rgba(var(--Green), 0.4);
 			opacity: 1;
 			background: rgba(var(--Crust), 0.4);
-			backdrop-filter: blur(2px);
-			-webkit-backdrop-filter: blur(2px);
+			//backdrop-filter: blur(2px);
+			//-webkit-backdrop-filter: blur(2px);
 			z-index: 10;
 			box-shadow: 0 0 20px #000;
 		}

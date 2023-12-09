@@ -87,11 +87,14 @@
 		align-items: center;
 		flex-direction: column;
 		border: 1px solid rgba(var(--Text), 0.2);
+		background-color: rgba(var(--Crust), 1);
 
 		font-family: 'Pixel Nes', 'Tahoma';
 
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
+		z-index: 5;
+
+		//backdrop-filter: blur(2px);
+		//-webkit-backdrop-filter: blur(2px);
 	}
 
 	.container {
