@@ -1,279 +1,279 @@
 {
-    "skill": [
-        {
-            "name": "javascript",
-            "level": 4,
-            "url": "",
-            "sprite": {
-                "width": 127,
-                "height": 28,
-                "x": -0,
-                "y": -168
-            }
-        },
-        {
-            "name": "c",
-            "level": 4,
-            "url": "",
-            "sprite": {
-                "width": 52,
-                "height": 28,
-                "x": -194,
-                "y": -28
-            }
-        },
-        {
-            "name": "c++",
-            "level": 4,
-            "url": "",
-            "sprite": {
-                "width": 72,
-                "height": 28,
-                "x": -88,
-                "y": -224
-            }
-        },
-        {
-            "name": "typescript",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 127,
-                "height": 28,
-                "x": -0,
-                "y": -196
-            }
-        },
-        {
-            "name": "html",
-            "level": 3,
-            "url": "",
-            "sprite": {
-                "width": 88,
-                "height": 28,
-                "x": -0,
-                "y": -224
-            }
-        },
-        {
-            "name": "java",
-            "level": 3,
-            "url": "",
-            "sprite": {
-                "width": 77,
-                "height": 28,
-                "x": -169,
-                "y": -84
-            }
-        },
-        {
-            "name": "python",
-            "level": 3,
-            "url": "",
-            "sprite": {
-                "width": 98,
-                "height": 24,
-                "x": -249,
-                "y": -84
-            }
-        }
-    ],
-    "env": [
-        {
-            "name": "machine",
-            "url": "",
-            "sprite": {
-                "width": 249,
-                "height": 28,
-                "x": -0,
-                "y": -0
-            }
-        },
-        {
-            "name": "os",
-            "url": "",
-            "sprite": {
-                "width": 127,
-                "height": 28,
-                "x": -0,
-                "y": -140
-            }
-        },
-        {
-            "name": "cpu",
-            "url": "",
-            "sprite": {
-                "width": 194,
-                "height": 28,
-                "x": -0,
-                "y": -28
-            }
-        },
-        {
-            "name": "gpu",
-            "url": "",
-            "sprite": {
-                "width": 169,
-                "height": 28,
-                "x": -0,
-                "y": -84
-            }
-        }
-    ],
-    "epx": [
-        {
-            "name": "css",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 69,
-                "height": 28,
-                "x": -160,
-                "y": -224
-            }
-        },
-        {
-            "name": "jquery",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 96,
-                "height": 28,
-                "x": -249,
-                "y": -112
-            }
-        },
-        {
-            "name": "svelte",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 93,
-                "height": 28,
-                "x": -249,
-                "y": -140
-            }
-        },
-        {
-            "name": "vuejs",
-            "level": 1,
-            "url": "",
-            "sprite": {
-                "width": 90,
-                "height": 28,
-                "x": -249,
-                "y": -168
-            }
-        },
-        {
-            "name": "raspberrypi",
-            "level": 3,
-            "url": "",
-            "sprite": {
-                "width": 142,
-                "height": 28,
-                "x": -0,
-                "y": -112
-            }
-        },
-        {
-            "name": "mongodb",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 111,
-                "height": 28,
-                "x": -127,
-                "y": -168
-            }
-        },
-        {
-            "name": "nodejs",
-            "level": 3,
-            "url": "",
-            "sprite": {
-                "width": 101,
-                "height": 28,
-                "x": -249,
-                "y": -0
-            }
-        },
-        {
-            "name": "expressjs",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 103,
-                "height": 28,
-                "x": -127,
-                "y": -196
-            }
-        },
-        {
-            "name": "mysql",
-            "level": 3,
-            "url": "",
-            "sprite": {
-                "width": 88,
-                "height": 28,
-                "x": -249,
-                "y": -196
-            }
-        },
-        {
-            "name": "ubuntu",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 99,
-                "height": 28,
-                "x": -249,
-                "y": -28
-            }
-        },
-        {
-            "name": "arch",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 127,
-                "height": 28,
-                "x": -0,
-                "y": -140
-            }
-        },
-        {
-            "name": "neovim",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 98,
-                "height": 28,
-                "x": -249,
-                "y": -56
-            }
-        },
-        {
-            "name": "blender",
-            "level": 1,
-            "url": "",
-            "sprite": {
-                "width": 105,
-                "height": 28,
-                "x": -142,
-                "y": -112
-            }
-        },
-        {
-            "name": "adobe ai",
-            "level": 2,
-            "url": "",
-            "sprite": {
-                "width": 186,
-                "height": 28,
-                "x": -0,
-                "y": -56
-            }
-        }
-    ]
+	"skill": [
+		{
+			"name": "javascript",
+			"level": 4,
+			"url": "",
+			"sprite": {
+				"width": 127,
+				"height": 28,
+				"x": -0,
+				"y": -168
+			}
+		},
+		{
+			"name": "c",
+			"level": 4,
+			"url": "",
+			"sprite": {
+				"width": 52,
+				"height": 28,
+				"x": -194,
+				"y": -28
+			}
+		},
+		{
+			"name": "c++",
+			"level": 4,
+			"url": "",
+			"sprite": {
+				"width": 72,
+				"height": 28,
+				"x": -88,
+				"y": -224
+			}
+		},
+		{
+			"name": "typescript",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 127,
+				"height": 28,
+				"x": -0,
+				"y": -196
+			}
+		},
+		{
+			"name": "html",
+			"level": 3,
+			"url": "",
+			"sprite": {
+				"width": 88,
+				"height": 28,
+				"x": -0,
+				"y": -224
+			}
+		},
+		{
+			"name": "java",
+			"level": 3,
+			"url": "",
+			"sprite": {
+				"width": 77,
+				"height": 28,
+				"x": -169,
+				"y": -84
+			}
+		},
+		{
+			"name": "python",
+			"level": 3,
+			"url": "",
+			"sprite": {
+				"width": 98,
+				"height": 28,
+				"x": -249,
+				"y": -84
+			}
+		}
+	],
+	"env": [
+		{
+			"name": "machine",
+			"url": "",
+			"sprite": {
+				"width": 249,
+				"height": 28,
+				"x": -0,
+				"y": -0
+			}
+		},
+		{
+			"name": "os",
+			"url": "",
+			"sprite": {
+				"width": 127,
+				"height": 28,
+				"x": -0,
+				"y": -140
+			}
+		},
+		{
+			"name": "cpu",
+			"url": "",
+			"sprite": {
+				"width": 194,
+				"height": 28,
+				"x": -0,
+				"y": -28
+			}
+		},
+		{
+			"name": "gpu",
+			"url": "",
+			"sprite": {
+				"width": 169,
+				"height": 28,
+				"x": -0,
+				"y": -84
+			}
+		}
+	],
+	"epx": [
+		{
+			"name": "css",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 69,
+				"height": 28,
+				"x": -160,
+				"y": -224
+			}
+		},
+		{
+			"name": "jquery",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 96,
+				"height": 28,
+				"x": -249,
+				"y": -112
+			}
+		},
+		{
+			"name": "svelte",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 93,
+				"height": 28,
+				"x": -249,
+				"y": -140
+			}
+		},
+		{
+			"name": "vuejs",
+			"level": 1,
+			"url": "",
+			"sprite": {
+				"width": 90,
+				"height": 28,
+				"x": -249,
+				"y": -168
+			}
+		},
+		{
+			"name": "raspberrypi",
+			"level": 3,
+			"url": "",
+			"sprite": {
+				"width": 142,
+				"height": 28,
+				"x": -0,
+				"y": -112
+			}
+		},
+		{
+			"name": "mongodb",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 111,
+				"height": 28,
+				"x": -127,
+				"y": -168
+			}
+		},
+		{
+			"name": "nodejs",
+			"level": 3,
+			"url": "",
+			"sprite": {
+				"width": 101,
+				"height": 28,
+				"x": -249,
+				"y": -0
+			}
+		},
+		{
+			"name": "expressjs",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 103,
+				"height": 28,
+				"x": -127,
+				"y": -196
+			}
+		},
+		{
+			"name": "mysql",
+			"level": 3,
+			"url": "",
+			"sprite": {
+				"width": 88,
+				"height": 28,
+				"x": -249,
+				"y": -196
+			}
+		},
+		{
+			"name": "ubuntu",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 99,
+				"height": 28,
+				"x": -249,
+				"y": -28
+			}
+		},
+		{
+			"name": "arch",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 127,
+				"height": 28,
+				"x": -0,
+				"y": -140
+			}
+		},
+		{
+			"name": "neovim",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 98,
+				"height": 28,
+				"x": -249,
+				"y": -56
+			}
+		},
+		{
+			"name": "blender",
+			"level": 1,
+			"url": "",
+			"sprite": {
+				"width": 105,
+				"height": 28,
+				"x": -142,
+				"y": -112
+			}
+		},
+		{
+			"name": "adobe ai",
+			"level": 2,
+			"url": "",
+			"sprite": {
+				"width": 186,
+				"height": 28,
+				"x": -0,
+				"y": -56
+			}
+		}
+	]
 }
