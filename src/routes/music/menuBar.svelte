@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { track } from '$lib/types';
-	import { tooltip, shuffleArray } from '$lib/utils';
+	import { tooltip } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import { createSingleton } from 'tippy.js';
 	import 'tippy.js/animations/scale.css';

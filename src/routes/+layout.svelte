@@ -22,6 +22,8 @@
 	let windowToggle: boolean = true;
 	let windowOntop: boolean = false;
 
+	let ufoToggleMovement: boolean;
+
 	$: onHideDistractingComps_Changes(data.hideDistractingComps);
 	$: windowOntop = data.windowOnTop;
 
@@ -34,8 +36,8 @@
 	{#if data.hideDistractingComps}
 		<Background />
 	{/if}
-	<Header bind:windowToggle />
-	<Ufo />
+	<Header bind:windowToggle bind:ufoToggleMovement />
+	<Ufo bind:toggleMovement={ufoToggleMovement} />
 
 	<Window bind:windowToggle bind:windowOntop />
 	<main id="main">

@@ -3,6 +3,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import BubbleChat from '$lib/sveltes/ufo/bubbleChat.svelte';
 
+	export let toggleMovement = false;
+
 	let mouseX = 0,
 		mouseY = 0,
 		mouseOnScreen = false;
@@ -60,6 +62,8 @@
 
 	//functions
 	const eventMouseMove = (E: MouseEvent) => {
+		if (!toggleMovement) return;
+
 		mouseX = E.clientX;
 		mouseY = E.clientY;
 	};

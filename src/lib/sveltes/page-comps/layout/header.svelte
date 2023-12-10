@@ -7,11 +7,13 @@
 	import { typewriter, capitalFirstLeter, tooltip } from '$lib/utils';
 
 	//import toolbar comps
-	import Volume from '$lib/sveltes/page-comps/layout/volume.svelte';
-	import Theme from '$lib/sveltes/page-comps/layout/theme.svelte';
-	import WindowIcon from './window-icon.svelte';
+	import Volume from '$lib/sveltes/page-comps/layout/button_volume.svelte';
+	import Theme from '$lib/sveltes/page-comps/layout/button_theme.svelte';
+	import WindowIcon from '$lib/sveltes/page-comps/layout/button_window-icon.svelte';
+	import ButtonUfo from '$lib/sveltes/page-comps/layout/button_ufo.svelte';
 
 	export let windowToggle: boolean;
+	export let ufoToggleMovement: boolean;
 
 	let template: HTMLElement;
 	onMount(() => {
@@ -66,8 +68,23 @@
 				<Theme bind:toggle={themeToggle} />
 			</div>
 
-			<div id="ufo_home" />
-			<div>
+			<div
+				id="ufo_home"
+				use:tooltip={{
+					content: 'Toggle UFO movement',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
+			>
+				<ButtonUfo bind:toggle={ufoToggleMovement} />
+			</div>
+			<div
+				use:tooltip={{
+					content: 'Toggle window tab',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
+			>
 				<WindowIcon bind:windowToggle />
 			</div>
 		</div>
