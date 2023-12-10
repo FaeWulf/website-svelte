@@ -12,7 +12,7 @@
 	});
 </script>
 
-<div class="title">📝 Recent blog</div>
+<div class="title" id="recent-blog">📝 Recent blog</div>
 {#if blogs}
 	{#each blogs as blog (blog.name)}
 		<a class="post" href="/blog/{blog.path}">

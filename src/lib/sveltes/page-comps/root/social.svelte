@@ -84,7 +84,7 @@
 
 <style lang="scss">
 	.container {
-		margin-top: 50px;
+		margin-top: 40px;
 		position: relative;
 		max-width: 350px;
 		display: flex;

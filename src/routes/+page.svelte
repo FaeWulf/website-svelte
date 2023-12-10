@@ -18,8 +18,10 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		const greetings = ["Welcome to Faewulf's Basement!", 'Hello!', 'Greetings!'];
-		ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
+		const greetings = ['Welcome!', 'Hello!', 'Greetings!'];
+		setTimeout(() => {
+			ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
+		}, 500);
 	});
 
 	let descriptionChanger = {
@@ -43,10 +45,13 @@
 <div class="infoSlide">
 	<div class="infoTab">
 		<Badges bind:descriptionChanger />
-		<RecentTracks />
 		<RecentBlog />
+		<RecentTracks />
 		<FortuneTeller />
 	</div>
+</div>
+<div class="text-scroll">
+	<img draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow" />
 </div>
 <Social bind:titleChanger />
 
@@ -100,21 +105,24 @@
 		}
 	}
 
-	@keyframes animateArrow {
-		0% {
-			transform: translateX(-7px) scale(1.5);
-		}
-		100% {
-			transform: translateX(7px) scale(1.5);
+	.text-scroll {
+		margin-top: 10px;
+		opacity: 0.6;
+		//transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+		img {
+			width: 35px;
+
+			animation: animateArrow 0.5s ease-in infinite alternate;
 		}
 	}
 
-	@keyframes animateArrow-reverse {
+	@keyframes animateArrow {
 		0% {
-			transform: translateX(7px) scale(1.5);
+			transform: translateY(-4px);
 		}
 		100% {
-			transform: translateX(-7px) scale(1.5);
+			transform: translateY(4px);
 		}
 	}
 </style>
