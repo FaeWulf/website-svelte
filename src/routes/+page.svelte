@@ -17,12 +17,26 @@
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
 
+	const tabs: string[] = [
+		'infotabs-badges',
+		'infotabs-recentblog',
+		'infotabs-recenttracks',
+		'infotabs-fortuneteller'
+	];
+	let tab_index = 0;
+
 	onMount(async () => {
-		const greetings = ['Welcome!', 'Hello!', 'Greetings!'];
+		const greetings = ['Happy 2024!', 'Hello!', 'Greetings!'];
 		setTimeout(() => {
 			ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
 		}, 500);
 	});
+
+	//cycle through tabs, call function scrollIntoView
+	function nextTab() {
+		tab_index = (tab_index + 1) % tabs.length;
+		document.getElementById(tabs[tab_index])?.scrollIntoView({ behavior: 'smooth' });
+	}
 
 	let descriptionChanger = {
 		value: 0,
@@ -50,8 +64,13 @@
 		<FortuneTeller />
 	</div>
 </div>
-<div class="text-scroll">
-	<img draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow" />
+<div
+	class="text-scroll"
+	use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}
+>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+	<img draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow" on:click={nextTab} />
 </div>
 <Social bind:titleChanger />
 
@@ -110,10 +129,16 @@
 		opacity: 0.6;
 		//transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
+		//remove ability to select text
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
 		img {
 			width: 35px;
 
-			animation: animateArrow 0.5s ease-in infinite alternate;
+			animation: animateArrow 0.6s ease-in infinite alternate;
 		}
 	}
 

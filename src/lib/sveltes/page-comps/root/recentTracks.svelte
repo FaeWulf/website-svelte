@@ -20,7 +20,7 @@
 </script>
 
 {#if last5 && lastUpdate}
-	<div class="title">
+	<div class="title" id="infotabs-recenttracks">
 		🎵 Recent Added Tracks <br />
 		<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
 	</div>

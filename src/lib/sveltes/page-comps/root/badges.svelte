@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="title">🚀 Languages</div>
+<div class="title" id="infotabs-badges">🚀 Languages</div>
 {#each badges.skill as skill (skill.name)}
 	<img
 		on:mouseenter={() => sendChangeText(skill.level, skill.name, false)}

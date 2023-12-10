@@ -12,7 +12,7 @@
 </script>
 
 {#if fortune}
-	<div class="title">🔮 Fortune Teller</div>
+	<div class="title" id="infotabs-fortuneteller">🔮 Fortune Teller</div>
 	<div class="text">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
 {:else}
 	<div>Searching...</div>
