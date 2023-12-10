@@ -5,7 +5,6 @@
 
 	onMount(() => {
 		toggle = !isMobile(window, window.navigator);
-		console.log(toggle);
 	});
 </script>
 
