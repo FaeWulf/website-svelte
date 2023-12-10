@@ -41,7 +41,7 @@
 		class="searchBar"
 		type="search"
 		bind:value={search}
-		placeholder="Search with track, artist"
+		placeholder="Search with track, artist, or id number"
 		use:tooltip={{ instancesHolder: tippyInstances }}
 		title="Search for tracks"
 	/>
