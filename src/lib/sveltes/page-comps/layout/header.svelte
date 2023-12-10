@@ -153,6 +153,7 @@
 		//backdrop-filter: blur(10px);
 		//-webkit-backdrop-filter: blur(10px);
 		border-radius: 50px;
+		background-color: rgba(var(--Mantle), 0.8);
 
 		.toolbar {
 			display: flex;
