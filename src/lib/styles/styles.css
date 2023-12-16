@@ -82,6 +82,10 @@ body {
 	overflow-x: hidden;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 h1,
 h2,
 p {
