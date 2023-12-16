@@ -42,7 +42,7 @@
 	alt="bonsai"
 	on:click={restart}
 	use:tooltip={{
-		content: 'Click to grow another bonsai!',
+		content: 'Click to grow another bonsai! More info: faewulf.xyz/projects/bonsai 🍃',
 		theme: 'catppuccin',
 		animation: 'scale',
 		offset: [0, 40]
