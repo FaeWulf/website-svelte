@@ -29,18 +29,18 @@
 			name: 'About',
 			icon: 'ℹ️',
 			url: '/about'
+		},
+		{
+			name: 'Support me',
+			icon: '❤️',
+			url: 'https://ko-fi.com/faewulf'
 		}
 	];
 </script>
 
 <div id="dropDownList" class="nav-dropdown">
 	{#each pages as page (page.name)}
-		<a
-			class="nav-dropdown-item"
-			href={page.url}
-			data-sveltekit-preload-code="tap"
-			data-sveltekit-preload-data="tap">{page.icon}| &nbsp;{page.name}</a
-		>
+		<a class="nav-dropdown-item" href={page.url} data-sveltekit-preload-code="tap" data-sveltekit-preload-data="tap">{page.icon}| &nbsp;{page.name}</a>
 	{/each}
 </div>
 

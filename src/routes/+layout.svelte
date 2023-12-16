@@ -48,6 +48,10 @@
 		{/key}
 	</main>
 
+	<a class="support-badge" href="https://ko-fi.com/faewulf" target="_blank">
+		<img draggable="false" src="/images/badges/kofi_button_red.png" alt="support badge" />
+	</a>
+
 	<footer>
 		<p>
 			<a href="https://hotlinewebring.club/faewulf/previous">←</a> Hotline Webring
@@ -62,6 +66,33 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+
+		.support-badge {
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 10;
+
+			//dissable on mobile
+			@media (max-width: 450px) {
+				display: none;
+			}
+
+			img {
+				width: 200px;
+				transform-origin: center;
+				transform: rotate(45deg) translate(60px, -10px);
+				transition:
+					filter 0.7s cubic-bezier(0.075, 0.82, 0.165, 1),
+					transform 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+				cursor: pointer;
+
+				&:hover {
+					filter: hue-rotate(-90deg);
+					transform: rotate(45deg) translate(60px, -5px) scale(1.05);
+				}
+			}
+		}
 	}
 
 	main {
