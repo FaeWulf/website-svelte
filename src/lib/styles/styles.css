@@ -71,7 +71,10 @@
 }
 
 body {
-	/* min-height: 100vh; */
+	/* 
+	 *  min-height: 100vh; 
+	 *  prevent the footer from being cut off on mobile, f*ck the mobile's status bar things
+	*/
 	min-height: calc(100vh - calc(100vh - 100%));
 	margin: 0;
 
