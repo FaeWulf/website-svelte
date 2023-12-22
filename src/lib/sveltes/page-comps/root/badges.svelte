@@ -24,8 +24,7 @@
 		class="badge"
 		src="/images/badges/css_sprites.png"
 		alt={skill.name}
-		style="width: {skill.sprite.width}px; height: {skill.sprite.height}px; object-position: {skill
-			.sprite.x}px {skill.sprite.y}px;"
+		style="width: {skill.sprite.width}px; height: {skill.sprite.height}px; object-position: {skill.sprite.x}px {skill.sprite.y}px;"
 	/>
 {/each}
 <div class="title">🌟 Experienced with</div>
@@ -38,8 +37,7 @@
 		on:touchstart={() => sendChangeText(epx.level, epx.name, true)}
 		src="/images/badges/css_sprites.png"
 		alt={epx.name}
-		style="width: {epx.sprite.width}px; height: {epx.sprite.height}px; object-position: {epx.sprite
-			.x}px {epx.sprite.y}px;"
+		style="width: {epx.sprite.width}px; height: {epx.sprite.height}px; object-position: {epx.sprite.x}px {epx.sprite.y}px;"
 	/>
 {/each}
 <div class="title">💻 Work Station</div>
@@ -49,8 +47,7 @@
 		class="badge"
 		alt={envi.name}
 		src="/images/badges/css_sprites.png"
-		style="width: {envi.sprite.width}px; height: {envi.sprite.height}px; object-position: {envi
-			.sprite.x}px {envi.sprite.y}px;"
+		style="width: {envi.sprite.width}px; height: {envi.sprite.height}px; object-position: {envi.sprite.x}px {envi.sprite.y}px;"
 	/>
 {/each}
 <div class="dummy" />

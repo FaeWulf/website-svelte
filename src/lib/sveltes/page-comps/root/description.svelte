@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { isMobile } from '$lib/utils';
+	import { onMount } from 'svelte';
 
 	export let descriptionChanger = {
 		value: 0,
@@ -7,20 +9,19 @@
 		learner: false
 	};
 
+	let mobileMode = false;
+
+	onMount(() => {
+		mobileMode = isMobile(window, window.navigator);
+	});
+
 	$: level = descriptionChanger.value;
 	$: learner = descriptionChanger.learner;
 	$: text = descriptionChanger.text.replaceAll(' ', '&nbsp;');
 
 	const anVowel = [0, 2];
 	const colorLevel = ['', '', 'hueText-green', 'hueText-blue', 'hueText-purple', 'hueText-red'];
-	const textLevel = [
-		'inexperience',
-		'Novice',
-		'Advaned&nbsp;Beginner',
-		'Competence',
-		'Proficient',
-		'Expert'
-	];
+	const textLevel = ['inexperience', 'Novice', 'Advaned&nbsp;Beginner', 'Competence', 'Proficient', 'Expert'];
 
 	/*
 	onMount(() => {
@@ -41,13 +42,9 @@
 	{/if}
 	{#each textLevel as textlvl, index (textlvl)}
 		{#if level == index}
-			<span transition:slide={{ delay: 200, axis: 'x' }} class={colorLevel[index]}
-				>{@html textlvl}</span
-			>
-			<span
-				class="hueText-cycle description-info"
-				out:slide={{ delay: 200, axis: 'x' }}
-				in:slide={{ delay: 200, axis: 'x' }}>{@html text}</span
+			<span transition:slide={{ delay: 200, axis: 'x' }} class:animate={!mobileMode} class={colorLevel[index]}>{@html textlvl}</span>
+			<span class:hueText-cycle={!mobileMode} class="description-info" out:slide={{ delay: 200, axis: 'x' }} in:slide={{ delay: 200, axis: 'x' }}
+				>{@html text}</span
 			>
 		{/if}
 	{/each}
@@ -75,5 +72,6 @@
 
 	.description-info {
 		font-weight: 800;
+		color: #eb008b;
 	}
 </style>

@@ -28,8 +28,8 @@
 		{#if type == key && value.first.length > 0}
 			<span class="adjust-height" transition:slide={{ delay: 0, axis: 'x' }}>{value.first}</span>
 		{/if}
-	{/each}<span class="hueText name"
-		>Faewulf
+	{/each}<span class="hueText name">
+		Faewulf
 		<StatusDot />
 	</span>
 	{#each [...infoMap] as [key, value]}

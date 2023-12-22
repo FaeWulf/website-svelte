@@ -1,87 +1,86 @@
 .hueText {
-    background: linear-gradient(120deg, #ff1b6b, #45caff, #ff1b6b);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hue 2s linear infinite;
+	background: linear-gradient(120deg, #ff1b6b, #45caff, #ff1b6b);
+	background-size: 200%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	animation: hue 2s linear infinite;
+}
+
+@media screen and (max-width: 600px) {
+	.hueText {
+		animation: none;
+	}
 }
 
 .hueText-cycle {
-    animation: colorchange 8s infinite;
-    /* animation-name followed by duration in seconds*/
-    /* you could also use milliseconds (ms) or something like 2.5s */
-    -webkit-animation: colorchange 8s infinite;
-    /* Chrome and Safari */
-    -moz-animation: colorchange 8s infinite;
-    -ms-animation: colorchange 8s infinite;
-    -o-animation: colorchange 8s infinite;
+	animation: colorchange 8s infinite;
 }
 
 @keyframes colorchange {
-    0% {
-        color: #eb008b;
-    }
+	0% {
+		color: #eb008b;
+	}
 
-    25% {
-        color: #fff100;
-    }
+	25% {
+		color: #fff100;
+	}
 
-    50% {
-        color: #01a54f;
-    }
+	50% {
+		color: #01a54f;
+	}
 
-    75% {
-        color: #00adef;
-    }
+	75% {
+		color: #00adef;
+	}
 
-    100% {
-        color: #eb008b;
-    }
+	100% {
+		color: #eb008b;
+	}
 }
 
 .hueText-green {
-    background: linear-gradient(120deg, #00ff87, #60efff, #00ff87);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hue 1.5s linear infinite;
+	background: linear-gradient(120deg, #00ff87, #60efff, #00ff87);
+	background-size: 200%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
 .hueText-blue {
-    background: linear-gradient(120deg, #0061ff, #60efff, #0061ff);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hue 1.5s linear infinite;
+	background: linear-gradient(120deg, #0061ff, #60efff, #0061ff);
+	background-size: 200%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
 .hueText-purple {
-    background: linear-gradient(120deg, #40c9ff, #e81cff, #40c9ff);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hue 1.5s linear infinite;
+	background: linear-gradient(120deg, #40c9ff, #e81cff, #40c9ff);
+	background-size: 200%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
 .hueText-red {
-    background: linear-gradient(120deg, #ff0f7b, #f89b29, #ff0f7b);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: hue 1.5s linear infinite;
+	background: linear-gradient(120deg, #ff0f7b, #f89b29, #ff0f7b);
+	background-size: 200%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.animate {
+	animation: hue 1.5s linear infinite;
 }
 
 @keyframes hue {
-    0% {
-        background-position: 0% 0%;
-    }
+	0% {
+		background-position: 0% 0%;
+	}
 
-    100% {
-        background-position: 200% 200%;
-    }
+	100% {
+		background-position: 200% 200%;
+	}
 }

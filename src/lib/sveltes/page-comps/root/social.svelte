@@ -6,12 +6,13 @@
 	import youtube from '$lib/svgs/youtube.svelte';
 	import github from '$lib/svgs/github.svelte';
 
-	import { tooltip } from '$lib/utils';
+	import { tooltip, isMobile } from '$lib/utils';
 	import 'tippy.js/animations/scale.css';
 	import { createSingleton } from 'tippy.js';
 	import { onMount } from 'svelte';
 
 	export let titleChanger = '';
+	let mobileMode = true;
 
 	const badges = [
 		{
@@ -61,6 +62,8 @@
 			theme: 'catppuccin',
 			animation: 'scale'
 		});
+
+		mobileMode = isMobile(window, window.navigator);
 	});
 </script>
 
@@ -77,7 +80,7 @@
 			title={badge.name}
 		>
 			<!--img class="social" alt={badge.name} src="svgs/{badge.name}.svg" /-->
-			<svelte:component this={badge.component} size={41} />
+			<svelte:component this={badge.component} size={41} animate={!mobileMode} />
 		</a>
 	{/each}
 </div>

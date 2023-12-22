@@ -1,6 +1,7 @@
 <script lang="ts">
 	export const color = '';
 	export let size = 24;
+	export let animate = true;
 </script>
 
 <svg
@@ -8,6 +9,7 @@
 	viewBox="0 0 24 24"
 	width="24"
 	height="24"
+	class:animate
 	xmlns="http://www.w3.org/2000/svg"
 	fill-rule="evenodd"
 	clip-rule="evenodd"
@@ -25,10 +27,13 @@
 		border: 50%;
 		fill: rgba(var(--Base), 255);
 		background-size: 200%;
-		animation: hue 10s linear infinite;
 		border-radius: 60%;
 		border: 2px solid rgba(var(--Text), 0.2);
 
 		transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+	}
+
+	.animate {
+		animation: hue 10s linear infinite;
 	}
 </style>
