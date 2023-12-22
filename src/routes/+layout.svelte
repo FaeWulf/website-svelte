@@ -40,6 +40,11 @@
 	<Ufo bind:toggleMovement={ufoToggleMovement} />
 
 	<Window bind:windowToggle bind:windowOntop />
+
+	<a class="support-badge" href="/support">
+		<img draggable="false" src="/images/badges/support_button_red.webp" alt="support badge" />
+	</a>
+
 	<main id="main">
 		{#key data.url}
 			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main">
@@ -47,10 +52,6 @@
 			</div>
 		{/key}
 	</main>
-
-	<a class="support-badge" href="https://ko-fi.com/faewulf" target="_blank">
-		<img draggable="false" src="/images/badges/kofi_button_red.png" alt="support badge" />
-	</a>
 
 	<footer>
 		<p>
@@ -74,7 +75,7 @@
 			z-index: 10;
 
 			//dissable on mobile
-			@media (max-width: 450px) {
+			@media (max-width: 550px) {
 				display: none;
 			}
 
@@ -93,53 +94,51 @@
 				}
 			}
 		}
-	}
 
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		margin-top: 50px;
-		box-sizing: border-box;
-
-		.main {
+		main {
+			flex: 1;
 			display: flex;
 			flex-direction: column;
+			padding: 1rem;
 			width: 100%;
-			flex: 1;
+			max-width: 64rem;
+			margin: 0 auto;
+			margin-top: 50px;
+			box-sizing: border-box;
 
+			.main {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				flex: 1;
+
+				justify-content: center;
+				align-items: center;
+			}
+		}
+
+		footer {
+			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-		}
-	}
+			padding: 0px;
+			margin: 5px;
+			margin-bottom: 10px;
 
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 0px;
-		margin: 5px;
-		margin-bottom: 10px;
+			-webkit-user-select: none; /* Safari */
+			-ms-user-select: none; /* IE 10 and IE 11 */
+			user-select: none; /* Standard syntax */
 
-		-webkit-user-select: none; /* Safari */
-		-ms-user-select: none; /* IE 10 and IE 11 */
-		user-select: none; /* Standard syntax */
+			z-index: 0;
 
-		z-index: 0;
+			p {
+				margin: 0;
+			}
 
-		p {
-			margin: 0;
-		}
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 0 0;
+			@media (max-width: 480px) {
+				padding: 0 0;
+			}
 		}
 	}
 </style>

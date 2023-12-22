@@ -33,7 +33,7 @@
 		{
 			name: 'Support me',
 			icon: '❤️',
-			url: 'https://ko-fi.com/faewulf'
+			url: '/support'
 		}
 	];
 </script>
@@ -68,6 +68,10 @@
 				color: rgb(var(--Green));
 				background-color: rgba(var(--Surface2), 0.6);
 			}
+		}
+
+		@media screen and (max-width: 600px) {
+			max-width: none;
 		}
 	}
 
