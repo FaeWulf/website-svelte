@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Star, ShootingStar } from '$lib/scripts/page-comps/layout/background';
 	import type { bgItem } from '$lib/scripts/page-comps/layout/background';
+	import { isMobile } from '$lib/utils';
 	//import { spring } from 'svelte/motion';
 
 	export let background_color = '#110E19AA';
@@ -9,6 +10,8 @@
 	// background
 	let innerHeight: number, innerWidth: number;
 	let background: HTMLCanvasElement;
+
+	let numbers_of_stars = 200;
 
 	//background entity
 	let entities: bgItem[] = [];
@@ -18,6 +21,8 @@
 		let bgCtx = background.getContext('2d')!,
 			width = innerWidth,
 			height = innerHeight;
+
+		numbers_of_stars = isMobile(window, window.navigator) ? width / 2 : height / 2;
 
 		refreshOnSizeChange(innerHeight, innerWidth);
 
@@ -29,8 +34,8 @@
 
 			bgCtx.fillStyle = background_color;
 			bgCtx.clearRect(0, 0, width, height);
-			bgCtx.fillStyle = '#ffffff';
-			bgCtx.strokeStyle = '#ffffff';
+			bgCtx.fillStyle = '#ffffffaa';
+			bgCtx.strokeStyle = '#ffffffaa';
 
 			var entLen = entities.length;
 
@@ -53,7 +58,7 @@
 		entities = [];
 
 		// init stars
-		for (var i = 0; i < height / 2; i++) {
+		for (var i = 0; i < numbers_of_stars; i++) {
 			entities.push(
 				new Star({
 					x: Math.random() * width,
@@ -72,6 +77,7 @@
 </script>
 
 <canvas bind:this={background} width={innerWidth} height={innerHeight} draggable="false" />
+<div class="overlay" />
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
@@ -83,5 +89,19 @@
 		z-index: -99;
 		width: 100%;
 		height: 100%;
+	}
+
+	.overlay {
+		z-index: -100;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		background-attachment: fixed;
+		background-color: var(--color-bg-1);
+		background-size: 100vw 100vh;
+		background: radial-gradient(ellipse at top, #1b2735 0%, #090a0f 85%);
 	}
 </style>
