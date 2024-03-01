@@ -17,12 +17,7 @@
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
 
-	const tabs: string[] = [
-		'infotabs-badges',
-		'infotabs-recentblog',
-		'infotabs-recenttracks',
-		'infotabs-fortuneteller'
-	];
+	const tabs: string[] = ['infotabs-badges', 'infotabs-recentblog', 'infotabs-recenttracks', 'infotabs-fortuneteller'];
 	let tab_index = 0;
 
 	onMount(async () => {
@@ -64,10 +59,7 @@
 		<FortuneTeller />
 	</div>
 </div>
-<div
-	class="text-scroll"
-	use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}
->
+<div class="text-scroll" use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 	<img draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow" on:click={nextTab} />
@@ -137,8 +129,8 @@
 
 		img {
 			width: 35px;
-
 			animation: animateArrow 0.6s ease-in infinite alternate;
+			cursor: pointer;
 		}
 	}
 

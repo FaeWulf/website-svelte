@@ -187,6 +187,11 @@
 
 		animation: 0.3s show ease-in-out;
 
+		//prevent selection
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+
 		&.hide {
 			pointer-events: none;
 			animation: 0.3s hide ease-in-out forwards;

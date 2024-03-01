@@ -4,7 +4,7 @@
 	import 'tippy.js/animations/perspective-subtle.css';
 	import HeaderDroplist from '$lib/sveltes/page-comps/layout/header_droplist.svelte';
 	import { onMount } from 'svelte';
-	import { typewriter, capitalFirstLeter, tooltip } from '$lib/utils';
+	import { typewriter, capitalFirstLeter, tooltip, isMobile } from '$lib/utils';
 
 	//import toolbar comps
 	import Volume from '$lib/sveltes/page-comps/layout/button_volume.svelte';
@@ -16,16 +16,58 @@
 	export let ufoToggleMovement: boolean;
 
 	let template: HTMLElement;
+	let droplist: any;
+
 	onMount(() => {
+		//get droplist, this DOM Elemtent is used for tooltip, currently display: none
 		template = <HTMLElement>document.getElementById('dropDownList');
 		template.style.display = 'flex';
-		spaceSound.volume = 0.07;
+
+		//set sound volumn
+		spaceSound.volume = 0.05;
 		thinkfast.volume = 0.5;
+
+		/* use:tooltip={{
+					allowHTML: true,
+					theme: 'catppuccin-transparent',
+					animation: 'perspective-subtle',
+					interactive: true,
+					arrow: false,
+					content: template,
+					maxWidth: 400,
+					offset: [0, 6],
+					trigger: 'mouseenter click'
+				}} */
+
+		if (isMobile(window, window.navigator)) {
+			tooltip(droplist, {
+				offset: [0, 10],
+				maxWidth: 1000,
+				allowHTML: true,
+				theme: 'catppuccin-transparent',
+				animation: 'perspective-subtle',
+				interactive: true,
+				arrow: false,
+				content: template,
+				trigger: 'click'
+			});
+		} else {
+			tooltip(droplist, {
+				offset: [0, 8],
+				maxWidth: 400,
+				allowHTML: true,
+				theme: 'catppuccin-transparent',
+				animation: 'perspective-subtle',
+				interactive: true,
+				arrow: false,
+				content: template,
+				trigger: 'mouseenter click'
+			});
+		}
 	});
 
 	//making sub path in main path
-	$: pathname =
-		$page.url.pathname == '/' ? 'Home Page' : capitalFirstLeter($page.url.pathname.split('/')[1]);
+	$: pathname = $page.url.pathname == '/' ? 'Home Page' : capitalFirstLeter($page.url.pathname.split('/')[1]);
 
 	let volumeToggle: boolean, themeToggle: boolean;
 	let pauseSFX = false;
@@ -89,20 +131,7 @@
 			</div>
 		</div>
 		<nav>
-			<div
-				class="searchBar"
-				use:tooltip={{
-					allowHTML: true,
-					theme: 'catppuccin-transparent',
-					animation: 'perspective-subtle',
-					interactive: true,
-					arrow: false,
-					content: template,
-					maxWidth: 400,
-					offset: [0, 6],
-					trigger: 'mouseenter click'
-				}}
-			>
+			<div class="searchBar" bind:this={droplist}>
 				<div class="searchIcon">
 					<Search size={25} color="#CAD3FF" />
 				</div>

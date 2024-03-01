@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Image Comparison</title>
+	</head>
+	<body>
+		<input type="file" id="img1" accept="image/*" />
+		<input type="file" id="img2" accept="image/*" />
+		<canvas id="canvas1"></canvas>
+		<canvas id="canvas2"></canvas>
+		<button onclick="compareImages()">Compare</button>
+		<canvas id="resultCanvas" width="400" height="300"></canvas>
+
+		<script>
+			function compareImages() {
+				var canvas = document.getElementById('resultCanvas');
+				var ctx = canvas.getContext('2d');
+
+				var canvas1 = document.getElementById('canvas1');
+				var canvas2 = document.getElementById('canvas2');
+
+				var img1 = document.getElementById('img1').files[0];
+				var img2 = document.getElementById('img2').files[0];
+
+				if (img1 && img2) {
+					var img1Obj = new Image();
+
+					img1Obj.onload = function () {
+						canvas1.width = img1Obj.width;
+						canvas1.height = img1Obj.height;
+						var ctx1 = canvas1.getContext('2d');
+						ctx1.drawImage(img1Obj, 0, 0);
+					};
+
+					img1Obj.src = URL.createObjectURL(img1);
+
+					var img2Obj = new Image();
+
+					img2Obj.onload = function () {
+						canvas2.width = img2Obj.width;
+						canvas2.height = img2Obj.height;
+						var ctx2 = canvas2.getContext('2d');
+						ctx2.drawImage(img2Obj, 0, 0);
+					};
+					img2Obj.src = URL.createObjectURL(img2);
+
+					compare();
+					/*
+					img1Obj.onload = function () {
+						canvas.width = img1Obj.width;
+						canvas.height = img1Obj.height;
+						ctx.drawImage(img1Obj, 0, 0);
+
+						var img2Obj = new Image();
+						img2Obj.onload = function () {
+							ctx.drawImage(img2Obj, img1Obj.width, 0);
+							compare();
+						};
+						img2Obj.src = URL.createObjectURL(img2);
+					};
+					img1Obj.src = URL.createObjectURL(img1);
+					*/
+				} else {
+					alert('Please select two images to compare.');
+				}
+			}
+
+			function compare() {
+				var canvas = document.getElementById('resultCanvas');
+				var ctx = canvas.getContext('2d');
+
+				var canvas1 = document.getElementById('canvas1');
+				var ctx1 = canvas1.getContext('2d');
+				var canvas2 = document.getElementById('canvas2');
+				var ctx2 = canvas2.getContext('2d');
+
+				var imgData1 = ctx1.getImageData(0, 0, canvas1.width, canvas1.height);
+				var imgData2 = ctx2.getImageData(0, 0, canvas2.width, canvas2.height);
+
+				// Perform image comparison using chosen algorithm here
+
+				// For example, calculating MSE
+				var mse = calculateMSE(imgData1, imgData2);
+				console.log('MSE:', mse);
+				console.log('Custom:' + customCalculateMSE(imgData1, imgData2));
+			}
+
+			function calculateMSE(imgData1, imgData2) {
+				var data1 = imgData1.data;
+				var data2 = imgData2.data;
+				var sumSquaredDiff = 0;
+
+				for (var i = 0; i < data1.length; i += 4) {
+					var diffR = data1[i] - data2[i];
+					var diffG = data1[i + 1] - data2[i + 1];
+					var diffB = data1[i + 2] - data2[i + 2];
+
+					sumSquaredDiff += diffR * diffR + diffG * diffG + diffB * diffB;
+				}
+
+				var mse = sumSquaredDiff / (imgData1.width * imgData1.height);
+				return mse;
+			}
+
+			function customCalculateMSE(imgData1, imgData2) {
+				var data1 = imgData1.data;
+				var data2 = imgData2.data;
+
+				var result = 0;
+
+				for (var i = 0; i < data1.length; i += 4) {
+					var diffR = data1[i] - data2[i];
+					var diffG = data1[i + 1] - data2[i + 1];
+					var diffB = data1[i + 2] - data2[i + 2];
+
+					result += Math.abs(diffR) + Math.abs(diffG) + Math.abs(diffB);
+				}
+
+				return result;
+			}
+		</script>
+	</body>
+</html>

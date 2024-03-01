@@ -16,7 +16,17 @@
 
 {#if postData}
 	<h1>{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>
-	<div id="blog-content">{@html postData.content}</div>
+	<h3 class="edit-date">
+		Last edit on {new Date(postData.createdAt.mtime).toLocaleDateString('en-us', {
+			weekday: 'long',
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric'
+		})}
+	</h3>
+	<div id="blog-content">
+		{@html postData.content}
+	</div>
 {:else}
 	<div>Loading...</div>
 {/if}
@@ -33,6 +43,11 @@
 		border-radius: 5px;
 
 		z-index: 5;
+	}
+
+	.edit-date {
+		font-size: 15px;
+		opacity: 0.6;
 	}
 
 	a {

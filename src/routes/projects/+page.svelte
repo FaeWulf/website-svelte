@@ -30,6 +30,18 @@
 			old: false
 		},
 		{
+			name: 'GeoReImage (WIP)',
+			description: 'Recreate image using 2d geometry',
+			path: '/projects/georeimage',
+			old: false
+		},
+		{
+			name: 'EpicRename Generator',
+			description: 'Generate commands for the EpicRename plugin.',
+			path: '/projects/epicrename',
+			old: false
+		},
+		{
 			name: "Isaac's Tarot",
 			description: 'Tarot card but Isaac',
 			path: '/projects/isaactarot',
