@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 
 	//vvars declare
-	let input: string = "First line is for Item's name";
+	let input: string = "First line is for Item's name\nThis is line #1\n\nYou can skip for line #3\n&bNow create your own...";
 	let output: string = '';
 	let editor: HTMLTextAreaElement;
 
@@ -385,66 +385,82 @@
 
 			:global(.format-0) {
 				color: #000000;
+				font-style: normal;
 			}
 
 			:global(.format-1) {
 				color: #0000aa;
+				font-style: normal;
 			}
 
 			:global(.format-2) {
 				color: #00aa00;
+				font-style: normal;
 			}
 
 			:global(.format-3) {
 				color: #00aaaa;
+				font-style: normal;
 			}
 
 			:global(.format-4) {
 				color: #aa0000;
+				font-style: normal;
 			}
 
 			:global(.format-5) {
 				color: #aa00aa;
+				font-style: normal;
 			}
 
 			:global(.format-6) {
 				color: #ffaa00;
+				font-style: normal;
 			}
 
 			:global(.format-7) {
 				color: #aaaaaa;
+				font-style: normal;
 			}
 
 			:global(.format-8) {
 				color: #555555;
+				font-style: normal;
 			}
 
 			:global(.format-9) {
 				color: #5555ff;
+				font-style: normal;
 			}
 
 			:global(.format-a) {
 				color: #55ff55;
+				font-style: normal;
 			}
 
 			:global(.format-b) {
 				color: #55ffff;
+				font-style: normal;
 			}
 
 			:global(.format-c) {
 				color: #ff5555;
+				font-style: normal;
 			}
 
 			:global(.format-d) {
 				color: #ff55ff;
+				font-style: normal;
 			}
 
 			:global(.format-e) {
 				color: #ffff55;
+				font-style: normal;
 			}
 
 			:global(.format-f) {
 				color: #ffffff;
+				font-style: normal;
 			}
 
 			:global(.format-u) {
