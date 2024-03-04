@@ -131,7 +131,7 @@
 <style lang="scss">
 	.book {
 		position: absolute;
-
+		touch-action: none;
 		width: 120px;
 
 		image-rendering: pixelated;

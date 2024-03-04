@@ -185,8 +185,9 @@
 		position: absolute;
 		width: 60px;
 		height: 72px;
-
-		transition: transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+		touch-action: none;
+		transition:
+			transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1),
 			box-shadow 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 		background-color: transparent;
 

@@ -132,12 +132,7 @@
 	style:z-index={card_Zindex}
 >
 	<div class="card-back">
-		<img
-			draggable="false"
-			src="/images/isaac/card_sprites.png"
-			style="object-position: -252px -0;"
-			alt="card back"
-		/>
+		<img draggable="false" src="/images/isaac/card_sprites.png" style="object-position: -252px -0;" alt="card back" />
 	</div>
 	<div class="card-front">
 		<img
@@ -155,8 +150,9 @@
 		position: absolute;
 		width: 63px;
 		height: 81px;
-
-		transition: transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+		touch-action: none;
+		transition:
+			transform 1.5s cubic-bezier(0.075, 0.82, 0.165, 1),
 			box-shadow 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 		background-color: transparent;
 
@@ -181,7 +177,9 @@
 		}
 
 		&.glow {
-			box-shadow: 0 0 0 1px #ffffff80, 0 0 0 2px #ffffff80;
+			box-shadow:
+				0 0 0 1px #ffffff80,
+				0 0 0 2px #ffffff80;
 		}
 
 		.card-front,

@@ -168,7 +168,7 @@
 <style lang="scss">
 	.rune {
 		position: absolute;
-
+		touch-action: none;
 		image-rendering: pixelated;
 		image-rendering: -moz-crisp-edges;
 		image-rendering: crisp-edges;

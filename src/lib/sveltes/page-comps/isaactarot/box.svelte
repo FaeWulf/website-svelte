@@ -178,7 +178,7 @@
 <style lang="scss">
 	.box {
 		position: absolute;
-
+		touch-action: none;
 		width: 100px;
 
 		image-rendering: pixelated;

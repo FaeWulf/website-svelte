@@ -142,13 +142,7 @@
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<div
-	on:pointerdown={handleMouseDown}
-	bind:this={crystalWrapper}
-	class="crystal"
-	draggable="false"
-	style:z-index={crystal_Zindex}
->
+<div on:pointerdown={handleMouseDown} bind:this={crystalWrapper} class="crystal" draggable="false" style:z-index={crystal_Zindex}>
 	<img
 		class:active={wobble}
 		draggable="false"
@@ -169,7 +163,7 @@
 <style lang="scss">
 	.crystal {
 		position: absolute;
-
+		touch-action: none;
 		width: 80px;
 
 		image-rendering: pixelated;
