@@ -31,6 +31,11 @@
 			url: '/about'
 		},
 		{
+			name: 'Status page',
+			icon: '📊',
+			url: 'https://status.faewulf.xyz'
+		},
+		{
 			name: 'Support me',
 			icon: '❤️',
 			url: '/support'

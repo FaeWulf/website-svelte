@@ -11,6 +11,7 @@
 	import Theme from '$lib/sveltes/page-comps/layout/button_theme.svelte';
 	import WindowIcon from '$lib/sveltes/page-comps/layout/button_window-icon.svelte';
 	import ButtonUfo from '$lib/sveltes/page-comps/layout/button_ufo.svelte';
+	import Bell from '$lib/sveltes/page-comps/layout/bell.svelte';
 
 	export let windowToggle: boolean;
 	export let ufoToggleMovement: boolean;
@@ -143,6 +144,8 @@
 
 				<span class="blinking">_</span>
 			</div>
+
+			<Bell />
 		</nav>
 	</div>
 
@@ -218,6 +221,7 @@
 		}
 
 		nav {
+			position: relative;
 			flex: 1;
 			display: flex;
 			justify-content: flex-start;
@@ -239,25 +243,26 @@
 
 			transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-			.searchIcon {
-				margin-right: 10px;
-				margin-left: 10px;
-				padding-right: 9px;
-				border-right: 2px solid rgba(var(--Text), 0.2);
-			}
-
 			.searchBar {
+				position: relative;
 				width: 100%;
 				display: flex;
 				flex-direction: row;
 				cursor: text;
 
-				overflow-x: hidden;
-			}
+				overflow: hidden;
 
-			.blinking {
-				color: rgb(var(--Rosewater));
-				animation: blink 1s step-end infinite;
+				.searchIcon {
+					margin-right: 10px;
+					margin-left: 10px;
+					padding-right: 9px;
+					border-right: 2px solid rgba(var(--Text), 0.2);
+				}
+
+				.blinking {
+					color: rgb(var(--Rosewater));
+					animation: blink 1s step-end infinite;
+				}
 			}
 		}
 	}
