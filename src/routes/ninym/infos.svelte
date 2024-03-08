@@ -1,21 +1,57 @@
 <script lang="ts">
-	const features = [
-		'Music player',
-		'Youtube',
-		'Soundcloud',
-		'Chat',
-		'Minigames',
-		'Images search',
-		'MoonbaseTTS',
-		'Anime search',
-		'TTS',
-		'Manga search'
+	const search = ['Minigames', 'Images search', 'Anime search', 'Manga search'];
+	const iamge_processing = ['blur', 'clahe', 'convole', 'gamma', 'invert', 'grayscale', 'flip', 'flop', 'rotate'];
+	const cipher = ['a1z26', 'affine', 'bacon', 'Caesar', 'Rot13'];
+	const converter = [
+		'number base2',
+		'number base8',
+		'number base10',
+		'number base16',
+		'color HSV',
+		'color RGB',
+		'color HEX',
+		'color HSL',
+		'speed ft/s',
+		'speed km/h',
+		'speed mph',
+		'speed knot',
+		'speed m/s',
+		"temperature 'C",
+		"temperature 'F",
+		"temperature 'K"
 	];
+	const text = ['compare', 'modify', 'overview'];
+	const other = ['OCR', 'color from image', 'cron parser', 'decode url', 'hash'];
+	const generator = ['timestamp', 'loremipsum', 'random number', 'random string', 'random UUID', 'random password', 'random ranexp'];
 </script>
 
 <div class="profile">
-	<div class="title">⭐ Features</div>
-	{#each features as feature (feature)}
+	<div class="title">⭐ Search</div>
+	{#each search as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
+	<div class="title">⭐ Image processing</div>
+	{#each iamge_processing as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
+	<div class="title">⭐ Ciphers</div>
+	{#each cipher as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
+	<div class="title">⭐ Converters</div>
+	{#each converter as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
+	<div class="title">⭐ Text</div>
+	{#each text as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
+	<div class="title">⭐ Generators</div>
+	{#each generator as feature (feature)}
+		<div draggable="false" class="feature">{feature}</div>
+	{/each}
+	<div class="title">⭐ Other</div>
+	{#each other as feature (feature)}
 		<div draggable="false" class="feature">{feature}</div>
 	{/each}
 	<div class="dummy" />
@@ -29,7 +65,7 @@
 		height: calc(100% - 12px);
 
 		max-width: 350px;
-		max-height: 200px;
+		max-height: 300px;
 
 		flex-wrap: wrap;
 		overflow-y: auto;
