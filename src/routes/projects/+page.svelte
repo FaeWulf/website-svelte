@@ -43,7 +43,7 @@
 		},
 		{
 			name: "Isaac's Tarot",
-			description: 'Tarot card but Isaac',
+			description: "Tarot card but Isaac, for fun: don't take generated advice too serious.",
 			path: '/projects/isaactarot',
 			old: false
 		},
