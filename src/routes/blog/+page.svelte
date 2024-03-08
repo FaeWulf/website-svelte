@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { apiURL } from '$lib/store.js';
 	import Title from '$lib/sveltes/neonTitle.svelte';
+	import { parseDiscordEmoji } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 
 	export let data;
@@ -12,20 +13,20 @@
 	let postData: any;
 	let totalPage: number;
 	let index: number;
+	let randomThought: string;
 
 	onMount(async () => {
-		const pseudoFetch = await fetch(url + '/api/v1/blog' + `?page=1&maxPerPage=${max}`).then(
-			(res) => res.json()
-		);
+		const pseudoFetch = await fetch(url + '/api/v1/blog' + `?page=1&maxPerPage=${max}`).then((res) => res.json());
 		const maxPage = pseudoFetch.data.maxPage;
 
 		index = Math.max(1, Math.min(data.idx, maxPage)) || 1;
 
-		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then(
-			(res) => res.json()
-		);
+		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then((res) => res.json());
 		postData = fetchBlogs.data.data;
 		totalPage = fetchBlogs.data.maxPage;
+
+		const fetchRandomThought = await fetch(url + '/api/v1/discord/randomthought').then((res) => res.json());
+		randomThought = '「' + parseDiscordEmoji(fetchRandomThought.data) + '」';
 	});
 
 	//dynamic
@@ -37,16 +38,12 @@
 	}
 
 	async function gotoIndex(idx: number) {
-		const pseudoFetch = await fetch(url + '/api/v1/blog' + `?page=1&maxPerPage=${max}`).then(
-			(res) => res.json()
-		);
+		const pseudoFetch = await fetch(url + '/api/v1/blog' + `?page=1&maxPerPage=${max}`).then((res) => res.json());
 		const maxPage = pseudoFetch.data.maxPage;
 
 		index = Math.max(1, Math.min(idx, maxPage)) || 1;
 
-		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then(
-			(res) => res.json()
-		);
+		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then((res) => res.json());
 		postData = fetchBlogs.data.data;
 		totalPage = fetchBlogs.data.maxPage;
 	}
@@ -59,6 +56,9 @@
 
 <div class="main">
 	<Title subtitle="Blog" />
+	{#if randomThought}
+		<div class="random-thought">{@html randomThought}</div>
+	{/if}
 	{#if postData}
 		<div class="container">
 			{#each postData as post (post.name)}
@@ -72,6 +72,11 @@
 							day: 'numeric'
 						})}</span
 					>
+					<div class="tag">
+						{#each post.tags as tag}
+							<span class="tag-item">{tag}</span>
+						{/each}
+					</div>
 				</a>
 			{/each}
 		</div>
@@ -96,6 +101,15 @@
 		border: 1px solid rgba(var(--Text), 0.2);
 
 		font-family: 'Pixel Nes', 'Tahoma';
+
+		.random-thought {
+			margin-top: 10px;
+			width: 100%;
+			text-align: center;
+			font-size: 15px;
+			opacity: 0.8;
+			font-family: var(--font-body);
+		}
 
 		.container {
 			display: flex;
@@ -127,6 +141,20 @@
 
 				.post-date {
 					color: rgb(var(--Text));
+				}
+
+				.tag {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 5px;
+					font-size: 12px;
+					opacity: 0.6;
+					.tag-item {
+						color: rgb(var(--Text));
+						background-color: rgba(var(--Text), 0.2);
+						padding: 5px;
+						border-radius: 5px;
+					}
 				}
 			}
 		}
