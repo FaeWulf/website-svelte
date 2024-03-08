@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Bonsai from '$lib/sveltes/page-comps/layout/bonsai.svelte';
 	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
+	import Chat from '$lib/sveltes/page-comps/layout/chat.svelte';
 	import { app3rd } from '$lib/store';
 
 	import Controller from '$lib/sveltes/page-comps/boids/controller.svelte';
@@ -20,8 +21,13 @@
 	let totalTabs = [
 		{ id: 0, name: 'Bonsai' },
 		{ id: 1, name: 'Console' },
+		{ id: 3, name: 'Chat' },
 		{ id: 2, name: '...' }
 	];
+
+	// based on totalTabs id
+	// bonasi, console, ..., chat
+	$: tabsNotification = [false, true, false, true];
 
 	app3rd.subscribe((value) => {
 		if (value != '') selectTab = 2;
@@ -90,6 +96,14 @@
 		innerHeightb4 = innerHeight;
 	}
 
+	function onClickTab(index: number) {
+		selectTab = index;
+
+		//remove notification from console tabs
+		tabsNotification[index] = false;
+		tabsNotification = tabsNotification;
+	}
+
 	onMount(() => {
 		if (innerWidth < 1000) {
 			windowToggle = false;
@@ -123,17 +137,14 @@
 		<div class="tab">
 			{#each totalTabs as tab}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div
-					class="item"
-					class:selected={selectTab == tab.id}
-					on:click={() => (selectTab = tab.id)}
-				>
+				<div class="item" class:selected={selectTab == tab.id} on:click={() => onClickTab(tab.id)}>
 					<div>
 						{tab.name}
 					</div>
 					{#if selectTab == tab.id}
 						<div class="dummy" />
 					{/if}
+					<div class="notification" class:show={tabsNotification[tab.id]}></div>
 				</div>
 			{/each}
 		</div>
@@ -152,6 +163,9 @@
 			{#if $app3rd == 'boids'}
 				<Controller />
 			{/if}
+		</div>
+		<div class:selected={selectTab == 3}>
+			<Chat />
 		</div>
 	</div>
 </div>
@@ -309,6 +323,26 @@
 						height: 1px;
 						background: rgb(var(--Crust));
 					}
+
+					.notification {
+						position: absolute;
+						top: -4px;
+						right: -4px;
+						width: 12px;
+						height: 12px;
+						border-radius: 50%;
+						background: rgb(var(--Green));
+
+						display: none;
+
+						animation:
+							blink 1s step-end infinite,
+							shake 1.2s ease-in infinite;
+
+						&.show {
+							display: block;
+						}
+					}
 				}
 			}
 		}
@@ -344,6 +378,39 @@
 		}
 		100% {
 			opacity: 0.6;
+		}
+	}
+
+	@keyframes blink {
+		0% {
+			background: rgb(var(--Red));
+		}
+		50% {
+			background: rgb(var(--Green));
+		}
+		100% {
+			background: rgb(var(--Red));
+		}
+	}
+
+	@keyframes shake {
+		0% {
+			transform: translate(0, 0);
+		}
+		25% {
+			transform: translate(0, -2px);
+		}
+		45% {
+			transform: translate(0, 1px);
+		}
+		65% {
+			transform: translate(0, -1px);
+		}
+		85% {
+			transform: translate(0, 2px);
+		}
+		100% {
+			transform: translate(0, 0);
 		}
 	}
 </style>
