@@ -54,7 +54,7 @@
 	}
 
 	function websocketInit() {
-		ws = new WebSocket('ws://localhost:3000');
+		ws = new WebSocket('wss://faewulf.xyz/ws/');
 
 		ws.addEventListener('open', (event) => {
 			console.log('Connected to websocket');
