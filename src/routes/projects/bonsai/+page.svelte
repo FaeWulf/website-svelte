@@ -15,11 +15,12 @@
 
 <div class="main">
 	<h1>Bonsai API</h1>
-	<h3>Retieve a bonsai as SVG</h3>
+	<h3>Generate a bonsai as SVG</h3>
 	<p>
-		Ported from <a href="https://gitlab.com/jallbrit/cbonsai" target="_blank">cbonsai</a> - a bonsai
-		tree generator, written in C using ncurses
+		Ported from <a href="https://gitlab.com/jallbrit/cbonsai" target="_blank">cbonsai</a> - a bonsai tree generator, written in C using ncurses
 	</p>
+	<p>API endpoint</p>
+	<code>https://faewulf.xyz/api/v1/misc/bonsai</code>
 	<p>Example request</p>
 	<code>https://faewulf.xyz/api/v1/misc/bonsai?background=0.5&time=40&seed="faewulf"</code>
 	<p>Response (SVG)</p>
@@ -38,8 +39,8 @@
 		</tr>
 		<tr>
 			<td>base</td>
-			<td>0</td>
-			<td>Tree vase type (0, 1, random)</td>
+			<td>-1</td>
+			<td>Tree vase type, there are 2 types (-1 = random, 0, 1)</td>
 		</tr>
 		<tr>
 			<td>time</td>
