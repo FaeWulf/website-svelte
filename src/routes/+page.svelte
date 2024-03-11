@@ -93,8 +93,9 @@
 
 			flex-direction: column;
 			*/
-			width: calc(100% - 12px);
-			height: calc(100% - 12px);
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
 
 			flex-wrap: wrap;
 			overflow-y: auto;
