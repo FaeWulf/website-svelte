@@ -21,7 +21,7 @@
 		on:touchstart={() => setTimeout(() => sendChangeText(skill.level, skill.name, false), 10)}
 		on:touchend={() => sendChangeText(0, '', false)}
 		draggable="false"
-		class="badge"
+		class="badge level-border"
 		src="/images/badges/css_sprites.png"
 		alt={skill.name}
 		style="width: {skill.sprite.width}px; height: {skill.sprite.height}px; object-position: {skill.sprite.x}px {skill.sprite.y}px;"

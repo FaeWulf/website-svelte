@@ -134,7 +134,7 @@
 		<nav>
 			<div class="searchBar" bind:this={droplist}>
 				<div class="searchIcon">
-					<Search size={25} color="#CAD3FF" />
+					<Search size={24} color="#CAD3FF" />
 				</div>
 				{#key $page.url.pathname}
 					<span in:typewriter={{ speed: 2 }}>
@@ -179,7 +179,7 @@
 		max-width: 550px;
 		width: 100%;
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 
 		//backdrop-filter: blur(10px);
@@ -188,20 +188,19 @@
 		background-color: rgba(var(--Mantle), 0.8);
 
 		.toolbar {
+			box-sizing: border-box;
 			display: flex;
-			justify-content: flex-start;
+			justify-content: space-evenly;
 			flex-direction: row;
 			align-items: center;
 
 			height: 30px;
-			width: fit-content;
-
-			column-gap: 10px;
+			width: max-content;
 
 			border: 1px solid rgba(var(--Lavender), 0.4);
 			border-radius: 50px;
-			padding: 4px;
-			margin: 8px 10px 8px 10px;
+			padding: 19px 10px;
+			margin: 8px 0px 8px 10px;
 			background-color: rgba(var(--Surface0), 0.5);
 			//backdrop-filter: blur(10px);
 
@@ -209,14 +208,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-			}
-
-			> div:first-child {
-				margin-left: 10px;
-			}
-
-			> div:last-child {
-				margin-right: 10px;
+				margin: 5px;
 			}
 		}
 
@@ -257,6 +249,10 @@
 					margin-left: 10px;
 					padding-right: 9px;
 					border-right: 2px solid rgba(var(--Text), 0.2);
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				}
 
 				.blinking {

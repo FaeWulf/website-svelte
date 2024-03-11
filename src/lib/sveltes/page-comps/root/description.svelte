@@ -35,6 +35,7 @@
 </script>
 
 <h2>
+	「
 	{#if anVowel.includes(level)}
 		An
 	{:else}
@@ -52,7 +53,7 @@
 		learner
 	{:else}
 		developer
-	{/if} on the sofa
+	{/if} on the sofa 」
 </h2>
 
 <style>

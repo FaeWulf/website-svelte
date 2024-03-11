@@ -67,7 +67,8 @@
 	});
 </script>
 
-<div class="container">
+<fieldset class="container">
+	<legend>Social</legend>
 	{#each badges as badge (badge.name)}
 		<a
 			class="social"
@@ -80,21 +81,32 @@
 			title={badge.name}
 		>
 			<!--img class="social" alt={badge.name} src="svgs/{badge.name}.svg" /-->
-			<svelte:component this={badge.component} size={41} animate={!mobileMode} />
+			<svelte:component this={badge.component} size={40} animate={!mobileMode} />
 		</a>
 	{/each}
-</div>
+</fieldset>
 
 <style lang="scss">
 	.container {
-		margin-top: 40px;
+		margin-top: 30px;
 		position: relative;
 		max-width: 350px;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
-		gap: 8px;
+		justify-content: space-evenly;
+		align-items: center;
+		gap: 5px;
+		padding: 6px;
+
+		border: 1px solid rgba(var(--Text), 0.2);
+		border-radius: 5px;
+
+		legend {
+			color: rgb(var(--Text), 0.4);
+			padding-left: 5px;
+			padding-right: 5px;
+		}
 
 		> a {
 			position: relative;

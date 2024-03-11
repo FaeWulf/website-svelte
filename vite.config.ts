@@ -1,11 +1,17 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import Icons from 'unplugin-icons/vite';
 
 export default defineConfig(({ mode }) => ({
-	plugins: [sveltekit()],
+	plugins: [
+		sveltekit(),
+		Icons({
+			compiler: 'svelte'
+		})
+	],
 	resolve: {
 		alias: {
-			$img: mode === "production" ? "./static/img" : "../img",
-		},
-	},
+			$img: mode === 'production' ? './static/img' : '../img'
+		}
+	}
 }));
