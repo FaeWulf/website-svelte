@@ -175,6 +175,19 @@ button:focus:not(:focus-visible) {
 	border: 1px solid rgba(var(--Text), 0.2);
 }
 
+.tippy-box[data-theme~='catppuccin-light'] {
+	//background-color: #ccd0da;
+	//color: #4c4f69;
+	//border: 1px solid rgba(#4c4f69, 0.2);
+	background-color: rgb(var(--Surface2));
+	color: rgb(var(--Text));
+	border: 1px solid rgba(var(--Teal), 0.2);
+	filter: drop-shadow(3px 4px 5px #121212);
+}
+.tippy-box[data-theme~='catppuccin-light'][data-placement^='top'] > .tippy-arrow::before {
+	border-top-color: rgb(var(--Surface2));
+}
+
 .tippy-box[data-theme~='catppuccin'][data-placement^='top'] > .tippy-arrow::before {
 	border-top-color: rgb(var(--Surface0));
 }

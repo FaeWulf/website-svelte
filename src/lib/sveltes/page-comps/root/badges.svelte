@@ -1,5 +1,8 @@
 <script lang="ts">
 	import badges from '$lib/data/bagde.json';
+	import { tooltip } from '$lib/utils';
+	import { onMount } from 'svelte';
+	import { createSingleton } from 'tippy.js';
 	export let descriptionChanger = {
 		value: 0,
 		text: '',
@@ -11,6 +14,16 @@
 		descriptionChanger.text = text;
 		descriptionChanger.learner = learner;
 	}
+
+	let tippyInstances: any[] = [];
+	onMount(() => {
+		const singleton = createSingleton(tippyInstances, {
+			moveTransition: 'transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
+			delay: 50,
+			theme: 'catppuccin-light',
+			animation: 'scale'
+		});
+	});
 </script>
 
 <div class="title" id="infotabs-badges">🚀 Languages</div>
@@ -20,6 +33,7 @@
 		on:mouseleave={() => sendChangeText(0, '', false)}
 		on:touchstart={() => setTimeout(() => sendChangeText(skill.level, skill.name, false), 10)}
 		on:touchend={() => sendChangeText(0, '', false)}
+		use:tooltip={{ instancesHolder: tippyInstances, content: skill.info }}
 		draggable="false"
 		class="badge level-border"
 		src="/images/badges/css_sprites.png"
@@ -35,6 +49,7 @@
 		on:mouseenter={() => sendChangeText(epx.level, epx.name, true)}
 		on:mouseleave={() => sendChangeText(0, '', false)}
 		on:touchstart={() => sendChangeText(epx.level, epx.name, true)}
+		use:tooltip={{ instancesHolder: tippyInstances, content: epx.info }}
 		src="/images/badges/css_sprites.png"
 		alt={epx.name}
 		style="width: {epx.sprite.width}px; height: {epx.sprite.height}px; object-position: {epx.sprite.x}px {epx.sprite.y}px;"

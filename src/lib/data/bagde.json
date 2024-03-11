@@ -4,6 +4,7 @@
 			"name": "javascript",
 			"level": 4,
 			"url": "",
+			"info": "2 yrs of exp, most used language",
 			"sprite": {
 				"width": 127,
 				"height": 28,
@@ -15,6 +16,7 @@
 			"name": "c",
 			"level": 4,
 			"url": "",
+			"info": "1 yrs of exp",
 			"sprite": {
 				"width": 52,
 				"height": 28,
@@ -25,6 +27,7 @@
 		{
 			"name": "c++",
 			"level": 4,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 72,
@@ -36,6 +39,7 @@
 		{
 			"name": "typescript",
 			"level": 2,
+			"info": "2 yrs of exp, most used language",
 			"url": "",
 			"sprite": {
 				"width": 127,
@@ -47,6 +51,7 @@
 		{
 			"name": "html",
 			"level": 3,
+			"info": "2 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 88,
@@ -58,6 +63,7 @@
 		{
 			"name": "java",
 			"level": 3,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 77,
@@ -69,6 +75,7 @@
 		{
 			"name": "python",
 			"level": 3,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 98,
@@ -124,6 +131,7 @@
 		{
 			"name": "css",
 			"level": 2,
+			"info": "1.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 69,
@@ -135,6 +143,7 @@
 		{
 			"name": "jquery",
 			"level": 2,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 96,
@@ -146,6 +155,7 @@
 		{
 			"name": "svelte",
 			"level": 2,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 93,
@@ -157,6 +167,7 @@
 		{
 			"name": "vuejs",
 			"level": 1,
+			"info": "0.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 90,
@@ -168,6 +179,7 @@
 		{
 			"name": "raspberrypi",
 			"level": 3,
+			"info": "2.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 142,
@@ -179,6 +191,7 @@
 		{
 			"name": "mongodb",
 			"level": 2,
+			"info": "0.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 111,
@@ -189,6 +202,7 @@
 		},
 		{
 			"name": "nodejs",
+			"info": "1.5 yrs of exp",
 			"level": 3,
 			"url": "",
 			"sprite": {
@@ -201,6 +215,7 @@
 		{
 			"name": "expressjs",
 			"level": 2,
+			"info": "0.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 103,
@@ -212,6 +227,7 @@
 		{
 			"name": "mysql",
 			"level": 3,
+			"info": "0.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 88,
@@ -223,6 +239,7 @@
 		{
 			"name": "ubuntu",
 			"level": 2,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 99,
@@ -234,6 +251,7 @@
 		{
 			"name": "arch",
 			"level": 2,
+			"info": "1 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 127,
@@ -245,6 +263,7 @@
 		{
 			"name": "neovim",
 			"level": 2,
+			"info": "1.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 98,
@@ -256,6 +275,7 @@
 		{
 			"name": "blender",
 			"level": 1,
+			"info": "0.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 105,
@@ -267,6 +287,7 @@
 		{
 			"name": "adobe ai",
 			"level": 2,
+			"info": "0.5 yrs of exp",
 			"url": "",
 			"sprite": {
 				"width": 186,
