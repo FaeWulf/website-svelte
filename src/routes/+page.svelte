@@ -74,7 +74,7 @@
 		//backdrop-filter: blur(2px);
 		width: 100%;
 		max-width: 420px;
-		height: 200px;
+		height: 240px;
 
 		&:hover {
 			opacity: 1;
