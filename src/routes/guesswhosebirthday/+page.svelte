@@ -22,7 +22,7 @@
 </svelte:head>
 
 <div class="main">
-	<h1 class="challenge-title">For the most ??? Being</h1>
+	<h1 class="challenge-title">For the most 💩🤡 Being</h1>
 	<h2 class="challenge-subtitle">#31ComponentsOfMarchDay20</h2>
 
 	<div class="birthday-cake">
