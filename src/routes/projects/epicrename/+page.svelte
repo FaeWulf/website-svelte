@@ -32,7 +32,7 @@
 		'&d': 'format-d',
 		'&e': 'format-e',
 		'&f': 'format-f',
-		'&u': 'format-u',
+		'&n': 'format-n',
 		'&l': 'format-l',
 		'&k': 'format-k',
 		'&o': 'format-o',
@@ -79,7 +79,7 @@
 	}
 
 	function splitStringIntoObjects(inputString: string) {
-		const regex = /(&[0-9a-fulkmor])*[^&]*/gi;
+		const regex = /(&[0-9a-fnlkmor])*[^&]*/gi;
 		//const regex = /(&[0-9a-fulmor])+[^&]+/gi;
 		const matches = inputString.match(regex);
 		const result: { format: string[]; content: string }[] = [];
@@ -95,8 +95,8 @@
 			}
 			//const formatCode = match.slice(0, 2);
 
-			const formats = match.match(/&[0-9a-fulkmor]/gi);
-			const content = match.replace(/&[0-9a-fulkmor]/gi, '');
+			const formats = match.match(/&[0-9a-fnlkmor]/gi);
+			const content = match.replace(/&[0-9a-fnlkmor]/gi, '');
 
 			//if format codes found
 			if (formats && formats.length > 0) {
@@ -463,7 +463,7 @@
 				font-style: normal;
 			}
 
-			:global(.format-u) {
+			:global(.format-n) {
 				text-decoration: underline;
 			}
 
