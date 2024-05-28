@@ -1,8 +1,9 @@
 import { writable, readable } from 'svelte/store';
+import { PUBLIC_server } from '$env/static/public';
 
 export const ufoBubble = writable('');
 
-export const apiURL = readable('https://faewulf.xyz');
+export const apiURL = readable(PUBLIC_server);
 
 //3rd tab on window comp
 export const app3rd = writable('');
