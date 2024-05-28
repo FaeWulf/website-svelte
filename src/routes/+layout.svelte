@@ -1,4 +1,7 @@
 <script lang="ts">
+	//checking dev mode
+	import { dev } from '$app/environment';
+
 	import { cubicOut } from 'svelte/easing';
 
 	//some main styles
@@ -37,6 +40,7 @@
 		<Background />
 	{/if}
 	<Header bind:windowToggle bind:ufoToggleMovement />
+	<!--Ufo bind:toggleMovement={ufoToggleMovement} /-->
 	<Ufo bind:toggleMovement={ufoToggleMovement} />
 
 	<Window bind:windowToggle bind:windowOntop />
@@ -60,6 +64,13 @@
 		</p>
 	</footer>
 </div>
+
+<!-- Analytics -->
+<svelte:head>
+	{#if !dev}
+		<script defer src="https://analytics.us.umami.is/script.js" data-website-id="274fa86e-1c19-458a-a9b9-555a24ffe748"></script>
+	{/if}
+</svelte:head>
 
 <style lang="scss">
 	.app {

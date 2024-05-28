@@ -1,124 +1,72 @@
 <script lang="ts">
-	import { spring } from 'svelte/motion';
 	import { onDestroy, onMount } from 'svelte';
 	import BubbleChat from '$lib/sveltes/ufo/bubbleChat.svelte';
+	export let toggleMovement = true;
 
-	export let toggleMovement = false;
+	let x = 500,
+		y = 500,
+		previousX = x,
+		previousY = y;
 
-	let mouseX = 0,
-		mouseY = 0,
-		mouseOnScreen = false;
+	let ufo: HTMLElement;
 
-	let innerHeight: number, innerWidth: number;
-
-	//ufo
-	let ufo = spring(
-		{ x: 100, y: 100 },
-		{
-			stiffness: 0.04,
-			damping: 0.8
-		}
-	);
-	let ufoX = 200,
-		ufoY = 200;
 	let ufoLean = 0;
 	let ufoLastMove: Date = new Date();
 	let ufoIdle = false;
 	let ufoReady = false;
+	let intervalInstance: string | number | NodeJS.Timeout | undefined;
 
-	let intervalInstance: any;
+	//fuctions
 
-	function handleUfo(node: HTMLElement) {
-		window.addEventListener('mousemove', eventMouseMove);
-		window.addEventListener('mouseover', function (E) {
-			mouseOnScreen = true;
-		});
-
-		window.addEventListener('mouseout', function (E) {
-			mouseOnScreen = false;
-		});
-
-		intervalInstance = setInterval(() => {
-			const currentTime = new Date();
-
-			if (currentTime.getTime() - ufoLastMove?.getTime() > 5000 && !ufoIdle) {
-				const ret = document.getElementById('ufo_home');
-				if (ret) {
-					const pos = ret.getBoundingClientRect();
-					setUFOCoords(pos.x - 8, pos.y - 10);
-					ufoLastMove = new Date();
-					ufoIdle = true;
-				}
-			}
-		}, 500);
-
-		return {
-			onDestroy() {
-				clearInterval(intervalInstance);
-				window.removeEventListener('mousemove', eventMouseMove);
-			}
-		};
-	}
-
-	//functions
-	const eventMouseMove = (E: MouseEvent) => {
+	function onPointerMove(event: MouseEvent) {
 		if (!toggleMovement) return;
 
-		mouseX = E.clientX;
-		mouseY = E.clientY;
-	};
+		(x = event.clientX), (y = event.clientY);
 
-	function setUFOCoords(x: number, y: number) {
-		if (x >= 0 && x <= innerWidth && y >= 0 && y <= innerHeight) ufo.set({ x: x, y: y });
-		else
-			ufo.update(
-				() => ({
-					x: x > innerWidth ? innerWidth - 5 : x < 0 ? 5 : x,
-					y: y > innerHeight ? innerHeight - 5 : y < 0 ? 5 : y
-				}),
-				{ hard: true }
-			);
+		moveUfo(x, y);
 	}
 
-	//dynamic
-	$: setUFOCoords(mouseX, mouseY);
+	function moveUfo(x: number, y: number, delay = 15000, doLean = true, doBounce = true) {
+		const deltaX = x - previousX;
+		const deltaY = y - previousY;
 
-	ufo.subscribe((val) => {
-		let x = val.x,
-			y = val.y;
+		previousX = x;
+		previousY = y;
 
-		if (x < 0 || y < 0 || x > innerWidth || y > innerHeight) {
-			ufo.update(
-				() => ({
-					x: x > innerWidth ? innerWidth - 5 : x < 0 ? 5 : x,
-					y: y > innerHeight ? innerHeight - 5 : y < 0 ? 5 : y
-				}),
-				{ hard: true }
-			);
-			//console.log($ufo.x + ', ' + $ufo.y);
-			return;
-		}
-
-		const deltaX = x - ufoX;
-		const deltaY = y - ufoY;
-
-		ufoX = x;
-		ufoY = y;
-
-		if (deltaX < -1) ufoLean = -1;
-		else if (deltaX > 1) ufoLean = 1;
-		else ufoLean = 0;
-
-		if (ufoLean == 0) {
-			if (deltaY < -1) ufoLean = -1;
-			else if (deltaY > 1) ufoLean = 1;
+		if (doLean) {
+			//base on X first
+			if (deltaX < -1) ufoLean = -1;
+			else if (deltaX > 1) ufoLean = 1;
 			else ufoLean = 0;
+
+			//then Y
+			if (ufoLean == 0) {
+				if (deltaY < -1) ufoLean = 1;
+				else if (deltaY > 1) ufoLean = -1;
+				else ufoLean = 0;
+			}
 		}
 
 		//idle time calculate
 		ufoLastMove = new Date();
 		ufoIdle = false;
-	});
+
+		const ufoSpeed = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) / 0.0005;
+
+		if (ufo) {
+			ufo.animate(
+				{
+					left: `${x}px`,
+					top: `${y}px`
+				},
+				{
+					duration: delay ? delay : ufoSpeed,
+					easing: doBounce ? 'cubic-bezier(.47,1.64,.41,.8)' : 'ease-in-out',
+					fill: 'forwards'
+				}
+			);
+		}
+	}
 
 	onMount(() => {
 		const ret = document.getElementById('ufo_home');
@@ -127,18 +75,31 @@
 			//setUFOCoords(pos.x - 8, pos.y - 10);
 			const ufoHomeX = pos.x - 8;
 			const ufoHomeY = pos.y - 10;
-			ufo.update(
-				() => ({
-					x: ufoHomeX,
-					y: ufoHomeY
-				}),
-				{ hard: true }
-			);
+
+			moveUfo(ufoHomeX, ufoHomeY, 1000, true, false);
+
 			let newDate = new Date();
 			newDate.setSeconds(newDate.getSeconds() - 10);
 			ufoLastMove = newDate;
 			ufoIdle = false;
 		}
+
+		intervalInstance = setInterval(() => {
+			const currentTime = new Date();
+
+			if (ufoIdle) ufoLean = 0;
+
+			if (currentTime.getTime() - ufoLastMove?.getTime() > 4000 && !ufoIdle) {
+				const ret = document.getElementById('ufo_home');
+				if (ret) {
+					const pos = ret.getBoundingClientRect();
+					moveUfo(pos.x - 8, pos.y - 10, 1000, true, false);
+					ufoLastMove = new Date();
+					ufoIdle = true;
+				}
+			}
+		}, 500);
+
 		ufoReady = true;
 	});
 
@@ -148,25 +109,19 @@
 </script>
 
 {#if ufoReady}
-	<div
-		class="ufo"
-		style:top="{ufoY < 0 ? 0 : ufoY > innerHeight ? innerHeight : ufoY}px"
-		style:left="{ufoX < 0 ? 0 : ufoX > innerWidth ? innerWidth : ufoX}px"
-		use:handleUfo
-	>
-		<img
-			src="/gifs/ufo.gif"
-			alt="ufo"
-			draggable="false"
-			style="transform: rotateZ({ufoLean == -1 ? '-30deg' : ufoLean == 1 ? '30deg' : '0deg'});"
-		/>
+	<div class="ufo" bind:this={ufo}>
+		<img src="/gifs/ufo.gif" alt="ufo" draggable="false" style="transform: rotateZ({ufoLean == -1 ? '-30deg' : ufoLean == 1 ? '30deg' : '0deg'});" />
 		<BubbleChat />
 	</div>
 {/if}
 
-<svelte:window bind:innerHeight bind:innerWidth />
+<svelte:body
+	on:mousemove={(event) => {
+		onPointerMove(event);
+	}}
+/>
 
-<style>
+<style lang="scss">
 	.ufo {
 		position: fixed;
 		pointer-events: none;
