@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	//vvars declare
 	let input: string = "First line is for Item's name\nThis is line #1\n\nYou can skip for line #3\n&bNow create your own...";
@@ -32,7 +33,7 @@
 		'&d': 'format-d',
 		'&e': 'format-e',
 		'&f': 'format-f',
-		'&u': 'format-u',
+		'&n': 'format-n',
 		'&l': 'format-l',
 		'&k': 'format-k',
 		'&o': 'format-o',
@@ -79,7 +80,7 @@
 	}
 
 	function splitStringIntoObjects(inputString: string) {
-		const regex = /(&[0-9a-fulkmor])*[^&]*/gi;
+		const regex = /(&[0-9a-fnlkmor])*[^&]*/gi;
 		//const regex = /(&[0-9a-fulmor])+[^&]+/gi;
 		const matches = inputString.match(regex);
 		const result: { format: string[]; content: string }[] = [];
@@ -95,8 +96,8 @@
 			}
 			//const formatCode = match.slice(0, 2);
 
-			const formats = match.match(/&[0-9a-fulkmor]/gi);
-			const content = match.replace(/&[0-9a-fulkmor]/gi, '');
+			const formats = match.match(/&[0-9a-fnlkmor]/gi);
+			const content = match.replace(/&[0-9a-fnlkmor]/gi, '');
 
 			//if format codes found
 			if (formats && formats.length > 0) {
@@ -206,8 +207,12 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Projects - EpicRename Generator</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="EpicRename Generator | Faewulf's Basement"
+		description="A generator for EpicRename plugin."
+		keywords={['faewulf', 'projects', 'epicrename', 'tool', 'generator']}
+		canonical="https://faewulf.xyz/projects/epicrename"
+	/>
 </svelte:head>
 
 <div class="main" bind:clientHeight={mainHeight} bind:clientWidth={mainWidth}>
@@ -463,7 +468,7 @@
 				font-style: normal;
 			}
 
-			:global(.format-u) {
+			:global(.format-n) {
 				text-decoration: underline;
 			}
 

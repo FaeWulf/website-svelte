@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	const amogusValue: { [key: string]: string } = {
 		'0': 'ඬ',
@@ -75,8 +76,12 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Amongusify</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="Amongusify | Faewulf's Basement"
+		description="Convert urls into a bunch of amogus"
+		keywords={['link converter', 'amongus', 'sus']}
+		canonical="https://faewulf.xyz/amogus"
+	/>
 </svelte:head>
 
 <div class="main">

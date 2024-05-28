@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import { onMount } from 'svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	interface project {
 		name: string;
@@ -69,8 +70,12 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Projects</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="Projects | Faewulf's Basement"
+		description="Faewulf's projects."
+		keywords={['faewulf', 'projects', 'list', 'infomation']}
+		canonical="https://faewulf.xyz/projects"
+	/>
 </svelte:head>
 
 <div class="main">

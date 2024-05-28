@@ -4,6 +4,7 @@
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import { parseDiscordEmoji } from '$lib/utils.js';
 	import { onMount } from 'svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	export let data;
 
@@ -50,8 +51,12 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Blog</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="Blog | Faewulf's Basement"
+		description="The blog of Faewulf."
+		keywords={['faewulf', 'blog', 'info', 'infomation']}
+		canonical="https://faewulf.xyz/blog"
+	/>
 </svelte:head>
 
 <div class="main">

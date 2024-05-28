@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 	import MenuBar from './menuBar.svelte';
 	import { apiURL, ufoBubble } from '$lib/store';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	//export let data;
 
@@ -54,8 +55,12 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Music</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="Music list | Faewulf's Basement"
+		description="Faewulf's music list."
+		keywords={['faewulf', 'music', 'list', 'infomation']}
+		canonical="https://faewulf.xyz/music"
+	/>
 </svelte:head>
 
 <div class="main">
@@ -78,23 +83,9 @@
 				<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
 
 				<div class="tab-track">
-					<MenuBar
-						bind:search
-						bind:autoNextActive
-						bind:autoplayActive={autoPlay}
-						bind:randomActive
-						bind:id
-						bind:currentList
-					/>
+					<MenuBar bind:search bind:autoNextActive bind:autoplayActive={autoPlay} bind:randomActive bind:id bind:currentList />
 					<div class="tab-track-playlist">
-						<svelte:component
-							this={lazyLoadPlaylist}
-							{...$$props}
-							bind:id
-							bind:search
-							bind:currentList
-							bind:playList={dataPlaylist}
-						/>
+						<svelte:component this={lazyLoadPlaylist} {...$$props} bind:id bind:search bind:currentList bind:playList={dataPlaylist} />
 					</div>
 				</div>
 			</div>

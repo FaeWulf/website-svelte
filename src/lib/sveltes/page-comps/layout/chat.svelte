@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { parseDiscordEmoji } from '$lib/utils';
+	import { PUBLIC_chatServer } from '$env/static/public';
 
 	let input = '';
 
@@ -54,7 +55,7 @@
 	}
 
 	function websocketInit() {
-		ws = new WebSocket('wss://faewulf.xyz/ws/');
+		ws = new WebSocket(PUBLIC_chatServer);
 
 		ws.addEventListener('open', (event) => {
 			console.log('Connected to websocket');
