@@ -1,6 +1,9 @@
+<script>
+	import { MetaTags } from 'svelte-meta-tags';
+</script>
+
 <svelte:head>
-	<title>Faewulf's Basement | About</title>
-	<meta name="description" content="About this website" />
+	<MetaTags title="Faewulf's Basement | About" description="About this website" keywords={['about']} canonical="https://faewulf.xyz/about" />
 </svelte:head>
 
 <div class="text-column">

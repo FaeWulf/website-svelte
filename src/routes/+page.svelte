@@ -16,6 +16,7 @@
 
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	const tabs: string[] = ['infotabs-badges', 'infotabs-recentblog', 'infotabs-recenttracks', 'infotabs-fortuneteller'];
 	let tab_index = 0;
@@ -43,9 +44,13 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | HQ</title>
-	<meta name="description" content="My Bio" />
 	<link rel="preload" as="image" href="/images/badges/css_sprites.png" />
+	<MetaTags
+		title="HQ | Faewulf's Basement"
+		description="Faewulf's Landing Page."
+		keywords={['faewulf', 'hq', 'bio', 'landing page', 'portfolio']}
+		canonical="https://faewulf.xyz/"
+	/>
 </svelte:head>
 
 <Logo />

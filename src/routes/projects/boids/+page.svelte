@@ -1,10 +1,15 @@
 <script lang="ts">
 	import Canvas from '$lib/sveltes/page-comps/boids/canvas.svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Projects - Boids Simulator</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="Boids simulation | Faewulf's Basement"
+		description="A boids simulation via webgl."
+		keywords={['faewulf', 'projects', 'boids simulation', 'pixijs', 'webgl']}
+		canonical="https://faewulf.xyz/projects/boids"
+	/>
 </svelte:head>
 
 <Canvas />

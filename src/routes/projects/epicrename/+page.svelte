@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	//vvars declare
 	let input: string = "First line is for Item's name\nThis is line #1\n\nYou can skip for line #3\n&bNow create your own...";
@@ -206,8 +207,12 @@
 </script>
 
 <svelte:head>
-	<title>Faewulf's Basement | Projects - EpicRename Generator</title>
-	<meta name="description" content="About this website" />
+	<MetaTags
+		title="EpicRename Generator | Faewulf's Basement"
+		description="A generator for EpicRename plugin."
+		keywords={['faewulf', 'projects', 'epicrename', 'tool', 'generator']}
+		canonical="https://faewulf.xyz/projects/epicrename"
+	/>
 </svelte:head>
 
 <div class="main" bind:clientHeight={mainHeight} bind:clientWidth={mainWidth}>

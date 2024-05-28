@@ -7,6 +7,7 @@
 
 	//comments component
 	import Giscus from '@giscus/svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	export let data;
 	let postData: any;
@@ -18,7 +19,12 @@
 </script>
 
 <svelte:head>
-	<title>{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</title>
+	<MetaTags
+		title={data.id.replaceAll('-', ' ').replaceAll('.md', '') + ' | Faewulf'}
+		description={data.id.replaceAll('-', ' ').replaceAll('.md', '')}
+		keywords={['faewulf', 'blog', data.id.replaceAll('-', ' ').replaceAll('.md', '')]}
+		canonical="https://faewulf.xyz/blog/{data.id}"
+	/>
 </svelte:head>
 
 {#if postData}
