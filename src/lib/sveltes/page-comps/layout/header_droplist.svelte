@@ -11,7 +11,7 @@
 			url: '/blog'
 		},
 		{
-			name: 'My favorite music list',
+			name: 'My music list',
 			icon: '🎵',
 			url: '/music'
 		},
