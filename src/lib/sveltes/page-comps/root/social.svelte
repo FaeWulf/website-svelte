@@ -22,7 +22,7 @@
 		},
 		{
 			name: 'discord',
-			url: 'https://discord.com/users/442263875560144896/',
+			url: 'https://discord.com/invite/xZneCTcEvb',
 			component: discord
 		},
 		{
