@@ -45,7 +45,7 @@
 				else if (deltaY > 1) ufoLean = -1;
 				else ufoLean = 0;
 			}
-		}
+		} else ufoLean = 0;
 
 		//idle time calculate
 		ufoLastMove = new Date();
@@ -110,7 +110,7 @@
 
 {#if ufoReady}
 	<div class="ufo" bind:this={ufo}>
-		<img src="/gifs/ufo.gif" alt="ufo" draggable="false" style="transform: rotateZ({ufoLean == -1 ? '-30deg' : ufoLean == 1 ? '30deg' : '0deg'});" />
+		<img src="/gifs/ufo.gif" alt="ufo" draggable="false" class:leanLeft={ufoLean == -1} class:leanRight={ufoLean == 1} />
 		<BubbleChat />
 	</div>
 {/if}
@@ -130,5 +130,33 @@
 		user-select: none;
 		-webkit-user-select: none;
 		-ms-user-select: none;
+
+		img {
+			&.leanLeft {
+				animation: forwards leanLeft 0.5s ease-in-out;
+			}
+
+			&.leanRight {
+				animation: forwards leanRight 0.5s ease-in-out;
+			}
+		}
+	}
+
+	@keyframes leanLeft {
+		from {
+			transform: rotateZ(0deg);
+		}
+		to {
+			transform: rotateZ(-30deg);
+		}
+	}
+
+	@keyframes leanRight {
+		from {
+			transform: rotateZ(0deg);
+		}
+		to {
+			transform: rotateZ(30deg);
+		}
 	}
 </style>
