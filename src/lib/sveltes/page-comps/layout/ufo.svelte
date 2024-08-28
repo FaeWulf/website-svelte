@@ -61,7 +61,7 @@
 				},
 				{
 					duration: delay ? delay : ufoSpeed,
-					easing: doBounce ? 'cubic-bezier(.47,1.64,.41,.8)' : 'ease-in-out',
+					easing: doBounce ? 'cubic-bezier(.47,1.64,.41,.8)' : 'cubic-bezier(0.76, 0, 0.24, 1)',
 					fill: 'forwards'
 				}
 			);
@@ -99,8 +99,6 @@
 				}
 			}
 		}, 500);
-
-		ufoReady = true;
 	});
 
 	onDestroy(() => {
@@ -108,12 +106,10 @@
 	});
 </script>
 
-{#if ufoReady}
-	<div class="ufo" bind:this={ufo}>
-		<img src="/gifs/ufo.gif" alt="ufo" draggable="false" class:leanLeft={ufoLean == -1} class:leanRight={ufoLean == 1} />
-		<BubbleChat />
-	</div>
-{/if}
+<div class="ufo" bind:this={ufo}>
+	<img src="/gifs/ufo.gif" alt="ufo" draggable="false" class:leanLeft={ufoLean == -1} class:leanRight={ufoLean == 1} />
+	<BubbleChat />
+</div>
 
 <svelte:body
 	on:mousemove={(event) => {
@@ -126,6 +122,9 @@
 		position: fixed;
 		pointer-events: none;
 		z-index: 20;
+
+		top: -100px;
+		left: calc(100vw / 2);
 
 		user-select: none;
 		-webkit-user-select: none;

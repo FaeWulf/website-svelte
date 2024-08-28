@@ -78,11 +78,9 @@ body {
 	min-height: calc(100vh - calc(100vh - 100%));
 	margin: 0;
 	touch-action: none;
-	overflow-x: hidden;
 }
 
 html {
-	overflow-x: hidden;
 }
 
 h1,
