@@ -17,7 +17,7 @@
 	let window_x = -500;
 	let window_y = -500;
 
-	let selectTab = 0;
+	let selectTab = 3;
 	let totalTabs = [
 		{ id: 0, name: 'Bonsai' },
 		{ id: 1, name: 'Console' },
