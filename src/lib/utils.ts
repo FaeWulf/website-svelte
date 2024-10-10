@@ -214,6 +214,50 @@ function parseDiscordEmoji(message: string) {
 	return progressed.join('');
 }
 
+function timeAgo(datetime: number): string {
+	const date = new Date(datetime);
+    const now = new Date();
+    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+    const secondsInMinute = 60;
+    const secondsInHour = 3600;
+    const secondsInDay = 86400;
+	
+    /* if (diffInSeconds < secondsInMinute) {
+        return 'Just now';
+    } else if (diffInSeconds < secondsInHour) {
+        const minutes = Math.floor(diffInSeconds / secondsInMinute);
+        return `${minutes} min ago`;
+    } else if (diffInSeconds < secondsInDay) {
+        const hours = Math.floor(diffInSeconds / secondsInHour);
+        return `${hours}h ago`;
+    } */
+
+	const formatAMPM = (date: Date): string => {
+        let hours = date.getHours();
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // Hour '0' should be '12'
+        return `${hours}:${minutes} ${ampm}`;
+    };
+
+    const yesterday = new Date(now);
+    yesterday.setDate(now.getDate() - 1);
+    
+    const isToday = date.toDateString() === now.toDateString();
+    const isYesterday = date.toDateString() === yesterday.toDateString();
+
+    if (isToday) {
+        return `Today at ${formatAMPM(date)}`;
+    } else if (isYesterday) {
+        return `Yesterday at ${formatAMPM(date)}`;
+    }
+	
+
+    return date.toLocaleDateString() + ' ' + formatAMPM(date);
+}
+
 export {
 	typewriter,
 	gibberish,
@@ -225,5 +269,6 @@ export {
 	setAsyncInterval,
 	isMobile,
 	angleBetween2Points,
-	parseDiscordEmoji
+	parseDiscordEmoji,
+	timeAgo
 };

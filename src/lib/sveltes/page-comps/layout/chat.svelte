@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { parseDiscordEmoji } from '$lib/utils';
+	import { parseDiscordEmoji, timeAgo } from '$lib/utils';
 	import { PUBLIC_chatServer } from '$env/static/public';
 
 	let input = '';
@@ -75,10 +75,10 @@
 				if (data.type == 'chat') {
 					const color = data.data.color ? data.data.color : 'white';
 
-					chatContent +=
-						`<div class="message"><span style="color: ${color}; font-weight: bold">${data.data.name}</span>: ` +
-						parseDiscordEmoji(data.data.content) +
-						'</div>';
+					chatContent += `<div class="message">
+						<div><span style="color: ${color}; font-weight: bold">${data.data.name}</span> <span class="timestamp">${timeAgo(Number(data.data.date))}</span></div>
+						<div>${parseDiscordEmoji(data.data.content)}</div>
+						</div>`;
 				}
 
 				if (ping) {
@@ -150,6 +150,7 @@
 				gap: 5px;
 
 				:global(> div.message) {
+					margin-top: 6px;
 					width: 100%;
 					height: fit-content;
 					overflow-wrap: break-word;
@@ -157,6 +158,11 @@
 					-webkit-user-select: text; /* Safari */
 					-ms-user-select: text; /* IE 10 and IE 11 */
 					user-select: text; /* Standard syntax */
+
+					:global(span.timestamp) {
+						font-size: x-small;
+						opacity: 0.5;
+					}
 				}
 			}
 		}
