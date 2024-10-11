@@ -28,13 +28,17 @@
 			return;
 		}
 
-		chatContent += `<div class="message"> <span style="color: white; font-weight: bold">${clientName}</span>: ` + parseDiscordEmoji(input) + '</div>';
+		chatContent += `<div class="message">
+						<div><span style="color: white; font-weight: bold">${clientName}</span> <span class="timestamp">${timeAgo(Date.now())}</span></div>
+						<div>${parseDiscordEmoji(input)}</div>
+						</div>`;
 		ws.send(
 			JSON.stringify({
 				type: 'chat',
 				data: {
 					name: clientName,
-					content: input
+					content: input,
+					date: Date.now()
 				}
 			})
 		);
@@ -79,6 +83,10 @@
 						<div><span style="color: ${color}; font-weight: bold">${data.data.name}</span> <span class="timestamp">${timeAgo(Number(data.data.date))}</span></div>
 						<div>${parseDiscordEmoji(data.data.content)}</div>
 						</div>`;
+
+					setTimeout(() => {
+						content.scrollTo(0, content.scrollHeight);
+					}, 10);
 				}
 
 				if (ping) {
