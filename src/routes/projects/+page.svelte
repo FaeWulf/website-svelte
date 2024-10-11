@@ -86,8 +86,18 @@
 			{#if isMounted}
 				{#each projects as project (project)}
 					<a href={project.path} class="project" class:abandoned={project.old}>
-						<p class="card-title">{project.name}</p>
-						<p class="card-description">{project.description}</p>
+						<div class="text-wrapper">
+							<div class="text">
+								<p class="card-title">{project.name}</p>
+								<p class="card-description">{project.description}</p>
+							</div>
+						</div>
+						<div class="text-wrapper highlight">
+							<div class="text">
+								<p class="card-title">{project.name}</p>
+								<p class="card-description">{project.description}</p>
+							</div>
+						</div>
 					</a>
 				{/each}
 			{/if}
@@ -132,11 +142,12 @@
 			overflow: auto;
 
 			.project {
+				position: relative;
 				width: 100%;
 				height: fit-content;
 				border-top: 1px solid rgba(var(--Text), 0.4);
 				border-bottom: 1px solid rgba(var(--Text), 0.4);
-				transition: all 0.1s ease-in-out;
+				transition: all 0.4s ease;
 				margin-left: 20px;
 				margin-right: 20px;
 				color: rgba(var(--Text));
@@ -147,22 +158,49 @@
 					text-decoration-color: rgb(var(--Red));
 				}
 
+				.text-wrapper {
+					.card-title {
+						font-size: 1rem;
+						margin-left: 20px;
+					}
+
+					.card-description {
+						font-size: 0.8rem;
+						margin-left: 20px;
+						margin-top: -5px;
+						opacity: 0.5;
+					}
+
+					&.highlight {
+						position: absolute;
+						top: 0;
+						left: 0;
+
+						width: 0%;
+
+						flex-wrap: nowrap;
+						text-wrap: nowrap;
+
+						overflow: hidden;
+
+						background-color: rgba(var(--Green), 1);
+						color: black;
+
+						transition: width 0.4s ease;
+
+						.card-description {
+							opacity: 1;
+						}
+					}
+				}
+
 				&:hover {
-					color: rgb(var(--Green));
 					text-decoration: none;
-					transform: scale(1.01);
-				}
+					transform: scale(1.02);
 
-				.card-title {
-					font-size: 1rem;
-					margin-left: 20px;
-				}
-
-				.card-description {
-					font-size: 0.8rem;
-					margin-left: 20px;
-					margin-top: -5px;
-					opacity: 0.5;
+					div.highlight {
+						width: 100%;
+					}
 				}
 			}
 		}

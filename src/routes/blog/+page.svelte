@@ -11,7 +11,7 @@
 	const url = $apiURL;
 	const max = 5;
 
-	let postData: any;
+	let postData: Array<any>;
 	let totalPage: number;
 	let index: number;
 	let randomThought: string;
@@ -24,6 +24,7 @@
 
 		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then((res) => res.json());
 		postData = fetchBlogs.data.data;
+
 		totalPage = fetchBlogs.data.maxPage;
 
 		const fetchRandomThought = await fetch(url + '/api/v1/discord/randomthought').then((res) => res.json());
@@ -46,6 +47,7 @@
 
 		const fetchBlogs = await fetch(url + '/api/v1/blog' + `?page=${index}&maxPerPage=${max}`).then((res) => res.json());
 		postData = fetchBlogs.data.data;
+
 		totalPage = fetchBlogs.data.maxPage;
 	}
 </script>
@@ -68,19 +70,42 @@
 		<div class="container">
 			{#each postData as post (post.name)}
 				<a class="post" href="/blog/{post.path}">
-					<div class="post-title">{post.name}</div>
-					<span class="post-date"
-						>Posted on {new Date(post.date).toLocaleDateString('en-us', {
-							weekday: 'long',
-							year: 'numeric',
-							month: 'short',
-							day: 'numeric'
-						})}</span
-					>
-					<div class="tag">
-						{#each post.tags as tag}
-							<span class="tag-item">{tag}</span>
-						{/each}
+					<div class="text-wrapper">
+						<div class="text">
+							<div class="post-title">{post.name}</div>
+							<span class="post-date"
+								>Posted on {new Date(post.date).toLocaleDateString('en-us', {
+									weekday: 'long',
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric'
+								})}</span
+							>
+							<div class="tag">
+								{#each post.tags as tag}
+									<span class="tag-item">{tag}</span>
+								{/each}
+							</div>
+						</div>
+					</div>
+
+					<div class="text-wrapper highlight">
+						<div class="text">
+							<div class="post-title">{post.name}</div>
+							<span class="post-date"
+								>Posted on {new Date(post.date).toLocaleDateString('en-us', {
+									weekday: 'long',
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric'
+								})}</span
+							>
+							<div class="tag">
+								{#each post.tags as tag}
+									<span class="tag-item">{tag}</span>
+								{/each}
+							</div>
+						</div>
 					</div>
 				</a>
 			{/each}
@@ -117,48 +142,82 @@
 		}
 
 		.container {
+			position: relative;
+			width: 100%;
 			display: flex;
 			flex-direction: column;
-			justify-content: flex-start;
-			width: 100%;
+			justify-content: start;
+			align-items: center;
 			row-gap: 20px;
 			margin-top: 20px;
 			flex: 1;
 
 			.post {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
+				position: relative;
 				width: calc(100% - 130px);
-				margin-left: 50px;
-				margin-right: 50px;
-
-				border-top: 4px solid rgba(var(--Text), 0.2);
-				padding-left: 30px;
-				padding-top: 10px;
-
 				row-gap: 5px;
 
-				.post-title {
-					font-size: 1.7rem;
-					word-spacing: -0.5rem;
+				.text-wrapper {
+					.text {
+						display: flex;
+						flex-direction: column;
+						justify-content: flex-start;
+
+						border-top: 4px solid rgba(var(--Text), 0.2);
+
+						padding: 10px;
+
+						.post-title {
+							font-size: 1.7rem;
+							word-spacing: -0.5rem;
+						}
+
+						.post-date {
+							color: rgb(var(--Text));
+						}
+
+						.tag {
+							display: flex;
+							flex-wrap: wrap;
+							gap: 5px;
+							font-size: 12px;
+							opacity: 0.6;
+							.tag-item {
+								color: rgb(var(--Text));
+								background-color: rgba(var(--Text), 0.2);
+								padding: 5px;
+								border-radius: 5px;
+							}
+						}
+					}
+
+					&.highlight {
+						position: absolute;
+						top: 0;
+						left: 0;
+
+						width: 0;
+						height: 100%;
+
+						flex-wrap: nowrap;
+						text-wrap: nowrap;
+
+						overflow: hidden;
+
+						background-color: rgba(var(--Green), 1);
+						color: black;
+
+						transition: width 0.4s ease;
+
+						.post-date {
+							color: black;
+						}
+					}
 				}
 
-				.post-date {
-					color: rgb(var(--Text));
-				}
-
-				.tag {
-					display: flex;
-					flex-wrap: wrap;
-					gap: 5px;
-					font-size: 12px;
-					opacity: 0.6;
-					.tag-item {
-						color: rgb(var(--Text));
-						background-color: rgba(var(--Text), 0.2);
-						padding: 5px;
-						border-radius: 5px;
+				&:hover {
+					div.highlight {
+						width: 100%;
 					}
 				}
 			}
@@ -176,17 +235,12 @@
 
 	a {
 		color: rgb(var(--Peach));
-
-		&:hover {
-			color: rgb(var(--Red));
-		}
 	}
 
 	@media only screen and (max-width: 720px) {
 		.post {
 			margin: 0;
-			padding-left: 15px;
-			width: calc(100% - 15px);
+			width: calc(100% - 20px) !important;
 
 			.post-title {
 				font-size: 1.2rem;

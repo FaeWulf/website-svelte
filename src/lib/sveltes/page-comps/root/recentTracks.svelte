@@ -11,9 +11,7 @@
 
 		last5 = fetchRecentTrack.data;
 
-		const fetchlastUpdate = await fetch(url + '/api/v1/playlist/lastupdate').then((res) =>
-			res.json()
-		);
+		const fetchlastUpdate = await fetch(url + '/api/v1/playlist/lastupdate').then((res) => res.json());
 
 		lastUpdate = fetchlastUpdate.data;
 	});
@@ -26,9 +24,21 @@
 	</div>
 	{#each last5 as track (track.ID)}
 		<a class="track" href={track.url} target="_blank">
-			<div class="name">{track.title}</div>
-			<div class="artist">{track.artist}</div>
-			<div class="duration">{track.time}</div>
+			<div class="text-wrapper">
+				<div class="text">
+					<div class="name">{track.title}</div>
+					<div class="artist">{track.artist}</div>
+					<div class="duration">{track.time}</div>
+				</div>
+			</div>
+
+			<div class="text-wrapper highlight">
+				<div class="text">
+					<div class="name">{track.title}</div>
+					<div class="artist">{track.artist}</div>
+					<div class="duration">{track.time}</div>
+				</div>
+			</div>
 		</a>
 	{/each}
 {:else}
@@ -52,34 +62,62 @@
 	.track {
 		position: relative;
 		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: flex-start;
-		align-content: flex-start;
-
-		padding: 5px;
 
 		border: 1px rgba(var(--Text), 0.2) solid;
 		border-radius: 5px;
+		overflow: hidden;
 
 		text-decoration: none;
 		color: rgb(var(--Text));
 
+		> div.text-wrapper {
+			width: 100%;
+			height: fit-content;
+
+			.text {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				align-content: flex-start;
+
+				padding: 5px;
+
+				> .duration {
+					position: absolute;
+					top: 30%;
+					right: 10px;
+				}
+
+				> .artist {
+					font-size: 0.8rem;
+					opacity: 0.6;
+				}
+			}
+
+			&.highlight {
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				width: 0;
+
+				flex-wrap: nowrap;
+				text-wrap: nowrap;
+
+				overflow: hidden;
+
+				background-color: rgba(var(--Green), 1);
+				color: black;
+
+				transition: width 0.4s ease;
+			}
+		}
+
 		&:hover {
-			color: rgb(var(--Green));
-			font-weight: bold;
-		}
-
-		> .duration {
-			position: absolute;
-			top: 30%;
-			right: 10px;
-		}
-
-		> .artist {
-			font-size: 0.8rem;
-			opacity: 0.6;
+			div.highlight {
+				width: 100%;
+			}
 		}
 	}
 
