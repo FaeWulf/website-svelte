@@ -21,7 +21,7 @@
 
 	const anVowel = [0, 2];
 	const colorLevel = ['', '', 'hueText-green', 'hueText-blue', 'hueText-purple', 'hueText-red'];
-	const textLevel = ['inexperience', 'Novice', 'Advaned&nbsp;Beginner', 'Competence', 'Proficient', 'Expert'];
+	const textLevel = ['Inexperienced', 'Novice', 'Advanced&nbsp;Beginner', 'Competence', 'Proficient', 'Expert'];
 
 	/*
 	onMount(() => {
