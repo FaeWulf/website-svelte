@@ -72,80 +72,69 @@
 <Social bind:titleChanger />
 
 <style lang="scss">
-	.infoSlide {
-		margin-top: 25px;
-		opacity: 0.6;
-		transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-		//backdrop-filter: blur(2px);
-		width: 100%;
-		max-width: 420px;
-		height: 240px;
+  .infoSlide {
+    margin-top: 25px;
+    opacity: 0.6;
+    transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    //backdrop-filter: blur(2px);
+    width: 100%;
+    max-width: 420px;
+    height: 240px;
 
-		&:hover {
-			opacity: 1;
-			background-color: rgba(var(--Crust), 0.5);
-		}
+    &:hover {
+      opacity: 1;
+      background-color: rgba(var(--Crust), 0.5);
+    }
 
-		.infoTab {
-			/*
-			width: 100%;
-			max-width: 420px;
-			height: 200px;
+    .infoTab {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
 
-			display: flex;
-			justify-content: center;
-			align-items: center;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      overflow-x: hidden;
 
-			flex-direction: column;
-			*/
-			box-sizing: border-box;
-			width: 100%;
-			height: 100%;
+      padding: 5px;
+      gap: 5px;
 
-			flex-wrap: wrap;
-			overflow-y: auto;
-			overflow-x: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
 
-			padding: 5px;
-			gap: 5px;
+      border-radius: 8px;
 
-			display: flex;
-			justify-content: flex-start;
-			align-items: flex-start;
-			align-content: flex-start;
+      border: 1px rgba(var(--Text), 0.2) solid;
+      mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+      -webkit-mask-image: -webkit-linear-gradient(to bottom, black 70%, transparent 100%);
+    }
+  }
 
-			border-radius: 8px;
+  .text-scroll {
+    margin-top: 10px;
+    opacity: 0.6;
+    //transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-			border: 1px rgba(var(--Text), 0.2) solid;
-			mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-			-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-		}
-	}
+    //remove ability to select text
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-	.text-scroll {
-		margin-top: 10px;
-		opacity: 0.6;
-		//transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    img {
+      width: 35px;
+      animation: animateArrow 0.6s ease-in infinite alternate;
+      cursor: pointer;
+    }
+  }
 
-		//remove ability to select text
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-
-		img {
-			width: 35px;
-			animation: animateArrow 0.6s ease-in infinite alternate;
-			cursor: pointer;
-		}
-	}
-
-	@keyframes animateArrow {
-		0% {
-			transform: translateY(-4px);
-		}
-		100% {
-			transform: translateY(4px);
-		}
-	}
+  @keyframes animateArrow {
+    0% {
+      transform: translateY(-4px);
+    }
+    100% {
+      transform: translateY(4px);
+    }
+  }
 </style>

@@ -23,56 +23,61 @@
 	const colorLevel = ['', '', 'hueText-green', 'hueText-blue', 'hueText-purple', 'hueText-red'];
 	const textLevel = ['Inexperienced', 'Novice', 'Advanced&nbsp;Beginner', 'Competence', 'Proficient', 'Expert'];
 
-	/*
-	onMount(() => {
-		descriptionText.subscribe((value) => {
-			level = value.value;
-			text = value.text.replaceAll(' ', '&nbsp;');
-			learner = value.learner;
-		});
-	});
-	*/
 </script>
 
 <h2>
 	「
 	{#if anVowel.includes(level)}
-		An
+		<span class:animate={!mobileMode} transition:slide={{ delay: 200, axis: 'x' }}>An</span>
 	{:else}
-		A
+		<span class:animate={!mobileMode} transition:slide={{ delay: 200, axis: 'x' }}>A</span>
 	{/if}
+
 	{#each textLevel as textlvl, index (textlvl)}
-		{#if level == index}
-			<span transition:slide={{ delay: 200, axis: 'x' }} class:animate={!mobileMode} class={colorLevel[index]}>{@html textlvl}</span>
-			<span class:hueText-cycle={!mobileMode} class="description-info" out:slide={{ delay: 200, axis: 'x' }} in:slide={{ delay: 200, axis: 'x' }}
-				>{@html text}</span
+		{#if level === index}
+			<span class={colorLevel[index]}
+						class:animate={!mobileMode}
+						transition:slide={{ delay: 200, axis: 'x' }}
 			>
+				{@html textlvl}
+			</span>
+			<span class:hueText-cycle={!mobileMode}
+						class="description-info"
+						out:slide={{ delay: 200, axis: 'x' }}
+						in:slide={{ delay: 200, axis: 'x' }}
+			>
+				{@html text}
+			</span>
 		{/if}
 	{/each}
+
+	<!--	This is for user/developer word after the language/program selecting-->
 	{#if learner}
-		learner
+		<span class:animate={!mobileMode} transition:slide={{ delay: 200, axis: 'x' }}>user</span>
 	{:else}
-		developer
-	{/if} on the sofa 」
+		<span class:animate={!mobileMode} transition:slide={{ delay: 200, axis: 'x' }}>developer</span>
+	{/if}
+
+	on the sofa 」
 </h2>
 
 <style>
-	h2 {
-		margin-top: 5px;
-		display: flex;
-		gap: 5px;
+    h2 {
+        margin-top: 5px;
+        display: flex;
+        gap: 5px;
 
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
-	.level {
-		display: none;
-	}
+    .level {
+        display: none;
+    }
 
-	.description-info {
-		font-weight: 800;
-		color: #eb008b;
-	}
+    .description-info {
+        font-weight: 800;
+        color: #eb008b;
+    }
 </style>
