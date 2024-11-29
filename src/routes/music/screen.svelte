@@ -26,7 +26,8 @@
 		player.on('ready', () => {
 			play(id);
 		});
-		player.on('error', (value) => {});
+		player.on('error', (value) => {
+		});
 		player.on('stateChange', (value) => {
 			if (value.data == -1 && autoPlay) player.playVideo();
 
@@ -56,16 +57,18 @@
 <div id="player" bind:this={playerElement} />
 
 <style>
-	#player {
-		width: 300px;
-		height: 300px;
-		margin-left: 20px;
-	}
+    #player {
+        width: 300px;
+        height: 300px;
+        margin-left: 20px;
+        border-radius: 0.5rem;
+        background: rgba(var(--Overlay0));
+    }
 
-	@media (max-width: 720px) {
-		#player {
-			height: 200px;
-			margin: 0;
-		}
-	}
+    @media (max-width: 720px) {
+        #player {
+            height: 200px;
+            margin: 0;
+        }
+    }
 </style>

@@ -64,7 +64,7 @@
 		end = i;
 
 		const remaining = items.length - end;
-		average_height = (top + content_height) / end;
+		average_height = (top + content_height + 10) / end;
 
 		bottom = remaining * average_height;
 		height_map.length = items.length;

@@ -2,6 +2,7 @@
 	import VirtualList from '$lib/sveltes/virtualList.svelte';
 	import type { track } from '$lib/types';
 	import { onMount } from 'svelte';
+
 	export let id: string;
 	export let search = '';
 	export let playList: { index: number; data: track }[];
@@ -30,12 +31,12 @@
 	$: list =
 		search && search.length > 0
 			? playList.filter((track) => {
-					return (
-						track.data.title.toLocaleLowerCase().match(`${search}.*`) ||
-						track.data.artist.toLocaleLowerCase().match(`${search}.*`) ||
-						search.includes(track.index.toString())
-					);
-			  })
+				return (
+					track.data.title.toLocaleLowerCase().match(`${search}.*`) ||
+					track.data.artist.toLocaleLowerCase().match(`${search}.*`) ||
+					search.includes(track.index.toString())
+				);
+			})
 			: playList;
 
 	$: currentList = list;
@@ -105,70 +106,75 @@
 </VirtualList>
 
 <style lang="scss">
-	.track {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		gap: 10px;
-		border-top: 1px solid rgba(var(--Overlay0), 0.4);
-		font-weight: 600;
-		padding: 5px 20px 5px 20px;
+  .track {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 
-		cursor: pointer;
+    margin-bottom: 10px;
 
-		.index {
-			opacity: 0.6;
-		}
+    background: rgba(var(--Overlay0), 1);
+    border-radius: 0.5rem;
+    border-top: 1px solid rgba(var(--Overlay0), 0.4);
+    font-weight: 600;
+    padding: 5px 20px 5px 20px;
 
-		.duration {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 5px;
-		}
-	}
+    cursor: pointer;
 
-	.track:hover,
-	.active {
-		background: rgba(var(--Surface2), 0.4);
-	}
+    .index {
+      opacity: 0.6;
+    }
 
-	.artist {
-		font-size: 0.8rem;
-		color: rgba(var(--Text), 0.5);
-	}
+    .duration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+  }
 
-	img.level {
-		width: 40px;
-		margin: 5px 0 5px 5px;
-	}
+  .track:hover,
+  .active {
+    background: rgb(63, 66, 75);
+  }
 
-	img.thumbnail {
-		width: 40px;
-		height: 40px;
-		margin: 5px;
-	}
+  .artist {
+    font-size: 0.8rem;
+    color: rgba(var(--Text), 0.5);
+  }
 
-	.playing {
-		position: absolute;
-		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		-webkit-transform: translateY(-50%);
-	}
+  img.level {
+    width: 40px;
+    margin: 5px 0 5px 5px;
+  }
 
-	.description {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
-		justify-content: center;
-		flex: 1;
-	}
+  img.thumbnail {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+  }
 
-	@media (max-width: 720px) {
-		img.level {
-			display: none;
-		}
-	}
+  .playing {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+  }
+
+  .description {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    flex: 1;
+  }
+
+  @media (max-width: 720px) {
+    img.level {
+      display: none;
+    }
+  }
 </style>

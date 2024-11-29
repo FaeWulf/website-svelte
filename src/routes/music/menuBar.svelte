@@ -75,51 +75,60 @@
 		class:active={randomActive}
 		on:click={() => chooseRandom()}
 		title="Choose Random"
+		style="margin-right: 10px"
 	>
 		R
 	</button>
 </div>
 
 <style lang="scss">
-	.tab-track-toolbar {
-		width: 100%;
-		height: 50px;
-		border-bottom: 1px solid rgba(var(--Overlay0), 0.4);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		column-gap: 10px;
-	}
+  .tab-track-toolbar {
+    width: 100%;
+    height: 50px;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid rgba(var(--Overlay0), 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
 
-	.searchBar {
-		width: 100%;
-		height: 30px;
-		margin: 0 0px 0 20px;
-		border: 1px solid rgba(var(--Overlay0), 0.4);
-		color: var(--Text);
-		background: rgba(var(--Overlay2), 0.4);
+    outline: 2px solid #0000;
+    outline-offset: -2px;
 
-		&:focus {
-			outline: 1px solid rgba(var(--Lavender), 0.8);
-			border: none;
-		}
-	}
+    background: rgba(var(--Overlay0), 1);
+  }
 
-	button {
-		width: 40px;
-		height: 30px;
-		background: rgba(var(--Overlay2), 0.4);
-		color: rgb(var(--Text));
-		font-family: 'Pixel Nes', 'Tahoma';
-		border: 1px solid rgba(var(--Yellow), 0.6);
+  .searchBar {
+    width: 100%;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(var(--Text), 0.2);
+    color: var(--Text);
+    background: rgba(var(--Overlay1), 1);
 
-		&:hover {
-			background: rgba(var(--Surface0), 1);
-		}
+    &:focus {
+      outline: 1px solid rgba(var(--Lavender), 0.8);
+      border: none;
+    }
+  }
 
-		&.active {
-			background: rgba(var(--Green), 1);
-			color: rgb(var(--Crust));
-		}
-	}
+  button {
+    width: 40px;
+    height: 30px;
+    background: rgba(var(--Overlay2), 0.4);
+    color: rgb(var(--Text));
+    font-family: 'Pixel Nes', 'Tahoma';
+    border-radius: 0.5rem;
+    border: 1px solid rgba(var(--Yellow), 0.6);
+
+    &:hover {
+      background: rgba(var(--Surface0), 1);
+    }
+
+    &.active {
+      background: rgba(var(--Green), 1);
+      color: rgb(var(--Crust));
+    }
+  }
 </style>

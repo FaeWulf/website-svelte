@@ -104,8 +104,6 @@
 		justify-content: flex-start;
 		align-items: center;
 		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
-		background-color: rgba(var(--Crust), 1);
 
 		//backdrop-filter: blur(2px);
 		//-webkit-backdrop-filter: blur(2px);
@@ -137,11 +135,20 @@
 		width: 100%;
 		height: 100%;
 		margin: 0px 20px 0px 20px;
-	}
 
-	.tab-track-playlist {
-		width: 100%;
-		height: calc(100% - 50px);
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+
+    .tab-track-playlist {
+      width: 100%;
+      height: calc(100% - 70px);
+
+      mask-image:
+							linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+
+      -webkit-mask-image: -webkit-linear-gradient(to bottom, black 70%, transparent 100%);
+    }
 	}
 
 	.scrollable {
