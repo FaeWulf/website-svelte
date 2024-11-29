@@ -23,7 +23,7 @@
 		<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
 	</div>
 	{#each last5 as track (track.ID)}
-		<a class="track" href={track.url} target="_blank">
+		<a class="track" href={track.Link} target="_blank">
 			<div class="text-wrapper">
 				<div class="text">
 					<div class="name">{track.title}</div>
@@ -48,81 +48,81 @@
 <div class="dummy" />
 
 <style lang="scss">
-	.title {
-		flex-basis: 100%;
-		text-align: center;
-		background-color: rgb(var(--Base));
-		border: 1px rgba(var(--Text), 0.2) solid;
-		border-radius: 5px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		font-weight: 600;
-	}
+  .title {
+    flex-basis: 100%;
+    text-align: center;
+    background-color: rgb(var(--Overlay1));
+    border: 1px rgba(var(--Text), 0.2) solid;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 600;
+  }
 
-	.track {
-		position: relative;
-		width: 100%;
+  .track {
+    position: relative;
+    width: 100%;
 
-		border: 1px rgba(var(--Text), 0.2) solid;
-		border-radius: 5px;
-		overflow: hidden;
+    border: 1px rgba(var(--Text), 0.2) solid;
+    border-radius: 5px;
+    overflow: hidden;
 
-		text-decoration: none;
-		color: rgb(var(--Text));
+    text-decoration: none;
+    color: rgb(var(--Text));
 
-		> div.text-wrapper {
-			width: 100%;
-			height: fit-content;
+    > div.text-wrapper {
+      width: 100%;
+      height: fit-content;
 
-			.text {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				align-items: flex-start;
-				align-content: flex-start;
+      .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
 
-				padding: 5px;
+        padding: 5px;
 
-				> .duration {
-					position: absolute;
-					top: 30%;
-					right: 10px;
-				}
+        > .duration {
+          position: absolute;
+          top: 30%;
+          right: 10px;
+        }
 
-				> .artist {
-					font-size: 0.8rem;
-					opacity: 0.6;
-				}
-			}
+        > .artist {
+          font-size: 0.8rem;
+          opacity: 0.6;
+        }
+      }
 
-			&.highlight {
-				position: absolute;
-				top: 0;
-				left: 0;
+      &.highlight {
+        position: absolute;
+        top: 0;
+        left: 0;
 
-				width: 0;
+        width: 0;
 
-				flex-wrap: nowrap;
-				text-wrap: nowrap;
+        flex-wrap: nowrap;
+        text-wrap: nowrap;
 
-				overflow: hidden;
+        overflow: hidden;
 
-				background-color: rgba(var(--Green), 1);
-				color: black;
+        background-color: rgba(var(--Green), 1);
+        color: black;
 
-				transition: width 0.4s ease;
-			}
-		}
+        transition: width 0.4s ease;
+      }
+    }
 
-		&:hover {
-			div.highlight {
-				width: 100%;
-			}
-		}
-	}
+    &:hover {
+      div.highlight {
+        width: 100%;
+      }
+    }
+  }
 
-	.dummy {
-		height: 20px;
-		flex-basis: 100%;
-	}
+  .dummy {
+    height: 20px;
+    flex-basis: 100%;
+  }
 </style>

@@ -48,75 +48,75 @@
 <div class="dummy" />
 
 <style lang="scss">
-	.title {
-		flex-basis: 100%;
-		text-align: center;
-		background-color: rgb(var(--Base));
-		border: 1px rgba(var(--Text), 0.2) solid;
-		border-radius: 5px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		font-weight: 600;
-	}
+  .title {
+    flex-basis: 100%;
+    text-align: center;
+    background-color: rgb(var(--Overlay1));
+    border: 1px rgba(var(--Text), 0.2) solid;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 600;
+  }
 
-	.post {
-		position: relative;
-		width: 100%;
-		height: fit-content;
+  .post {
+    position: relative;
+    width: 100%;
+    height: fit-content;
 
-		border: 1px rgba(var(--Text), 0.2) solid;
-		border-radius: 5px;
-		color: rgb(var(--Text));
-		text-decoration: none;
-		overflow: hidden;
+    border: 1px rgba(var(--Text), 0.2) solid;
+    border-radius: 5px;
+    color: rgb(var(--Text));
+    text-decoration: none;
+    overflow: hidden;
 
-		> div.text-wrapper {
-			width: 100%;
-			height: fit-content;
+    > div.text-wrapper {
+      width: 100%;
+      height: fit-content;
 
-			.text {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				align-items: flex-start;
-				align-content: flex-start;
+      .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
 
-				padding: 5px;
+        padding: 5px;
 
-				> .date {
-					font-size: 0.8rem;
-					opacity: 0.6;
-				}
-			}
+        > .date {
+          font-size: 0.8rem;
+          opacity: 0.6;
+        }
+      }
 
-			&.highlight {
-				position: absolute;
-				top: 0;
-				left: 0;
+      &.highlight {
+        position: absolute;
+        top: 0;
+        left: 0;
 
-				width: 0;
+        width: 0;
 
-				flex-wrap: nowrap;
-				text-wrap: nowrap;
+        flex-wrap: nowrap;
+        text-wrap: nowrap;
 
-				overflow: hidden;
+        overflow: hidden;
 
-				background-color: rgba(var(--Green), 1);
-				color: black;
+        background-color: rgba(var(--Green), 1);
+        color: black;
 
-				transition: width 0.4s ease;
-			}
-		}
+        transition: width 0.4s ease;
+      }
+    }
 
-		&:hover {
-			div.highlight {
-				width: 100%;
-			}
-		}
-	}
+    &:hover {
+      div.highlight {
+        width: 100%;
+      }
+    }
+  }
 
-	.dummy {
-		height: 20px;
-		flex-basis: 100%;
-	}
+  .dummy {
+    height: 20px;
+    flex-basis: 100%;
+  }
 </style>

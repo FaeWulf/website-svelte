@@ -17,6 +17,7 @@
 		let processedData: string[] = [];
 
 		data.reverse().forEach((element) => {
+			element = element.split('\n').shift() ?? element;
 			processedData.push('<span style="color: rgb(var(--Yellow))">✪</span> ' + parseDiscordEmoji(element));
 		});
 
@@ -44,61 +45,61 @@
 </div>
 
 <style lang="scss">
-	.icon {
-		position: absolute;
-		right: 10px;
-		height: 30px;
+  .icon {
+    position: absolute;
+    right: 10px;
+    height: 30px;
 
-		margin: 0;
-		padding: 0;
-		line-height: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
 
-		cursor: pointer;
+    cursor: pointer;
 
-		display: flex;
-		align-items: center;
-		justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-		:global(.lucide) {
-			stroke: rgb(var(--Green));
-		}
+    :global(.lucide) {
+      stroke: rgb(var(--Green));
+    }
 
-		&:hover {
-			:global(.lucide) {
-				stroke: rgb(var(--Yellow));
-			}
-		}
+    &:hover {
+      :global(.lucide) {
+        stroke: rgb(var(--Yellow));
+      }
+    }
 
-		&.active {
-			transform-origin: top;
-			animation: bell-shake 5s ease-out infinite;
-			//animation-fill-mode: forwards;
-		}
-	}
+    &.active {
+      transform-origin: top;
+      animation: bell-shake 5s ease-out infinite;
+      //animation-fill-mode: forwards;
+    }
+  }
 
-	@keyframes bell-shake {
-		0% {
-			transform: rotate(0deg);
-		}
-		4% {
-			transform: rotate(20deg);
-		}
-		8% {
-			transform: rotate(-10deg);
-		}
-		12% {
-			transform: rotate(10deg);
-		}
-		16% {
-			transform: rotate(-5deg);
-		}
+  @keyframes bell-shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    4% {
+      transform: rotate(20deg);
+    }
+    8% {
+      transform: rotate(-10deg);
+    }
+    12% {
+      transform: rotate(10deg);
+    }
+    16% {
+      transform: rotate(-5deg);
+    }
 
-		20% {
-			transform: rotate(0deg);
-		}
+    20% {
+      transform: rotate(0deg);
+    }
 
-		100% {
-			transform: rotate(0deg);
-		}
-	}
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 </style>

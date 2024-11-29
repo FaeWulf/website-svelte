@@ -173,244 +173,246 @@
 <svelte:window bind:innerHeight bind:innerWidth on:resize={onWindowResize} />
 
 <style lang="scss">
-	.window {
-		position: fixed;
-		width: 350px;
-		height: 350px;
-		min-width: 220px;
-		min-height: 220px;
-		opacity: 0.6;
+  .window {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    min-width: 220px;
+    min-height: 220px;
+    opacity: 0.6;
 
-		border: 1px solid rgba(var(--Green), 0.3);
-		border-radius: 4px;
+    border: 1px solid rgba(var(--Green), 0.3);
+    border-radius: 0.5rem;
 
-		resize: both;
-		overflow: scroll;
+    resize: both;
+    overflow: hidden;
 
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 30px 1fr;
-		grid-template-areas:
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr;
+    grid-template-areas:
 			'titlebar'
 			'content';
 
-		transition:
-		//	backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1),
-			opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1),
-			box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: //	backdrop-filter 2s cubic-bezier(0.075, 0.82, 0.165, 1),
+            opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1),
+            box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-		animation: 0.3s show ease-in-out;
+    animation: 0.3s show ease-in-out;
 
-		//prevent selection
-		user-select: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
+    //prevent selection
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 
-		&.hide {
-			pointer-events: none;
-			animation: 0.3s hide ease-in-out forwards;
-		}
+    &.hide {
+      pointer-events: none;
+      animation: 0.3s hide ease-in-out forwards;
+    }
 
-		&.ontop {
-			z-index: 5;
-		}
+    &.ontop {
+      z-index: 5;
+    }
 
-		&:focus,
-		&:hover {
-			border: 1px solid rgba(var(--Green), 0.4);
-			opacity: 1;
-			background: rgba(var(--Crust), 0.4);
-			//backdrop-filter: blur(2px);
-			//-webkit-backdrop-filter: blur(2px);
-			z-index: 10;
-			box-shadow: 0 0 20px #000;
-		}
+    &:focus,
+    &:hover {
+      border: 1px solid rgba(var(--Green), 0.4);
+      opacity: 1;
+      background: rgba(var(--Overlay0), 1);
+      //backdrop-filter: blur(2px);
+      //-webkit-backdrop-filter: blur(2px);
+      z-index: 10;
+      box-shadow: 0 0 20px #000;
+    }
 
-		.titlebar {
-			grid-area: titlebar;
-			position: relative;
-			background: rgb(var(--Crust));
-			cursor: grab;
+    .titlebar {
+      grid-area: titlebar;
+      position: relative;
+      background: rgb(var(--Overlay0));
+      cursor: grab;
 
-			.toggle {
-				position: absolute;
-				right: 0;
-				top: 0;
-				aspect-ratio: 1 / 1;
-				height: 100%;
-				width: auto;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+      .toggle {
+        position: absolute;
+        right: 0;
+        top: 0;
+        aspect-ratio: 1 / 1;
+        height: 100%;
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-				.button {
-					width: 50%;
-					height: 50%;
+        .button {
+          width: 50%;
+          height: 50%;
 
-					border: none;
-					border-radius: 50%;
-					background: rgb(var(--Red));
-					color: rgb(var(--Crust));
-					cursor: pointer;
+          border: none;
+          border-radius: 50%;
+          background: rgb(var(--Red));
+          color: rgb(var(--Base));
+          cursor: pointer;
 
-					line-height: 0;
+          line-height: 0;
 
-					&:hover {
-						opacity: 0.5;
-					}
-				}
-			}
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
 
-			.tab {
-				box-sizing: border-box;
-				padding-left: 10px;
-				width: 100%;
-				height: 100%;
-				display: flex;
-				flex-wrap: nowrap;
+      .tab {
+        box-sizing: border-box;
+        padding-left: 10px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: nowrap;
 
-				justify-content: flex-start;
-				align-items: end;
-				gap: 1px;
+        background: rgb(var(--Base));
 
-				user-select: none;
-				-webkit-user-select: none;
-				-ms-user-select: none;
+        justify-content: flex-start;
+        align-items: end;
+        gap: 1px;
 
-				.item {
-					position: relative;
-					height: 20px;
-					width: 20%;
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
 
-					border: 1px solid rgba(var(--Text), 0.3);
-					border-bottom: none;
-					border-radius: 5px 5px 0px 0;
+        .item {
+          position: relative;
+          height: 20px;
+          width: 20%;
 
-					text-align: center;
-					font-size: 0.8rem;
-					font-weight: 600;
+          border: 1px solid rgba(var(--Text), 0.3);
+          border-bottom: none;
+          border-radius: 5px 5px 0px 0;
 
-					background: none;
-					color: rgba(var(--Text), 0.5);
-					opacity: 0.5;
-					cursor: pointer;
 
-					display: flex;
-					justify-content: center;
-					align-items: center;
+          text-align: center;
+          font-size: 0.8rem;
+          font-weight: 600;
 
-					> div {
-						overflow: hidden;
-						box-sizing: border-box;
-						padding-left: 5px;
-						padding-right: 5px;
-					}
+          background: rgb(var(--Overlay0));
+          color: rgba(var(--Text), 0.5);
+          opacity: 0.5;
+          cursor: pointer;
 
-					&.selected {
-						color: rgba(var(--Green), 1);
-						border: 1px solid rgba(var(--Green), 0.3);
-						border-bottom: none;
-						opacity: 1;
-						min-width: fit-content;
-					}
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-					.dummy {
-						position: absolute;
-						bottom: -1px;
-						left: 0;
-						display: block;
-						width: 100%;
-						height: 1px;
-						background: rgb(var(--Crust));
-					}
+          > div {
+            overflow: hidden;
+            box-sizing: border-box;
+            padding-left: 5px;
+            padding-right: 5px;
+          }
 
-					.notification {
-						position: absolute;
-						top: -4px;
-						right: -4px;
-						width: 12px;
-						height: 12px;
-						border-radius: 50%;
-						background: rgb(var(--Green));
+          &.selected {
+            color: rgba(var(--Green), 1);
+            border: 1px solid rgba(var(--Green), 0.3);
+            border-bottom: none;
+            opacity: 1;
+            min-width: fit-content;
+          }
 
-						display: none;
+          .dummy {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: rgb(var(--Overlay0));
+          }
 
-						animation:
-							blink 1s step-end infinite,
-							shake 1.2s ease-in infinite;
+          .notification {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgb(var(--Green));
 
-						&.show {
-							display: block;
-						}
-					}
-				}
-			}
-		}
+            display: none;
 
-		.content {
-			border-top: 1px solid rgba(var(--Green), 0.3);
-			grid-area: content;
-			overflow: scroll;
+            animation: blink 1s step-end infinite,
+            shake 1.2s ease-in infinite;
 
-			> div {
-				display: none;
-				&.selected {
-					display: inline;
-				}
-			}
-		}
-	}
+            &.show {
+              display: block;
+            }
+          }
+        }
+      }
+    }
 
-	@keyframes hide {
-		0% {
-			opacity: 0.6;
-			transform: scale(1);
-		}
-		100% {
-			opacity: 0;
-			transform: scale(0.4);
-		}
-	}
+    .content {
+      border-top: 1px solid rgba(var(--Green), 0.3);
+      grid-area: content;
+      overflow-y: hidden;
 
-	@keyframes show {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0.6;
-		}
-	}
+      > div {
+        display: none;
 
-	@keyframes blink {
-		0% {
-			background: rgb(var(--Red));
-		}
-		50% {
-			background: rgb(var(--Green));
-		}
-		100% {
-			background: rgb(var(--Red));
-		}
-	}
+        &.selected {
+          display: inline;
+        }
+      }
+    }
+  }
 
-	@keyframes shake {
-		0% {
-			transform: translate(0, 0);
-		}
-		25% {
-			transform: translate(0, -2px);
-		}
-		45% {
-			transform: translate(0, 1px);
-		}
-		65% {
-			transform: translate(0, -1px);
-		}
-		85% {
-			transform: translate(0, 2px);
-		}
-		100% {
-			transform: translate(0, 0);
-		}
-	}
+  @keyframes hide {
+    0% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+  }
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes blink {
+    0% {
+      background: rgb(var(--Red));
+    }
+    50% {
+      background: rgb(var(--Green));
+    }
+    100% {
+      background: rgb(var(--Red));
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(0, -2px);
+    }
+    45% {
+      transform: translate(0, 1px);
+    }
+    65% {
+      transform: translate(0, -1px);
+    }
+    85% {
+      transform: translate(0, 2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
 </style>

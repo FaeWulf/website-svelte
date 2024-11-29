@@ -83,7 +83,7 @@
 
     &:hover {
       opacity: 1;
-      background-color: rgba(var(--Crust), 0.5);
+      background-color: rgba(var(--Overlay0), 0.5);
     }
 
     .infoTab {

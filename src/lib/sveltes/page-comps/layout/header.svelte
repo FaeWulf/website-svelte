@@ -4,7 +4,7 @@
 	import 'tippy.js/animations/perspective-subtle.css';
 	import HeaderDroplist from '$lib/sveltes/page-comps/layout/header_droplist.svelte';
 	import { onMount } from 'svelte';
-	import { typewriter, capitalFirstLeter, tooltip, isMobile } from '$lib/utils';
+	import { capitalFirstLeter, isMobile, tooltip, typewriter } from '$lib/utils';
 
 	//import toolbar comps
 	import Volume from '$lib/sveltes/page-comps/layout/button_volume.svelte';
@@ -132,10 +132,10 @@
 			</div>
 		</div>
 		<nav>
-			<div class="searchBar" bind:this={droplist}>
-				<div class="searchIcon">
-					<Search size={24} color="#CAD3FF" />
-				</div>
+			<div class="searchBar" aria-label="Drop menu" bind:this={droplist}>
+				<di class="searchIcon">
+					<Search size={24} color="#a6da95" />
+				</di>
 				{#key $page.url.pathname}
 					<span in:typewriter={{ speed: 2 }}>
 						{pathname}
@@ -166,161 +166,162 @@
 <svelte:window on:blur={() => (pauseSFX = true)} on:focus={() => (pauseSFX = false)} />
 
 <style lang="scss">
-	header {
-		position: fixed;
-		width: 100%;
-		top: 0;
-		display: flex;
-		justify-content: center;
-		z-index: 9;
-	}
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 9;
+  }
 
-	.nav-container {
-		max-width: 550px;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+  .nav-container {
+    max-width: 550px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-		//backdrop-filter: blur(10px);
-		//-webkit-backdrop-filter: blur(10px);
-		border-radius: 50px;
-		background-color: rgba(var(--Mantle), 0.8);
+    //backdrop-filter: blur(10px);
+    //-webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    background-color: rgba(var(--Overlay0), 0.6);
 
-		.toolbar {
-			box-sizing: border-box;
-			display: flex;
-			justify-content: space-evenly;
-			flex-direction: row;
-			align-items: center;
+    .toolbar {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+      align-items: center;
 
-			height: 30px;
-			width: max-content;
+      height: 30px;
+      width: max-content;
 
-			border: 1px solid rgba(var(--Lavender), 0.4);
-			border-radius: 50px;
-			padding: 19px 10px;
-			margin: 8px 0px 8px 10px;
-			background-color: rgba(var(--Surface0), 0.5);
-			//backdrop-filter: blur(10px);
+      border: 1px solid rgba(var(--Lavender), 0.2);
+      border-radius: 50px;
+      padding: 19px 10px;
+      margin: 8px 0px 8px 10px;
+      background-color: rgba(var(--Overlay1), 1);
+      //backdrop-filter: blur(10px);
 
-			> div {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin: 5px;
-			}
-		}
+      > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+    }
 
-		nav {
-			position: relative;
-			flex: 1;
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			max-width: 400px;
-			height: 30px;
+    nav {
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      max-width: 400px;
+      height: 30px;
 
-			margin: 8px 10px 8px 10px;
+      margin: 8px 10px 8px 10px;
 
-			border: 1px solid rgba(var(--Lavender), 0.4);
-			border-radius: 50px;
-			padding: 4px;
-			background-color: rgba(var(--Surface0), 0.5);
-			//backdrop-filter: blur(10px);
+      border: 1px solid rgba(var(--Lavender), 0.2);
+      border-radius: 50px;
+      padding: 4px;
+      background-color: rgba(var(--Overlay1), 1);
+      //backdrop-filter: blur(10px);
 
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
 
-			transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-			.searchBar {
-				position: relative;
-				width: 100%;
-				display: flex;
-				flex-direction: row;
-				cursor: text;
+      .searchBar {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        cursor: text;
 
-				overflow: hidden;
+        overflow: hidden;
 
-				.searchIcon {
-					margin-right: 10px;
-					margin-left: 10px;
-					padding-right: 9px;
-					border-right: 2px solid rgba(var(--Text), 0.2);
+        .searchIcon {
+          margin-right: 10px;
+          margin-left: 10px;
+          padding-right: 9px;
+          border-right: 2px solid rgba(var(--Text), 0.2);
 
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-				.blinking {
-					color: rgb(var(--Rosewater));
-					animation: blink 1s step-end infinite;
-				}
-			}
-		}
-	}
+        .blinking {
+          color: rgb(var(--Rosewater));
+          animation: blink 1s step-end infinite;
+        }
+      }
+    }
+  }
 
-	#ufo_home {
-		width: 30px;
-		height: 30px;
-	}
+  #ufo_home {
+    width: 30px;
+    height: 30px;
+  }
 
-	.flashbang {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 100;
-		background: white;
+  .flashbang {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: white;
 
-		&.play {
-			animation: flash 5s cubic-bezier(0.165, 0.84, 0.44, 1);
-		}
-	}
+    &.play {
+      animation: flash 5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+  }
 
-	@keyframes flash {
-		0% {
-			opacity: 0;
-		}
+  @keyframes flash {
+    0% {
+      opacity: 0;
+    }
 
-		2% {
-			opacity: 1;
-		}
+    2% {
+      opacity: 1;
+    }
 
-		70% {
-			opacity: 1;
-		}
+    70% {
+      opacity: 1;
+    }
 
-		100% {
-			opacity: 0;
-		}
-	}
-	/*
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /*
 	nav:hover {
 		transform: scale(1.05) translateY(5px);
-        filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
+				filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
 	}
 	*/
 
-	span {
-		line-height: 30px;
-	}
+  span {
+    line-height: 30px;
+  }
 
-	@keyframes blink {
-		0% {
-			opacity: 1;
-		}
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
 
-		50% {
-			opacity: 0;
-		}
+    50% {
+      opacity: 0;
+    }
 
-		100% {
-			opacity: 1;
-		}
-	}
+    100% {
+      opacity: 1;
+    }
+  }
 </style>

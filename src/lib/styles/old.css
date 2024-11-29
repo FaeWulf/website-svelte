@@ -1,0 +1,41 @@
+:root {
+    --Crust: 24, 25, 38;
+    --Base: 36, 39, 58;
+    --Mantle: 30, 32, 48;
+
+    --Text: 202, 211, 245;
+    --Subtext1: 184, 192, 224;
+    --Subtext0: 165, 173, 203;
+
+    --Surface2: 91, 96, 120;
+    --Surface1: 73, 77, 100;
+    --Surface0: 54, 58, 79;
+
+    --Overlay2: 147, 154, 183;
+    --Overlay1: 128, 135, 162;
+    --Overlay0: 110, 115, 141;
+
+    --Rosewater: 244, 219, 214;
+    --Flamingo: 240, 198, 198;
+    --Pink: 245, 189, 230;
+    --Mauve: 198, 160, 246;
+    --Red: 237, 135, 150;
+    --Maroon: 238, 153, 160;
+    --Peach: 245, 169, 127;
+    --Yellow: 238, 212, 159;
+    --Green: 166, 218, 149;
+    --Teal: 139, 213, 202;
+    --Sky: 145, 215, 227;
+    --Sapphire: 125, 196, 228;
+    --Blue: 138, 173, 244;
+    --Lavender: 183, 189, 248;
+
+    --font-body: 'inter', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-mono: 'inter', monospace;
+    --color-bg-0: rgb(var(--Base));
+    --color-bg-1: rgb(var(--Base));
+    --color-bg-2: rgb(var(--Base));
+    --color-theme-1: #ff3e00;
+    --color-theme-2: #4075a6;
+    --color-text: rgb(var(--Text));
+}

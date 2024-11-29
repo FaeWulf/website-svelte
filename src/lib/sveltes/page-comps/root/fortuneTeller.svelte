@@ -21,24 +21,24 @@
 <div class="dummy" />
 
 <style lang="scss">
-	.title {
-		flex-basis: 100%;
-		text-align: center;
-		background-color: rgb(var(--Base));
-		border: 1px rgba(var(--Text), 0.2) solid;
-		border-radius: 5px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		font-weight: 600;
-	}
+  .title {
+    flex-basis: 100%;
+    text-align: center;
+    background-color: rgb(var(--Overlay1));
+    border: 1px rgba(var(--Text), 0.2) solid;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 600;
+  }
 
-	.text {
-		width: 100%;
-		text-align: left;
-	}
+  .text {
+    width: 100%;
+    text-align: left;
+  }
 
-	.dummy {
-		height: 50px;
-		flex-basis: 100%;
-	}
+  .dummy {
+    height: 50px;
+    flex-basis: 100%;
+  }
 </style>

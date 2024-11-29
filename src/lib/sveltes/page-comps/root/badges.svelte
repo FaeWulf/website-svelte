@@ -72,7 +72,7 @@
 	.title {
 		flex-basis: 100%;
 		text-align: center;
-		background-color: rgb(var(--Base));
+		background-color: rgb(var(--Overlay1));
 		border: 1px rgba(var(--Text), 0.2) solid;
 		border-radius: 5px;
 		padding-top: 5px;
