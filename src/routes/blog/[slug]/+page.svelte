@@ -8,6 +8,7 @@
 	//comments component
 	import Giscus from '@giscus/svelte';
 	import { MetaTags } from 'svelte-meta-tags';
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	export let data;
 	let postData: any;
@@ -29,29 +30,29 @@
 
 {#if postData}
 	<h1>{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>
-	<h3 class="edit-date">
+	<h3 class="post__edit-date">
 		Last edit on {new Date(postData.updatedAt).toLocaleDateString('en-us', {
-			weekday: 'long',
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric'
-		})}
+		weekday: 'long',
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric'
+	})}
 	</h3>
-	<div class="tag">
-		<div class="title">Tags:</div>
+	<div class="post__description-tag-wrapper">
+		<div class="post__description-tag-title">Tags:</div>
 		{#each postData.tags as tag}
-			<div>{tag}</div>
+			<div class="post__description-tag">{tag}</div>
 		{:else}
-			<div>none</div>
+			<div class="post__description-tag">none</div>
 		{/each}
 	</div>
 	<div id="blog-content">
 		{@html postData.content}
 	</div>
 {:else}
-	<div>Loading...</div>
+	<LoadingCircle />
 {/if}
-<a href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
+<a class="post__back-link" href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
 <Giscus
 	id="comments"
 	repo="FaeWulf/blog-discus"
@@ -70,60 +71,62 @@
 ></Giscus>
 
 <style lang="scss">
-	#blog-content {
-		border: 1px solid rgba(var(--Text), 0.2);
-		width: 100%;
-		height: 100%;
-		background-color: rgba(var(--Mantle), 1);
-		//backdrop-filter: blur(10px);
+  #blog-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--Overlay0), 1);
 
-		border-radius: 5px;
+    border: 1px solid rgba(var(--Subtext0), 0.2);
+    border-radius: 0.5rem;
 
-		z-index: 5;
-	}
+    box-shadow: 10px 10px 15px rgba(black, 0.2);
 
-	.edit-date {
-		width: 100%;
-		font-size: 15px;
-		opacity: 0.6;
-		margin-bottom: 5px;
-	}
+    z-index: 5;
+  }
 
-	a {
-		margin: 20px;
-		font-family: 'Pixel Nes', 'Tahoma';
-		font-size: 1.4rem;
-	}
+  .post__edit-date {
+    width: 100%;
+    font-size: 15px;
+    opacity: 0.6;
+    margin-bottom: 5px;
+  }
 
-	:global(giscus-widget) {
-		z-index: 5;
-	}
+  .post__back-link {
+    margin: 20px;
+    font-family: 'Pixel Nes', 'Tahoma';
+    font-size: 1.4rem;
+  }
 
-	.tag {
-		width: 100%;
+  :global(giscus-widget) {
+    z-index: 5;
+  }
 
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: center;
-		margin-bottom: 5px;
+  .post__description-tag-wrapper {
+    width: 100%;
 
-		gap: 6px;
-		flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
 
-		.title {
-			font-size: 15px;
-			opacity: 0.9;
-			border: none;
-			background: none;
-		}
+    gap: 6px;
+    flex-wrap: wrap;
 
-		div {
-			background-color: rgba(var(--Text), 0.2);
-			border: 1px solid rgba(var(--Text), 0.3);
-			padding: 5px;
-			border-radius: 5px;
-			opacity: 0.8;
-		}
-	}
+    .post__description-tag-title {
+      font-size: 15px;
+      opacity: 0.9;
+      border: none;
+      background: none;
+      color: rgb(var(--Subtext0));
+    }
+
+    .post__description-tag {
+      background-color: rgba(var(--Overlay1), 1);
+      border: 1px solid rgba(var(--Subtext0), 0.3);
+      padding: 5px;
+      border-radius: 0.5rem;
+      opacity: 0.8;
+    }
+  }
 </style>

@@ -72,6 +72,10 @@
 	function copyToClipboard(str: string) {
 		copyToClipboardText = 'Copied!';
 		navigator.clipboard.writeText(str);
+
+		setTimeout(() => {
+			copyToClipboardText = 'Copy to clipboard';
+		}, 2000);
 	}
 </script>
 
@@ -84,20 +88,17 @@
 	/>
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
+	<h1>
+		Link ඞmogusifier
+	</h1>
+
 	<h2>
-		⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛<br />
-		⬛🟥🟥🟥🟥⬛⬛🟥⬛⬛🟥⬛⬛🟥🟥🟥🟥⬛<br />
-		⬛🟥⬛⬛⬛⬛⬛🟥⬛⬛🟥⬛⬛🟥⬛⬛⬛⬛<br />
-		⬛🟥🟥🟥🟥⬛⬛🟥⬛⬛🟥⬛⬛🟥🟥🟥🟥⬛<br />
-		⬛⬛⬛⬛🟥⬛⬛🟥⬛⬛🟥⬛⬛⬛⬛⬛🟥⬛<br />
-		⬛⬛⬛⬛🟥⬛⬛🟥⬛⬛🟥⬛⬛⬛⬛⬛🟥⬛<br />
-		⬛🟥🟥🟥🟥⬛⬛🟥🟥🟥🟥⬛⬛🟥🟥🟥🟥⬛<br />
-		⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛<br />
+		Instead of shortening your link, this tool will transform it into a bunch of Amogus characters!
 	</h2>
 
-	<input type="text" bind:value={input} placeholder="Input URL here" />
-	<button on:click={() => onClick_generate()}>Amogusify</button>
+	<input class="main__input-text" type="text" bind:value={input} placeholder="Input URL here" />
+	<button class="main__button" on:click={() => onClick_generate()}>Amogusify</button>
 	<p>
 		Generated link:
 		{#if invalidUrl}
@@ -105,65 +106,79 @@
 		{/if}
 	</p>
 	<textarea readonly cols="30" rows="10" bind:value={output} />
-	<button on:click={() => copyToClipboard(output)}>{copyToClipboardText}</button>
+	<button class="main__button" on:click={() => copyToClipboard(output)}>{copyToClipboardText}</button>
 </div>
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    //border: 1px solid rgba(var(--Text), 0.2);
+    border-radius: 0.5rem;
 
-		background-color: rgba(var(--Crust), 0.7);
-		z-index: 5;
+    //background-color: rgba(var(--Overlay0), 1);
+    z-index: 5;
+  }
 
-		//backdrop-filter: blur(2px);
-		//-webkit-backdrop-filter: blur(2px);
-	}
+  .main__input-text {
+    margin-top: 70px;
+    height: 30px;
+    width: 100%;
+    max-width: 350px;
 
-	input {
-		margin-top: 70px;
-		height: 30px;
-		width: 100%;
-		max-width: 350px;
-	}
+  }
 
-	p {
-		margin-top: 50px;
-	}
+  h1 {
+    font-weight: bold;
+  }
 
-	textarea {
-		width: 100%;
-		max-width: 350px;
-	}
+  h2 {
+    word-wrap: break-word;
+    color: rgb(var(--Subtext0));
+  }
 
-	textarea,
-	input {
-		resize: none;
-		background: rgba(var(--Mantle), 1);
-		border: 1px solid rgba(var(--Text), 0.2);
-		color: rgb(var(--Text));
+  p {
+    margin-top: 50px;
+  }
 
-		&:focus {
-			outline: rgba(var(--Green), 0.6);
-			border: 1px solid rgba(var(--Green), 0.6);
-		}
-	}
+  textarea {
+    width: 100%;
+    max-width: 350px;
+  }
 
-	button {
-		margin: 10px;
-		border: 1px solid rgba(var(--Lavender), 0.6);
-		background: rgba(var(--Overlay0), 0.5);
-		color: rgb(var(--Text));
-		padding: 5px;
-		cursor: pointer;
+  textarea,
+  input {
+    resize: none;
+    background: rgba(var(--Overlay1), 1);
+    border: 1px solid rgba(var(--Text), 0.2);
+    border-radius: 0.5rem;
+    color: rgb(var(--Text));
 
-		&:hover {
-			background: rgba(var(--Overlay2), 0.8);
-		}
-	}
+    box-shadow: 7px 7px 15px rgba(black, 0.2);
+
+    &:focus {
+      outline: rgba(var(--Green), 0.6);
+      border: 1px solid rgba(var(--Green), 0.6);
+    }
+  }
+
+  .main__button {
+    margin: 10px;
+    border: 1px solid rgba(var(--Lavender), 0.6);
+    border-radius: 0.5rem;
+    background: rgba(var(--Overlay1), 0.5);
+    color: rgb(var(--Text));
+    padding: 5px;
+    cursor: pointer;
+
+    box-shadow: 7px 7px 15px rgba(black, 0.2);
+
+    &:hover {
+      background: rgba(var(--Overlay2), 0.8);
+    }
+  }
 </style>

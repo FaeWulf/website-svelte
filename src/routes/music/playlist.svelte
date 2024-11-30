@@ -72,7 +72,7 @@
 <VirtualList items={list} let:item bind:scrollToIdx>
 	<div
 		class="track"
-		class:active={selectedItem == item.data.ID}
+		class:track--active={selectedItem === item.data.ID}
 		on:click={() => {
 			id = item.data.ID;
 			selectedItem = item.data.ID;
@@ -81,26 +81,26 @@
 	>
 		<img
 			draggable="false"
-			class="thumbnail"
+			class="track__thumbnail-img"
 			src="https://img.youtube.com/vi/{item.data.ID}/default.jpg"
 			alt="thumbnail"
 		/>
-		<div class="description">
+		<div class="track__left-elements-wrapper">
 			<div class="title">
-				<span class="index">{item.index}</span> - {item.data.title}
+				<span class="track__index-text">{item.index}</span> - {item.data.title}
 			</div>
-			<div class="artist">
+			<div class="track__artist-text">
 				{item.data.artist}
 			</div>
 		</div>
-		<div class="duration">
-			<div>
+		<div class="track__right-elements-wrapper">
+			<div class="track__duration-text">
 				{item.data.time}
 			</div>
-			<img draggable="false" class="level" src="/gifs/{gif[item.data.fav - 1]}.gif" alt="rating" />
+			<img draggable="false" class="track__hype-level-img" src="/gifs/{gif[item.data.fav - 1]}.gif" alt="rating" />
 		</div>
-		{#if selectedItem == item.data.ID}
-			<div class="playing">➤</div>
+		{#if selectedItem === item.data.ID}
+			<div class="track__playing-indicator">➤</div>
 		{/if}
 	</div>
 </VirtualList>
@@ -120,42 +120,61 @@
     font-weight: 600;
     padding: 5px 20px 5px 20px;
 
+    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 4px 0;
+
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+
     cursor: pointer;
 
-    .index {
-      opacity: 0.6;
+    &:hover,
+    &--active {
+      background: rgb(63, 66, 75);
     }
 
-    .duration {
+    .track__thumbnail-img {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+    }
+
+    .track__left-elements-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+      flex: 1;
+
+
+      .track__index-text {
+        color: rgba(var(--Subtext0));
+      }
+
+      .track__artist-text {
+        font-size: 0.8rem;
+        color: rgba(var(--Subtext0));
+      }
+    }
+
+    .track__right-elements-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 5px;
+
+      .track__duration-text {
+        color: rgba(var(--Subtext0));
+      }
+
+      .track__hype-level-img {
+        width: 40px;
+        margin: 5px 0 5px 5px;
+      }
     }
   }
 
-  .track:hover,
-  .active {
-    background: rgb(63, 66, 75);
-  }
-
-  .artist {
-    font-size: 0.8rem;
-    color: rgba(var(--Text), 0.5);
-  }
-
-  img.level {
-    width: 40px;
-    margin: 5px 0 5px 5px;
-  }
-
-  img.thumbnail {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-  }
-
-  .playing {
+  .track__playing-indicator {
     position: absolute;
     left: 0;
     top: 50%;
@@ -163,17 +182,8 @@
     -webkit-transform: translateY(-50%);
   }
 
-  .description {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    flex: 1;
-  }
-
   @media (max-width: 720px) {
-    img.level {
+    .track__hype-level-img {
       display: none;
     }
   }

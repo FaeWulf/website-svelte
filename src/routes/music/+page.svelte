@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { apiURL, ufoBubble } from '$lib/store';
 	import type { track } from '$lib/types';
+	import type { YouTubePlayer } from 'youtube-player/dist/types';
+	import { MetaTags } from 'svelte-meta-tags';
+
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte'
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import Screen from './screen.svelte';
-	import type { YouTubePlayer } from 'youtube-player/dist/types';
-	import { onMount } from 'svelte';
 	import MenuBar from './menuBar.svelte';
-	import { apiURL, ufoBubble } from '$lib/store';
-	import { MetaTags } from 'svelte-meta-tags';
 
 	//export let data;
 
@@ -63,10 +65,10 @@
 	/>
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<Title subtitle="music" />
 	{#if lastUpdatePlaylistDate && dataPlaylist}
-		<div class="statistic">
+		<div class="main__statistic">
 			<div>
 				Updated: {lastUpdatePlaylistDate}
 			</div>
@@ -75,28 +77,28 @@
 			</div>
 		</div>
 	{:else}
-		<div>Loading...</div>
+		<LoadingCircle/>
 	{/if}
 	{#if dataPlaylist}
-		<div class="container" bind:clientHeight={containerHeight}>
-			<div class="scrollable" style="height: {containerHeight}px;">
+		<div class="main__content-wrapper" bind:clientHeight={containerHeight}>
+			<div class="content__scrollable-wrapper" style="height: {containerHeight}px;">
 				<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
 
-				<div class="tab-track">
+				<div class="content__scrollable">
 					<MenuBar bind:search bind:autoNextActive bind:autoplayActive={autoPlay} bind:randomActive bind:id bind:currentList />
-					<div class="tab-track-playlist">
+					<div class="content__track-list">
 						<svelte:component this={lazyLoadPlaylist} {...$$props} bind:id bind:search bind:currentList bind:playList={dataPlaylist} />
 					</div>
 				</div>
 			</div>
 		</div>
 	{:else}
-		<div>Loading...</div>
+		<LoadingCircle/>
 	{/if}
 </div>
 
 <style lang="scss">
-	.main {
+	.main-wrapper {
 		position: relative;
 		flex: 1;
 		width: 100%;
@@ -110,7 +112,7 @@
 		//font-family: 'Pixel Nes', 'Tahoma';
 	}
 
-	.statistic {
+	.main__statistic {
 		position: absolute;
 		display: flex;
 		flex-direction: column;
@@ -125,46 +127,44 @@
 		z-index: -1;
 	}
 
-	.container {
+	.main__content-wrapper {
 		width: 100%;
 		margin-top: 20px;
 		flex: 1;
-	}
 
-	.tab-track {
-		width: 100%;
-		height: 100%;
-		margin: 0px 20px 0px 20px;
-
-		display: flex;
-		flex-direction: column;
-		row-gap: 10px;
-
-    .tab-track-playlist {
+    .content__scrollable-wrapper {
+      display: flex;
+      justify-content: flex-start;
       width: 100%;
-      height: calc(100% - 70px);
+      height: 100%;
 
-      mask-image:
-							linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      .content__scrollable {
+        width: 100%;
+        height: 100%;
+        margin: 0 20px 0 20px;
 
-      -webkit-mask-image: -webkit-linear-gradient(to bottom, black 70%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .content__track-list {
+          width: 100%;
+          height: calc(100% - 70px);
+
+          mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+          -webkit-mask-image: -webkit-linear-gradient(to bottom, black 70%, transparent 100%);
+        }
+      }
     }
 	}
 
-	.scrollable {
-		display: flex;
-		justify-content: flex-start;
-		width: 100%;
-		height: 100%;
-	}
-
 	@media (max-width: 720px) {
-		.scrollable {
+		.content__scrollable-layout {
 			flex-direction: column;
 			align-items: center;
 		}
 
-		.tab-track {
+		.content__scrollable-wrapper {
 			height: calc(100% - 200px);
 		}
 	}

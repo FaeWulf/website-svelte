@@ -215,31 +215,31 @@
 	/>
 </svelte:head>
 
-<div class="main" bind:clientHeight={mainHeight} bind:clientWidth={mainWidth}>
+<div class="main-wrapper" bind:clientHeight={mainHeight} bind:clientWidth={mainWidth}>
 	<h1>EpicRename Generator</h1>
 
-	<div class="content" style="height: {(mainHeight - 50) * 0.6}px;">
-		<div class="editor-wrapper">
-			<textarea bind:value={input} bind:this={editor} class="editor"></textarea>
+	<div class="main__editor-tab" style="height: {(mainHeight - 50) * 0.6}px;">
+		<div class="main__editor-wrapper">
+			<textarea bind:value={input} bind:this={editor} class="main__editor"></textarea>
 		</div>
 
-		<div class="wrapper">
-			<div class="preview" bind:this={previewTab}>{@html preview}</div>
+		<div class="main__editor-preview-wrapper">
+			<div class="main__editor-preview" bind:this={previewTab}>{@html preview}</div>
 		</div>
 
-		<div class="button-wrapper" bind:this={buttonWrapper}>
+		<div class="main__editor-button-wrapper" bind:this={buttonWrapper}>
 			{#each Object.entries(formatCodes) as [key, value]}
-				<button on:click={() => format(key)} class={value}>{key}</button>
+				<button class="main__button {value}" on:click={() => format(key)}>{key}</button>
 			{/each}
 		</div>
 	</div>
-	<div class="output-tab" style="height: {(mainHeight - 50) * 0.3}px;">
-		<button class="button-generate" on:click={generate}>Generate</button>
+	<div class="main__output-tab" style="height: {(mainHeight - 50) * 0.3}px;">
+		<button class="main__button main__output-button-generate" on:click={generate}>Generate</button>
 		<label style="width: 90%; ">
 			Make item glow:
 			<input type="checkbox" name="glow" bind:checked={glow} />
 		</label>
-		<textarea bind:value={output} class="output" readonly></textarea>
+		<textarea bind:value={output} class="main__output-dialog" readonly></textarea>
 	</div>
 </div>
 
@@ -250,26 +250,25 @@
 		src: url('/fonts/minecraft.ttf') format('truetype');
 	}
 
-	.main {
+	.main-wrapper {
 		flex: 1;
 		width: 100%;
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
 		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
-		background-color: rgba(var(--Crust), 1);
 		font-family: 'minecraft';
 
 		z-index: 5;
 
-		button {
+		.main__button {
 			box-sizing: border-box;
 			background-color: #6d6d6d;
-			color: white;
 			text-shadow: 2px 2px black;
+      box-shadow: 10px 10px 15px rgba(black, 0.2);
 			border: 3px solid black;
 
+      color: white;
 			cursor: pointer;
 
 			&:hover {
@@ -280,7 +279,7 @@
 		//backdrop-filter: blur(2px);
 		//-webkit-backdrop-filter: blur(2px);
 
-		.content {
+		.main__editor-tab {
 			width: 100%;
 			//border: 1px red solid;
 			justify-content: space-evenly;
@@ -291,7 +290,8 @@
 			flex-direction: row;
 			flex-wrap: wrap;
 
-			.button-wrapper {
+
+			.main__editor-button-wrapper {
 				box-sizing: border-box;
 				padding-left: 20px;
 				padding-right: 20px;
@@ -311,12 +311,12 @@
 			}
 
 			//editor tab
-			.editor-wrapper {
+			.main__editor-wrapper {
 				position: relative;
 				width: 40%;
 				height: 80%;
 
-				.editor {
+				.main__editor {
 					box-sizing: border-box;
 					width: 100%;
 					height: 100%;
@@ -325,20 +325,21 @@
 					border-radius: 5px;
 					//border: 10px solid #833e2a;
 					border: 10px solid #461709;
-					box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 1);
 					outline: none;
 					padding: 10px;
 					resize: none;
+
+          box-shadow: 10px 10px 15px rgba(black, 0.2);
 				}
 			}
 
 			//preview tab
-			.wrapper {
+			.main__editor-preview-wrapper {
 				position: relative;
 				width: 40%;
 				height: 80%;
 
-				.preview {
+				.main__editor-preview {
 					box-sizing: border-box;
 					width: 100%;
 					height: 100%;
@@ -360,7 +361,7 @@
 
 					-webkit-box-shadow: none;
 					-moz-box-shadow: none;
-					box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 1);
+          box-shadow: 10px 10px 15px rgba(black, 0.2);
 
 					color: #aa00aa;
 					text-shadow: 2px 2px black;
@@ -496,7 +497,7 @@
 			}
 		}
 
-		.output-tab {
+		.main__output-tab {
 			font-family: 'minecraft';
 			width: 100%;
 
@@ -505,23 +506,25 @@
 			align-items: center;
 			flex-direction: column;
 
-			.button-generate {
+			.main__output-button-generate {
 				width: 200px;
 				height: 50px;
 			}
 
-			.output {
+			.main__output-dialog{
 				width: 95%;
 				height: 60%;
 
 				outline: none;
-				box-shadow: none;
+        box-shadow: 10px 10px 15px rgba(black, 0.2);
 				resize: none;
-				border: none;
+				border: 1px solid rgba(var(--Text), 0.2);
+				border-radius: 0.5rem;
 
 				box-sizing: border-box;
-				background-color: rgba(0, 0, 0, 0.4);
+				background-color: rgba(var(--Overlay1, 1));
 				padding: 10px;
+
 
 				color: white;
 				text-shadow: 2px 2px black;

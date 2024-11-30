@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	export let data;
 
@@ -69,61 +70,46 @@
 	<meta name="description" content="About this website" />
 </svelte:head>
 
-<div class="main">
-	<h2>
-		⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛<br />
-		⬛🟥🟥🟥🟥⬛⬛🟥⬛⬛🟥⬛⬛🟥🟥🟥🟥⬛<br />
-		⬛🟥⬛⬛⬛⬛⬛🟥⬛⬛🟥⬛⬛🟥⬛⬛⬛⬛<br />
-		⬛🟥🟥🟥🟥⬛⬛🟥⬛⬛🟥⬛⬛🟥🟥🟥🟥⬛<br />
-		⬛⬛⬛⬛🟥⬛⬛🟥⬛⬛🟥⬛⬛⬛⬛⬛🟥⬛<br />
-		⬛⬛⬛⬛🟥⬛⬛🟥⬛⬛🟥⬛⬛⬛⬛⬛🟥⬛<br />
-		⬛🟥🟥🟥🟥⬛⬛🟥🟥🟥🟥⬛⬛🟥🟥🟥🟥⬛<br />
-		⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛<br />
-	</h2>
+<div class="main-wrapper">
 	{#if Redirect}
 		<h3>Redirecting after {time} seconds</h3>
 		<a href={Redirect}>{Redirect}</a>
 		<button on:click={onclick}>Take me there immediately</button>
 	{:else}
-		<p>Please waiting...</p>
+		<LoadingCircle />
 	{/if}
 </div>
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
-		background-color: rgba(var(--Crust), 0.7);
-		//backdrop-filter: blur(2px);
-		//-webkit-backdrop-filter: blur(2px);
-	}
+  h3 {
+    margin-top: 60px;
+    font-size: 1.6rem;
+  }
 
-	h3 {
-		margin-top: 60px;
-		font-size: 1.6rem;
-	}
+  a {
+    margin-top: 20px;
+  }
 
-	a {
-		margin-top: 20px;
-	}
+  button {
+    margin: 50px 10px 10px;
+    border: 1px solid rgba(var(--Lavender), 0.6);
+    border-radius: 0.5rem;
+    background: rgba(var(--Overlay1), 1);
+    color: rgb(var(--Text));
+    padding: 10px;
+    cursor: pointer;
 
-	button {
-		margin: 10px;
-		margin-top: 50px;
-		border: 1px solid rgba(var(--Mantle), 1);
-		background: rgba(var(--Overlay0), 0.5);
-		color: rgb(var(--Text));
-		padding: 5px;
-		cursor: pointer;
-
-		&:hover {
-			background: rgba(var(--Overlay2), 0.8);
-		}
-	}
+    &:hover {
+      background: rgba(var(--Overlay2), 0.8);
+    }
+  }
 </style>

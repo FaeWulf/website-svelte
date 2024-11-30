@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { apiURL } from '$lib/store.js';
-	import Title from '$lib/sveltes/neonTitle.svelte';
 	import { parseDiscordEmoji } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
+
+	import Title from '$lib/sveltes/neonTitle.svelte';
+	import Post from '$lib/sveltes/components/blog/post.svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	export let data;
 
@@ -56,199 +59,70 @@
 	<MetaTags
 		title="Blog | Faewulf's Basement"
 		description="The blog of Faewulf."
-		keywords={['faewulf', 'blog', 'info', 'infomation']}
+		keywords={['faewulf', 'blog', 'info', 'information']}
 		canonical="https://faewulf.xyz/blog"
 	/>
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<Title subtitle="Blog" />
 	{#if randomThought}
-		<div class="random-thought">{@html randomThought}</div>
+		<div class="main__random-thought-text">{@html randomThought}</div>
 	{/if}
 	{#if postData}
-		<div class="container">
+		<div class="main__content-wrapper">
 			{#each postData as post (post.name)}
-				<a class="post" href="/blog/{post.path}">
-					<div class="text-wrapper">
-						<div class="text">
-							<div class="post-title">{post.name}</div>
-							<span class="post-date"
-								>Posted on {new Date(post.date).toLocaleDateString('en-us', {
-									weekday: 'long',
-									year: 'numeric',
-									month: 'short',
-									day: 'numeric'
-								})}</span
-							>
-							<div class="tag">
-								{#each post.tags as tag}
-									<span class="tag-item">{tag}</span>
-								{/each}
-							</div>
-						</div>
-					</div>
-
-					<div class="text-wrapper highlight">
-						<div class="text">
-							<div class="post-title">{post.name}</div>
-							<span class="post-date"
-								>Posted on {new Date(post.date).toLocaleDateString('en-us', {
-									weekday: 'long',
-									year: 'numeric',
-									month: 'short',
-									day: 'numeric'
-								})}</span
-							>
-							<div class="tag">
-								{#each post.tags as tag}
-									<span class="tag-item">{tag}</span>
-								{/each}
-							</div>
-						</div>
-					</div>
-				</a>
+				<Post path={post.path} name={post.name} tags={post.tags} date={post.date} />
 			{/each}
 		</div>
-		<div class="pagination">
-			<button disabled={index <= 1} on:click={() => gotoParams(index - 1)}> Prev </button>
+		<div class="main__pagination">
+			<button disabled={index <= 1} on:click={() => gotoParams(index - 1)}> Prev</button>
 			<div>{index} / {totalPage}</div>
-			<button disabled={index >= totalPage} on:click={() => gotoParams(index + 1)}> Next </button>
+			<button disabled={index >= totalPage} on:click={() => gotoParams(index + 1)}> Next</button>
 		</div>
 	{:else}
-		<div>Loading...</div>
+		<LoadingCircle />
 	{/if}
 </div>
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 
-		font-family: 'Pixel Nes', 'Tahoma';
+    //font-family: 'Pixel Nes', 'Tahoma';
 
-		.random-thought {
-			margin-top: 10px;
-			width: 100%;
-			text-align: center;
-			font-size: 15px;
-			opacity: 0.8;
-			font-family: var(--font-body);
-		}
+    .main__random-thought-text {
+      margin-top: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+      opacity: 0.8;
+    }
 
-		.container {
-			position: relative;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: start;
-			align-items: center;
-			row-gap: 20px;
-			margin-top: 20px;
-			flex: 1;
+    .main__content-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      row-gap: 15px;
+      margin-top: 20px;
+      flex: 1;
+    }
+  }
 
-			.post {
-				position: relative;
-				width: calc(100% - 130px);
-				row-gap: 5px;
-
-				.text-wrapper {
-					.text {
-						display: flex;
-						flex-direction: column;
-						justify-content: flex-start;
-
-						border-top: 4px solid rgba(var(--Text), 0.2);
-
-						padding: 10px;
-
-						.post-title {
-							font-size: 1.7rem;
-							word-spacing: -0.5rem;
-						}
-
-						.post-date {
-							color: rgb(var(--Text));
-						}
-
-						.tag {
-							display: flex;
-							flex-wrap: wrap;
-							gap: 5px;
-							font-size: 12px;
-							opacity: 0.6;
-							.tag-item {
-								color: rgb(var(--Text));
-								background-color: rgba(var(--Text), 0.2);
-								padding: 5px;
-								border-radius: 5px;
-							}
-						}
-					}
-
-					&.highlight {
-						position: absolute;
-						top: 0;
-						left: 0;
-
-						width: 0;
-						height: 100%;
-
-						flex-wrap: nowrap;
-						text-wrap: nowrap;
-
-						overflow: hidden;
-
-						background-color: rgba(var(--Green), 1);
-						color: black;
-
-						transition: width 0.4s ease;
-
-						.post-date {
-							color: black;
-						}
-					}
-				}
-
-				&:hover {
-					div.highlight {
-						width: 100%;
-					}
-				}
-			}
-		}
-	}
-
-	.pagination {
-		width: 100%;
-		height: 50px;
-		display: flex;
-		gap: 20px;
-		justify-content: center;
-		align-items: center;
-	}
-
-	a {
-		color: rgb(var(--Peach));
-	}
-
-	@media only screen and (max-width: 720px) {
-		.post {
-			margin: 0;
-			width: calc(100% - 20px) !important;
-
-			.post-title {
-				font-size: 1.2rem;
-			}
-
-			.post-date {
-				font-size: 0.8rem;
-			}
-		}
-	}
+  .main__pagination {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

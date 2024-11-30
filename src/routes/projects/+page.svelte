@@ -78,22 +78,22 @@
 	/>
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<Title subtitle="projects" />
 
-	<div class="container" bind:clientHeight={containerCLientHeight}>
+	<div class="main__content-wrapper" bind:clientHeight={containerCLientHeight}>
 		<div class="container-fixed-size" style="height: {containerCLientHeight}px;">
 			{#if isMounted}
 				{#each projects as project (project)}
 					<a href={project.path} class="project" class:abandoned={project.old}>
-						<div class="text-wrapper">
-							<div class="text">
+						<div class="post__wrapper">
+							<div class="post__description">
 								<p class="card-title">{project.name}</p>
 								<p class="card-description">{project.description}</p>
 							</div>
 						</div>
-						<div class="text-wrapper highlight">
-							<div class="text">
+						<div class="post__wrapper highlight">
+							<div class="post__description">
 								<p class="card-title">{project.name}</p>
 								<p class="card-description">{project.description}</p>
 							</div>
@@ -106,7 +106,7 @@
 </div>
 
 <style lang="scss">
-	.main {
+	.main-wrapper {
 		flex: 1;
 		width: 100%;
 		display: flex;
@@ -124,7 +124,7 @@
 		//-webkit-backdrop-filter: blur(2px);
 	}
 
-	.container {
+	.main__content-wrapper {
 		overflow: hidden;
 		margin-top: 40px;
 		width: 100%;
@@ -158,7 +158,7 @@
 					text-decoration-color: rgb(var(--Red));
 				}
 
-				.text-wrapper {
+				.post__wrapper {
 					.card-title {
 						font-size: 1rem;
 						margin-left: 20px;

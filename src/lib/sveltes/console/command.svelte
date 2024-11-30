@@ -16,8 +16,8 @@
 			description: 'Who am I?',
 			output: `
         <pre>
-He/him, hailing from Vietnam ♥
-Aspires to master coding, relish sleep and savor music
+He/him, from Vietnam with ♥
+Dreams of mastering coding, enjoying every seconds of sleep, and listening musics.
         </pre>
         `
 		},
@@ -29,7 +29,6 @@ Aspires to master coding, relish sleep and savor music
 <span style="color:rgb(var(--Teal))" >Host: </span>LENOVO 82AU
 <span style="color:rgb(var(--Teal))" >Kernel: </span>10.0.22000.0
 <span style="color:rgb(var(--Teal))" >Motherboard: </span>LENOVO LNVNB161216
-<span style="color:rgb(var(--Teal))" >Resolution: </span>1920x1080
 <span style="color:rgb(var(--Teal))" >CPU: </span>Intel i7-10750H 2.60GHz
 <span style="color:rgb(var(--Teal))" >GPU: </span>NVIDIA GeForce GTX 1650
 <span style="color:rgb(var(--Teal))" >Memory: </span>16 GiB
@@ -63,7 +62,7 @@ Aspires to master coding, relish sleep and savor music
 		if (input == 'help') {
 			output = `<div>${root}${input}</div>`;
 			for (const command of commands) {
-				output += `<div><span style="color: rgb(var(--Teal))">${command.name}</span><span style="color: rgb(var(--Overlay2))"> : ${command.description}</span></div>`;
+				output += `<div><span style="color: rgb(var(--Teal))">${command.name}</span><span style="color: rgb(var(--Subtext0))"> : ${command.description}</span></div>`;
 			}
 		}
 
@@ -93,58 +92,58 @@ Aspires to master coding, relish sleep and savor music
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="current-line">
 	{@html root}
-	{input}<span class="cursor">_</span>
-	<div class="command-helper">
+	{input}<span class="current-line__cursor ">_</span>
+	<div class="current-line__command-helper-wrapper">
 		{#each commands as command}
-			<button on:click={() => onClickHelp(command.name)}>{command.name}</button>
+			<button class="current-line__command-helper" on:click={() => onClickHelp(command.name)}>{command.name}</button>
 		{/each}
 	</div>
 </div>
 
 <style lang="scss">
-	.current-line {
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
+  .current-line {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-		.cursor {
-			color: rgb(var(--Rosewater));
-			animation: blink 1s step-end infinite;
-		}
+    .current-line__cursor {
+      color: rgb(var(--Rosewater));
+      animation: blink 1s step-end infinite;
+    }
 
-		.command-helper {
-			margin: 5px;
-			display: flex;
-			gap: 5px;
+    .current-line__command-helper-wrapper {
+      margin: 5px;
+      display: flex;
+      gap: 5px;
 
-			button {
-				color: rgb(var(--Text));
-				background: rgba(var(--Overlay0), 0.7);
-				border: 1px solid rgba(var(--Text), 0.3);
-				font-size: 0.7rem;
-				border-radius: 4px;
-				opacity: 0.7;
-				cursor: pointer;
+      .current-line__command-helper {
+        color: rgb(var(--Text));
+        background: rgba(var(--Overlay2));
+        border: 1px solid rgba(var(--Subtext0), 0.3);
+        font-size: 0.7rem;
+        border-radius: 4px;
+        opacity: 0.7;
+        cursor: pointer;
 
-				&:hover {
-					opacity: 1;
-					border: 1px solid rgba(var(--Lavender), 1);
-				}
-			}
-		}
-	}
+        &:hover {
+          opacity: 1;
+          border: 1px solid rgba(var(--Lavender), 1);
+        }
+      }
+    }
+  }
 
-	@keyframes blink {
-		0% {
-			opacity: 1;
-		}
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
 
-		50% {
-			opacity: 0;
-		}
+    50% {
+      opacity: 0;
+    }
 
-		100% {
-			opacity: 1;
-		}
-	}
+    100% {
+      opacity: 1;
+    }
+  }
 </style>

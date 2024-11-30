@@ -1,23 +1,23 @@
 <script lang="ts">
 	import { apiURL } from '$lib/store';
 	import { onMount } from 'svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	let blogs: any;
 	onMount(async () => {
-		const url = $apiURL;
-		const fetchBlogs = await fetch(url + '/api/v1/blog?page=1&maxPerPage=5').then((res) => res.json());
+		const fetchBlogs = await fetch($apiURL + '/api/v1/blog?page=1&maxPerPage=5').then((res) => res.json());
 		blogs = fetchBlogs.data.data;
 	});
 </script>
 
-<div class="title" id="infotabs-recentblog">📝 Recent blog</div>
+<div class="badge-title" id="js-infotabs-recentblog">📝 Recent blog</div>
 {#if blogs}
 	{#each blogs as blog (blog.name)}
 		<a class="post" href="/blog/{blog.path}">
-			<div class="text-wrapper">
-				<div class="text">
-					<div class="name">{blog.name}</div>
-					<div class="date">
+			<div class="post__wrapper">
+				<div class="post__description">
+					<div class="post__description-name">{blog.name}</div>
+					<div class="post__description-date">
 						{new Date(blog.date).toLocaleDateString('en-us', {
 							weekday: 'long',
 							year: 'numeric',
@@ -27,10 +27,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="highlight text-wrapper">
-				<div class="text">
-					<div class="name">{blog.name}</div>
-					<div class="date">
+			<div class="post__wrapper post__wrapper--highlight">
+				<div class="post__description">
+					<div class="post__description-name">{blog.name}</div>
+					<div class="post__description-date">
 						{new Date(blog.date).toLocaleDateString('en-us', {
 							weekday: 'long',
 							year: 'numeric',
@@ -43,12 +43,12 @@
 		</a>
 	{/each}
 {:else}
-	<div>Loading...</div>
+	<LoadingCircle />
 {/if}
-<div class="dummy" />
+<div class="badge-dummy" />
 
 <style lang="scss">
-  .title {
+  .badge-title {
     flex-basis: 100%;
     text-align: center;
     background-color: rgb(var(--Overlay1));
@@ -70,11 +70,11 @@
     text-decoration: none;
     overflow: hidden;
 
-    > div.text-wrapper {
+    > .post__wrapper {
       width: 100%;
       height: fit-content;
 
-      .text {
+      .post__description {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -83,13 +83,13 @@
 
         padding: 5px;
 
-        > .date {
+        .post__description-date {
           font-size: 0.8rem;
-          opacity: 0.6;
+          color: rgba(var(--Subtext0), 1);
         }
       }
 
-      &.highlight {
+      &--highlight {
         position: absolute;
         top: 0;
         left: 0;
@@ -102,20 +102,24 @@
         overflow: hidden;
 
         background-color: rgba(var(--Green), 1);
-        color: black;
+        color: black !important;
 
         transition: width 0.4s ease;
+
+        .post__description-date {
+          color: black !important;
+        }
       }
     }
 
     &:hover {
-      div.highlight {
+      .post__wrapper--highlight {
         width: 100%;
       }
     }
   }
 
-  .dummy {
+  .badge-dummy {
     height: 20px;
     flex-basis: 100%;
   }

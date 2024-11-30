@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { boidSpawnOption, boidSettings } from './controller';
+	import type { boidSettings, boidSpawnOption } from './controller';
 	import {
-		S_boidsSettings,
-		S_boidsCount,
-		S_boidChooseOption,
-		S_boidsType,
 		S_boidBorder,
-		S_boidResetSignal
+		S_boidChooseOption,
+		S_boidResetSignal,
+		S_boidsCount,
+		S_boidsSettings,
+		S_boidsType
 	} from '$lib/store';
 	import { tooltip } from '$lib/utils';
 
@@ -49,7 +49,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="container">
+<div class="main__content-wrapper">
 	<button on:click={() => S_boidResetSignal.set(!$S_boidResetSignal)}>Reset</button>
 	<div class="component">
 		<label for="boids count">Boids: {boidsCount}</label>
@@ -140,48 +140,48 @@
 </div>
 
 <style lang="scss">
-	.container {
-		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
-		padding: 10px;
+  .main__content-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
 
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: flex-start;
-		gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
 
-		font-size: 0.9rem;
+    font-size: 0.9rem;
 
-		overflow: auto;
+    overflow: auto;
 
-		.component {
-			width: 100%;
-			height: max-content;
-			box-sizing: border-box;
+    .component {
+      width: 100%;
+      height: max-content;
+      box-sizing: border-box;
 
-			display: flex;
-			gap: 10px;
-			align-items: center;
+      display: flex;
+      gap: 10px;
+      align-items: center;
 
-			cursor: pointer;
+      cursor: pointer;
 
-			user-select: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
 
-			&.slider {
-				justify-content: space-around;
-			}
-		}
-	}
+      &.slider {
+        justify-content: space-around;
+      }
+    }
+  }
 
-	select {
-		width: 100px;
-	}
+  select {
+    width: 100px;
+  }
 
-	input[type='range'] {
-		width: 50%;
-	}
+  input[type='range'] {
+    width: 50%;
+  }
 </style>

@@ -5,13 +5,11 @@
 	import 'tippy.js/animations/perspective-subtle.css';
 	import { Bell } from 'lucide-svelte';
 
-	const url = $apiURL;
-
 	let bell: HTMLElement;
 	let clicked = false;
 
 	onMount(async () => {
-		const pseudoFetch = await fetch(url + '/api/v1/discord/announcement').then((res) => res.json());
+		const pseudoFetch = await fetch($apiURL + '/api/v1/discord/announcement').then((res) => res.json());
 		const data: string[] = pseudoFetch.data;
 
 		let processedData: string[] = [];
@@ -40,7 +38,8 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="icon" class:active={!clicked} on:click={() => trigger()} on:pointerenter={() => trigger()} bind:this={bell}>
+<div class="icon" class:icon--active={!clicked} on:click={() => trigger()} on:pointerenter={() => trigger()}
+		 bind:this={bell}>
 	<Bell />
 </div>
 
@@ -70,7 +69,7 @@
       }
     }
 
-    &.active {
+    &--active {
       transform-origin: top;
       animation: bell-shake 5s ease-out infinite;
       //animation-fill-mode: forwards;

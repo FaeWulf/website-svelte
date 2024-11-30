@@ -236,7 +236,7 @@
 	<meta name="description" content="About this website" />
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<input type="file" id="inputImage" accept="image/*" />
 	<canvas id="workflow" bind:this={canvas}></canvas>
 
@@ -244,19 +244,19 @@
 </div>
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
-		background-color: rgba(var(--Crust), 1);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(var(--Text), 0.2);
+    background-color: rgba(var(--Crust), 1);
 
-		z-index: 5;
+    z-index: 5;
 
-		//backdrop-filter: blur(2px);
-		//-webkit-backdrop-filter: blur(2px);
-	}
+    //backdrop-filter: blur(2px);
+    //-webkit-backdrop-filter: blur(2px);
+  }
 </style>

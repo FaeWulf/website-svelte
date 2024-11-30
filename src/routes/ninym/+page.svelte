@@ -38,72 +38,74 @@
 <h3>
 	Essential assistant discord bot for 「
 	{#key selectFeature}
-		<span class="highlight" in:gibberish={{ speed: 3, delay: 300 }} out:typewriter={{ speed: 5, delay: 0 }}>{features[selectFeature]}</span>
+		<span class="text--highlight" in:gibberish={{ speed: 3, delay: 300 }}
+					out:typewriter={{ speed: 5, delay: 0 }}>{features[selectFeature]}</span>
 	{/key}
 	」
 </h3>
 <Infos />
-<div class="buttons">
-	<button on:click={onClickInvite}>Invite to Discord</button>
-	<button on:click={onClickSupport}>Support server</button>
+<div class="button-wrapper">
+	<button class="button-wrapper__button" on:click={onClickInvite}>Invite to Discord</button>
+	<button class="button-wrapper__button" on:click={onClickSupport}>Support server</button>
 </div>
 
 <style lang="scss">
-	h1 {
-		font-size: 3.2rem;
-		font-weight: 800;
-	}
+  h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+  }
 
-	h3 {
-		margin-top: -10px;
+  h3 {
+    margin-top: -10px;
 
-		.highlight {
-			color: rgb(var(--Green));
-			//shifl color
-			animation: color 5s ease-in-out infinite;
-			@keyframes color {
-				0% {
-					color: rgb(var(--Green));
-				}
-				33% {
-					color: rgb(var(--Red));
-				}
-				66% {
-					color: rgb(var(--Blue));
-				}
-				100% {
-					color: rgb(var(--Green));
-				}
-			}
-		}
-	}
+    .text--highlight {
+      color: rgb(var(--Green));
+      //shifl color
+      animation: color 5s ease-in-out infinite;
+      @keyframes color {
+        0% {
+          color: rgb(var(--Green));
+        }
+        33% {
+          color: rgb(var(--Red));
+        }
+        66% {
+          color: rgb(var(--Blue));
+        }
+        100% {
+          color: rgb(var(--Green));
+        }
+      }
+    }
+  }
 
-	.buttons {
-		display: flex;
-		flex-direction: row;
-		gap: 15px;
+  .button-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 
-		button {
-			box-sizing: border-box;
+    .button-wrapper__button {
+      box-sizing: border-box;
 
-			font-size: 1rem;
-			background: none;
+      font-size: 1rem;
+      background: rgba(var(--Overlay1), 0.8);
 
-			border: 2px solid rgba(var(--Lavender), 0.8);
-			color: rgb(var(--Text));
+      border-radius: 0.5rem;
+      border: 2px solid rgba(var(--Lavender), 0.4);
+      color: rgb(var(--Text));
 
-			cursor: pointer;
-			padding: 10px 20px 10px 20px;
-			height: 50px;
-			margin-top: 20px;
+      cursor: pointer;
+      padding: 10px 20px 10px 20px;
+      height: 50px;
+      margin-top: 20px;
 
-			transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
 
-			&:hover {
-				transform: scale(1.1);
-				background: rgba(var(--Lavender), 0.3);
-				border: 2px solid rgba(var(--Blue), 0.8);
-			}
-		}
-	}
+      &:hover {
+        transform: scale(1.1);
+        background: rgba(var(--Lavender), 0.3);
+        border: 2px solid rgba(var(--Green), 0.8);
+      }
+    }
+  }
 </style>

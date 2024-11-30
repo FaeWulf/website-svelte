@@ -42,7 +42,7 @@
 			const currentTime = new Date();
 
 			if (currentTime.getTime() - ufoLastMove?.getTime() > 5000 && !ufoIdle) {
-				const ret = document.getElementById('ufo_home');
+				const ret = document.getElementById('js-ufo_home');
 				if (ret) {
 					const pos = ret.getBoundingClientRect();
 					setUFOCoords(pos.x - 8, pos.y - 10);
@@ -121,7 +121,7 @@
 	});
 
 	onMount(() => {
-		const ret = document.getElementById('ufo_home');
+		const ret = document.getElementById('js-ufo_home');
 		if (ret) {
 			const pos = ret.getBoundingClientRect();
 			//setUFOCoords(pos.x - 8, pos.y - 10);

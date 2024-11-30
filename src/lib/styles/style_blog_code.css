@@ -14,7 +14,7 @@ code.hljs {
 
 .hljs-comment,
 .hljs-quote {
-    color: rgb(var(--Overlay0));
+    color: rgb(var(--Subtext1));
     font-style: italic
 }
 

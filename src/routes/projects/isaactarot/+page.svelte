@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Card from '$lib/sveltes/page-comps/isaactarot/card.svelte';
-	import Book from '$lib/sveltes/page-comps/isaactarot/book.svelte';
-	import RuneBag from '$lib/sveltes/page-comps/isaactarot/rune_bag.svelte';
-	import Crystalball from '$lib/sveltes/page-comps/isaactarot/crystalball.svelte';
-	import Rune from '$lib/sveltes/page-comps/isaactarot/rune.svelte';
-	import Box from '$lib/sveltes/page-comps/isaactarot/box.svelte';
-	import type { cardData, runeData } from '$lib/sveltes/page-comps/isaactarot/type';
+	import Card from '$lib/sveltes/components/isaactarot/card.svelte';
+	import Book from '$lib/sveltes/components/isaactarot/book.svelte';
+	import RuneBag from '$lib/sveltes/components/isaactarot/rune_bag.svelte';
+	import Crystalball from '$lib/sveltes/components/isaactarot/crystalball.svelte';
+	import Rune from '$lib/sveltes/components/isaactarot/rune.svelte';
+	import Box from '$lib/sveltes/components/isaactarot/box.svelte';
+	import type { cardData, runeData } from '$lib/sveltes/components/isaactarot/type';
 	import { MetaTags } from 'svelte-meta-tags';
 
 	let cardList: cardData[] = [];
@@ -25,7 +25,7 @@
 	/>
 </svelte:head>
 
-<div class="main" />
+<div class="main-wrapper" />
 <Crystalball bind:cardList />
 
 <Box bind:cardList bind:runeList />
@@ -43,16 +43,16 @@
 <Book bind:cardList />
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(var(--Text), 0.2);
 
-		//backdrop-filter: blur(2px);
-		//-webkit-backdrop-filter: blur(2px);
-	}
+    //backdrop-filter: blur(2px);
+    //-webkit-backdrop-filter: blur(2px);
+  }
 </style>

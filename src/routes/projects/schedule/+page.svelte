@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { tooltip } from '$lib/utils';
-	import { scale, fade } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 	import { bounceInOut, quintInOut } from 'svelte/easing';
 
 	const weekDay = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -185,8 +184,10 @@
 
 		//console.log('result: ', result_schedule);
 	}
+
 	let index = 2;
 	let formElements = [1];
+
 	function addForm() {
 		formElements = [...formElements, index];
 		index++;
@@ -205,7 +206,7 @@
 	<meta name="description" content="About this website" />
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<div class="controller">
 		{#if result_schedule}
 			<table class="result-table">
@@ -250,7 +251,8 @@
 				theme: 'catppuccin',
 				animation: 'scale'
 			}}
-			on:click={addForm}>+</button
+			on:click={addForm}>+
+		</button
 		>
 		<button
 			class="controller-button"
@@ -259,7 +261,8 @@
 				theme: 'catppuccin',
 				animation: 'scale'
 			}}
-			on:click={onClick}>Generate</button
+			on:click={onClick}>Generate
+		</button
 		>
 	</div>
 
@@ -282,7 +285,8 @@
 						theme: 'catppuccin',
 						animation: 'scale'
 					}}
-					on:click={(e) => (formElements = formElements.filter((f) => f !== form))}>x</button
+					on:click={(e) => (formElements = formElements.filter((f) => f !== form))}>x
+				</button
 				>
 				<div class="name-container">
 					<label for="name" style="font-weight: 800;">Name</label><br />
@@ -302,22 +306,22 @@
 						<tr>
 							<td class="row-label">{row}</td>
 							<td on:click={tdOnClick}
-								><input class="checkBox" name={row} value="Mon" type="checkbox" /></td
+							><input class="checkBox" name={row} value="Mon" type="checkbox" /></td
 							>
 							<td on:click={tdOnClick}
-								><input class="checkBox" name={row} value="Tue" type="checkbox" /></td
+							><input class="checkBox" name={row} value="Tue" type="checkbox" /></td
 							>
 							<td on:click={tdOnClick}
-								><input class="checkBox" name={row} value="Wed" type="checkbox" /></td
+							><input class="checkBox" name={row} value="Wed" type="checkbox" /></td
 							>
 							<td on:click={tdOnClick}
-								><input class="checkBox" name={row} value="Thu" type="checkbox" /></td
+							><input class="checkBox" name={row} value="Thu" type="checkbox" /></td
 							>
 							<td on:click={tdOnClick}
-								><input class="checkBox" name={row} value="Fri" type="checkbox" /></td
+							><input class="checkBox" name={row} value="Fri" type="checkbox" /></td
 							>
 							<td on:click={tdOnClick}
-								><input class="checkBox" name={row} value="Sat" type="checkbox" /></td
+							><input class="checkBox" name={row} value="Sat" type="checkbox" /></td
 							>
 						</tr>
 					{/each}
@@ -328,135 +332,135 @@
 </div>
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(var(--Text), 0.2);
 
-		.controller {
-			width: calc(100% - 10px);
-			min-height: 200px;
-			border: 1px solid rgba(var(--Text), 0.2);
-			margin-bottom: 10px;
-			padding: 5px;
+    .controller {
+      width: calc(100% - 10px);
+      min-height: 200px;
+      border: 1px solid rgba(var(--Text), 0.2);
+      margin-bottom: 10px;
+      padding: 5px;
 
-			.controller-button {
-				font-size: 1.5rem;
-			}
-		}
-	}
+      .controller-button {
+        font-size: 1.5rem;
+      }
+    }
+  }
 
-	.forms-container {
-		width: 100%;
-		flex: 1;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 5px;
-		justify-content: space-around;
-		align-items: flex-start;
-		align-content: flex-start;
+  .forms-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
 
-		input {
-			background-color: rgba(var(--Overlay0), 0.5);
-			border: 1px solid rgba(var(--Text), 0.2);
-			color: rgb(var(--Text));
+    input {
+      background-color: rgba(var(--Overlay0), 0.5);
+      border: 1px solid rgba(var(--Text), 0.2);
+      color: rgb(var(--Text));
 
-			&:focus {
-				outline: none;
-			}
-		}
+      &:focus {
+        outline: none;
+      }
+    }
 
-		.form {
-			position: relative;
-			width: fit-content;
-			max-width: calc(100% / 2 - 20px);
-			min-width: 380px;
-			min-height: 200px;
-			height: fit-content;
-			border: 1px solid rgba(var(--Overlay0), 0.5);
+    .form {
+      position: relative;
+      width: fit-content;
+      max-width: calc(100% / 2 - 20px);
+      min-width: 380px;
+      min-height: 200px;
+      height: fit-content;
+      border: 1px solid rgba(var(--Overlay0), 0.5);
 
-			.name-container {
-				margin-left: 10px;
-				margin-top: 10px;
-				display: flex;
-				align-items: center;
-				gap: 5px;
-			}
+      .name-container {
+        margin-left: 10px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
 
-			.delete-button-form {
-				margin-right: 10px;
-				margin-top: 10px;
-				position: absolute;
-				right: 0;
-				top: 0;
+      .delete-button-form {
+        margin-right: 10px;
+        margin-top: 10px;
+        position: absolute;
+        right: 0;
+        top: 0;
 
-				background-color: rgb(var(--Overlay2));
-				width: 20px;
-				height: 20px;
-				text-align: center;
-				border: red;
+        background-color: rgb(var(--Overlay2));
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border: red;
 
-				cursor: pointer;
+        cursor: pointer;
 
-				&:hover {
-					background-color: rgb(var(--Red));
-					color: rgb(var(--Text));
-				}
-			}
-		}
-	}
+        &:hover {
+          background-color: rgb(var(--Red));
+          color: rgb(var(--Text));
+        }
+      }
+    }
+  }
 
-	table,
-	th,
-	td {
-		border: 1px solid rgba(var(--Text), 0.4);
-	}
+  table,
+  th,
+  td {
+    border: 1px solid rgba(var(--Text), 0.4);
+  }
 
-	table {
-		width: calc(100% - 20px);
-		border-collapse: collapse;
-		table-layout: fixed;
-		margin: 10px;
+  table {
+    width: calc(100% - 20px);
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 10px;
 
-		td {
-			text-align: center;
-			vertical-align: middle;
-		}
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
 
-		tr {
-			height: 30px;
-		}
+    tr {
+      height: 30px;
+    }
 
-		tr:nth-child(odd) {
-			background-color: rgba(var(--Overlay0), 0.2);
-		}
+    tr:nth-child(odd) {
+      background-color: rgba(var(--Overlay0), 0.2);
+    }
 
-		th {
-			background-color: rgba(var(--Red), 0.3);
-		}
-	}
+    th {
+      background-color: rgba(var(--Red), 0.3);
+    }
+  }
 
-	.checkBox {
-		pointer-events: none;
-	}
+  .checkBox {
+    pointer-events: none;
+  }
 
-	.drop-down {
-		width: 100%;
-		background-color: rgba(var(--Overlay0), 0);
-		color: rgb(var(--Text));
-		border-radius: 0px;
-		margin: 0;
+  .drop-down {
+    width: 100%;
+    background-color: rgba(var(--Overlay0), 0);
+    color: rgb(var(--Text));
+    border-radius: 0px;
+    margin: 0;
 
-		outline: 0px;
-		border: none;
+    outline: 0px;
+    border: none;
 
-		box-shadow: none;
+    box-shadow: none;
 
-		text-align: center;
-		cursor: pointer;
-	}
+    text-align: center;
+    cursor: pointer;
+  }
 </style>

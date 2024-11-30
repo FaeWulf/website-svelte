@@ -36,9 +36,9 @@
 	}
 </script>
 
-<div class="tab-track-toolbar">
+<div class="menubar">
 	<input
-		class="searchBar"
+		class="menubar__search-input"
 		type="search"
 		bind:value={search}
 		placeholder="Search with track, artist, or id number"
@@ -47,6 +47,7 @@
 	/>
 
 	<button
+		class="menubar__option-button"
 		use:tooltip={{ instancesHolder: tippyInstances }}
 		class:active={autoplayActive}
 		on:click={() => (autoplayActive = !autoplayActive)}
@@ -56,6 +57,7 @@
 	</button>
 
 	<button
+		class="menubar__option-button"
 		use:tooltip={{ instancesHolder: tippyInstances }}
 		on:click={() => shuffleList()}
 		title="Shuffle current list"
@@ -63,6 +65,7 @@
 		S
 	</button>
 	<button
+		class="menubar__option-button"
 		use:tooltip={{ instancesHolder: tippyInstances }}
 		class:active={autoNextActive}
 		on:click={() => (autoNextActive = !autoNextActive)}
@@ -71,6 +74,7 @@
 		N
 	</button>
 	<button
+		class="menubar__option-button"
 		use:tooltip={{ instancesHolder: tippyInstances }}
 		class:active={randomActive}
 		on:click={() => chooseRandom()}
@@ -82,7 +86,7 @@
 </div>
 
 <style lang="scss">
-  .tab-track-toolbar {
+  .menubar {
     width: 100%;
     height: 50px;
     border-radius: 0.5rem;
@@ -96,39 +100,42 @@
     outline-offset: -2px;
 
     background: rgba(var(--Overlay0), 1);
-  }
 
-  .searchBar {
-    width: 100%;
-    height: 30px;
-    margin-left: 10px;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(var(--Text), 0.2);
-    color: var(--Text);
-    background: rgba(var(--Overlay1), 1);
+    .menubar__search-input {
+      width: 100%;
+      height: 30px;
+      margin-left: 10px;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(var(--Text), 0.2);
+      color: var(--Text);
+      background: rgba(var(--Overlay1), 1);
 
-    &:focus {
-      outline: 1px solid rgba(var(--Lavender), 0.8);
-      border: none;
+      &:focus {
+        outline: 1px solid rgba(var(--Lavender), 0.8);
+        border: none;
+      }
+    }
+
+
+    .menubar__option-button {
+      width: 40px;
+      height: 30px;
+      background: rgba(var(--Overlay2), 0.4);
+      color: rgb(var(--Text));
+      font-family: 'Pixel Nes', 'Tahoma';
+      border-radius: 0.5rem;
+      border: 1px solid rgba(var(--Yellow), 0.6);
+
+      &:hover {
+        background: rgba(var(--Surface0), 1);
+      }
+
+      &.active {
+        background: rgba(var(--Green), 1);
+        color: rgb(var(--Crust));
+      }
     }
   }
 
-  button {
-    width: 40px;
-    height: 30px;
-    background: rgba(var(--Overlay2), 0.4);
-    color: rgb(var(--Text));
-    font-family: 'Pixel Nes', 'Tahoma';
-    border-radius: 0.5rem;
-    border: 1px solid rgba(var(--Yellow), 0.6);
 
-    &:hover {
-      background: rgba(var(--Surface0), 1);
-    }
-
-    &.active {
-      background: rgba(var(--Green), 1);
-      color: rgb(var(--Crust));
-    }
-  }
 </style>

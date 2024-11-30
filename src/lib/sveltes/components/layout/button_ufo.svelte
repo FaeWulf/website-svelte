@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { isMobile } from '$lib/utils';
 	import { onMount } from 'svelte';
+
 	export let toggle = true;
 
 	onMount(() => {
@@ -10,8 +11,8 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-	on:click={() => {
+<div class="toggle-button"
+		 on:click={() => {
 		toggle = !toggle;
 	}}
 >
@@ -22,6 +23,7 @@
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			class="toggle-button__icon"
 		>
 			<path
 				fill-rule="evenodd"
@@ -37,6 +39,7 @@
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			class="toggle-button__icon"
 		>
 			<path
 				fill-rule="evenodd"
@@ -52,18 +55,18 @@
 	{/if}
 </div>
 
-<style>
-	div {
-		margin: 0;
-		padding: 0;
-		line-height: 0;
-	}
+<style lang="scss">
+  .toggle-button {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
 
-	svg {
-		width: 25px;
-		height: 25px;
-		fill: rgb(var(--Text));
+    .toggle-button__icon {
+      width: 25px;
+      height: 25px;
+      fill: rgb(var(--Text));
 
-		cursor: pointer;
-	}
+      cursor: pointer;
+    }
+  }
 </style>

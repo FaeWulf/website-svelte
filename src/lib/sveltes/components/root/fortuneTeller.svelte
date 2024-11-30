@@ -1,27 +1,27 @@
 <script lang="ts">
 	import { apiURL } from '$lib/store';
 	import { onMount } from 'svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	let fortune: string;
 
 	onMount(async () => {
-		const url = $apiURL;
-		const fetchFortune = await fetch(url + '/api/v1/misc/fortune').then((res) => res.json());
+		const fetchFortune = await fetch($apiURL + '/api/v1/misc/fortune').then((res) => res.json());
 		fortune = fetchFortune.data.fortune;
 	});
 </script>
 
 {#if fortune}
-	<div class="title" id="infotabs-fortuneteller">🔮 Fortune Teller</div>
-	<div class="text">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
+	<div class="badge-title" id="js-infotabs-fortuneteller">🔮 Fortune Teller</div>
+	<div class="post__description">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
 {:else}
-	<div>Searching...</div>
+	<LoadingCircle />
 {/if}
 
-<div class="dummy" />
+<div class="badge-dummy" />
 
 <style lang="scss">
-  .title {
+  .badge-title {
     flex-basis: 100%;
     text-align: center;
     background-color: rgb(var(--Overlay1));
@@ -32,12 +32,12 @@
     font-weight: 600;
   }
 
-  .text {
+  .post__description {
     width: 100%;
     text-align: left;
   }
 
-  .dummy {
+  .badge-dummy {
     height: 50px;
     flex-basis: 100%;
   }

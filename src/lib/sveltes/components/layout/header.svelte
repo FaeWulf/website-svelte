@@ -2,16 +2,16 @@
 	import { page } from '$app/stores';
 	import Search from '$lib/svgs/search.svelte';
 	import 'tippy.js/animations/perspective-subtle.css';
-	import HeaderDroplist from '$lib/sveltes/page-comps/layout/header_droplist.svelte';
+	import HeaderDroplist from '$lib/sveltes/components/layout/header_droplist.svelte';
 	import { onMount } from 'svelte';
 	import { capitalFirstLeter, isMobile, tooltip, typewriter } from '$lib/utils';
 
 	//import toolbar comps
-	import Volume from '$lib/sveltes/page-comps/layout/button_volume.svelte';
-	import Theme from '$lib/sveltes/page-comps/layout/button_theme.svelte';
-	import WindowIcon from '$lib/sveltes/page-comps/layout/button_window-icon.svelte';
-	import ButtonUfo from '$lib/sveltes/page-comps/layout/button_ufo.svelte';
-	import Bell from '$lib/sveltes/page-comps/layout/bell.svelte';
+	import Volume from '$lib/sveltes/components/layout/button_volume.svelte';
+	import Theme from '$lib/sveltes/components/layout/button_theme.svelte';
+	import WindowIcon from '$lib/sveltes/components/layout/button_window-icon.svelte';
+	import ButtonUfo from '$lib/sveltes/components/layout/button_ufo.svelte';
+	import Bell from '$lib/sveltes/components/layout/bell.svelte';
 
 	export let windowToggle: boolean;
 	export let ufoToggleMovement: boolean;
@@ -84,9 +84,10 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <header>
-	<div class="nav-container">
-		<div class="toolbar">
+	<div class="nav-wrapper">
+		<div class="nav__toolbar">
 			<div
+				class="nav__toolbar-item"
 				use:tooltip={{
 					content: 'Toggle mysterious sound',
 					theme: 'catppuccin',
@@ -96,6 +97,7 @@
 				<Volume bind:toggle={volumeToggle} />
 			</div>
 			<div
+				class="nav__toolbar-item"
 				use:tooltip={{
 					content: 'Chagne theme',
 					theme: 'catppuccin',
@@ -112,7 +114,8 @@
 			</div>
 
 			<div
-				id="ufo_home"
+				class="nav__toolbar-item"
+				id="js-ufo_home"
 				use:tooltip={{
 					content: 'Toggle UFO movement',
 					theme: 'catppuccin',
@@ -122,6 +125,7 @@
 				<ButtonUfo bind:toggle={ufoToggleMovement} />
 			</div>
 			<div
+				class="nav__toolbar-item"
 				use:tooltip={{
 					content: 'Toggle window tab',
 					theme: 'catppuccin',
@@ -132,17 +136,17 @@
 			</div>
 		</div>
 		<nav>
-			<div class="searchBar" aria-label="Drop menu" bind:this={droplist}>
-				<di class="searchIcon">
+			<div class="nav__search-input" aria-label="Drop menu" bind:this={droplist}>
+				<div class="nav__search-icon">
 					<Search size={24} color="#a6da95" />
-				</di>
+				</div>
 				{#key $page.url.pathname}
 					<span in:typewriter={{ speed: 2 }}>
 						{pathname}
 					</span>
 				{/key}
 
-				<span class="blinking">_</span>
+				<span class="nav__search-input--blinking">_</span>
 			</div>
 
 			<Bell />
@@ -152,15 +156,10 @@
 	<HeaderDroplist />
 	<audio src="/sfx/space-sound.mp3" preload="auto" bind:this={spaceSound} loop />
 	<audio src="/sfx/think-fast.mp3" preload="auto" bind:this={thinkfast} />
-	<!--div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div-->
 </header>
 
 {#if !themeToggle}
-	<div class="flashbang" class:play={!themeToggle} />
+	<div class="theme__flash-bang" class:theme__flash-bang--play={!themeToggle} />
 {/if}
 
 <svelte:window on:blur={() => (pauseSFX = true)} on:focus={() => (pauseSFX = false)} />
@@ -175,7 +174,7 @@
     z-index: 9;
   }
 
-  .nav-container {
+  .nav-wrapper {
     max-width: 550px;
     width: 100%;
     display: flex;
@@ -187,7 +186,7 @@
     border-radius: 50px;
     background-color: rgba(var(--Overlay0), 0.6);
 
-    .toolbar {
+    .nav__toolbar {
       box-sizing: border-box;
       display: flex;
       justify-content: space-evenly;
@@ -200,11 +199,11 @@
       border: 1px solid rgba(var(--Lavender), 0.2);
       border-radius: 50px;
       padding: 19px 10px;
-      margin: 8px 0px 8px 10px;
+      margin: 8px 0 8px 10px;
       background-color: rgba(var(--Overlay1), 1);
       //backdrop-filter: blur(10px);
 
-      > div {
+      .nav__toolbar-item {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -235,7 +234,7 @@
 
       transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-      .searchBar {
+      .nav__search-input {
         position: relative;
         width: 100%;
         display: flex;
@@ -244,7 +243,12 @@
 
         overflow: hidden;
 
-        .searchIcon {
+        &--blinking {
+          color: rgb(var(--Rosewater));
+          animation: blink 1s step-end infinite;
+        }
+
+        .nav__search-icon {
           margin-right: 10px;
           margin-left: 10px;
           padding-right: 9px;
@@ -254,21 +258,16 @@
           justify-content: center;
           align-items: center;
         }
-
-        .blinking {
-          color: rgb(var(--Rosewater));
-          animation: blink 1s step-end infinite;
-        }
       }
     }
   }
 
-  #ufo_home {
+  #js-ufo_home {
     width: 30px;
     height: 30px;
   }
 
-  .flashbang {
+  .theme__flash-bang {
     position: absolute;
     left: 0;
     top: 0;
@@ -277,7 +276,7 @@
     z-index: 100;
     background: white;
 
-    &.play {
+    &--play {
       animation: flash 5s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
   }

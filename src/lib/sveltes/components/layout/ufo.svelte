@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import BubbleChat from '$lib/sveltes/ufo/bubbleChat.svelte';
+
 	export let toggleMovement = true;
 
 	let x = 500,
@@ -69,7 +70,7 @@
 	}
 
 	onMount(() => {
-		const ret = document.getElementById('ufo_home');
+		const ret = document.getElementById('js-ufo_home');
 		if (ret) {
 			const pos = ret.getBoundingClientRect();
 			//setUFOCoords(pos.x - 8, pos.y - 10);
@@ -90,7 +91,7 @@
 			if (ufoIdle) ufoLean = 0;
 
 			if (currentTime.getTime() - ufoLastMove?.getTime() > 4000 && !ufoIdle) {
-				const ret = document.getElementById('ufo_home');
+				const ret = document.getElementById('js-ufo_home');
 				if (ret) {
 					const pos = ret.getBoundingClientRect();
 					moveUfo(pos.x - 8, pos.y - 10, 1000, true, false);
@@ -107,7 +108,13 @@
 </script>
 
 <div class="ufo" bind:this={ufo}>
-	<img src="/gifs/ufo.gif" alt="ufo" draggable="false" class:leanLeft={ufoLean == -1} class:leanRight={ufoLean == 1} />
+	<img class="ufo__img"
+			 src="/gifs/ufo.gif"
+			 alt="ufo"
+			 draggable="false"
+			 class:ufo__img--leanLeft={ufoLean === -1}
+			 class:ufo__img--leanRight={ufoLean === 1}
+	/>
 	<BubbleChat />
 </div>
 
@@ -118,44 +125,44 @@
 />
 
 <style lang="scss">
-	.ufo {
-		position: fixed;
-		pointer-events: none;
-		z-index: 20;
+  .ufo {
+    position: fixed;
+    pointer-events: none;
+    z-index: 20;
 
-		top: -100px;
-		left: calc(100vw / 2);
+    top: -100px;
+    left: calc(100vw / 2);
 
-		user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 
-		img {
-			&.leanLeft {
-				animation: forwards leanLeft 0.5s ease-in-out;
-			}
+    .ufo__img {
+      &--leanLeft {
+        animation: forwards leanLeft 0.5s ease-in-out;
+      }
 
-			&.leanRight {
-				animation: forwards leanRight 0.5s ease-in-out;
-			}
-		}
-	}
+      &--leanRight {
+        animation: forwards leanRight 0.5s ease-in-out;
+      }
+    }
+  }
 
-	@keyframes leanLeft {
-		from {
-			transform: rotateZ(0deg);
-		}
-		to {
-			transform: rotateZ(-30deg);
-		}
-	}
+  @keyframes leanLeft {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(-30deg);
+    }
+  }
 
-	@keyframes leanRight {
-		from {
-			transform: rotateZ(0deg);
-		}
-		to {
-			transform: rotateZ(30deg);
-		}
-	}
+  @keyframes leanRight {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(30deg);
+    }
+  }
 </style>

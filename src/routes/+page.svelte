@@ -3,22 +3,22 @@
 	import { tooltip } from '$lib/utils';
 
 	//comps
-	import Logo from '$lib/sveltes/page-comps/root/logo.svelte';
-	import Description from '$lib/sveltes/page-comps/root/description.svelte';
-	import Title from '$lib/sveltes/page-comps/root/title.svelte';
-	import Social from '$lib/sveltes/page-comps/root/social.svelte';
+	import Logo from '$lib/sveltes/components/root/logo.svelte';
+	import Description from '$lib/sveltes/components/root/description.svelte';
+	import Title from '$lib/sveltes/components/root/title.svelte';
+	import Social from '$lib/sveltes/components/root/social.svelte';
 
 	//tabs
-	import Badges from '$lib/sveltes/page-comps/root/badges.svelte';
-	import RecentTracks from '$lib/sveltes/page-comps/root/recentTracks.svelte';
-	import RecentBlog from '$lib/sveltes/page-comps/root/recentBlog.svelte';
-	import FortuneTeller from '$lib/sveltes/page-comps/root/fortuneTeller.svelte';
+	import Badges from '$lib/sveltes/components/root/badges.svelte';
+	import RecentTracks from '$lib/sveltes/components/root/recentTracks.svelte';
+	import RecentBlog from '$lib/sveltes/components/root/recentBlog.svelte';
+	import FortuneTeller from '$lib/sveltes/components/root/fortuneTeller.svelte';
 
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
 
-	const tabs: string[] = ['infotabs-badges', 'infotabs-recentblog', 'infotabs-recenttracks', 'infotabs-fortuneteller'];
+	const tabs: string[] = ['js-infotabs-skill', 'js-infotabs-epx', 'js-infotabs-workstation', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
 	let tab_index = 0;
 
 	onMount(async () => {
@@ -41,6 +41,7 @@
 	};
 
 	let titleChanger = '';
+
 </script>
 
 <svelte:head>
@@ -56,23 +57,31 @@
 <Logo />
 <Title bind:titleChanger />
 <Description bind:descriptionChanger />
-<div class="infoSlide">
-	<div class="infoTab">
+<div class="info-summary">
+	<div class="info-summary__wrapper"
+			 on:mouseleave={() => {
+					descriptionChanger.value = 0;
+					descriptionChanger.text = '';
+					descriptionChanger.learner = false;
+				}}
+			 role="img"
+	>
 		<Badges bind:descriptionChanger />
 		<RecentBlog />
 		<RecentTracks />
 		<FortuneTeller />
 	</div>
 </div>
-<div class="text-scroll" use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}>
+<div class="scroll-button" use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-	<img draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow" on:click={nextTab} />
+	<img class="scroll-button__icon" draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow"
+			 on:click={nextTab} />
 </div>
 <Social bind:titleChanger />
 
 <style lang="scss">
-  .infoSlide {
+  .info-summary {
     margin-top: 25px;
     opacity: 0.6;
     transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -86,7 +95,7 @@
       background-color: rgba(var(--Overlay0), 0.5);
     }
 
-    .infoTab {
+    .info-summary__wrapper {
       box-sizing: border-box;
       width: 100%;
       height: 100%;
@@ -111,7 +120,7 @@
     }
   }
 
-  .text-scroll {
+  .scroll-button {
     margin-top: 10px;
     opacity: 0.6;
     //transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -122,14 +131,14 @@
     -ms-user-select: none;
     user-select: none;
 
-    img {
+    .scroll-button__icon {
       width: 35px;
-      animation: animateArrow 0.6s ease-in infinite alternate;
+      animation: scroll-button__icon__keyframe--animateArrow 0.6s ease-in infinite alternate;
       cursor: pointer;
     }
   }
 
-  @keyframes animateArrow {
+  @keyframes scroll-button__icon__keyframe--animateArrow {
     0% {
       transform: translateY(-4px);
     }

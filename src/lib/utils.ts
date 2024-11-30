@@ -1,4 +1,5 @@
 import tippy from 'tippy.js';
+
 // place files you want to import through the `$lib` alias in this folder.
 function typewriter(node: Node, { delay = 0, speed = 1 }: any) {
 	const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
@@ -152,7 +153,7 @@ const clearAsyncInterval = (intervalIndex: number) => {
 //function to check device type is mobile or not
 function isMobile(window: any, navigator: any) {
 	let check = false;
-	(function (a) {
+	(function(a) {
 		if (
 			/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
 				a
@@ -193,7 +194,7 @@ function parseDiscordEmoji(message: string) {
 			if (!match) continue;
 			const id = match[2];
 
-			progressed.push(`<img class="emoji" alt="${match[1]}" src="${discordURL}${id}.png?v=1"/>`);
+			progressed.push(`<img class="chat__emoji-img" alt="${match[1]}" src="${discordURL}${id}.png?v=1"/>`);
 			continue;
 		}
 
@@ -203,7 +204,7 @@ function parseDiscordEmoji(message: string) {
 			if (!match) continue;
 			const id = match[2];
 
-			progressed.push(`<img class="emoji" alt="${match[1]}" src="${discordURL}${id}.gif?v=1">`);
+			progressed.push(`<img class="chat__emoji-img" alt="${match[1]}" src="${discordURL}${id}.gif?v=1">`);
 			continue;
 		}
 
@@ -216,46 +217,46 @@ function parseDiscordEmoji(message: string) {
 
 function timeAgo(datetime: number): string {
 	const date = new Date(datetime);
-    const now = new Date();
-    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+	const now = new Date();
+	const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-    const secondsInMinute = 60;
-    const secondsInHour = 3600;
-    const secondsInDay = 86400;
-	
-    /* if (diffInSeconds < secondsInMinute) {
-        return 'Just now';
-    } else if (diffInSeconds < secondsInHour) {
-        const minutes = Math.floor(diffInSeconds / secondsInMinute);
-        return `${minutes} min ago`;
-    } else if (diffInSeconds < secondsInDay) {
-        const hours = Math.floor(diffInSeconds / secondsInHour);
-        return `${hours}h ago`;
-    } */
+	const secondsInMinute = 60;
+	const secondsInHour = 3600;
+	const secondsInDay = 86400;
+
+	/* if (diffInSeconds < secondsInMinute) {
+			return 'Just now';
+	} else if (diffInSeconds < secondsInHour) {
+			const minutes = Math.floor(diffInSeconds / secondsInMinute);
+			return `${minutes} min ago`;
+	} else if (diffInSeconds < secondsInDay) {
+			const hours = Math.floor(diffInSeconds / secondsInHour);
+			return `${hours}h ago`;
+	} */
 
 	const formatAMPM = (date: Date): string => {
-        let hours = date.getHours();
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // Hour '0' should be '12'
-        return `${hours}:${minutes} ${ampm}`;
-    };
+		let hours = date.getHours();
+		const minutes = String(date.getMinutes()).padStart(2, '0');
+		const ampm = hours >= 12 ? 'PM' : 'AM';
+		hours = hours % 12;
+		hours = hours ? hours : 12; // Hour '0' should be '12'
+		return `${hours}:${minutes} ${ampm}`;
+	};
 
-    const yesterday = new Date(now);
-    yesterday.setDate(now.getDate() - 1);
-    
-    const isToday = date.toDateString() === now.toDateString();
-    const isYesterday = date.toDateString() === yesterday.toDateString();
+	const yesterday = new Date(now);
+	yesterday.setDate(now.getDate() - 1);
 
-    if (isToday) {
-        return `Today at ${formatAMPM(date)}`;
-    } else if (isYesterday) {
-        return `Yesterday at ${formatAMPM(date)}`;
-    }
-	
+	const isToday = date.toDateString() === now.toDateString();
+	const isYesterday = date.toDateString() === yesterday.toDateString();
 
-    return date.toLocaleDateString() + ' ' + formatAMPM(date);
+	if (isToday) {
+		return `Today at ${formatAMPM(date)}`;
+	} else if (isYesterday) {
+		return `Yesterday at ${formatAMPM(date)}`;
+	}
+
+
+	return date.toLocaleDateString() + ' ' + formatAMPM(date);
 }
 
 export {

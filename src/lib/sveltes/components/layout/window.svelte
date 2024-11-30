@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Bonsai from '$lib/sveltes/page-comps/layout/bonsai.svelte';
-	import Console from '$lib/sveltes/page-comps/layout/console.svelte';
-	import Chat from '$lib/sveltes/page-comps/layout/chat.svelte';
+	import Bonsai from '$lib/sveltes/components/layout/bonsai.svelte';
+	import Console from '$lib/sveltes/components/layout/console.svelte';
+	import Chat from '$lib/sveltes/components/layout/chat.svelte';
 	import { app3rd } from '$lib/store';
 
-	import Controller from '$lib/sveltes/page-comps/boids/controller.svelte';
+	import Controller from '$lib/sveltes/components/boids/controller.svelte';
 
 	export let windowToggle: boolean = true;
 	export let windowOntop: boolean = false;
@@ -126,45 +126,44 @@
 	tabindex="-1"
 	id="window"
 	class="window"
-	class:hide={!windowToggle}
-	class:ontop={windowOntop}
+	class:window--hide="{!windowToggle}"
+	class:window__overlay--ontop="{windowOntop}"
 	style:top="{window_y}px"
 	style:left="{window_x}px"
 	bind:this={windowEl}
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div class="titlebar" on:pointerdown={onMouseDown}>
-		<div class="tab">
+	<div class="window__title-bar" on:pointerdown={onMouseDown}>
+		<div class="window__tab">
 			{#each totalTabs as tab}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div class="item" class:selected={selectTab == tab.id} on:click={() => onClickTab(tab.id)}>
-					<div>
-						{tab.name}
-					</div>
-					{#if selectTab == tab.id}
-						<div class="dummy" />
+				<div class="window__tab-item" class:window__tab-item--selected="{selectTab === tab.id}"
+						 on:click={() => onClickTab(tab.id)}>
+					<div class="window__tab-item--name"> {tab.name}</div>
+					{#if selectTab === tab.id}
+						<div class="window__tab-item__dummy" />
 					{/if}
-					<div class="notification" class:show={tabsNotification[tab.id]}></div>
+					<div class="window__notification" class:window_notification--show="{tabsNotification[tab.id]}"></div>
 				</div>
 			{/each}
 		</div>
-		<div class="toggle">
-			<button class="button" on:click={onToggleButtonClick}>-</button>
+		<div class="window__title-bar--toggle">
+			<button class="window__button" on:click={onToggleButtonClick}>-</button>
 		</div>
 	</div>
-	<div class="content">
-		<div class:selected={selectTab == 0}>
+	<div class="window__content">
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 0}">
 			<Bonsai />
 		</div>
-		<div class:selected={selectTab == 1}>
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 1}">
 			<Console />
 		</div>
-		<div class:selected={selectTab == 2}>
-			{#if $app3rd == 'boids'}
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 2}">
+			{#if $app3rd === 'boids'}
 				<Controller />
 			{/if}
 		</div>
-		<div class:selected={selectTab == 3}>
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 3}">
 			<Chat />
 		</div>
 	</div>
@@ -198,19 +197,19 @@
             opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1),
             box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-    animation: 0.3s show ease-in-out;
+    animation: 0.3s window__keyframe--show ease-in-out;
 
     //prevent selection
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
 
-    &.hide {
+    &.window--hide {
       pointer-events: none;
-      animation: 0.3s hide ease-in-out forwards;
+      animation: 0.3s window__keyframe--hide ease-in-out forwards;
     }
 
-    &.ontop {
+    &.window__overlay--ontop {
       z-index: 5;
     }
 
@@ -225,13 +224,13 @@
       box-shadow: 0 0 20px #000;
     }
 
-    .titlebar {
+    .window__title-bar {
       grid-area: titlebar;
       position: relative;
       background: rgb(var(--Overlay0));
       cursor: grab;
 
-      .toggle {
+      .window__title-bar--toggle {
         position: absolute;
         right: 0;
         top: 0;
@@ -242,7 +241,7 @@
         justify-content: center;
         align-items: center;
 
-        .button {
+        .window__button {
           width: 50%;
           height: 50%;
 
@@ -260,7 +259,7 @@
         }
       }
 
-      .tab {
+      .window__tab {
         box-sizing: border-box;
         padding-left: 10px;
         width: 100%;
@@ -278,15 +277,14 @@
         -webkit-user-select: none;
         -ms-user-select: none;
 
-        .item {
+        .window__tab-item {
           position: relative;
           height: 20px;
           width: 20%;
 
           border: 1px solid rgba(var(--Text), 0.3);
           border-bottom: none;
-          border-radius: 5px 5px 0px 0;
-
+          border-radius: 5px 5px 0 0;
 
           text-align: center;
           font-size: 0.8rem;
@@ -301,14 +299,14 @@
           justify-content: center;
           align-items: center;
 
-          > div {
+          > div.window__tab-item--name {
             overflow: hidden;
             box-sizing: border-box;
             padding-left: 5px;
             padding-right: 5px;
           }
 
-          &.selected {
+          &.window__tab-item--selected {
             color: rgba(var(--Green), 1);
             border: 1px solid rgba(var(--Green), 0.3);
             border-bottom: none;
@@ -316,7 +314,7 @@
             min-width: fit-content;
           }
 
-          .dummy {
+          .window__tab-item__dummy {
             position: absolute;
             bottom: -1px;
             left: 0;
@@ -326,7 +324,7 @@
             background: rgb(var(--Overlay0));
           }
 
-          .notification {
+          .window__notification {
             position: absolute;
             top: -4px;
             right: -4px;
@@ -334,13 +332,10 @@
             height: 12px;
             border-radius: 50%;
             background: rgb(var(--Green));
-
             display: none;
+            animation: window__notification__keyframe--blink 1s ease-out infinite;
 
-            animation: blink 1s step-end infinite,
-            shake 1.2s ease-in infinite;
-
-            &.show {
+            &.window_notification--show {
               display: block;
             }
           }
@@ -348,22 +343,22 @@
       }
     }
 
-    .content {
+    .window__content {
       border-top: 1px solid rgba(var(--Green), 0.3);
       grid-area: content;
       overflow-y: hidden;
 
-      > div {
+      > div.window__content--unfocus {
         display: none;
 
-        &.selected {
+        &.window__tab-item--selected {
           display: inline;
         }
       }
     }
   }
 
-  @keyframes hide {
+  @keyframes window__keyframe--hide {
     0% {
       opacity: 0.6;
       transform: scale(1);
@@ -374,7 +369,7 @@
     }
   }
 
-  @keyframes show {
+  @keyframes window__keyframe--show {
     0% {
       opacity: 0;
     }
@@ -383,36 +378,13 @@
     }
   }
 
-  @keyframes blink {
+  @keyframes window__notification__keyframe--blink {
     0% {
-      background: rgb(var(--Red));
+      transform: scale(1);
     }
-    50% {
-      background: rgb(var(--Green));
-    }
-    100% {
-      background: rgb(var(--Red));
-    }
-  }
-
-  @keyframes shake {
-    0% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(0, -2px);
-    }
-    45% {
-      transform: translate(0, 1px);
-    }
-    65% {
-      transform: translate(0, -1px);
-    }
-    85% {
-      transform: translate(0, 2px);
-    }
-    100% {
-      transform: translate(0, 0);
+    60%, 100% {
+      transform: scale(1.7);
+      opacity: 0;
     }
   }
 </style>

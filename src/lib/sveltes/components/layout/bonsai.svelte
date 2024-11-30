@@ -3,10 +3,10 @@
 	import { tooltip } from '$lib/utils';
 	import 'tippy.js/animations/scale.css';
 
-	const api = $apiURL;
-	export let url = api + '/api/v1/misc/bonsai?time=40&width=500&height=500&background=0';
+	export let url = $apiURL + '/api/v1/misc/bonsai?time=40&width=500&height=500&background=0';
 
 	let scr = '';
+
 	function restart() {
 		//generate random string to refresh img load
 		scr = new Date().getTime().toString();
@@ -37,6 +37,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <img
+	class="bonsai-img"
 	src={url + '&' + scr}
 	draggable="false"
 	alt="bonsai"
@@ -50,15 +51,15 @@
 />
 
 <style>
-	img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-		min-width: 150px;
+    .bonsai-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        min-width: 150px;
 
-		user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
 </style>

@@ -54,10 +54,10 @@
 	}
 </script>
 
-<div id="player" bind:this={playerElement} />
+<div id="music-player" bind:this={playerElement} />
 
 <style>
-    #player {
+    #music-player {
         width: 300px;
         height: 300px;
         margin-left: 20px;
@@ -66,7 +66,7 @@
     }
 
     @media (max-width: 720px) {
-        #player {
+        #music-player {
             height: 200px;
             margin: 0;
         }

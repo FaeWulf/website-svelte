@@ -7,7 +7,7 @@
 			strokeDashoffset: [anime.setDashoffset, 0],
 			easing: 'easeInOutSine',
 			duration: 5000,
-			delay: function (el, i) {
+			delay: function(el, i) {
 				return i * 250;
 			},
 			direction: 'forwards'
@@ -21,7 +21,7 @@
 	<script src="https://cdn.skypack.dev/animejs@3.2.1"></script>
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<h1 class="challenge-title">For the most 💩🤡 Being</h1>
 	<h2 class="challenge-subtitle">#31ComponentsOfMarchDay20</h2>
 
@@ -119,238 +119,254 @@
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
 
-	$primary: #6eeb83;
-	$green: #6eeb83;
-	$blue: #1be7ff;
-	$yellow: #e4ff1a;
-	$magenta: #e500a4;
-	$default: #d1d5da;
-	$defaultBg: #2f363d;
-	$dark: #c9d1d9;
-	$darkBg: #0d1117;
+  $primary: #6eeb83;
+  $green: #6eeb83;
+  $blue: #1be7ff;
+  $yellow: #e4ff1a;
+  $magenta: #e500a4;
+  $default: #d1d5da;
+  $defaultBg: #2f363d;
+  $dark: #c9d1d9;
+  $darkBg: #0d1117;
 
-	$easingFunction: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  $easingFunction: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-	* {
-		box-sizing: border-box;
-	}
+  * {
+    box-sizing: border-box;
+  }
 
-	.sr-only {
-		visibility: hidden;
-	}
+  .sr-only {
+    visibility: hidden;
+  }
 
-	.hidden {
-		width: 0;
-		height: 0;
-		visibility: hidden;
-		overflow: hidden;
-	}
+  .hidden {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
 
-	html {
-		font-size: 16px;
-	}
+  html {
+    font-size: 16px;
+  }
 
-	.challenge-title {
-		text-align: center;
-		padding: 0;
-		margin: 1rem 0 0.5rem;
-		color: $primary;
-		font-size: 2rem;
-		font-weight: 900;
-	}
+  .challenge-title {
+    text-align: center;
+    padding: 0;
+    margin: 1rem 0 0.5rem;
+    color: $primary;
+    font-size: 2rem;
+    font-weight: 900;
+  }
 
-	.challenge-subtitle {
-		text-align: center;
-		margin: 0;
-		font-size: 1.125rem;
-		font-weight: 400;
-		color: darken($primary, 40%);
-	}
+  .challenge-subtitle {
+    text-align: center;
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: darken($primary, 40%);
+  }
 
-	.challenge-part-of {
-		text-align: center;
-		margin: 1rem 0 0;
-		font-size: 0.875rem;
-		color: darken($default, 10%);
-		position: fixed;
-		bottom: 1rem;
-		right: 1rem;
-		a,
-		a:visited {
-			color: darken($default, 10%);
-			text-decoration-style: wavy;
-			&:hover,
-			&:active {
-				color: lighten(darken($default, 10%), 10%);
-			}
-		}
-	}
+  .challenge-part-of {
+    text-align: center;
+    margin: 1rem 0 0;
+    font-size: 0.875rem;
+    color: darken($default, 10%);
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
 
-	.hb-container {
-		position: relative;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		.happy {
-			font-size: 7rem;
-			color: white;
-			transform: translateY(85px);
-			animation: showUp 0.7s $easingFunction forwards;
-			margin: 0;
-		}
-		.twentyseven {
-			font-size: 8rem;
-			color: lighten($darkBg, 10%);
-			font-weight: 900;
-			animation: blinkColor 2s $easingFunction infinite forwards 0.7s;
-			text-shadow: 0 0 10px transparent;
-			margin: 0;
-		}
-		.birthday {
-			font-size: 4.5rem;
-			color: white;
-			transform: translateY(-85px);
-			animation: showDown 0.7s $easingFunction forwards 0.4s;
-			margin: 0;
-		}
-		.ballon {
-			position: absolute;
-			height: 150px;
-			width: 150px;
-			animation: idle 6s ease-in-out infinite;
-			svg {
-				fill: white;
-				width: 100%;
-				height: 100%;
-			}
-			&:nth-of-type(1) {
-				top: -150px;
-				left: -70px;
-				animation-delay: 0.5s;
-				svg {
-					fill: $primary;
-				}
-			}
-			&:nth-of-type(2) {
-				top: 90px;
-				left: -100px;
-				animation-delay: 2s;
-				svg {
-					fill: $blue;
-				}
-			}
-			&:nth-of-type(3) {
-				top: -100px;
-				right: -100px;
-				animation-delay: 2.5s;
-				svg {
-					fill: $yellow;
-				}
-			}
-			&:nth-of-type(4) {
-				top: 200px;
-				right: -80px;
-				animation-delay: 3s;
-				svg {
-					fill: $magenta;
-				}
-			}
-		}
-	}
+    a,
+    a:visited {
+      color: darken($default, 10%);
+      text-decoration-style: wavy;
 
-	.birthday-cake {
-		margin: 1rem 0;
-		svg {
-			width: 200px;
-			height: 200px;
-			fill: $magenta;
-			stroke: $primary;
-			stroke-width: 4px;
-			stroke-dasharray: 5000;
-			stroke-dashoffset: 5000;
-		}
-	}
+      &:hover,
+      &:active {
+        color: lighten(darken($default, 10%), 10%);
+      }
+    }
+  }
 
-	@keyframes showUp {
-		from {
-			transform: translateY(85px);
-		}
-		to {
-			transform: translateY(0);
-		}
-	}
+  .hb-container {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-	@keyframes blinkColor {
-		78% {
-			color: $primary;
-			text-shadow: 0 0 10px $primary;
-		}
-		79% {
-			color: lighten($darkBg, 10%);
-			text-shadow: 0 0 1px darken($primary, 40%);
-		}
-		81% {
-			color: $primary;
-			text-shadow: 0 0 10px $primary;
-		}
-		82% {
-			color: lighten($darkBg, 10%);
-			text-shadow: 0 0 1px darken($primary, 40%);
-		}
-		83% {
-			color: $primary;
-			text-shadow: 0 0 10px $primary;
-		}
-		92% {
-			color: lighten($darkBg, 10%);
-			text-shadow: 0 0 1px darken($primary, 40%);
-		}
-		92.5% {
-			color: $primary;
-			text-shadow: 0 0 10px $primary;
-		}
-	}
+    .happy {
+      font-size: 7rem;
+      color: white;
+      transform: translateY(85px);
+      animation: showUp 0.7s $easingFunction forwards;
+      margin: 0;
+    }
 
-	@keyframes showDown {
-		from {
-			transform: translateY(-85px);
-		}
-		to {
-			transform: translateY(0);
-		}
-	}
+    .twentyseven {
+      font-size: 8rem;
+      color: lighten($darkBg, 10%);
+      font-weight: 900;
+      animation: blinkColor 2s $easingFunction infinite forwards 0.7s;
+      text-shadow: 0 0 10px transparent;
+      margin: 0;
+    }
 
-	@keyframes hueRotation {
-		from {
-			filter: hue-rotate(0deg);
-		}
-		to {
-			filter: hue-rotate(360deg);
-		}
-	}
+    .birthday {
+      font-size: 4.5rem;
+      color: white;
+      transform: translateY(-85px);
+      animation: showDown 0.7s $easingFunction forwards 0.4s;
+      margin: 0;
+    }
 
-	@keyframes idle {
-		0% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-15px);
-		}
-		100% {
-			transform: translateY(0);
-		}
-	}
+    .ballon {
+      position: absolute;
+      height: 150px;
+      width: 150px;
+      animation: idle 6s ease-in-out infinite;
 
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
-	}
+      svg {
+        fill: white;
+        width: 100%;
+        height: 100%;
+      }
+
+      &:nth-of-type(1) {
+        top: -150px;
+        left: -70px;
+        animation-delay: 0.5s;
+
+        svg {
+          fill: $primary;
+        }
+      }
+
+      &:nth-of-type(2) {
+        top: 90px;
+        left: -100px;
+        animation-delay: 2s;
+
+        svg {
+          fill: $blue;
+        }
+      }
+
+      &:nth-of-type(3) {
+        top: -100px;
+        right: -100px;
+        animation-delay: 2.5s;
+
+        svg {
+          fill: $yellow;
+        }
+      }
+
+      &:nth-of-type(4) {
+        top: 200px;
+        right: -80px;
+        animation-delay: 3s;
+
+        svg {
+          fill: $magenta;
+        }
+      }
+    }
+  }
+
+  .birthday-cake {
+    margin: 1rem 0;
+
+    svg {
+      width: 200px;
+      height: 200px;
+      fill: $magenta;
+      stroke: $primary;
+      stroke-width: 4px;
+      stroke-dasharray: 5000;
+      stroke-dashoffset: 5000;
+    }
+  }
+
+  @keyframes showUp {
+    from {
+      transform: translateY(85px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes blinkColor {
+    78% {
+      color: $primary;
+      text-shadow: 0 0 10px $primary;
+    }
+    79% {
+      color: lighten($darkBg, 10%);
+      text-shadow: 0 0 1px darken($primary, 40%);
+    }
+    81% {
+      color: $primary;
+      text-shadow: 0 0 10px $primary;
+    }
+    82% {
+      color: lighten($darkBg, 10%);
+      text-shadow: 0 0 1px darken($primary, 40%);
+    }
+    83% {
+      color: $primary;
+      text-shadow: 0 0 10px $primary;
+    }
+    92% {
+      color: lighten($darkBg, 10%);
+      text-shadow: 0 0 1px darken($primary, 40%);
+    }
+    92.5% {
+      color: $primary;
+      text-shadow: 0 0 10px $primary;
+    }
+  }
+
+  @keyframes showDown {
+    from {
+      transform: translateY(-85px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hueRotation {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes idle {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
 </style>

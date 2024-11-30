@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { apiURL } from '$lib/store';
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	let last5: any;
 	let lastUpdate: string;
@@ -18,37 +19,37 @@
 </script>
 
 {#if last5 && lastUpdate}
-	<div class="title" id="infotabs-recenttracks">
+	<div class="badge-title" id="js-infotabs-recenttracks">
 		🎵 Recent Added Tracks <br />
-		<span style="font-size: 0.7rem;">Last update: {lastUpdate}</span>
+		<span class="badge-title__description">Last update: {lastUpdate}</span>
 	</div>
 	{#each last5 as track (track.ID)}
 		<a class="track" href={track.Link} target="_blank">
-			<div class="text-wrapper">
-				<div class="text">
+			<div class="post__wrapper">
+				<div class="post__description">
 					<div class="name">{track.title}</div>
-					<div class="artist">{track.artist}</div>
-					<div class="duration">{track.time}</div>
+					<div class="track__artist-text">{track.artist}</div>
+					<div class="track__duration-text">{track.time}</div>
 				</div>
 			</div>
 
-			<div class="text-wrapper highlight">
-				<div class="text">
+			<div class="post__wrapper  post__wrapper--highlight">
+				<div class="post__description">
 					<div class="name">{track.title}</div>
-					<div class="artist">{track.artist}</div>
-					<div class="duration">{track.time}</div>
+					<div class="track__artist-text">{track.artist}</div>
+					<div class="track__duration-text">{track.time}</div>
 				</div>
 			</div>
 		</a>
 	{/each}
 {:else}
-	<div>Searching...</div>
+	<LoadingCircle />
 {/if}
 
-<div class="dummy" />
+<div class="badge-dummy" />
 
 <style lang="scss">
-  .title {
+  .badge-title {
     flex-basis: 100%;
     text-align: center;
     background-color: rgb(var(--Overlay1));
@@ -57,6 +58,11 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: 600;
+
+    .badge-title__description {
+      font-size: 0.7rem;
+      color: rgb(var(--Subtext0));
+    }
   }
 
   .track {
@@ -70,11 +76,11 @@
     text-decoration: none;
     color: rgb(var(--Text));
 
-    > div.text-wrapper {
+    .post__wrapper {
       width: 100%;
       height: fit-content;
 
-      .text {
+      .post__description {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -83,19 +89,19 @@
 
         padding: 5px;
 
-        > .duration {
+        .track__duration-text {
           position: absolute;
           top: 30%;
           right: 10px;
         }
 
-        > .artist {
+        .track__artist-text {
           font-size: 0.8rem;
-          opacity: 0.6;
+          color: rgb(var(--Subtext0));
         }
       }
 
-      &.highlight {
+      &--highlight {
         position: absolute;
         top: 0;
         left: 0;
@@ -108,20 +114,24 @@
         overflow: hidden;
 
         background-color: rgba(var(--Green), 1);
-        color: black;
+        color: black !important;
 
         transition: width 0.4s ease;
+			
+        .track__artist-text {
+          color: black !important;
+        }
       }
     }
 
     &:hover {
-      div.highlight {
+      .post__wrapper--highlight {
         width: 100%;
       }
     }
   }
 
-  .dummy {
+  .badge-dummy {
     height: 20px;
     flex-basis: 100%;
   }

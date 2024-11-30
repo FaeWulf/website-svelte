@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
-	import { quintInOut } from 'svelte/easing';
 	import Command from '$lib/sveltes/console/command.svelte';
 	import { onMount } from 'svelte';
 
@@ -89,34 +87,34 @@
 </div>
 
 <style lang="scss">
-	.console-container {
-		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
+  .console-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
 
-		padding: 5px;
+    padding: 5px;
 
-		display: flex;
-		flex-direction: column;
-		overflow: auto;
-		opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    opacity: 0.6;
 
-		&:focus {
-			box-sizing: border-box;
-			border: 0.5px solid rgba(var(--Lavender), 0.4);
-			outline: none;
-			opacity: 1;
-		}
+    &:focus {
+      box-sizing: border-box;
+      border: 0.5px solid rgba(var(--Lavender), 0.4);
+      outline: none;
+      opacity: 1;
+    }
 
-		:global(pre) {
-			margin: 5px;
-			white-space: pre-line;
-			background: none;
-			overflow-y: hidden;
-		}
+    :global(pre) {
+      margin: 5px;
+      white-space: pre-line;
+      background: none;
+      overflow-y: hidden;
+    }
 
-		:global(span) {
-			margin: 0;
-		}
-	}
+    :global(span) {
+      margin: 0;
+    }
+  }
 </style>

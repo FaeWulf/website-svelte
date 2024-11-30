@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Canvas from '$lib/sveltes/page-comps/boids/canvas.svelte';
+	import Canvas from '$lib/sveltes/components/boids/canvas.svelte';
 	import { MetaTags } from 'svelte-meta-tags';
 </script>
 

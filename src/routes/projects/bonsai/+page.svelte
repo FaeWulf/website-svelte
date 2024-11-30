@@ -18,11 +18,12 @@
 	/>
 </svelte:head>
 
-<div class="main">
+<div class="main-wrapper">
 	<h1>Bonsai API</h1>
 	<h3>Generate a bonsai as SVG</h3>
 	<p>
-		Ported from <a href="https://gitlab.com/jallbrit/cbonsai" target="_blank">cbonsai</a> - a bonsai tree generator, written in C using ncurses
+		Ported from <a href="https://gitlab.com/jallbrit/cbonsai" target="_blank">cbonsai</a> - a bonsai tree generator,
+		written in C using ncurses
 	</p>
 	<p>API endpoint</p>
 	<code>https://faewulf.xyz/api/v1/misc/bonsai</code>
@@ -80,55 +81,58 @@
 </div>
 
 <style lang="scss">
-	.main {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba(var(--Text), 0.2);
-		background-color: rgba(var(--Crust), 1);
+  .main-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(var(--Text), 0.2);
+    border-radius: 0.5rem;
+    background-color: rgba(var(--Overlay0), 1);
 
-		z-index: 5;
+    box-shadow: 10px 10px 15px rgba(black, 0.2);
 
-		//backdrop-filter: blur(2px);
-		//-webkit-backdrop-filter: blur(2px);
-	}
+    z-index: 5;
 
-	code {
-		border: 1px solid rgba(var(--Red), 0.5);
-		border-radius: 5px;
-		background: rgba(var(--Overlay0), 0.2);
-		padding: 10px;
-	}
+    //backdrop-filter: blur(2px);
+    //-webkit-backdrop-filter: blur(2px);
+  }
 
-	img {
-		width: 400px;
-		height: 400px;
-	}
+  code {
+    border: 1px solid rgba(var(--Green), 0.5);
+    border-radius: 5px;
+    background: rgba(var(--Overlay0), 0.2);
+    padding: 10px;
+  }
 
-	table {
-		border-collapse: collapse;
-		table-layout: fixed;
-		margin: 10px;
+  img {
+    width: 400px;
+    height: 400px;
+  }
 
-		td {
-			text-align: center;
-			vertical-align: middle;
-		}
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 10px;
 
-		td,
-		th {
-			padding: 5px 10px 5px 10px;
-		}
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
 
-		tr:nth-child(odd) {
-			background-color: rgba(var(--Overlay0), 0.2);
-		}
+    td,
+    th {
+      padding: 5px 10px 5px 10px;
+    }
 
-		th {
-			background-color: rgba(var(--Red), 0.3);
-		}
-	}
+    tr:nth-child(odd) {
+      background-color: rgba(var(--Overlay1), 0.8);
+    }
+
+    th {
+      background-color: rgba(var(--Red), 0.3);
+    }
+  }
 </style>

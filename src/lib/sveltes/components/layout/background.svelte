@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Star, ShootingStar } from '$lib/scripts/page-comps/layout/background';
 	import type { bgItem } from '$lib/scripts/page-comps/layout/background';
+	import { ShootingStar, Star } from '$lib/scripts/page-comps/layout/background';
 	import { isMobile } from '$lib/utils';
 	//import { spring } from 'svelte/motion';
 
@@ -76,32 +76,30 @@
 	$: refreshOnSizeChange(innerHeight, innerWidth);
 </script>
 
-<canvas bind:this={background} width={innerWidth} height={innerHeight} draggable="false" />
+<canvas class="space-canvas" bind:this={background} width={innerWidth} height={innerHeight} draggable="false" />
 <div class="overlay" />
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
-<style>
-	canvas {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: -99;
-		width: 100%;
-		height: 100%;
-	}
+<style lang="scss">
+  .space-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -99;
+    width: 100%;
+    height: 100%;
+  }
 
-	.overlay {
-		z-index: -100;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+  .overlay {
+    z-index: -100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-		background-attachment: fixed;
-		background-color: var(--color-bg-1);
-		background-size: 100vw 100vh;
-		background: radial-gradient(ellipse at top, #1b2735 0%, #090a0f 85%);
-	}
+    background-size: 100vw 100vh;
+    background: var(--color-bg-1) radial-gradient(ellipse at top, #1b2735 0%, #090a0f 85%) fixed;
+  }
 </style>

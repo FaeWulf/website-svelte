@@ -1,6 +1,9 @@
+<script lang="ts">
+</script>
+
 <div class="logo-wrapper">
 	<div class="logo__bg" />
-	<img draggable="false" class="logo__img" src="/images/ninym/logo.png" alt="logo" />
+	<img class="logo__img" draggable="false" src="/logo.png" alt="logo" />
 </div>
 
 <style lang="scss">
@@ -26,12 +29,12 @@
 
       animation: animateBackground 10s ease infinite;
     }
-  }
 
-  .logo__img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    .logo__img {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+    }
   }
 
   @keyframes animateBackground {
@@ -42,8 +45,8 @@
     }
     50% {
       background-position: 100% 50%;
-      opacity: 0.2;
-      transform: scale(1.05);
+      opacity: 0.5;
+      transform: scale(1.2);
     }
     100% {
       background-position: 0% 50%;
@@ -51,4 +54,39 @@
       transform: scale(0.9);
     }
   }
+
+  /*
+	.orbit {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+
+		animation: orbit-rotate 60s linear infinite;
+	}
+
+	.orbit2 {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+
+		animation: orbit-rotate 360s linear infinite;
+	}
+
+	.satellite {
+		position: absolute;
+		animation: orbit-rotate 5s linear infinite;
+	}
+
+	@keyframes orbit-rotate {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+		*/
 </style>

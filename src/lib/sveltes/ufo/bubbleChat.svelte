@@ -108,7 +108,7 @@
 				toggleBubbbleChat2 = false;
 			}}
 			transition:fade={{ duration: 300 }}
-			class="chat-wrapper"
+			class="bubble-chat__chat-wrapper"
 		>
 			<!-- svelte-ignore a11y-invalid-attribute -->
 			{@html bubbleChatContent}
@@ -117,36 +117,37 @@
 </div>
 
 <style lang="scss">
-	.bubble-chat {
-		position: absolute;
-		top: 0;
-		right: 0;
+  .bubble-chat {
+    position: absolute;
+    top: 0;
+    right: 0;
 
-		opacity: 0.8;
-		> div {
-			border: 1px black solid;
-		}
+    opacity: 0.8;
 
-		.chat-wrapper {
-			position: absolute;
-			bottom: 10px;
-			left: -25px;
-			border-radius: 50%;
-			width: max-content;
-			height: fit-content;
-			max-width: 200px;
-			overflow-wrap: break-word;
+    > div {
+      border: 1px black solid;
+    }
 
-			background: white;
-			color: black;
+    .bubble-chat__chat-wrapper {
+      position: absolute;
+      bottom: 10px;
+      left: -25px;
+      border-radius: 50%;
+      width: max-content;
+      height: fit-content;
+      max-width: 200px;
+      overflow-wrap: break-word;
 
-			padding: 12px 24px;
-			text-align: center;
+      background: white;
+      color: black;
 
-			pointer-events: all;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-		}
-	}
+      padding: 12px 24px;
+      text-align: center;
+
+      pointer-events: all;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  }
 </style>
