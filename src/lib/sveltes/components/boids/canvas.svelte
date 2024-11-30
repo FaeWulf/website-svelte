@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as PIXI from 'pixi.js';
-	import { afterUpdate, beforeUpdate, onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { boids } from './boids';
 	import { obstacle } from './obstacle';
 	import Quadtree from '@timohausmann/quadtree-js';
@@ -8,12 +8,12 @@
 	import { rulesHandler } from './scripts/rulesHandler';
 
 	import {
+		S_boidBorder,
+		S_boidChooseOption,
+		S_boidResetSignal,
 		S_boidsCount,
 		S_boidsSettings,
-		S_boidChooseOption,
-		S_boidsType,
-		S_boidBorder,
-		S_boidResetSignal
+		S_boidsType
 	} from '$lib/store';
 
 	let view: HTMLCanvasElement;
@@ -57,6 +57,8 @@
 	}
 
 	onMount(() => {
+
+		document.removeEventListener('visibilitychange', visibilitychange);
 		document.addEventListener('visibilitychange', visibilitychange);
 
 		app = new PIXI.Application({
@@ -186,18 +188,19 @@
 	});
 
 	onDestroy(() => {
-		app.destroy();
-		document.removeEventListener('visibilitychange', visibilitychange);
+		app?.destroy();
+
+		//document.removeEventListener('visibilitychange', visibilitychange);
 	});
 </script>
 
 <canvas bind:this={view} />
 
 <style lang="scss">
-	canvas {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 0;
-	}
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
 </style>
