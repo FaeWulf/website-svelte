@@ -197,7 +197,7 @@
             opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1),
             box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-    animation: 0.3s window__keyframe--show ease-in-out;
+    animation: 0.3s window__keyframe--show ease;
 
     //prevent selection
     -webkit-user-select: none;
@@ -206,7 +206,7 @@
 
     &.window--hide {
       pointer-events: none;
-      animation: 0.3s window__keyframe--hide ease-in-out forwards;
+      animation: 0.3s window__keyframe--hide ease forwards;
     }
 
     &.window__overlay--ontop {

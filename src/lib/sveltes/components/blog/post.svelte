@@ -39,7 +39,7 @@
     border: 1px solid rgba(var(--Subtext0), 0.2);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease;
 
     .post__wrapper {
 
@@ -79,7 +79,9 @@
     }
 
     &:hover {
-      transform: scale(1.02);
+      transform: scale(1.01);
+      background-color: rgb(var(--Overlay1));
+      border: 1px solid rgba(var(--Green), 0.6);
     }
   }
 
