@@ -5,6 +5,8 @@
 	//some main styles
 	import '$lib/styles/reset.css';
 	import '$lib/styles/styles.css';
+	import '$lib/styles/atomic.scss';
+
 	import '$lib/styles/hueText.css';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/dist/border.css';
@@ -49,9 +51,9 @@
 				 alt="support badge" />
 	</a>
 
-	<main class="app__main-wrapper">
+	<main class="app__main-wrapper behavior--click-through">
 		{#key data.url}
-			<div in:fade={{ duration: 1000, easing: cubicOut }} class="main-wrapper">
+			<div in:fade={{ duration: 1000, easing: cubicOut }} class="app__main behavior--click-through">
 				<slot />
 			</div>
 		{/key}
@@ -116,7 +118,7 @@
       margin: 50px auto 0;
       box-sizing: border-box;
 
-      .main-wrapper {
+      .app__main {
         display: flex;
         flex-direction: column;
         width: 100%;

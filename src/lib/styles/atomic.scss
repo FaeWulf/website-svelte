@@ -1,0 +1,11 @@
+.behavior--click-through {
+  pointer-events: none !important;
+
+  & * {
+    pointer-events: auto;
+  }
+}
+
+.behavior--not-click-through {
+  pointer-events: auto !important;
+}
