@@ -99,7 +99,7 @@
 
 </script>
 
-<h2>
+<div class="description">
 	「
 	{#if anVowel.includes(level)}
 		<span class:animate={!mobileMode} transition:slide={{ delay: 200, axis: 'x' }}>An</span>
@@ -136,10 +136,11 @@
 	{/if}
 
 	on the sofa 」
-</h2>
+</div>
 
 <style lang="scss">
-  h2 {
+  .description {
+		font-size: 1rem;
     margin-top: 5px;
     display: flex;
     gap: 5px;
