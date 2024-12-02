@@ -46,6 +46,7 @@
     "lucide-svelte": "^0.354.0",
     "pixi.js": "^7.3.1",
     "svelte-adapter-bun": "^0.5.2",
+    "svelte-meta-tags": "3.1.4",
     "tippy.js": "^6.3.7",
     "unplugin-icons": "^0.18.5",
     "ws": "^8.17.1",
