@@ -1,10 +1,11 @@
 <script>
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 </script>
 
-<svelte:head>
-	<MetaTags title="Faewulf's Basement | About" description="About this website" keywords={['about']} canonical="https://faewulf.xyz/about" />
-</svelte:head>
+<MetaTags title="Faewulf's Basement | About"
+					description="Information about this website"
+					keywords={['about']}
+					canonical="https://faewulf.xyz/about" />
 
 <div class="text-column">
 	<h1>About this website</h1>
@@ -24,14 +25,15 @@
 
 	<p>
 		Yet simple, consistent and legible - in fact, it's incredibly fast.<br />
-		In my opinion, Svelte requires less code to accomplish the same task compared to other frameworks. Syntax is easy to read, but .svelte file is a little
+		In my opinion, Svelte requires less code to accomplish the same task compared to other frameworks. Syntax is easy to
+		read, but .svelte file is a little
 		bit weird.<br />
 		(Too ideal to get a job, I hate svelte)
 	</p>
 </div>
 
 <style>
-	.center {
-		text-align: center;
-	}
+    .center {
+        text-align: center;
+    }
 </style>

@@ -3,7 +3,7 @@
 	import { apiURL } from '$lib/store.js';
 	import { parseDiscordEmoji } from '$lib/utils.js';
 	import { onMount } from 'svelte';
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import Post from '$lib/sveltes/components/blog/post.svelte';
@@ -55,14 +55,12 @@
 	}
 </script>
 
-<svelte:head>
-	<MetaTags
-		title="Blog | Faewulf's Basement"
-		description="The blog of Faewulf."
-		keywords={['faewulf', 'blog', 'info', 'information']}
-		canonical="https://faewulf.xyz/blog"
-	/>
-</svelte:head>
+<MetaTags
+	title="Blog | Faewulf's Basement"
+	description="A personal blog site of Faewulf."
+	keywords={['faewulf', 'blog', 'info', 'information']}
+	canonical="https://faewulf.xyz/blog"
+/>
 
 <div class="main-wrapper">
 	<Title subtitle="Blog" />

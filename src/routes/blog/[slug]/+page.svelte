@@ -7,7 +7,7 @@
 
 	//comments component
 	import Giscus from '@giscus/svelte';
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 
 	export let data;
@@ -19,14 +19,12 @@
 	});
 </script>
 
-<svelte:head>
-	<MetaTags
-		title={data.id.replaceAll('-', ' ').replaceAll('.md', '') + ' | Faewulf'}
-		description={data.id.replaceAll('-', ' ').replaceAll('.md', '')}
-		keywords={['faewulf', 'blog', data.id.replaceAll('-', ' ').replaceAll('.md', '')]}
-		canonical="https://faewulf.xyz/blog/{data.id}"
-	/>
-</svelte:head>
+<MetaTags
+	title={data.id.replaceAll('-', ' ').replaceAll('.md', '') + ' | Faewulf'}
+	description={data.id.replaceAll('-', ' ').replaceAll('.md', '')}
+	keywords={['faewulf', 'blog', data.id.replaceAll('-', ' ').replaceAll('.md', '')]}
+	canonical="https://faewulf.xyz/blog/{data.id}"
+/>
 
 {#if postData}
 	<h1>{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>

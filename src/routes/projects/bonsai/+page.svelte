@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { apiURL } from '$lib/store';
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	let respone: any;
 	onMount(async () => {
@@ -9,14 +9,12 @@
 	});
 </script>
 
-<svelte:head>
-	<MetaTags
-		title="Bonsai API | Faewulf's Basement"
-		description="An API for generating bonsai trees."
-		keywords={['faewulf', 'projects', 'bonsai', 'cbonsai', 'tree', 'generator', 'API']}
-		canonical="https://faewulf.xyz/projects/bonsai"
-	/>
-</svelte:head>
+<MetaTags
+	title="Bonsai API | Faewulf's Basement"
+	description="An API for generating bonsai trees. Ported from cBonsai."
+	keywords={['faewulf', 'projects', 'bonsai', 'cbonsai', 'tree', 'generator', 'API']}
+	canonical="https://faewulf.xyz/projects/bonsai"
+/>
 
 <div class="main-wrapper">
 	<h1>Bonsai API</h1>

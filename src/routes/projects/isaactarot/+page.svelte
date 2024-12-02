@@ -6,7 +6,7 @@
 	import Rune from '$lib/sveltes/components/isaactarot/rune.svelte';
 	import Box from '$lib/sveltes/components/isaactarot/box.svelte';
 	import type { cardData, runeData } from '$lib/sveltes/components/isaactarot/type';
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	let cardList: cardData[] = [];
 	let runeList: runeData[] = [];
@@ -16,14 +16,14 @@
 	<link rel="preload" as="image" href="/images/isaac/card_sprites.png" />
 	<link rel="preload" as="image" href="/images/isaac/stone_sprites.png" />
 	<link rel="preload" as="image" href="/images/isaac/rune_sprites.png" />
-
-	<MetaTags
-		title="Isaac's Tarot | Faewulf's Basement"
-		description="A fun little tool for tarot enjoyer, TBOI's Tarot themed"
-		keywords={['faewulf', 'projects', 'isaactarot', 'tarot', 'fun tool', 'tool']}
-		canonical="https://faewulf.xyz/projects/isaactarot"
-	/>
 </svelte:head>
+
+<MetaTags
+	title="Isaac's Tarot | Faewulf's Basement"
+	description="A fun little web for tarot enjoyer, TBOI's Tarot themed. Don't take the advice too serious!"
+	keywords={['faewulf', 'projects', 'isaactarot', 'tarot', 'fun tool', 'tool']}
+	canonical="https://faewulf.xyz/projects/isaactarot"
+/>
 
 <div class="main-wrapper" />
 <Crystalball bind:cardList />

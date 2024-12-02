@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import { onMount } from 'svelte';
-	import { MetaTags } from 'svelte-meta-tags';
+
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	import Entry from '$lib/sveltes/components/projects/entry.svelte';
 
@@ -16,47 +17,59 @@
 	}
 
 	let isMounted = false;
-	const projects: project[] = [
+	let projects: project[] = [
 		{
 			name: 'Amogusify',
-			description: 'Turn your link into a bunch of sus crewmates.',
+			description: 'Instead of shortening your link, this silly simple tool instead turns your link into a bunch of sus crewmates.',
 			path: '/amogus',
+			img: '/images/projects/amogus.webp',
+			tags: ['typescript', 'html', 'SvelteKit'],
 			old: false
 		},
 		{
 			name: 'Ninym Ralei',
-			description: 'Personal discord bot.',
+			description: 'My personal discord bot! It contains a lot of converters for base, color format, measure unit,... Image processing, OCR, text check tool, and more!',
 			path: '/ninym',
+			img: '/images/projects/ninimralei.webp',
+			tags: ['typescript', 'discordjs', 'mongodb'],
 			old: false
 		},
 		{
 			name: 'Bonsai API',
-			description: 'cbonsai but api.',
+			description: 'An API for generating SVG bonsai trees! This is a port of cbonsai, originally created by John Allbritten.',
 			path: '/projects/bonsai',
+			img: '/images/projects/bonsai.webp',
+			tags: ['typescript', 'nodejs', 'expressjs'],
 			old: false
 		},
 		{
 			name: 'GeoReImage (WIP)',
 			description: 'Recreate image using 2d geometry',
 			path: '/projects/georeimage',
-			old: false
+			old: true
 		},
 		{
 			name: 'EpicRename Generator',
-			description: 'Generate commands for the EpicRename plugin.',
+			description: 'A small tool to generates commands for the EpicRename plugin and my ItemRename mod! You can add color with an easy-to-use editor, preview it and then export it into commands!',
 			path: '/projects/epicrename',
+			img: '/images/projects/epicrename.webp',
+			tags: ['html', 'javascript'],
 			old: false
 		},
 		{
 			name: 'Isaac\'s Tarot',
-			description: 'Tarot card but Isaac, for fun: don\'t take generated advice too serious.',
+			description: 'Tarot card but The Binding of Isaac\'s theme, draw 3 cards and use crystal ball will give you an advice! Warning: silly and for-fun generated advices, don\'t take it too serious.',
 			path: '/projects/isaactarot',
+			img: '/images/projects/isaactarot.webp',
+			tags: ['html', 'css', 'javascript'],
 			old: false
 		},
 		{
 			name: 'Boids Sim',
-			description: 'Boids simulation.',
+			description: 'Interactive Boids - Flocking Simulation. With customizable parameters!',
 			path: '/projects/boids',
+			tags: ['typescript', 'PixiJS'],
+			img: '/images/projects/boid.webp',
 			old: false
 		},
 		{
@@ -64,24 +77,52 @@
 			description: 'Very first project on freshman year.',
 			path: '/projects/schedule',
 			old: true
+		},
+		{
+			name: 'Diversity',
+			description: 'Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience. From quality of life improvements to new mob behaviors and random sh*t, this mod offers a little bit of everything. The mod is designed to work on server-side only installations as well.',
+			path: 'https://modrinth.com/mod/faewufs-diversity',
+			tags: ['java', 'Multiloader', 'Minecraft', 'Server-side'],
+			source: 'https://github.com/FaeWulf/Diversity',
+			img: '/images/projects/diversity.webp',
+			old: false
+		},
+		{
+			name: 'ItemRename',
+			description: 'The Item Rename mod for Fabric that allows players to edit various properties of items in the game, such as their name, lore, and enchantment glow. With support for color and formatting, you can personalize your items like a piece of cake.',
+			path: 'https://modrinth.com/mod/faewulf-itemrename',
+			tags: ['java', 'Minecraft', 'Fabric', 'Server-side'],
+			source: 'https://github.com/FaeWulf/item-rename',
+			img: '/images/projects/itemrename.webp',
+			old: false
+		},
+		{
+			name: 'Squaremap Banner',
+			description: 'A mod that is an extension for the SquareMap mod. It adds additional functionality related to banners within the game: use banner to create markers visible in the worldmap. Inspired by squaremap-banners plugins',
+			path: 'https://modrinth.com/mod/squaremap-banner',
+			tags: ['java', 'Minecraft', 'Fabric', 'Server-side'],
+			source: 'https://github.com/FaeWulf/squaremap_banner',
+			img: '/images/projects/squaremap-banner.webp',
+			old: false
 		}
 	];
+
+	projects.sort((a: project, b: project) => {
+		return a.name.localeCompare(b.name);
+	});
 
 	onMount(() => {
 		isMounted = true;
 	});
 
-	let containerCLientHeight: number;
 </script>
 
-<svelte:head>
-	<MetaTags
-		title="Projects | Faewulf's Basement"
-		description="Faewulf's projects."
-		keywords={['faewulf', 'projects', 'list', 'infomation']}
-		canonical="https://faewulf.xyz/projects"
-	/>
-</svelte:head>
+<MetaTags
+	title="Projects | Faewulf's Basement"
+	description="Faewulf's projects."
+	keywords={['faewulf', 'projects', 'list', 'infomation']}
+	canonical="https://faewulf.xyz/projects"
+/>
 
 <div class="main-wrapper behavior--click-through">
 	<Title subtitle="projects" />
@@ -91,7 +132,7 @@
 			{#if isMounted}
 				{#each projects as project (project)}
 					<Entry name={project.name} description={project.description} url={project.path} tags={project.tags}
-								 source={project.source} previewImg={project.img} />
+								 source={project.source} previewImg={project.img} archived={project.old} />
 				{/each}
 			{/if}
 		</div>

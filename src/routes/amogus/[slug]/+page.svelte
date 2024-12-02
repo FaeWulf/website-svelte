@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
+	import Background from '$lib/sveltes/components/amogus/background.svelte';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	export let data;
 
@@ -65,11 +67,14 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Faewulf's Basement | Amongusify</title>
-	<meta name="description" content="About this website" />
-</svelte:head>
+<MetaTags
+	title="Amongusify | Faewulf's Basement"
+	description="Instead of shortening your url, this simple tool will convert urls into a bunch of crew mates."
+	keywords={['link converter', 'amongus', 'sus']}
+	canonical="https://faewulf.xyz/amogus"
+/>
 
+<Background />
 <div class="main-wrapper">
 	{#if Redirect}
 		<h3>Redirecting after {time} seconds</h3>

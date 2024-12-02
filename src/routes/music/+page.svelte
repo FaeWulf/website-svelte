@@ -3,7 +3,7 @@
 	import { apiURL, ufoBubble } from '$lib/store';
 	import type { track } from '$lib/types';
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte'
 	import Title from '$lib/sveltes/neonTitle.svelte';
@@ -56,14 +56,12 @@
 	//auto play and shuffle. random music
 </script>
 
-<svelte:head>
-	<MetaTags
+<MetaTags
 		title="Music list | Faewulf's Basement"
-		description="Faewulf's music list."
+		description="Faewulf's favorite music list."
 		keywords={['faewulf', 'music', 'list', 'infomation']}
 		canonical="https://faewulf.xyz/music"
-	/>
-</svelte:head>
+/>
 
 <div class="main-wrapper">
 	<Title subtitle="music" />

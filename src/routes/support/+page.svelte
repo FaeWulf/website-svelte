@@ -1,15 +1,13 @@
 <script>
-	import { MetaTags } from 'svelte-meta-tags';
+	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 </script>
 
-<svelte:head>
-	<MetaTags
-		title="Support | Faewulf's Basement"
-		description="Support Faewulf with any kind of donation or support."
-		keywords={['faewulf', 'donations', 'support']}
-		canonical="https://faewulf.xyz/support"
-	/>
-</svelte:head>
+<MetaTags
+	title="Support | Faewulf's Basement"
+	description="Support Faewulf with any kind of donation or support."
+	keywords={['faewulf', 'donations', 'support']}
+	canonical="https://faewulf.xyz/support"
+/>
 
 <div class="post__wrapper">
 	<h1>Support me via</h1>
