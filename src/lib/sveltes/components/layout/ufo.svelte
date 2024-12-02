@@ -87,11 +87,20 @@
 
 		intervalInstance = setInterval(() => {
 			const currentTime = new Date();
+			const ret = document.getElementById('js-ufo_home');
 
 			if (ufoIdle) ufoLean = 0;
 
+			//double check for home pos (edge case: screen resize and ufo will stand outside its home
+			if (
+				ret && ufo && ufoIdle &&
+				ret.getBoundingClientRect().x != ufo.getBoundingClientRect().x &&
+				ret.getBoundingClientRect().y != ufo.getBoundingClientRect().y
+			) {
+				ufoIdle = false;
+			}
+
 			if (currentTime.getTime() - ufoLastMove?.getTime() > 4000 && !ufoIdle) {
-				const ret = document.getElementById('js-ufo_home');
 				if (ret) {
 					const pos = ret.getBoundingClientRect();
 					moveUfo(pos.x - 8, pos.y - 10, 1000, true, false);
