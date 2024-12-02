@@ -9,43 +9,48 @@
 	export let previewImg: string = '';
 	export let archived: boolean = false;
 
-
-	description = 'I designed and built the website for Ruby, a news app for Apple devices. It includes a marketing page and a blog. Built with Next.js,Tailwind CSS, and Content Collections.Tailwind CSS';
-	tags = ['css', 'scss', 'svelte', 'typescript', 'bunsh'];
-
-	previewImg = '/images/projects/bonsai.webp';
-	archived = true;
 </script>
 
-<div class="entry">
-	<div class="entry-wrapper">
-		<div class="entry__preview-wrapper">
-			<img class="entry__preview-img" src="{previewImg}" alt="{name} preview" />
-			<div class="entry__preview-shadow-overlay" />
-		</div>
-		<div class="entry__description">
-			<h2 class="entry__description-title">{name}</h2>
-			<p class="entry__description-text">{description}</p>
-			<div class="entry__description-tag-wrapper">
-				{#each tags as tag, index (tag)}
-					<div class="entry__description-tag-item">
-						<span class="entry__description-tag-text">{tag}</span>
-					</div>
-				{/each}
+{#if !archived}
+	<div class="entry">
+		<div class="entry-wrapper">
+			<div class="entry__preview-wrapper">
+				<img class="entry__preview-img" src="{previewImg}" alt="{name} preview" />
+				<div class="entry__preview-shadow-overlay" />
 			</div>
+			<div class="entry__description">
+				<h2 class="entry__description-title">{name}</h2>
+				<p class="entry__description-text">{description}</p>
+				<div class="entry__description-tag-wrapper">
+					{#each tags as tag, index (tag)}
+						<div class="entry__description-tag-item">
+							<span class="entry__description-tag-text">{tag}</span>
+						</div>
+					{/each}
+				</div>
 
-			<div class="entry__description-link-wrapper">
-				<a class="entry__description-link" href="{url}">
-					Visit
-					<div class="entry__description-link-icon">
-						<ExternalLink Size="1rem" />
-					</div>
-				</a>
-				<a href="{source}">Source</a>
+				<div class="entry__description-link-wrapper">
+					{#if url.length > 0}
+						<a class="entry__description-link" href="{url}" target="_blank">
+							Visit
+							<div class="entry__description-link-icon">
+								<ExternalLink size="1rem" />
+							</div>
+						</a>
+					{/if}
+					{#if source.length > 0}
+						<a class="entry__description-link" href="{source}" target="_blank">
+							Source Code
+							<div class="entry__description-link-icon">
+								<ExternalLink size="1rem" />
+							</div>
+						</a>
+					{/if}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style lang="scss">
   .entry {
@@ -80,6 +85,7 @@
 
         border-top-right-radius: 0.5rem;
         border-top-left-radius: 0.5rem;
+        background: rgba(var(--Base), 1);
 
         overflow: hidden;
 
@@ -91,6 +97,7 @@
 
         //Glassmorphism effect
         &::after {
+          position: absolute;
           content: '';
           background: rgba(white, 0.2);
           width: 40%;
@@ -99,9 +106,6 @@
           left: -120%;
 
           transform: skew(60deg);
-
-          position: absolute;
-
         }
 
         .entry__preview-shadow-overlay {
@@ -112,7 +116,6 @@
           left: 0;
 
           background: rgba(0, 0, 0, 0.7);
-
           mask-image: linear-gradient(to bottom, transparent 60%, black 100%);
           -webkit-mask-image: -webkit-linear-gradient(to bottom, transparent 60%, black 100%);
         }
@@ -140,15 +143,17 @@
         .entry__description-text {
           margin: 0;
           flex-grow: 1;
-          max-height: 145px;
+          height: 110px;
           overflow-y: auto;
           color: rgba(var(--Subtext0), 1);
+
+          mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         }
 
         .entry__description-tag-wrapper {
           display: flex;
-          flex-wrap: wrap;
           gap: 10px;
+          flex-wrap: wrap;
 
           margin-top: 1rem;
 
@@ -161,8 +166,9 @@
             align-items: center;
             justify-content: center;
 
-            background-color: rgba(var(--Overlay0), 1);
+            background-color: rgba(var(--Overlay1), 1);
             color: rgba(var(--Subtext0), 1);
+            opacity: 0.8;
 
             .entry__description-tag-text {
               margin: 0;
@@ -173,15 +179,19 @@
         .entry__description-link-wrapper {
 
           display: flex;
-          gap: 10px;
+          gap: 1.5rem;
           margin-top: 1rem;
+          font-weight: bold;
+          font-size: large;
+          justify-content: flex-start;
+          align-items: center;
 
           .entry__description-link {
             display: flex;
+            color: rgb(var(--Blue));
 
             .entry__description-link-icon {
-              width: 1rem;
-              height: 1rem;
+              margin-left: 5px;
             }
           }
         }
