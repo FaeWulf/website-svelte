@@ -7,7 +7,7 @@
 
 	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte'
 	import Title from '$lib/sveltes/neonTitle.svelte';
-	import Screen from './screen.svelte';
+	import Screen from '$lib/sveltes/components/music/screen.svelte';
 	import MenuBar from './menuBar.svelte';
 
 	//export let data;
@@ -35,7 +35,7 @@
 			lazyLoadPlaylist = module.default;
 		});
 
-		ufoBubble.set('Favorite playlist!');
+		ufoBubble.set({message: 'My favorite playlist!', timeout: 6000});
 
 		const url = $apiURL;
 
@@ -64,7 +64,9 @@
 />
 
 <div class="main-wrapper">
-	<Title subtitle="music" />
+	<div class="main__title-wrapper">
+		<Title subtitle="music" />
+	</div>
 	{#if lastUpdatePlaylistDate && dataPlaylist}
 		<div class="main__statistic">
 			<div>
@@ -157,13 +159,24 @@
 	}
 
 	@media (max-width: 720px) {
-		.content__scrollable-layout {
-			flex-direction: column;
-			align-items: center;
+
+		.main__title-wrapper{
+			display: none;
 		}
 
 		.content__scrollable-wrapper {
-			height: calc(100% - 200px);
+			height: calc(100% - 70px);
+      flex-direction: column !important;
+      align-items: center !important;
+
+      .content__scrollable {
+				margin: 0 !important;
+
+        .content__track-list {
+          height: calc(100% - 200px) !important;
+				}
+      }
 		}
+
 	}
 </style>

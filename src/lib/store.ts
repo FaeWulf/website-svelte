@@ -1,7 +1,10 @@
-import { writable, readable } from 'svelte/store';
+import { readable, writable } from 'svelte/store';
 import { PUBLIC_server } from '$env/static/public';
 
-export const ufoBubble = writable('');
+export const ufoBubble = writable({
+	message: '',
+	timeout: 0
+});
 
 export const apiURL = readable(PUBLIC_server);
 
@@ -15,8 +18,12 @@ export const S_boidsSettings = writable({
 	rivalRadius: 100,
 	flockRadius: 0
 });
+
+//boid app
 export const S_boidsCount = writable(0);
 export const S_boidsType = writable(1);
 export const S_boidChooseOption = writable('none');
 export const S_boidBorder = writable(false);
 export const S_boidResetSignal = writable(false);
+
+

@@ -24,7 +24,7 @@
 	onMount(async () => {
 		const greetings = ['Happy 2024!', 'Hello!', 'Greetings!'];
 		setTimeout(() => {
-			ufoBubble.set(greetings[Math.floor(Math.random() * greetings.length)]);
+			ufoBubble.set({ message: greetings[Math.floor(Math.random() * greetings.length)], timeout: 5000 });
 		}, 500);
 	});
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import BubbleChat from '$lib/sveltes/ufo/bubbleChat.svelte';
+	import Bubble from '$lib/sveltes/ufo/bubble.svelte';
 
 	export let toggleMovement = true;
 
@@ -10,6 +10,7 @@
 		previousY = y;
 
 	let ufo: HTMLElement;
+	let ufoSprite: HTMLElement;
 
 	let ufoLean = 0;
 	let ufoLastMove: Date = new Date();
@@ -123,9 +124,11 @@
 			 draggable="false"
 			 class:ufo__img--leanLeft={ufoLean === -1}
 			 class:ufo__img--leanRight={ufoLean === 1}
+			 bind:this={ufoSprite}
 	/>
-	<BubbleChat />
+	<Bubble parent={ufoSprite}></Bubble>
 </div>
+
 
 <svelte:body
 	on:mousemove={(event) => {
