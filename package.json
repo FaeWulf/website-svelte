@@ -36,6 +36,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@floating-ui/dom": "^1.6.12",
     "@fontsource/inter": "^5.0.8",
     "@giscus/svelte": "^3.0.0",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",

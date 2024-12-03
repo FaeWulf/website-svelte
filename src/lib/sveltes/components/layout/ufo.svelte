@@ -23,7 +23,8 @@
 	function onPointerMove(event: MouseEvent) {
 		if (!toggleMovement) return;
 
-		(x = event.clientX), (y = event.clientY);
+		(x = event.clientX);
+		(y = event.clientY);
 
 		moveUfo(x, y);
 	}
@@ -86,6 +87,7 @@
 			ufoIdle = false;
 		}
 
+		//this one is checking if ufo not moving, then set to idle mode (return to the base)
 		intervalInstance = setInterval(() => {
 			const currentTime = new Date();
 			const ret = document.getElementById('js-ufo_home');
