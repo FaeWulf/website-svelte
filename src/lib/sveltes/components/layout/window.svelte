@@ -6,6 +6,7 @@
 	import { app3rd } from '$lib/store';
 
 	import Controller from '$lib/sveltes/components/boids/controller.svelte';
+	import Screen from '$lib/sveltes/components/music/screen.svelte';
 
 	export let windowToggle: boolean = true;
 	export let windowOntop: boolean = false;
@@ -161,6 +162,11 @@
 		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 2}">
 			{#if $app3rd === 'boids'}
 				<Controller />
+			{/if}
+			{#if $app3rd === 'music' && innerWidth >= 720 }
+				<div class="window__content-music">
+					<Screen />
+				</div>
 			{/if}
 		</div>
 		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 3}">
@@ -355,6 +361,15 @@
           display: inline;
         }
       }
+
+      .window__content-music {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
     }
   }
 
