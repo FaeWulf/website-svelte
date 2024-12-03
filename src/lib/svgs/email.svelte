@@ -4,6 +4,7 @@
 	export let animate = true;
 
 	import IcOutlineEmail from '~icons/ic/outline-email';
+
 	$: style = `width: ${size}px; height: ${size}px;`;
 </script>
 
@@ -13,7 +14,7 @@
 
 <style lang="scss">
 	.animate {
-		filter: drop-shadow(-1px -1px 0px #ff1b6b) drop-shadow(1px 1px 0px #ff1b6b) drop-shadow(-1px 1px 0px #ff1b6b) drop-shadow(1px -1px 0px #ff1b6b);
+    filter: drop-shadow(-1px -1px 0px var(--color-hue-0)) drop-shadow(1px 1px 0px var(--color-hue-0)) drop-shadow(-1px 1px 0px var(--color-hue-0)) drop-shadow(1px -1px 0px var(--color-hue-0));
 		animation: hue 30s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
 	}
 
@@ -29,23 +30,23 @@
 
 	@keyframes hue {
 		0% {
-			filter: drop-shadow(-1px -1px 0px #ff1b6b) drop-shadow(1px 1px 0px #ff1b6b) drop-shadow(-1px 1px 0px #ff1b6b) drop-shadow(1px -1px 0px #ff1b6b);
+      filter: drop-shadow(-1px -1px 0px var(--color-hue-0)) drop-shadow(1px 1px 0px var(--color-hue-0)) drop-shadow(-1px 1px 0px var(--color-hue-0)) drop-shadow(1px -1px 0px var(--color-hue-0));
 		}
 
 		25% {
-			filter: drop-shadow(-1px -1px 0px #00ff87) drop-shadow(1px 1px 0px #00ff87) drop-shadow(-1px 1px 0px #00ff87) drop-shadow(1px -1px 0px #00ff87);
+      filter: drop-shadow(-1px -1px 0px var(--color-hue-1)) drop-shadow(1px 1px 0px var(--color-hue-1)) drop-shadow(-1px 1px 0px var(--color-hue-1)) drop-shadow(1px -1px 0px var(--color-hue-1));
 		}
 
 		50% {
-			filter: drop-shadow(-1px -1px 0px #ffff00) drop-shadow(1px 1px 0px #ffff00) drop-shadow(-1px 1px 0px #ffff00) drop-shadow(1px -1px 0px #ffff00);
+      filter: drop-shadow(-1px -1px 0px var(--color-hue-2)) drop-shadow(1px 1px 0px var(--color-hue-2)) drop-shadow(-1px 1px 0px var(--color-hue-2)) drop-shadow(1px -1px 0px var(--color-hue-2));
 		}
 
 		75% {
-			filter: drop-shadow(-1px -1px 0px #45caff) drop-shadow(1px 1px 0px #45caff) drop-shadow(-1px 1px 0px #45caff) drop-shadow(1px -1px 0px #45caff);
+      filter: drop-shadow(-1px -1px 0px var(--color-hue-3)) drop-shadow(1px 1px 0px var(--color-hue-3)) drop-shadow(-1px 1px 0px var(--color-hue-3)) drop-shadow(1px -1px 0px var(--color-hue-3));
 		}
 
 		100% {
-			filter: drop-shadow(-1px -1px 0px #ff1b6b) drop-shadow(1px 1px 0px #ff1b6b) drop-shadow(-1px 1px 0px #ff1b6b) drop-shadow(1px -1px 0px #ff1b6b);
+      filter: drop-shadow(-1px -1px 0px var(--color-hue-0)) drop-shadow(1px 1px 0px var(--color-hue-0)) drop-shadow(-1px 1px 0px var(--color-hue-0)) drop-shadow(1px -1px 0px var(--color-hue-0));
 		}
 	}
 </style>

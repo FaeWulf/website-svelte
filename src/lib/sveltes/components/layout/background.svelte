@@ -3,7 +3,7 @@
 	import type { bgItem } from '$lib/scripts/page-comps/layout/background';
 	import { ShootingStar, Star } from '$lib/scripts/page-comps/layout/background';
 	import { isMobile } from '$lib/utils';
-	//import { spring } from 'svelte/motion';
+	import { theme } from '$lib/store';
 
 	export let background_color = '#110E19AA';
 
@@ -34,8 +34,14 @@
 
 			bgCtx.fillStyle = background_color;
 			bgCtx.clearRect(0, 0, width, height);
-			bgCtx.fillStyle = '#ffffffaa';
-			bgCtx.strokeStyle = '#ffffffaa';
+			if ($theme == 'dark') {
+				bgCtx.fillStyle = '#ffffffaa';
+				bgCtx.strokeStyle = '#ffffffaa';
+			} else {
+				bgCtx.fillStyle = '#000000aa';
+				bgCtx.strokeStyle = '#000000aa';
+			}
+
 
 			var entLen = entities.length;
 
@@ -100,6 +106,6 @@
     height: 100%;
 
     background-size: 100vw 100vh;
-    background: var(--color-bg-1) radial-gradient(ellipse at top, #1b2735 0%, #090a0f 85%) fixed;
+    background: var(--color-bg-0) radial-gradient(ellipse at top, var(--color-bg-1) 0%, var(--color-bg-2) 85%) fixed;
   }
 </style>

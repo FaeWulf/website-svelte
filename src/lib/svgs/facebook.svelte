@@ -21,14 +21,14 @@
 
 <style>
 	svg {
-		background: linear-gradient(120deg, #ff1b6b, #45caff, #ff1b6b);
+		background: linear-gradient(120deg, var(--color-hue-0), var(--color-hue-3), var(--color-hue-0));
 		-webkit-mask-image: linear-gradient(black, black);
 		mask-image: linear-gradient (transparent, transparent);
 		border: 50%;
 		fill: rgba(var(--Base), 255);
 		background-size: 200%;
 		border-radius: 60%;
-		border: 2px solid rgba(var(--Text), 0.2);
+		border: 2px solid var(--color-border-0);
 
 		transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 	}

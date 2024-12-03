@@ -24,7 +24,7 @@
       transform: scale(1);
       filter: blur(15px);
 
-      background: white linear-gradient(90deg, #0fffc1, #7e0fff);
+      background: white linear-gradient(90deg, var(--color-logo-hue-1), var(--color-logo-hue-2));
       background-size: 200% 200%;
 
       animation: animateBackground 10s ease infinite;

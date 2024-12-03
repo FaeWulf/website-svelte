@@ -1,6 +1,8 @@
 <script lang="ts">
 	//checking dev mode
 	import { dev } from '$app/environment';
+	import { theme } from '$lib/store';
+
 
 	//some main styles
 	import '$lib/styles/reset.css';
@@ -41,7 +43,6 @@
 		<Background />
 	{/if}
 	<Header bind:windowToggle bind:ufoToggleMovement />
-	<!--Ufo bind:toggleMovement={ufoToggleMovement} /-->
 	<Ufo bind:toggleMovement={ufoToggleMovement} />
 
 	<Window bind:windowToggle bind:windowOntop />
@@ -73,6 +74,8 @@
 		<script defer src="https://analytics.us.umami.is/script.js" data-website-id="274fa86e-1c19-458a-a9b9-555a24ffe748">
 		</script>
 	{/if}
+	<meta name="color-scheme" content={$theme === 'system' ? 'light dark' : $theme} />
+	<link rel="stylesheet" href={`/styles/theme/${$theme}.css`} />
 </svelte:head>
 
 <style lang="scss">

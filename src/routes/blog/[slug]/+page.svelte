@@ -8,7 +8,7 @@
 	//comments component
 	import Giscus from '@giscus/svelte';
 	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
 
 	export let data;
 	let postData: any;
@@ -74,7 +74,7 @@
     height: 100%;
     background-color: rgba(var(--Overlay0), 1);
 
-    border: 1px solid rgba(var(--Subtext0), 0.2);
+    border: 1px solid var(--color-border-1);
     border-radius: 0.5rem;
 
     box-shadow: 10px 10px 15px rgba(black, 0.2);
@@ -121,7 +121,7 @@
 
     .post__description-tag {
       background-color: rgba(var(--Overlay1), 1);
-      border: 1px solid rgba(var(--Subtext0), 0.3);
+      border: 1px solid var(--color-border-1);
       padding: 5px;
       border-radius: 0.5rem;
       opacity: 0.8;

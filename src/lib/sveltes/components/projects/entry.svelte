@@ -64,7 +64,7 @@
     max-width: 400px;
 
     border-radius: 0.5rem;
-    border: 1px rgba(var(--Text), 0.1) solid;
+    border: 1px solid var(--color-border-0);
 
     background: rgba(var(--Overlay0), 1);
     box-shadow: 2px 2px 10px rgba(black, 0.4);
@@ -159,7 +159,7 @@
 
           .entry__description-tag-item {
             border-radius: 0.5rem;
-            border: 1px rgba(var(--Text), 0.3) solid;
+            border: 1px solid var(--color-border-0);
             padding: 4px;
 
             display: flex;

@@ -186,7 +186,7 @@
     min-height: 220px;
     opacity: 0.6;
 
-    border: 1px solid rgba(var(--Green), 0.3);
+    border: 1px solid var(--color-border-primary);
     border-radius: 0.5rem;
 
     resize: both;
@@ -221,7 +221,7 @@
 
     &:focus,
     &:hover {
-      border: 1px solid rgba(var(--Green), 0.4);
+      border: 1px solid var(--color-border-primary);
       opacity: 1;
       background: rgba(var(--Overlay0), 1);
       //backdrop-filter: blur(2px);
@@ -288,7 +288,7 @@
           height: 20px;
           width: 20%;
 
-          border: 1px solid rgba(var(--Text), 0.3);
+          border: 1px solid var(--color-border-0);
           border-bottom: none;
           border-radius: 5px 5px 0 0;
 
@@ -314,7 +314,7 @@
 
           &.window__tab-item--selected {
             color: rgba(var(--Green), 1);
-            border: 1px solid rgba(var(--Green), 0.3);
+            border: 1px solid var(--color-border-primary);
             border-bottom: none;
             opacity: 1;
             min-width: fit-content;

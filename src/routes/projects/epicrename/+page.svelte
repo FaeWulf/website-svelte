@@ -516,7 +516,7 @@
 				outline: none;
         box-shadow: 10px 10px 15px rgba(black, 0.2);
 				resize: none;
-				border: 1px solid rgba(var(--Text), 0.2);
+				border: 1px solid var(--color-border-0);
 				border-radius: 0.5rem;
 
 				box-sizing: border-box;

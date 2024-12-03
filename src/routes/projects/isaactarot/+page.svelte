@@ -50,7 +50,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid rgba(var(--Text), 0.2);
+    border: 1px solid var(--color-border-0);
 
     //backdrop-filter: blur(2px);
     //-webkit-backdrop-filter: blur(2px);

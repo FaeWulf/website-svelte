@@ -80,7 +80,7 @@
 
     border-radius: 0.5rem;
 
-    border: 1px rgba(var(--Lavender), 0.2) solid;
+    border: 1px var(--color-border-secondary) solid;
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     -webkit-mask-image: -webkit-linear-gradient(to bottom, black 70%, transparent 100%);
 
@@ -98,7 +98,7 @@
       flex-basis: 100%;
       text-align: center;
       background-color: rgb(var(--Overlay1));
-      border: 1px rgba(var(--Text), 0.2) solid;
+      border: 1px var(--color-border-0) solid;
       border-radius: 0.5rem;
       padding-top: 5px;
       padding-bottom: 5px;
@@ -117,7 +117,7 @@
       justify-content: center;
       align-items: center;
 
-      border: 1px solid rgba(var(--Text), 0.2);
+      border: 1px solid var(--color-border-0);
       background: rgba(var(--Overlay1), 0.4);
     }
 

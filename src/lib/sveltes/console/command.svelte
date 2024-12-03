@@ -119,7 +119,7 @@ Dreams of mastering coding, enjoying every seconds of sleep, and listening music
       .current-line__command-helper {
         color: rgb(var(--Text));
         background: rgba(var(--Overlay2));
-        border: 1px solid rgba(var(--Subtext0), 0.3);
+        border: 1px solid var(--color-border-1);
         font-size: 0.7rem;
         border-radius: 4px;
         opacity: 0.7;
@@ -127,7 +127,7 @@ Dreams of mastering coding, enjoying every seconds of sleep, and listening music
 
         &:hover {
           opacity: 1;
-          border: 1px solid rgba(var(--Lavender), 1);
+          border: 1px solid var(--color-border-secondary);
         }
       }
     }

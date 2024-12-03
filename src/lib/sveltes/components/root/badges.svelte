@@ -72,7 +72,7 @@
 		flex-basis: 100%;
 		text-align: center;
 		background-color: rgb(var(--Overlay1));
-		border: 1px rgba(var(--Text), 0.2) solid;
+		border: 1px solid var(--color-border-0);
 		border-radius: 5px;
 		padding-top: 5px;
 		padding-bottom: 5px;

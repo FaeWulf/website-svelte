@@ -199,7 +199,7 @@
 
 			pointer-events: none;
 
-			border: 1px dashed rgba(var(--Text), 0.2);
+      border: 1px dashed var(--color-border-0);
 			border-radius: 50%;
 		}
 	}

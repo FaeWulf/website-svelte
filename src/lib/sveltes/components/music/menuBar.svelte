@@ -106,12 +106,12 @@
       height: 30px;
       margin-left: 10px;
       border-radius: 0.5rem;
-      border: 1px solid rgba(var(--Text), 0.2);
+      border: 1px solid var(--color-border-0);
       color: var(--Text);
       background: rgba(var(--Overlay1), 1);
 
       &:focus {
-        outline: 1px solid rgba(var(--Lavender), 0.8);
+        outline: 1px solid var(--color-border-secondary);
         border: none;
       }
     }
@@ -124,7 +124,7 @@
       color: rgb(var(--Text));
       font-family: 'Pixel Nes', 'Tahoma';
       border-radius: 0.5rem;
-      border: 1px solid rgba(var(--Yellow), 0.6);
+      border: 1px solid var(--color-border-warning);
 
       &:hover {
         background: rgba(var(--Surface0), 1);

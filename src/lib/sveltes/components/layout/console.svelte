@@ -101,7 +101,7 @@
 
     &:focus {
       box-sizing: border-box;
-      border: 0.5px solid rgba(var(--Lavender), 0.4);
+      border: 1px solid var(--color-border-secondary);
       outline: none;
       opacity: 1;
     }

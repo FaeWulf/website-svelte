@@ -4,7 +4,7 @@
 	import type { track } from '$lib/types';
 	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
-	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import Screen from '$lib/sveltes/components/music/screen.svelte';
 	import MenuBar from '$lib/sveltes/components/music/menuBar.svelte';

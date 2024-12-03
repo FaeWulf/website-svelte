@@ -36,7 +36,7 @@
 
     background: rgb(var(--Overlay0));
     border-radius: 0.5rem;
-    border: 1px solid rgba(var(--Subtext0), 0.2);
+    border: 1px solid var(--color-border-1);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 
     transition: all 0.2s ease;
@@ -81,7 +81,7 @@
     &:hover {
       transform: scale(1.01);
       background-color: rgb(var(--Overlay1));
-      border: 1px solid rgba(var(--Green), 0.6);
+      border: 1px solid var(--color-border-primary);
     }
   }
 

@@ -7,7 +7,7 @@
 
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import Post from '$lib/sveltes/components/blog/post.svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
 
 	export let data;
 

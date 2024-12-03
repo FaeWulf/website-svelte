@@ -129,7 +129,7 @@
 
     &:hover,
     &--active {
-      background: rgb(63, 66, 75);
+      background: rgb(var(--Overlay2));
     }
 
     .track__thumbnail-img {

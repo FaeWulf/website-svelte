@@ -2,6 +2,9 @@ import { readable, writable } from 'svelte/store';
 import { PUBLIC_server } from '$env/static/public';
 import type { track } from '$lib/types';
 
+//theme
+export const theme = writable('dark');
+
 export const ufoBubble = writable({
 	message: '',
 	timeout: 0
@@ -31,8 +34,5 @@ export const S_boidResetSignal = writable(false);
 export const mp_id = writable('qWNQUvIk954');
 export const mp_autoPlay = writable(false);
 export const mp_autoNext = writable(false);
-
-//readonly
-export const mp_currentList = writable([] as { index: number; data: track }[]);
-
+export const mp_currentList = writable([] as { index: number; data: track }[]); //readonly
 

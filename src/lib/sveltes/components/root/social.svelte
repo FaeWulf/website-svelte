@@ -99,7 +99,7 @@
     gap: 5px;
     padding: 6px;
 
-    border: 1px solid rgba(var(--Text), 0.2);
+    border: 1px solid var(--color-border-0);
     border-radius: 5px;
 
     .content__legend-text {

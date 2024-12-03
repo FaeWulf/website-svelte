@@ -115,7 +115,7 @@
 
       border-radius: 8px;
 
-      border: 1px rgba(var(--Text), 0.2) solid;
+      border: 1px var(--color-border-0) solid;
       mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
       -webkit-mask-image: -webkit-linear-gradient(to bottom, black 70%, transparent 100%);
     }

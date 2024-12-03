@@ -1,5 +1,5 @@
 .hueText {
-	background: linear-gradient(120deg, #ff1b6b, #45caff, #ff1b6b);
+	background: linear-gradient(120deg, var(--color-hue-0), var(--color-hue-3), var(--color-hue-0));
 	background-size: 200%;
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -40,7 +40,7 @@
 }
 
 .hueText-green {
-	background: linear-gradient(120deg, #00ff87, #60efff, #00ff87);
+	background: linear-gradient(120deg, var(--color-hue-1), #60efff, var(--color-hue-1));
 	background-size: 200%;
 	-webkit-background-clip: text;
 	background-clip: text;

@@ -136,7 +136,7 @@
     max-width: 300px;
 
     border-radius: 0.5rem;
-    border: 1px solid rgba(var(--Green), 0.5);
+    border: 1px solid var(--color-border-primary);
 
     background: rgba(var(--Overlay0, 1));
 
@@ -147,7 +147,7 @@
       width: 15px;
       height: 15px;
       background: rgba(var(--Overlay0), 1);
-      border: 1px solid rgba(var(--Green), 0.5);
+      border: 1px solid var(--color-border-secondary);
       z-index: -1;
     }
 

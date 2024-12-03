@@ -91,7 +91,8 @@ function tooltip(node: HTMLElement, params: any = {}) {
 		update: (newParams: any) => tip.setProps({ content, ...newParams }),
 
 		// Clean up the Tippy instance on unmount:
-		destroy: () => tip.destroy()
+		destroy: () => tip.destroy(),
+		instancesHolder: tip
 	};
 }
 

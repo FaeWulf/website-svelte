@@ -251,7 +251,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    border: 1px solid rgba(var(--Text), 0.2);
+    border: 1px solid var(--color-border-0);
     background-color: rgba(var(--Crust), 1);
 
     z-index: 5;

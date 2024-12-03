@@ -58,7 +58,7 @@
 		width: 10px;
 		height: 10px;
 		background: red;
-		border: 2px solid rgba(var(--Overlay0), 0.4);
+		border: 2px solid var(--color-border-1);
 		border-radius: 50%;
 		cursor: pointer;
 	}

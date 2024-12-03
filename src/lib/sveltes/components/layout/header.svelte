@@ -70,7 +70,7 @@
 	//making sub path in main path
 	$: pathname = $page.url.pathname == '/' ? 'Home Page' : capitalFirstLeter($page.url.pathname.split('/')[1]);
 
-	let volumeToggle: boolean, themeToggle: boolean;
+	let volumeToggle: boolean;
 	let pauseSFX = false;
 	let spaceSound: HTMLAudioElement;
 	let thinkfast: HTMLAudioElement;
@@ -103,14 +103,8 @@
 					theme: 'catppuccin',
 					animation: 'scale'
 				}}
-				on:click={() => {
-					thinkfast.play();
-					setTimeout((E) => {
-						themeToggle = true;
-					}, 4500);
-				}}
 			>
-				<Theme bind:toggle={themeToggle} />
+				<Theme />
 			</div>
 
 			<div
@@ -158,8 +152,8 @@
 	<audio src="/sfx/think-fast.mp3" preload="auto" bind:this={thinkfast} />
 </header>
 
-{#if !themeToggle}
-	<div class="theme__flash-bang" class:theme__flash-bang--play={!themeToggle} />
+{#if false}
+	<div class="theme__flash-bang" class:theme__flash-bang--play={false} />
 {/if}
 
 <svelte:window on:blur={() => (pauseSFX = true)} on:focus={() => (pauseSFX = false)} />
@@ -200,7 +194,7 @@
       height: 30px;
       width: max-content;
 
-      border: 1px solid rgba(var(--Lavender), 0.2);
+      border: 1px solid var(--color-border-secondary);
       border-radius: 0.5rem;
       padding: 19px 10px;
       background-color: rgba(var(--Overlay1), 1);
@@ -223,7 +217,7 @@
       max-width: 400px;
       height: 30px;
 
-      border: 1px solid rgba(var(--Lavender), 0.2);
+      border: 1px solid var(--color-border-secondary);
       border-radius: 0.5rem;
       padding: 4px;
       background-color: rgba(var(--Overlay1), 1);

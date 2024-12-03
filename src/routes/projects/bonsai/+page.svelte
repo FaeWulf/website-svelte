@@ -86,7 +86,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    border: 1px solid rgba(var(--Text), 0.2);
+    border: 1px solid var(--color-border-0);
     border-radius: 0.5rem;
     background-color: rgba(var(--Overlay0), 1);
 
@@ -99,7 +99,7 @@
   }
 
   code {
-    border: 1px solid rgba(var(--Green), 0.5);
+    border: 1px solid var(--color-border-primary);
     border-radius: 5px;
     background: rgba(var(--Overlay0), 0.2);
     padding: 10px;

@@ -193,7 +193,7 @@
         outline: none;
         box-shadow: none;
         border-radius: 0.5rem;
-        border: 1px rgba(var(--Text), 0.2) solid;
+        border: 1px solid var(--color-border-0);
         background-color: rgba(var(--Overlay2), 0.2);
         color: rgb(var(--Text));
       }
@@ -205,7 +205,7 @@
         background-color: rgb(var(--Green));
         opacity: 0.6;
         color: rgb(var(--Crust));
-        border: 1px rgba(var(--Text), 0.2) solid;
+        border: 1px solid var(--color-border-0);
         border-radius: 0.5rem;
         cursor: pointer;
 

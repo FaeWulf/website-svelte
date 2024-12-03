@@ -1,0 +1,48 @@
+:root {
+    --Text: 236, 249, 251;
+    --Subtext1: 136, 146, 156;
+    --Subtext0: 176, 186, 197;
+
+    --Overlay2: 87, 90, 97;
+    --Overlay1: 51, 54, 61;
+    --Overlay0: 38, 41, 47;
+
+    --Surface2: 91, 96, 120;
+    --Surface1: 73, 77, 100;
+    --Surface0: 54, 58, 79;
+
+    --Base: 22, 24, 28;
+
+    --Rosewater: 244, 219, 214;
+    --Flamingo: 240, 198, 198;
+    --Pink: 245, 189, 230;
+    --Mauve: 198, 160, 246;
+    --Red: 237, 135, 150;
+    --Maroon: 238, 153, 160;
+    --Peach: 245, 169, 127;
+    --Yellow: 238, 212, 159;
+    --Green: 166, 218, 149;
+    --Teal: 139, 213, 202;
+    --Sky: 145, 215, 227;
+    --Sapphire: 125, 196, 228;
+    --Blue: 138, 173, 244;
+    --Lavender: 183, 189, 248;
+
+    --color-bg-0: rgb(var(--Base));
+    --color-bg-1: #1b2735;
+    --color-bg-2: #090a0f;
+
+    --color-border-0: rgba(var(--Text), 0.2);
+    --color-border-1: rgba(var(--Subtext0), 0.2);
+    --color-border-primary: rgba(var(--Green), 0.6);
+    --color-border-secondary: rgba(var(--Lavender), 0.4);
+    --color-border-warning: rgba(var(--Yellow), 0.6);
+
+    --color-hue-0: #ff1b6b;
+    --color-hue-1: #00ff87;
+    --color-hue-2: #ffff00;
+    --color-hue-3: #45caff;
+
+    --color-logo-hue-1: #0fffc1;
+    --color-logo-hue-2: #7e0fff;
+}

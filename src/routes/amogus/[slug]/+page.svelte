@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
 	import Background from '$lib/sveltes/components/amogus/background.svelte';
 	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
@@ -106,7 +106,7 @@
 
   button {
     margin: 50px 10px 10px;
-    border: 1px solid rgba(var(--Lavender), 0.6);
+    border: 1px solid var(--color-border-secondary);
     border-radius: 0.5rem;
     background: rgba(var(--Overlay1), 1);
     color: rgb(var(--Text));

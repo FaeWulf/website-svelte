@@ -89,7 +89,7 @@
       background: rgba(var(--Overlay1), 0.8);
 
       border-radius: 0.5rem;
-      border: 2px solid rgba(var(--Lavender), 0.4);
+      border: 2px solid var(--color-border-secondary);
       color: rgb(var(--Text));
 
       cursor: pointer;
@@ -102,7 +102,7 @@
       &:hover {
         transform: scale(1.1);
         background: rgba(var(--Lavender), 0.3);
-        border: 2px solid rgba(var(--Green), 0.8);
+        border: 2px solid var(--color-border-primary);
       }
     }
   }

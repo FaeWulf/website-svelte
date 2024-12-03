@@ -17,7 +17,7 @@ export class Star implements bgItem {
     speed: number;
 
     constructor(options: { x: number; y: number }) {
-        this.size = Math.random() * 2;
+        this.size = Math.random() * 1.8 + 0.2;
         this.speed = Math.random() * 0.05;
         this.x = options.x;
         this.y = options.y;

@@ -2,8 +2,33 @@
 	import { quintOut } from 'svelte/easing';
 	import { scale } from 'svelte/transition';
 	import { Moon, Sun } from 'lucide-svelte';
+	import { theme } from '$lib/store';
+	import { onMount } from 'svelte';
 
-	export let toggle = true;
+	let darkMode = true;
+
+	$: theme.set(darkMode ? 'dark' : 'light');
+
+	onMount(() => {
+		//local storage is used to override OS theme settings
+		let themeMode = 'light';
+
+		if (localStorage.getItem('theme')) {
+			if (localStorage.getItem('theme') === 'dark') {
+				themeMode = 'dark';
+			}
+		} else if (!window.matchMedia) {
+			themeMode = 'dark';
+		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			//OS theme setting detected as dark
+			themeMode = 'dark';
+		}
+
+		darkMode = themeMode === 'dark';
+
+		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+	});
+
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -11,10 +36,17 @@
 <div
 	class="toggle-button"
 	on:click={() => {
-		toggle = !toggle;
+		darkMode = !darkMode;
+
+		if(darkMode)
+			theme.set("dark")
+		else
+			theme.set("light")
+
+		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
 	}}
 >
-	{#if toggle}
+	{#if darkMode}
 		<div class="toggle-button__icon" in:scale={{ duration: 200, easing: quintOut }}
 				 out:scale={{ duration: 200, easing: quintOut }}>
 			<Moon />

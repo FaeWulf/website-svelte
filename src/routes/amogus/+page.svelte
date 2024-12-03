@@ -155,7 +155,7 @@
   input {
     resize: none;
     background: rgba(var(--Overlay1), 1);
-    border: 1px solid rgba(var(--Text), 0.2);
+    border: 1px solid var(--color-border-0);
     border-radius: 0.5rem;
     color: rgb(var(--Text));
 
@@ -163,13 +163,13 @@
 
     &:focus {
       outline: rgba(var(--Green), 0.6);
-      border: 1px solid rgba(var(--Green), 0.6);
+      border: 1px solid var(--color-border-primary);
     }
   }
 
   .main__button {
     margin: 10px;
-    border: 1px solid rgba(var(--Lavender), 0.6);
+    border: 1px solid var(--color-border-secondary);
     border-radius: 0.5rem;
     background: rgba(var(--Overlay1), 0.5);
     color: rgb(var(--Text));

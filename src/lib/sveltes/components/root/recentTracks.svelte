@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { apiURL } from '$lib/store';
-	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
+	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
 
 	let last5: any;
 	let lastUpdate: string;
@@ -53,7 +53,7 @@
     flex-basis: 100%;
     text-align: center;
     background-color: rgb(var(--Overlay1));
-    border: 1px rgba(var(--Text), 0.2) solid;
+    border: 1px var(--color-border-0) solid;
     border-radius: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -69,7 +69,7 @@
     position: relative;
     width: 100%;
 
-    border: 1px rgba(var(--Text), 0.2) solid;
+    border: 1px var(--color-border-0) solid;
     border-radius: 5px;
     overflow: hidden;
 
