@@ -53,7 +53,7 @@
 <style lang="scss">
   .nav-dropdown {
     display: none;
-    max-width: 300px;
+    max-width: 350px;
     width: 100vw;
     flex-wrap: wrap;
     flex-direction: column;

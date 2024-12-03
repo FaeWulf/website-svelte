@@ -178,13 +178,17 @@
     max-width: 550px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    padding: 8px;
+    column-gap: 8px;
 
     //backdrop-filter: blur(10px);
     //-webkit-backdrop-filter: blur(10px);
     border-radius: 50px;
-    background-color: rgba(var(--Overlay0), 0.6);
+    //background-color: rgba(var(--Overlay0), 0.6);
+    filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.2));
+
 
     .nav__toolbar {
       box-sizing: border-box;
@@ -197,9 +201,8 @@
       width: max-content;
 
       border: 1px solid rgba(var(--Lavender), 0.2);
-      border-radius: 50px;
+      border-radius: 0.5rem;
       padding: 19px 10px;
-      margin: 8px 0 8px 10px;
       background-color: rgba(var(--Overlay1), 1);
       //backdrop-filter: blur(10px);
 
@@ -220,10 +223,8 @@
       max-width: 400px;
       height: 30px;
 
-      margin: 8px 10px 8px 10px;
-
       border: 1px solid rgba(var(--Lavender), 0.2);
-      border-radius: 50px;
+      border-radius: 0.5rem;
       padding: 4px;
       background-color: rgba(var(--Overlay1), 1);
       //backdrop-filter: blur(10px);
@@ -239,7 +240,7 @@
         width: 100%;
         display: flex;
         flex-direction: row;
-        cursor: text;
+        cursor: pointer;
 
         overflow: hidden;
 
@@ -250,7 +251,7 @@
 
         .nav__search-icon {
           margin-right: 10px;
-          margin-left: 10px;
+          margin-left: 5px;
           padding-right: 9px;
           border-right: 2px solid rgba(var(--Text), 0.2);
 
