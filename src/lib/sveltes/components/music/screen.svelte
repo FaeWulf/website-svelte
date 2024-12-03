@@ -3,20 +3,42 @@
 	import type { track } from '$lib/types';
 	import YoutubePlayer from 'youtube-player';
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
+	import { mp_autoNext, mp_autoPlay, mp_currentList, mp_id } from '$lib/store';
 
-	export let id = 'qWNQUvIk954';
-	export let autoPlay = false;
-	export let autoNext = false;
-	export let player: YouTubePlayer;
+	let id = 'qWNQUvIk954';
+	let autoPlay = false;
+	let autoNext = false;
 
 	//readonly
-	export let currentList: { index: number; data: track }[];
+	let currentList: { index: number; data: track }[];
+
+	//subscribe
+	let sub_mp_id = mp_id.subscribe((value) => id = value);
+	let sub_mp_autoNext = mp_autoNext.subscribe((value) => autoNext = value);
+	let sub_mp_autoPlay = mp_autoPlay.subscribe((value) => autoPlay = value);
+	let sub_mp_currentList = mp_currentList.subscribe((value) => currentList = value);
+
+	$: mp_id.set(id);
+	$: mp_autoPlay.set(autoPlay);
+	$: mp_autoNext.set(autoNext);
+
+	//
+	let player: YouTubePlayer;
+
 
 	$: play(id);
 
 	let playerElement: HTMLElement;
 	onMount(() => {
 		createPlayer();
+
+
+		return () => {
+			sub_mp_id();
+			sub_mp_autoNext();
+			sub_mp_autoPlay();
+			sub_mp_currentList();
+		};
 	});
 
 	function createPlayer() {
@@ -60,7 +82,6 @@
     #music-player {
         width: 300px;
         height: 300px;
-        margin-left: 20px;
         border-radius: 0.5rem;
         background: rgba(var(--Overlay0));
     }

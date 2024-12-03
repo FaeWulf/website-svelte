@@ -69,7 +69,7 @@
 		use:tooltip={{ instancesHolder: tippyInstances }}
 		class:active={autoNextActive}
 		on:click={() => (autoNextActive = !autoNextActive)}
-		title="Autoplay next track"
+		title="Auto select next track, not auto play."
 	>
 		N
 	</button>
