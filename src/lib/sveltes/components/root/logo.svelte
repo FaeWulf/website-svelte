@@ -45,8 +45,8 @@
     }
     50% {
       background-position: 100% 50%;
-      opacity: 0.5;
-      transform: scale(1.2);
+      opacity: 0.3;
+      transform: scale(1.12);
     }
     100% {
       background-position: 0% 50%;

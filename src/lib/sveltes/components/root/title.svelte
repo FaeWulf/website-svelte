@@ -50,9 +50,11 @@
     margin-top: 10px;
     align-items: flex-end;
 
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    text-wrap: nowrap;
+
+    //-webkit-user-select: none;
+    //-ms-user-select: none;
+    //user-select: none;
     padding-bottom: 5px;
 
     .title-text__adjust-height-text {

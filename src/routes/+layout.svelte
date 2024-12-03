@@ -80,7 +80,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     min-height: 100vh;
+    width: 100%;
 
     .app__support-banner-link {
       position: fixed;
