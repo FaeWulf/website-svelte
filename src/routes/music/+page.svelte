@@ -1,20 +1,22 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { apiURL, ufoBubble } from '$lib/store';
+	import { apiURL, ufoBubble, mp_currentList, mp_id, mp_autoNext, mp_autoPlay } from '$lib/store';
 	import type { track } from '$lib/types';
-	import type { YouTubePlayer } from 'youtube-player/dist/types';
 	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
-	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte'
+	import LoadingCircle from '$lib/sveltes/components/custom/loadingCircle.svelte';
 	import Title from '$lib/sveltes/neonTitle.svelte';
 	import Screen from '$lib/sveltes/components/music/screen.svelte';
-	import MenuBar from './menuBar.svelte';
+	import MenuBar from '$lib/sveltes/components/music/menuBar.svelte';
+	import { isMobile } from '$lib/utils';
 
 	//export let data;
+	let isMobileClient = false;
+	let innerWidth = 0;
 
 	let currentList: { index: number; data: track }[];
 	//playlist vars
-	let id: string, autoPlay: boolean, player: YouTubePlayer;
+	let id: string, autoPlay: boolean;
 
 	//toolbar vars
 	let autoNextActive: boolean, randomActive: boolean;
@@ -30,12 +32,25 @@
 	let dataPlaylist: any;
 	let lastUpdatePlaylistDate: string;
 
+	//subscribe
+	let sub_mp_id = mp_id.subscribe((value) => id = value);
+	let sub_mp_autoNext = mp_autoNext.subscribe((value) => autoNextActive = value);
+	let sub_mp_autoPlay = mp_autoPlay.subscribe((value) => autoPlay = value);
+	let sub_mp_currentList = mp_currentList.subscribe((value) => currentList = value);
+
+	$: mp_id.set(id)
+	$: mp_autoPlay.set(autoPlay)
+	$: mp_autoNext.set(autoNextActive)
+	$: mp_currentList.set(currentList)
+
 	onMount(async () => {
-		import('./playlist.svelte').then((module) => {
+		import('$lib/sveltes/components/music/playlist.svelte').then((module) => {
 			lazyLoadPlaylist = module.default;
 		});
 
-		ufoBubble.set({message: 'My favorite playlist!', timeout: 6000});
+		isMobileClient = isMobile(window, window.navigator);
+
+		ufoBubble.set({ message: 'My favorite playlist!', timeout: 6000 });
 
 		const url = $apiURL;
 
@@ -51,17 +66,26 @@
 		dataPlaylist = dataPlaylist.reverse();
 		const fetchDate = await fetch(url + '/api/v1/playlist/lastupdate').then((res) => res.json());
 		lastUpdatePlaylistDate = fetchDate.data;
+
+		return () => {
+			sub_mp_id();
+			sub_mp_autoNext();
+			sub_mp_autoPlay();
+			sub_mp_currentList();
+		}
 	});
 
 	//auto play and shuffle. random music
 </script>
 
 <MetaTags
-		title="Music list | Faewulf's Basement"
-		description="Faewulf's favorite music list."
-		keywords={['faewulf', 'music', 'list', 'infomation']}
-		canonical="https://faewulf.xyz/music"
+	title="Music list | Faewulf's Basement"
+	description="Faewulf's favorite music list."
+	keywords={['faewulf', 'music', 'list', 'infomation']}
+	canonical="https://faewulf.xyz/music"
 />
+
+<svelte:window bind:innerWidth />
 
 <div class="main-wrapper">
 	<div class="main__title-wrapper">
@@ -77,74 +101,80 @@
 			</div>
 		</div>
 	{:else}
-		<LoadingCircle/>
+		<LoadingCircle />
 	{/if}
 	{#if dataPlaylist}
 		<div class="main__content-wrapper" bind:clientHeight={containerHeight}>
 			<div class="content__scrollable-wrapper" style="height: {containerHeight}px;">
-				<Screen bind:autoPlay bind:id bind:player bind:autoNext={autoNextActive} bind:currentList />
+				{#if isMobileClient || innerWidth < 720}
+					<Screen/>
+				{/if}
 
 				<div class="content__scrollable">
-					<MenuBar bind:search bind:autoNextActive bind:autoplayActive={autoPlay} bind:randomActive bind:id bind:currentList />
+					<MenuBar bind:search bind:autoNextActive bind:autoplayActive={autoPlay} bind:randomActive bind:id
+									 bind:currentList />
 					<div class="content__track-list">
-						<svelte:component this={lazyLoadPlaylist} {...$$props} bind:id bind:search bind:currentList bind:playList={dataPlaylist} />
+						<svelte:component this={lazyLoadPlaylist} {...$$props} bind:id bind:search bind:currentList
+															bind:playList={dataPlaylist} />
 					</div>
 				</div>
 			</div>
 		</div>
 	{:else}
-		<LoadingCircle/>
+		<LoadingCircle />
 	{/if}
 </div>
 
 <style lang="scss">
-	.main-wrapper {
-		position: relative;
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-direction: column;
+  .main-wrapper {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 
-		//backdrop-filter: blur(2px);
-		//-webkit-backdrop-filter: blur(2px);
-		//font-family: 'Pixel Nes', 'Tahoma';
-	}
+    //backdrop-filter: blur(2px);
+    //-webkit-backdrop-filter: blur(2px);
+    //font-family: 'Pixel Nes', 'Tahoma';
+  }
 
-	.main__statistic {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		top: 0;
-		left: 0;
-		margin: 10px;
-		font-size: 0.7rem;
+  .main__statistic {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    font-size: 0.7rem;
 
-		color: rgba(var(--Text), 0.6);
+    color: rgba(var(--Text), 0.6);
 
-		z-index: -1;
-	}
+    z-index: -1;
+  }
 
-	.main__content-wrapper {
-		width: 100%;
-		margin-top: 20px;
-		flex: 1;
+  .main__content-wrapper {
+    width: 100%;
+    margin-top: 20px;
+    flex: 1;
 
     .content__scrollable-wrapper {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       width: 100%;
       height: 100%;
 
       .content__scrollable {
         width: 100%;
-        height: 100%;
+        max-width: 650px;
+				height: 100%;
         margin: 0 20px 0 20px;
 
         display: flex;
         flex-direction: column;
+				align-items: center;
         row-gap: 10px;
 
         .content__track-list {
@@ -156,27 +186,33 @@
         }
       }
     }
-	}
+  }
 
-	@media (max-width: 720px) {
+  @media (max-width: 720px) {
 
-		.main__title-wrapper{
-			display: none;
-		}
+    .main__title-wrapper {
+      display: none;
+    }
 
-		.content__scrollable-wrapper {
-			height: calc(100% - 70px);
-      flex-direction: column !important;
-      align-items: center !important;
+    .main__content-wrapper {
+			margin: 0 !important;
 
-      .content__scrollable {
-				margin: 0 !important;
+      .content__scrollable-wrapper {
+        height: calc(100% - 70px);
+        flex-direction: column !important;
+        align-items: center !important;
 
-        .content__track-list {
-          height: calc(100% - 200px) !important;
-				}
+        .content__scrollable {
+          margin: 0 !important;
+          margin-top: 30px !important;
+					height: 80% !important;
+
+          .content__track-list {
+            height: calc(100% - 70px) !important;
+          }
+        }
       }
-		}
 
-	}
+    }
+  }
 </style>

@@ -1,5 +1,6 @@
 import { readable, writable } from 'svelte/store';
 import { PUBLIC_server } from '$env/static/public';
+import type { track } from '$lib/types';
 
 export const ufoBubble = writable({
 	message: '',
@@ -25,5 +26,13 @@ export const S_boidsType = writable(1);
 export const S_boidChooseOption = writable('none');
 export const S_boidBorder = writable(false);
 export const S_boidResetSignal = writable(false);
+
+//music player
+export const mp_id = writable('qWNQUvIk954');
+export const mp_autoPlay = writable(false);
+export const mp_autoNext = writable(false);
+
+//readonly
+export const mp_currentList = writable([] as { index: number; data: track }[]);
 
 
