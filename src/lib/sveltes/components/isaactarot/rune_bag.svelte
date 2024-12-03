@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { shuffleArray, tooltip } from '$lib/utils';
 	import type { runeData } from './type';
+	import { sticky } from 'tippy.js';
 
 	export let runeList: runeData[] = [];
 
@@ -162,7 +163,7 @@
 	src="/images/isaac/items/rune_bag.png"
 	style:z-index={rune_Zindex}
 	alt="Rune bag"
-	use:tooltip={{ content: 'Click to get a rune/soul', animation: 'scale', theme: 'catppuccin' }}
+	use:tooltip={{ content: 'Click to get a rune/soul', animation: 'scale', theme: 'catppuccin', plugins: [sticky] }}
 />
 
 <style lang="scss">

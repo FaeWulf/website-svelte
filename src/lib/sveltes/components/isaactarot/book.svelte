@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { shuffleArray, tooltip } from '$lib/utils';
 	import type { cardData } from './type';
-	import { fade } from 'svelte/transition';
+	import { sticky } from 'tippy.js';
 
 	export let cardList: cardData[] = [];
 
@@ -125,7 +125,7 @@
 	src="/images/isaac/items/The_Book_of_Sin.png"
 	style:z-index={book_Zindex}
 	alt="The Book of Sin"
-	use:tooltip={{ content: 'Click to draw a card', animation: 'scale', theme: 'catppuccin' }}
+	use:tooltip={{ content: 'Click to draw a card', animation: 'scale', theme: 'catppuccin', plugins: [sticky] }}
 />
 
 <style lang="scss">

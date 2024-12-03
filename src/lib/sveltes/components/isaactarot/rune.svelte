@@ -5,6 +5,7 @@
 	import { tooltip } from '$lib/utils';
 	import { quintOut } from 'svelte/easing';
 	import runes from '$lib/data/isaac_rune.json';
+	import { sticky } from 'tippy.js';
 
 	export let runeList: runeData[];
 	export let rune: rune;
@@ -152,7 +153,8 @@
 			animation: 'scale',
 			theme: 'catppuccin',
 			trigger: 'click',
-			placement: 'bottom'
+			placement: 'bottom',
+			plugins: [sticky]
 		}}
 	>
 		<img
@@ -163,7 +165,8 @@
 			use:tooltip={{
 				content: rune.name,
 				animation: 'scale',
-				theme: 'catppuccin'
+				theme: 'catppuccin',
+				plugins: [sticky]
 			}}
 		/>
 		{#if showRune && runeIcon}

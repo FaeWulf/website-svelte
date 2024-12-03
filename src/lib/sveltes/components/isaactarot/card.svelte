@@ -3,6 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import type { card, cardData } from './type';
 	import { tooltip } from '$lib/utils';
+	import { sticky } from 'tippy.js'
 
 	export let cardList: cardData[];
 	export let card: card;
@@ -140,7 +141,7 @@
 			src="/images/isaac/card_sprites.png"
 			alt={card.name}
 			style="object-position: {card.sprite.x}px {card.sprite.y}px;"
-			use:tooltip={{ content: card.name, animation: 'scale', theme: 'catppuccin' }}
+			use:tooltip={{ content: card.name, animation: 'scale', theme: 'catppuccin', plugins: [sticky] }}
 		/>
 	</div>
 </div>

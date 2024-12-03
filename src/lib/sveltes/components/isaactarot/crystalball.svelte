@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import type { cardData } from './type';
 	import { tooltip } from '$lib/utils';
-	import { fade } from 'svelte/transition';
+	import { sticky } from 'tippy.js';
 
 	export let cardList: cardData[] = [];
 
@@ -153,7 +153,8 @@
 			animation: 'scale',
 			theme: 'catppuccin',
 			trigger: 'click',
-			delay: 500
+			delay: 500,
+			plugins: [sticky]
 		}}
 	/>
 

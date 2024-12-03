@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { tooltip } from '$lib/utils';
 	import type { cardData, runeData } from './type';
+	import { sticky } from 'tippy.js';
 
 	export let cardList: cardData[] = [];
 	export let runeList: runeData[] = [];
@@ -171,7 +172,8 @@
 	use:tooltip={{
 		content: 'Throw unuse cards, rune, stone in here',
 		animation: 'scale',
-		theme: 'catppuccin'
+		theme: 'catppuccin',
+		plugins: [sticky]
 	}}
 />
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { parseDiscordEmoji, tooltip } from '$lib/utils';
+	import { isMobile, parseDiscordEmoji, tooltip } from '$lib/utils';
 	import { apiURL } from '$lib/store';
 	import 'tippy.js/animations/perspective-subtle.css';
 	import { Bell } from 'lucide-svelte';
@@ -20,14 +20,28 @@
 		});
 
 		if (data) {
-			tooltip(bell, {
-				content: processedData.join('<br>'),
-				theme: 'catppuccin-transparent',
-				animation: 'perspective-subtle',
-				trigger: 'mouseenter click',
-				allowHTML: true,
-				interactive: true
-			});
+
+			if (isMobile(window, window.navigator)) {
+				tooltip(bell, {
+					maxWidth: 1000,
+					arrow: false,
+					content: `<div style="width: 100%">${processedData.join('<br>')}</div>`,
+					theme: 'catppuccin-transparent',
+					animation: 'perspective-subtle',
+					trigger: 'mouseenter click',
+					allowHTML: true,
+					interactive: true
+				});
+			} else {
+				tooltip(bell, {
+					content: processedData.join('<br>'),
+					theme: 'catppuccin-transparent',
+					animation: 'perspective-subtle',
+					trigger: 'mouseenter click',
+					allowHTML: true,
+					interactive: true
+				});
+			}
 		}
 	});
 
