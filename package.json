@@ -43,7 +43,6 @@
     "@splidejs/svelte-splide": "^0.2.9",
     "@timohausmann/quadtree-js": "^1.2.5",
     "@types/ws": "^8.5.10",
-    "detritus-client": "^0.16.3",
     "lucide-svelte": "^0.354.0",
     "pixi.js": "^7.3.1",
     "svelte-adapter-bun": "^0.5.2",
