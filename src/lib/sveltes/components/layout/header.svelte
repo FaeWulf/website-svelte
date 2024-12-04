@@ -106,7 +106,6 @@
 			>
 				<Theme />
 			</div>
-
 			<div
 				class="nav__toolbar-item"
 				id="js-ufo_home"
@@ -187,16 +186,17 @@
     .nav__toolbar {
       box-sizing: border-box;
       display: flex;
-      justify-content: space-evenly;
-      flex-direction: row;
+      justify-content: space-around;
       align-items: center;
+      flex-direction: row;
 
-      height: 30px;
+      height: 40px;
       width: max-content;
+
+      padding: 0 5px;
 
       border: 1px solid var(--color-border-secondary);
       border-radius: 0.5rem;
-      padding: 19px 10px;
       background-color: rgba(var(--Overlay1), 1);
       //backdrop-filter: blur(10px);
 

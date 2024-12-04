@@ -202,9 +202,9 @@
         width: 15%;
         height: 25px;
 
-        background-color: rgb(var(--Green));
+        background-color: rgb(var(--Overlay2));
         opacity: 0.6;
-        color: rgb(var(--Crust));
+        color: rgb(var(--Text));
         border: 1px solid var(--color-border-0);
         border-radius: 0.5rem;
         cursor: pointer;

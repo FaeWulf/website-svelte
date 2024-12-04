@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
 
 	//vvars declare
