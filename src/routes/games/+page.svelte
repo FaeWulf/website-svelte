@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Title from '$lib/components/custom/neonTitle.svelte';
 	import GameTab from './gameTab.svelte';
+	import NeonSign from '$lib/components/custom/NeonSign.svelte';
 </script>
 
 <svelte:head>
@@ -9,7 +9,7 @@
 </svelte:head>
 
 <div class="main-wrapper">
-	<Title subtitle="Games" />
+	<NeonSign title="Games" description="A list of my favorite games" />
 	<GameTab />
 </div>
 

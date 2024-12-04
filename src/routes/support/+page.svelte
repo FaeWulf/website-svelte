@@ -9,7 +9,7 @@
 	canonical="https://faewulf.xyz/support"
 />
 
-<div class="post__wrapper">
+<div class="post__wrapper behavior--click-through">
 	<h1>Support me via</h1>
 	<div class="text__brand-wrapper">
 		<a href="https://paypal.me/faewulf" target="_blank">

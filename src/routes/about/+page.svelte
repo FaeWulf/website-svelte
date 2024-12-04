@@ -7,7 +7,7 @@
 					keywords={['about']}
 					canonical="https://faewulf.xyz/about" />
 
-<div class="text-column">
+<div class="text-column behavior--click-through">
 	<h1>About this website</h1>
 
 	<p>

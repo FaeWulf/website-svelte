@@ -75,7 +75,7 @@
 />
 
 <Background />
-<div class="main-wrapper">
+<div class="main-wrapper behavior--click-through">
 	{#if Redirect}
 		<h3>Redirecting after {time} seconds</h3>
 		<a href={Redirect}>{Redirect}</a>
@@ -98,6 +98,7 @@
   h3 {
     margin-top: 60px;
     font-size: 1.6rem;
+    text-align: center;
   }
 
   a {

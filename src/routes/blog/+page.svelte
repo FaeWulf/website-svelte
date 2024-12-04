@@ -4,8 +4,7 @@
 	import { parseDiscordEmoji } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
-
-	import Title from '$lib/components/custom/neonTitle.svelte';
+	import NeonSign from '$lib/components/custom/NeonSign.svelte';
 	import Post from '$lib/components/blog/post.svelte';
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 
@@ -62,13 +61,13 @@
 	canonical="https://faewulf.xyz/blog"
 />
 
-<div class="main-wrapper">
-	<Title subtitle="Blog" />
+<div class="main-wrapper behavior--click-through">
+	<NeonSign title="Blog Posts" description="Posts I barely write now and then." />
 	{#if randomThought}
 		<div class="main__random-thought-text">{@html randomThought}</div>
 	{/if}
 	{#if postData}
-		<div class="main__content-wrapper">
+		<div class="main__content-wrapper behavior--click-through">
 			{#each postData as post (post.name)}
 				<Post path={post.path} name={post.name} tags={post.tags} date={post.date} />
 			{/each}

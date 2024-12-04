@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
-	import Title from '$lib/components/custom/neonTitle.svelte';
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import Entry from '$lib/components/projects/entry.svelte';
+	import NeonSign from '$lib/components/custom/NeonSign.svelte';
+
+	import ProjectData from '$lib/data/project.json';
 
 	interface project {
 		name: string;
@@ -124,7 +125,7 @@
 />
 
 <div class="main-wrapper behavior--click-through">
-	<Title subtitle="projects" />
+	<NeonSign title="Projects" description="Here is a few projects I've created." />
 
 	<div class="main__content-wrapper behavior--click-through">
 		<div class="container-fixed-size behavior--click-through">

@@ -89,7 +89,7 @@
 />
 
 <Background />
-<div class="main-wrapper">
+<div class="main-wrapper behavior--click-through">
 	<h1>
 		Link ඞmogusifier
 	</h1>
@@ -140,6 +140,7 @@
   h2 {
     word-wrap: break-word;
     color: rgb(var(--Subtext0));
+    text-align: center;
   }
 
   p {

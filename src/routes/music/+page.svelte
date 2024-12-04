@@ -9,6 +9,7 @@
 	import Screen from '$lib/components/music/screen.svelte';
 	import MenuBar from '$lib/components/music/menuBar.svelte';
 	import { isMobile } from '$lib/utils';
+	import NeonSign from '$lib/components/custom/NeonSign.svelte';
 
 	//export let data;
 	let isMobileClient = false;
@@ -87,9 +88,9 @@
 
 <svelte:window bind:innerWidth />
 
-<div class="main-wrapper">
-	<div class="main__title-wrapper">
-		<Title subtitle="music" />
+<div class="main-wrapper behavior--click-through">
+	<div class="main__title-wrapper behavior--click-through">
+		<NeonSign title="Music" description="A list of songs that match my taste..." />
 	</div>
 	{#if lastUpdatePlaylistDate && dataPlaylist}
 		<div class="main__statistic">
