@@ -2,16 +2,16 @@
 	import { page } from '$app/stores';
 	import Search from '$lib/svgs/search.svelte';
 	import 'tippy.js/animations/perspective-subtle.css';
-	import HeaderDroplist from '$lib/sveltes/components/layout/header_droplist.svelte';
+	import HeaderDroplist from '$lib/components/layout/header/header_droplist.svelte';
 	import { onMount } from 'svelte';
 	import { capitalFirstLeter, isMobile, tooltip, typewriter } from '$lib/utils';
 
 	//import toolbar comps
-	import Volume from '$lib/sveltes/components/layout/button_volume.svelte';
-	import Theme from '$lib/sveltes/components/layout/button_theme.svelte';
-	import WindowIcon from '$lib/sveltes/components/layout/button_window-icon.svelte';
-	import ButtonUfo from '$lib/sveltes/components/layout/button_ufo.svelte';
-	import Bell from '$lib/sveltes/components/layout/bell.svelte';
+	import Volume from '$lib/components/layout/header/button_volume.svelte';
+	import Theme from '$lib/components/layout/header/button_theme.svelte';
+	import WindowIcon from '$lib/components/layout/header/button_window-icon.svelte';
+	import ButtonUfo from '$lib/components/layout/header/button_ufo.svelte';
+	import Bell from '$lib/components/layout/header/bell.svelte';
 
 	export let windowToggle: boolean;
 	export let ufoToggleMovement: boolean;

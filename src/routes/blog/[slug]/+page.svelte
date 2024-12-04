@@ -7,8 +7,8 @@
 
 	//comments component
 	import Giscus from '@giscus/svelte';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
+	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 
 	export let data;
 	let postData: any;

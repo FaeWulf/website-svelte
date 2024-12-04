@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Canvas from '$lib/sveltes/components/boids/canvas.svelte';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import Canvas from '$lib/components/boids/canvas.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 </script>
 
 <svelte:head>

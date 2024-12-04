@@ -3,7 +3,7 @@
 	import Infos from './infos.svelte';
 
 	import { gibberish, shuffleArray, typewriter } from '$lib/utils';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	function onClickInvite() {
 		window.open('https://discord.com/api/oauth2/authorize?client_id=874974280495026186&permissions=1071631366721&scope=bot', '_blank');

@@ -1,6 +1,6 @@
 import { angleBetween2Points } from '$lib/utils';
-import type { boids } from '$lib/sveltes/components/boids/boids';
-import type { obstacle } from '$lib/sveltes/components/boids/obstacle';
+import type { boids } from '$lib/components/boids/boids';
+import type { obstacle } from '$lib/components/boids/obstacle';
 import type Quadtree from '@timohausmann/quadtree-js';
 
 function boidsUpdate(elementList: boids[], elementQuadtree: Quadtree, obstacleList: obstacle[], delta: number) {

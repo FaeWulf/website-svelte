@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import StatusDot from '$lib/sveltes/components/root/statusDot.svelte';
+	import StatusDot from '$lib/components/root/statusDot.svelte';
 
 	export let titleChanger = '';
 

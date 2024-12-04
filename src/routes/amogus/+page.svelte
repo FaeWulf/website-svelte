@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
-	import Background from '$lib/sveltes/components/amogus/background.svelte';
+	import Background from '$lib/components/amogus/background.svelte';
 
 	const amogusValue: { [key: string]: string } = {
 		'0': 'ඬ',

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
-	import Background from '$lib/sveltes/components/amogus/background.svelte';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
+	import Background from '$lib/components/amogus/background.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	export let data;
 

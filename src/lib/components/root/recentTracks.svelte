@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { apiURL } from '$lib/store';
-	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
+	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 
 	let last5: any;
 	let lastUpdate: string;

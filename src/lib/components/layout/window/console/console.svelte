@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Command from '$lib/sveltes/console/command.svelte';
+	import Command from '$lib/components/layout/window/console/command.svelte';
 	import { onMount } from 'svelte';
 
 	export let openConsole: boolean = false;

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Bonsai from '$lib/sveltes/components/layout/bonsai.svelte';
-	import Console from '$lib/sveltes/components/layout/console.svelte';
-	import Chat from '$lib/sveltes/components/layout/chat.svelte';
+	import Bonsai from '$lib/components/layout/window/bonsai/bonsai.svelte';
+	import Console from '$lib/components/layout/window/console/console.svelte';
+	import Chat from '$lib/components/layout/window/chat/chat.svelte';
 	import { app3rd } from '$lib/store';
 
-	import Controller from '$lib/sveltes/components/boids/controller.svelte';
-	import Screen from '$lib/sveltes/components/music/screen.svelte';
+	import Controller from '$lib/components/boids/controller.svelte';
+	import Screen from '$lib/components/music/screen.svelte';
 
 	export let windowToggle: boolean = true;
 	export let windowOntop: boolean = false;

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Title from '$lib/sveltes/neonTitle.svelte';
 	import { onMount } from 'svelte';
 
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
-
-	import Entry from '$lib/sveltes/components/projects/entry.svelte';
+	import Title from '$lib/components/custom/neonTitle.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
+	import Entry from '$lib/components/projects/entry.svelte';
 
 	interface project {
 		name: string;

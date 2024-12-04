@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { apiURL } from '$lib/store';
 	import { onMount } from 'svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
+	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 
 	let fortune: string;
 

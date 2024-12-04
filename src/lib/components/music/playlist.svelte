@@ -1,5 +1,5 @@
 <script lang="ts">
-	import VirtualList from '$lib/sveltes/virtualList.svelte';
+	import VirtualList from '$lib/components/custom/virtualList.svelte';
 	import type { track } from '$lib/types';
 	import { onMount } from 'svelte';
 

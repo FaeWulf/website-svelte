@@ -99,11 +99,13 @@
         &::after {
           position: absolute;
           content: '';
-          background: rgba(white, 0.2);
-          width: 40%;
+          background: rgba(white, 0.15);
+          width: 80%;
           height: 100%;
           top: 0;
           left: -120%;
+
+          mask-image: linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%);
 
           transform: skew(60deg);
         }
@@ -210,8 +212,8 @@
           left: 150%;
           opacity: 0.2;
 
-          transition: left 0.5s ease,
-          opacity 0.5s ease;
+          transition: left 1s ease,
+          opacity 1s ease;
         }
       }
 

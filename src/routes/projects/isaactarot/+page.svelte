@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Card from '$lib/sveltes/components/isaactarot/card.svelte';
-	import Book from '$lib/sveltes/components/isaactarot/book.svelte';
-	import RuneBag from '$lib/sveltes/components/isaactarot/rune_bag.svelte';
-	import Crystalball from '$lib/sveltes/components/isaactarot/crystalball.svelte';
-	import Rune from '$lib/sveltes/components/isaactarot/rune.svelte';
-	import Box from '$lib/sveltes/components/isaactarot/box.svelte';
-	import type { cardData, runeData } from '$lib/sveltes/components/isaactarot/type';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import Card from '$lib/components/isaactarot/card.svelte';
+	import Book from '$lib/components/isaactarot/book.svelte';
+	import RuneBag from '$lib/components/isaactarot/rune_bag.svelte';
+	import Crystalball from '$lib/components/isaactarot/crystalball.svelte';
+	import Rune from '$lib/components/isaactarot/rune.svelte';
+	import Box from '$lib/components/isaactarot/box.svelte';
+	import type { cardData, runeData } from '$lib/components/isaactarot/type';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	let cardList: cardData[] = [];
 	let runeList: runeData[] = [];

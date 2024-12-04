@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	//vvars declare
 	let input: string = "First line is for Item's name\nThis is line #1\n\nYou can skip for line #3\n&bNow create your own...";

@@ -2,12 +2,12 @@
 	import { onMount } from 'svelte';
 	import { apiURL, ufoBubble, mp_currentList, mp_id, mp_autoNext, mp_autoPlay } from '$lib/store';
 	import type { track } from '$lib/types';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
-	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
-	import Title from '$lib/sveltes/neonTitle.svelte';
-	import Screen from '$lib/sveltes/components/music/screen.svelte';
-	import MenuBar from '$lib/sveltes/components/music/menuBar.svelte';
+	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
+	import Title from '$lib/components/custom/neonTitle.svelte';
+	import Screen from '$lib/components/music/screen.svelte';
+	import MenuBar from '$lib/components/music/menuBar.svelte';
 	import { isMobile } from '$lib/utils';
 
 	//export let data;
@@ -44,7 +44,7 @@
 	$: mp_currentList.set(currentList)
 
 	onMount(async () => {
-		import('$lib/sveltes/components/music/playlist.svelte').then((module) => {
+		import('$lib/components/music/playlist.svelte').then((module) => {
 			lazyLoadPlaylist = module.default;
 		});
 

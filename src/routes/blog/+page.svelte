@@ -3,11 +3,11 @@
 	import { apiURL } from '$lib/store.js';
 	import { parseDiscordEmoji } from '$lib/utils.js';
 	import { onMount } from 'svelte';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
-	import Title from '$lib/sveltes/neonTitle.svelte';
-	import Post from '$lib/sveltes/components/blog/post.svelte';
-	import LoadingCircle from '$lib/sveltes/components/custom/LoadingCircle.svelte';
+	import Title from '$lib/components/custom/neonTitle.svelte';
+	import Post from '$lib/components/blog/post.svelte';
+	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 
 	export let data;
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import Bubble from '$lib/sveltes/ufo/bubble.svelte';
+	import Bubble from '$lib/components/layout/ufo/bubble.svelte';
 
 	export let toggleMovement = true;
 

@@ -14,10 +14,10 @@
 	import 'tippy.js/dist/border.css';
 	import '@splidejs/svelte-splide/css';
 
-	import Ufo from '$lib/sveltes/components/layout/ufo.svelte';
-	import Window from '$lib/sveltes/components/layout/window.svelte';
-	import Background from '$lib/sveltes/components/layout/background.svelte';
-	import Header from '$lib/sveltes/components/layout/header.svelte';
+	import Ufo from '$lib/components/layout/ufo/ufo.svelte';
+	import Window from '$lib/components/layout/window/window.svelte';
+	import Background from '$lib/components/layout/background.svelte';
+	import Header from '$lib/components/layout/header/header.svelte';
 
 	import { fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';

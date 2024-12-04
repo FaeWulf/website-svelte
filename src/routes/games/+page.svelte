@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Title from '$lib/sveltes/neonTitle.svelte';
+	import Title from '$lib/components/custom/neonTitle.svelte';
 	import GameTab from './gameTab.svelte';
 </script>
 

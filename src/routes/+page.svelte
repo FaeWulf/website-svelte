@@ -3,20 +3,20 @@
 	import { tooltip } from '$lib/utils';
 
 	//comps
-	import Logo from '$lib/sveltes/components/root/logo.svelte';
-	import Description from '$lib/sveltes/components/root/description.svelte';
-	import Title from '$lib/sveltes/components/root/title.svelte';
-	import Social from '$lib/sveltes/components/root/social.svelte';
+	import Logo from '$lib/components/root/logo.svelte';
+	import Description from '$lib/components/root/description.svelte';
+	import Title from '$lib/components/root/title.svelte';
+	import Social from '$lib/components/root/social.svelte';
 
 	//tabs
-	import Badges from '$lib/sveltes/components/root/badges.svelte';
-	import RecentTracks from '$lib/sveltes/components/root/recentTracks.svelte';
-	import RecentBlog from '$lib/sveltes/components/root/recentBlog.svelte';
-	import FortuneTeller from '$lib/sveltes/components/root/fortuneTeller.svelte';
+	import Badges from '$lib/components/root/badges.svelte';
+	import RecentTracks from '$lib/components/root/recentTracks.svelte';
+	import RecentBlog from '$lib/components/root/recentBlog.svelte';
+	import FortuneTeller from '$lib/components/root/fortuneTeller.svelte';
 
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
-	import MetaTags from '$lib/sveltes/components/custom/MetaTags.svelte';
+	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	const tabs: string[] = ['js-infotabs-skill', 'js-infotabs-epx', 'js-infotabs-workstation', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
 	let tab_index = 0;
