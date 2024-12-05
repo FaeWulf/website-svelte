@@ -22,7 +22,7 @@
 
 	export let data;
 
-	const tabs: string[] = ['js-infotabs-skill', 'js-infotabs-epx', 'js-infotabs-workstation', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
+	const tabs: string[] = ['js-infotabs-1', 'js-infotabs-2', 'js-infotabs-3', 'js-infotabs-4', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
 	let tab_index = 0;
 
 	onMount(async () => {

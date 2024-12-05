@@ -1,0 +1,477 @@
+[
+  {
+    "name": "🚀 Language",
+    "data": [
+      {
+        "name": "c",
+        "level": 4,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 52,
+          "height": 28,
+          "x": -313,
+          "y": -168
+        },
+        "color": "0073BC"
+      },
+      {
+        "name": "cPlusPlus",
+        "level": 4,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 72,
+          "height": 28,
+          "x": -313,
+          "y": -84
+        },
+        "color": "0073BC"
+      },
+      {
+        "name": "html",
+        "level": 3,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 88,
+          "height": 28,
+          "x": -88,
+          "y": -280
+        },
+        "color": "E34F26",
+        "preferred": true
+      },
+      {
+        "name": "css",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 77,
+          "height": 28,
+          "x": -313,
+          "y": -56
+        },
+        "color": "239120",
+        "preferred": true
+      },
+      {
+        "name": "java",
+        "level": 3,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 77,
+          "height": 28,
+          "x": -313,
+          "y": -28
+        },
+        "color": "ED8B00",
+        "preferred": true
+      },
+      {
+        "name": "javascript",
+        "level": 4,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 127,
+          "height": 28,
+          "x": -186,
+          "y": 0
+        },
+        "color": "F7DF1E",
+        "preferred": true
+      },
+      {
+        "name": "typescript",
+        "level": 4,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 127,
+          "height": 28,
+          "x": 0,
+          "y": -140
+        },
+        "color": "007ACC",
+        "preferred": true
+      },
+      {
+        "name": "python",
+        "level": 3,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 98,
+          "height": 28,
+          "x": 0,
+          "y": -224
+        },
+        "color": "307EB4"
+      }
+    ]
+  },
+  {
+    "name": "🌟 Experience with",
+    "data": [
+      {
+        "name": "git",
+        "level": 2,
+        "time": 3,
+        "url": "",
+        "sprite": {
+          "width": 68,
+          "height": 28,
+          "x": -313,
+          "y": -140
+        },
+        "color": "ee4f33"
+      },
+      {
+        "name": "nginx",
+        "level": 2,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 88,
+          "height": 28,
+          "x": 0,
+          "y": -280
+        },
+        "color": "009539"
+      },
+      {
+        "name": "markdown",
+        "level": 3,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 123,
+          "height": 28,
+          "x": -186,
+          "y": -28
+        },
+        "color": "",
+        "preferred": true
+      },
+      {
+        "name": "pnpm",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 81,
+          "height": 28,
+          "x": -313,
+          "y": 0
+        },
+        "color": "f49120"
+      },
+      {
+        "name": "vuejs",
+        "level": 2,
+        "time": 1,
+        "url": "",
+        "sprite": {
+          "width": 90,
+          "height": 28,
+          "x": -189,
+          "y": -252
+        },
+        "color": "4ebe8c"
+      },
+      {
+        "name": "sveltekit",
+        "level": 3,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 116,
+          "height": 28,
+          "x": -186,
+          "y": -112
+        },
+        "color": "fd3e00",
+        "preferred": true
+      },
+      {
+        "name": "svelte",
+        "level": 3,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 93,
+          "height": 28,
+          "x": -220,
+          "y": -168
+        },
+        "color": "ef403d",
+        "preferred": true
+      },
+      {
+        "name": "bun",
+        "level": 2,
+        "time": 1,
+        "url": "",
+        "sprite": {
+          "width": 72,
+          "height": 28,
+          "x": -313,
+          "y": -112
+        },
+        "color": "fdfdfd"
+      },
+      {
+        "name": "nodejs",
+        "level": 3,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 101,
+          "height": 28,
+          "x": -105,
+          "y": -196
+        },
+        "color": "6ca45e",
+        "preferred": true
+      },
+      {
+        "name": "jquery",
+        "level": 3,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 96,
+          "height": 28,
+          "x": 0,
+          "y": -252
+        },
+        "color": "0768ac"
+      },
+      {
+        "name": "expressjs",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 123,
+          "height": 28,
+          "x": -186,
+          "y": -56
+        },
+        "color": "476f81"
+      },
+      {
+        "name": "mongodb",
+        "level": 2,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 111,
+          "height": 28,
+          "x": 0,
+          "y": -168
+        },
+        "color": "4da84a"
+      },
+      {
+        "name": "sqlite",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 93,
+          "height": 28,
+          "x": -96,
+          "y": -252
+        },
+        "color": "4378a0"
+      },
+      {
+        "name": "mysql",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 88,
+          "height": 28,
+          "x": -176,
+          "y": -280
+        },
+        "color": "4378a0"
+      },
+      {
+        "name": "raspberrypi",
+        "level": 3,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 142,
+          "height": 28,
+          "x": 0,
+          "y": -56
+        },
+        "color": "c31a49"
+      }
+    ]
+  },
+  {
+    "name": "🔨 Software I use",
+    "data": [
+      {
+        "name": "intellij",
+        "level": 3,
+        "time": 1,
+        "url": "",
+        "sprite": {
+          "width": 138,
+          "height": 28,
+          "x": 0,
+          "y": -84
+        },
+        "color": "",
+        "preferred": true
+      },
+      {
+        "name": "webstorm",
+        "level": 3,
+        "time": 1,
+        "url": "",
+        "sprite": {
+          "width": 119,
+          "height": 28,
+          "x": -186,
+          "y": -84
+        },
+        "color": ""
+      },
+      {
+        "name": "obsidian",
+        "level": 3,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 112,
+          "height": 28,
+          "x": -186,
+          "y": -140
+        },
+        "color": "5843be",
+        "preferred": true
+      },
+      {
+        "name": "vscode",
+        "level": 3,
+        "time": 3,
+        "url": "",
+        "sprite": {
+          "width": 171,
+          "height": 28,
+          "x": 0,
+          "y": -28
+        },
+        "color": "0077d5",
+        "preferred": true
+      },
+      {
+        "name": "neovim",
+        "level": 2,
+        "time": 2.5,
+        "url": "",
+        "sprite": {
+          "width": 98,
+          "height": 28,
+          "x": -98,
+          "y": -224
+        },
+        "color": "56a042"
+      },
+      {
+        "name": "blender",
+        "level": 2,
+        "time": 1,
+        "url": "",
+        "sprite": {
+          "width": 105,
+          "height": 28,
+          "x": 0,
+          "y": -196
+        },
+        "color": "f3782a"
+      },
+      {
+        "name": "asperite",
+        "level": 1,
+        "time": 0.5,
+        "url": "",
+        "sprite": {
+          "width": 109,
+          "height": 28,
+          "x": -111,
+          "y": -168
+        },
+        "color": ""
+      },
+      {
+        "name": "adobe ai",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 186,
+          "height": 28,
+          "x": 0,
+          "y": 0
+        },
+        "color": "fd9900"
+      }
+    ]
+  },
+  {
+    "name": "💻 OS",
+    "data": [
+      {
+        "name": "ubuntu",
+        "level": 3,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 99,
+          "height": 28,
+          "x": -206,
+          "y": -196
+        },
+        "color": "e75320",
+        "preferred": true
+      },
+      {
+        "name": "fedora",
+        "level": 1,
+        "time": 0.5,
+        "url": "",
+        "sprite": {
+          "width": 97,
+          "height": 28,
+          "x": -196,
+          "y": -224
+        },
+        "color": "365597"
+      },
+      {
+        "name": "arch",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 127,
+          "height": 28,
+          "x": 0,
+          "y": -112
+        },
+        "color": "1792cf"
+      }
+    ]
+  }
+]

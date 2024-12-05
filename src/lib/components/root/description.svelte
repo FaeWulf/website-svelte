@@ -2,7 +2,8 @@
 	import { slide } from 'svelte/transition';
 	import { isMobile } from '$lib/utils';
 	import { onMount } from 'svelte';
-	import badges from '$lib/data/bagde.json';
+	import BadgeCategories from '$lib/data/badge.json';
+	import type { badgeInfo } from '$lib/types';
 
 	export let descriptionChanger = {
 		value: 0,
@@ -24,19 +25,14 @@
 	//list of all badges
 	let badgesText:  {color: string, name: string}[] = [];
 
-	badges.skill?.forEach(b => {
-		badgesText.push({
-			name: b.name,
-			color: b.color
+	BadgeCategories.forEach((category) => {
+		category.data?.forEach(b => {
+			badgesText.push({
+				name: b.name,
+				color: b.color
+			});
 		});
-	});
-
-	badges.epx?.forEach(b => {
-		badgesText.push({
-			name: b.name,
-			color: b.color
-		});
-	});
+	})
 
 	//elements for textLevel scroller
 	let levelScroll: HTMLElement;

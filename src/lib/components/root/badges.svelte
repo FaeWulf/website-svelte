@@ -1,8 +1,5 @@
 <script lang="ts">
-	import badges from '$lib/data/bagde.json';
-	import { tooltip } from '$lib/utils';
-	import { onMount } from 'svelte';
-	import { createSingleton } from 'tippy.js';
+	import categories from '$lib/data/badge.json';
 	import type { badgeInfo } from '$lib/types';
 
 	export let descriptionChanger: badgeInfo = {
@@ -20,56 +17,25 @@
 	}
 </script>
 
-<div class="badge-title" id="js-infotabs-skill">🚀 Languages</div>
-{#each badges.skill as skill (skill.name)}
-	<div class="badge-wrapper">
+{#each categories as category, index (category.name)}
+	<div class="badge-title" id="js-infotabs-{index+1}">{category.name}</div>
+	{#each category.data as badge (badge.name)}
+		<div class="badge-wrapper">
 		<img
-			on:mouseenter={() => sendChangeText(skill.level, skill.name, false, skill.time, skill.preferred)}
-			on:touchstart={() => setTimeout(() => sendChangeText(skill.level, skill.name, false, skill.time, skill.preferred), 10)}
+		on:mouseenter={() => sendChangeText(badge.level, badge.name, index !== 0 , badge.time, badge.preferred)}
+			on:touchstart={() => setTimeout(() => sendChangeText(badge.level, badge.name, index !== 0, badge.time, badge.preferred), 10)}
 			on:touchend={() => sendChangeText(0, '', false, 0, false)}
 			draggable="false"
 			class="badge-img"
 			src="/images/badges/css_sprites.png"
-			alt={skill.name}
-			style="width: {skill.sprite.width}px; height: {skill.sprite.height}px; object-position: {skill.sprite.x}px {skill.sprite.y}px;"
-		/>
-		{#if skill.preferred}
-			<img class="badge-star" src="/images/badges/star.png" alt="preferred" draggable="false">
-		{/if}
-	</div>
-{/each}
-<div class="badge-title" id="js-infotabs-epx">🌟 Experienced with</div>
-{#each badges.epx as epx (epx.name)}
-	<div class="badge-wrapper">
-		<img
-			class="badge-img"
-			draggable="false"
-			on:mouseenter={() => sendChangeText(epx.level, epx.name, true, epx.time, epx.preferred)}
-			on:touchstart={() => sendChangeText(epx.level, epx.name, true, epx.time, epx.preferred)}
-			on:touchend={() => sendChangeText(0, '', false, 0, false)}
-			src="/images/badges/css_sprites.png"
-			alt={epx.name}
-			style="width: {epx.sprite.width}px; height: {epx.sprite.height}px; object-position: {epx.sprite.x}px {epx.sprite.y}px;"
-		/>
-		{#if epx.preferred}
-			<img class="badge-star" src="/images/badges/star.png" alt="preferred" draggable="false">
-		{/if}
-	</div>
-{/each}
-<div class="badge-title" id="js-infotabs-workstation">💻 Work Station</div>
-{#each badges.env as envi (envi.name)}
-	<div class="badge-wrapper">
-		<img
-			draggable="false"
-			class="badge-img"
-			alt={envi.name}
-			src="/images/badges/css_sprites.png"
-			style="width: {envi.sprite.width}px; height: {envi.sprite.height}px; object-position: {envi.sprite.x}px {envi.sprite.y}px;"
-		/>
-		{#if envi.preferred}
-			<img class="badge-star" src="/images/badges/star.png" alt="preferred" draggable="false">
-		{/if}
-	</div>
+				alt={badge.name}
+				style="width: {badge.sprite.width}px; height: {badge.sprite.height}px; object-position: {badge.sprite.x}px {badge.sprite.y}px;"
+				/>
+				{#if badge.preferred}
+					<img class="badge-star" src="/images/badges/star.png" alt="preferred" draggable="false">
+				{/if}
+			</div>
+	{/each}
 {/each}
 <div class="badge-dummy" />
 
