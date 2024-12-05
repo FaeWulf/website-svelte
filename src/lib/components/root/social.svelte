@@ -100,10 +100,10 @@
     padding: 6px;
 
     border: 1px solid var(--color-border-0);
-    border-radius: 5px;
+    border-radius: 0.5rem;
 
     .content__legend-text {
-      color: rgb(var(--Text), 0.4);
+      color: rgb(var(--Subtext0), 0.6);
       padding-left: 5px;
       padding-right: 5px;
     }

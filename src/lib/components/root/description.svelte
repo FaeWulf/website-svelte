@@ -144,10 +144,6 @@
     margin-top: 5px;
     display: flex;
     gap: 5px;
-
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
 
   .description__level-list {
@@ -167,7 +163,7 @@
 
   .description--info {
 		font-weight: bold;
-		color: #fdfdfd;
+		color: rgb(var(--Text));
   }
 
 

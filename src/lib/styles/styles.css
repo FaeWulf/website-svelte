@@ -132,6 +132,11 @@ button:focus:not(:focus-visible) {
     background-color: rgb(var(--Overlay0));
     color: rgb(var(--Text));
     border: 1px solid rgba(var(--Text), 0.2);
+    filter: drop-shadow(3px 4px 5px #121212);
+}
+
+.tippy-box[data-theme~='catppuccin'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgb(var(--Overlay0));
 }
 
 .tippy-box[data-theme~='catppuccin-light'] {
@@ -142,11 +147,7 @@ button:focus:not(:focus-visible) {
 }
 
 .tippy-box[data-theme~='catppuccin-light'][data-placement^='top'] > .tippy-arrow::before {
-    border-top-color: rgb(var(--Overlay2));
-}
-
-.tippy-box[data-theme~='catppuccin'][data-placement^='top'] > .tippy-arrow::before {
-    border-top-color: rgb(var(--Overlay0));
+    border-top-color: rgb(var(--Overlay1));
 }
 
 .tippy-box[data-theme~='catppuccin-transparent'] {

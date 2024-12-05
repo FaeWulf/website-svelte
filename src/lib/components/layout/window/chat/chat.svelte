@@ -30,7 +30,7 @@
 		}
 
 		chatContent += `<div class="chat__content-message">
-						<div><span style="color: white; font-weight: bold">${clientName}</span> <span class="chat__content-timestamp">${timeAgo(Date.now())}</span></div>
+						<div><span style="color: rgb(var(--Subtext0)); font-weight: bold">${clientName}</span> <span class="chat__content-timestamp">${timeAgo(Date.now())}</span></div>
 						<div>${parseDiscordEmoji(input)}</div>
 						</div>`;
 		ws.send(
@@ -81,7 +81,11 @@
 
 				//if chat type
 				if (data.type == 'chat') {
-					const color = data.data.color ? data.data.color : 'white';
+
+					let color = data.data.color ? data.data.color : 'rgb(var(--Subtext0))';
+					if (color == 'white')
+						color = 'rgb(var(--Subtext0))';
+
 
 					chatContent += `<div class="chat__content-message">
 						<div><span style="color: ${color}; font-weight: bold">${data.data.name}</span> <span class="chat__content-timestamp">${timeAgo(Number(data.data.date))}</span></div>

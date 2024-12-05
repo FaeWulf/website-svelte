@@ -8,8 +8,6 @@
 	$: crewmatesWithAnimation = [];
 	let mounted = false;
 	onMount(() => {
-		console.log(innerHeight, innerWidth);
-
 		crewmatesWithAnimation = crewmates.map(crewmate => ({
 			...crewmate,
 			rotateSpeed: Math.random() * 30 + 10, // Rotation speed between 5s and 10s
