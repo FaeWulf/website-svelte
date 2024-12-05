@@ -5,7 +5,7 @@
 	let innerHeight: number, innerWidth: number;
 
 	// Generate random positions ensuring elements start and stay within the screen
-	$: crewmatesWithAnimation = [];
+	let crewmatesWithAnimation = [];
 	let mounted = false;
 	onMount(() => {
 		crewmatesWithAnimation = crewmates.map(crewmate => ({
