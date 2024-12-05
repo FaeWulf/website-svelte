@@ -7,5 +7,12 @@ interface track {
     fav: number;
 }
 
+interface badgeInfo {
+    value: number;
+    text: string;
+    learner: boolean;
+    time?: number;
+    favorite?: boolean;
+}
 
-export type { track }
+export type { track, badgeInfo };
