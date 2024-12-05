@@ -128,7 +128,7 @@
 			 class:ufo__img--leanRight={ufoLean === 1}
 			 bind:this={ufoSprite}
 	/>
-	<Bubble parent={ufoSprite}></Bubble>
+	<Bubble />
 </div>
 
 

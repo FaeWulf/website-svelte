@@ -5,7 +5,6 @@
 	import { ufoBubble } from '$lib/store';
 	import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
-	export let parent: HTMLElement;
 	let bubbleHTML: HTMLElement, ufoBoundingHTML: HTMLElement, bubbleArrowHTML: HTMLElement;
 	let storeContent = { message: '', timeout: 0 };
 
@@ -155,10 +154,6 @@
       padding: 8px;
       background: rgba(var(--Overlay0), 1);
       border-radius: 0.5rem;
-
-      &--clickable {
-        cursor: pointer;
-      }
     }
   }
 </style>

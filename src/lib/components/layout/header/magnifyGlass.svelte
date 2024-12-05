@@ -47,6 +47,8 @@
 
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="search" on:click={() => trigger()}>
 	<div class="search__icon">
 		<Search size={24} color="#a6da95" />
