@@ -7,6 +7,7 @@
 	import Description from '$lib/components/root/description.svelte';
 	import Title from '$lib/components/root/title.svelte';
 	import Social from '$lib/components/root/social.svelte';
+	import HintBar from '$lib/components/root/hintBar.svelte';
 
 	//tabs
 	import Badges from '$lib/components/root/badges.svelte';
@@ -17,15 +18,42 @@
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
+	import type { badgeInfo } from '$lib/types';
+
+	export let data;
 
 	const tabs: string[] = ['js-infotabs-skill', 'js-infotabs-epx', 'js-infotabs-workstation', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
 	let tab_index = 0;
 
 	onMount(async () => {
-		const greetings = ['Happy 2024!', 'Hello!', 'Greetings!'];
+
+		//hello day with state
+		const currentHour = new Date().getHours(); // Get current hour (0-23)
+		let dayState = '';
+		if (currentHour >= 5 && currentHour < 12) {
+			dayState = 'Morning';
+		} else if (currentHour >= 12 && currentHour < 18) {
+			dayState = 'Afternoon';
+		} else {
+			dayState = 'Night';
+		}
+
+		const greetings = ['Merry Xmas 2025!', 'Hello!', 'Greetings!', 'Good ' + dayState + '!'];
 		setTimeout(() => {
 			ufoBubble.set({ message: greetings[Math.floor(Math.random() * greetings.length)], timeout: 5000 });
 		}, 500);
+
+		const tourMessageTimer = setTimeout(() => {
+			if (data.url == '/')
+				ufoBubble.set({
+					message: `You can click 🔍 on the search bar to show the function of components.`,
+					timeout: 10_000
+				});
+		}, 10 * 1000);
+
+		return () => {
+			clearTimeout(tourMessageTimer);
+		};
 	});
 
 	//cycle through tabs, call function scrollIntoView
@@ -34,10 +62,12 @@
 		document.getElementById(tabs[tab_index])?.scrollIntoView({ behavior: 'smooth' });
 	}
 
-	let descriptionChanger = {
+	let descriptionChanger: badgeInfo = {
 		value: 0,
 		text: '',
-		learner: false
+		learner: false,
+		time: 0,
+		favorite: false
 	};
 
 	let titleChanger = '';
@@ -58,12 +88,15 @@
 <Logo />
 <Title bind:titleChanger />
 <Description bind:descriptionChanger />
-<div class="info-summary">
+<HintBar bind:descriptionChanger />
+<div id="js-info-summary" class="info-summary">
 	<div class="info-summary__wrapper"
 			 on:mouseleave={() => {
 					descriptionChanger.value = 0;
 					descriptionChanger.text = '';
 					descriptionChanger.learner = false;
+					descriptionChanger.time = 0;
+					descriptionChanger.favorite = false;
 				}}
 			 role="img"
 	>
@@ -83,7 +116,7 @@
 
 <style lang="scss">
   .info-summary {
-    margin-top: 25px;
+    margin-top: 5px;
     opacity: 0.6;
     transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
     //backdrop-filter: blur(2px);
@@ -126,6 +159,7 @@
     opacity: 0.6;
     //transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
+
     //remove ability to select text
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -136,6 +170,7 @@
       width: 35px;
       animation: scroll-button__icon__keyframe--animateArrow 0.6s ease-in infinite alternate;
       cursor: pointer;
+      stroke: black;
     }
   }
 

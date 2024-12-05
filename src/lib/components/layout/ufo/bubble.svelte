@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade, scale } from 'svelte/transition';
+	import { scale } from 'svelte/transition';
 
 	import { ufoBubble } from '$lib/store';
 	import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
@@ -8,10 +8,10 @@
 	export let parent: HTMLElement;
 	let bubbleHTML: HTMLElement, ufoBoundingHTML: HTMLElement, bubbleArrowHTML: HTMLElement;
 	let storeContent = { message: '', timeout: 0 };
-	const default_timeout = 1000 * 5;
 
-	$: message = '';
-	$: timeout = 0;
+	let message = '';
+	let timeout = 0;
+	const default_timeout = 1000 * 5;
 
 	//dynamics
 	$: toggleBubbleChat(storeContent);
@@ -22,8 +22,8 @@
 	});
 
 	function toggleBubbleChat(storeContent : {message: string; timeout: number}) {
-			message = storeContent.message;
-			timeout = storeContent.timeout ?? default_timeout;
+		message = storeContent.message;
+		timeout = storeContent.timeout ?? default_timeout;
 	}
 
 	const customBounceEasing = (t) => {
@@ -112,11 +112,11 @@
 <div class="bubble-chat__ufo-bounding" bind:this={ufoBoundingHTML} />
 
 {#if timeout > 0}
-	<div in:scale={{easing: customBounceEasing, duration: 400}} out:fade class="bubble-chat__message-box"
+	<div transition:scale={{easing: customBounceEasing, duration: 400}} class="bubble-chat__message-box"
 			 bind:this={bubbleHTML}>
 		<div class="bubble-chat__message-arrow" bind:this={bubbleArrowHTML} />
-		<div class="bubble-chat__message-text">
-			{message}
+		<div class="bubble-chat__message-text behavior--not-click-through">
+			{@html message}
 		</div>
 	</div>
 {/if}
@@ -147,7 +147,7 @@
       width: 15px;
       height: 15px;
       background: rgba(var(--Overlay0), 1);
-      border: 1px solid var(--color-border-secondary);
+      border: 1px solid var(--color-border-primary);
       z-index: -1;
     }
 
@@ -155,6 +155,10 @@
       padding: 8px;
       background: rgba(var(--Overlay0), 1);
       border-radius: 0.5rem;
+
+      &--clickable {
+        cursor: pointer;
+      }
     }
   }
 </style>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Search from '$lib/svgs/search.svelte';
 	import 'tippy.js/animations/perspective-subtle.css';
 	import HeaderDroplist from '$lib/components/layout/header/header_droplist.svelte';
 	import { onMount } from 'svelte';
@@ -12,6 +11,7 @@
 	import WindowIcon from '$lib/components/layout/header/button_window-icon.svelte';
 	import ButtonUfo from '$lib/components/layout/header/button_ufo.svelte';
 	import Bell from '$lib/components/layout/header/bell.svelte';
+	import MagnifyGlass from '$lib/components/layout/header/magnifyGlass.svelte';
 
 	export let windowToggle: boolean;
 	export let ufoToggleMovement: boolean;
@@ -85,7 +85,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <header>
 	<div class="nav-wrapper">
-		<div class="nav__toolbar">
+		<div id="js-toolbar" class="nav__toolbar">
 			<div
 				class="nav__toolbar-item"
 				use:tooltip={{
@@ -110,7 +110,7 @@
 				class="nav__toolbar-item"
 				id="js-ufo_home"
 				use:tooltip={{
-					content: 'Toggle UFO movement',
+					content: 'Toggle UFO follows cursor',
 					theme: 'catppuccin',
 					animation: 'scale'
 				}}
@@ -129,16 +129,13 @@
 			</div>
 		</div>
 		<nav>
-			<div class="nav__search-input" aria-label="Drop menu" bind:this={droplist}>
-				<div class="nav__search-icon">
-					<Search size={24} color="#a6da95" />
-				</div>
+			<div id="js-searchbar" class="nav__search-input" aria-label="Drop menu" bind:this={droplist}>
+				<MagnifyGlass />
 				{#key $page.url.pathname}
 					<span in:typewriter={{ speed: 2 }}>
 						{pathname}
 					</span>
 				{/key}
-
 				<span class="nav__search-input--blinking">_</span>
 			</div>
 
@@ -243,16 +240,6 @@
           animation: blink 1s step-end infinite;
         }
 
-        .nav__search-icon {
-          margin-right: 10px;
-          margin-left: 5px;
-          padding-right: 9px;
-          border-right: 2px solid rgba(var(--Text), 0.2);
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
       }
     }
   }

@@ -28,38 +28,47 @@
 	});
 </script>
 
-{#if statusValue}
-	<div
-		class="status"
-		use:tooltip={{
+<div id="js-status-dot" class="status-wrapper">
+	{#if statusValue}
+		<div
+			class="status"
+			use:tooltip={{
 			content: statusText[statusValue],
 			theme: 'catppuccin',
 			animation: 'scale'
 		}}
-		style="background: {statusColor[statusValue]};"
-	/>
-{:else}
-	<div
-		class="status"
-		use:tooltip={{
+			style="background: {statusColor[statusValue]};"
+		/>
+	{:else}
+		<div
+			class="status"
+			use:tooltip={{
 			content: statusText[0],
 			theme: 'catppuccin',
 			animation: 'scale'
 		}}
-		style="background: {statusColor[0]};"
-	/>
-{/if}
+			style="background: {statusColor[0]};"
+		/>
+	{/if}
+</div>
 
-<style>
-	.status {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		width: 10px;
-		height: 10px;
-		background: red;
-		border: 2px solid var(--color-border-1);
-		border-radius: 50%;
-		cursor: pointer;
-	}
+<style lang="scss">
+		.status-wrapper {
+				line-height: 0;
+				margin: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        .status {
+            width: 10px;
+            height: 10px;
+            background: red;
+            border: 2px solid var(--color-border-1);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+		}
+
+
 </style>

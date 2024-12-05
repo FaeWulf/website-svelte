@@ -125,7 +125,7 @@
 
 <div
 	tabindex="-1"
-	id="window"
+	id="js-window"
 	class="window"
 	class:window--hide="{!windowToggle}"
 	class:window__overlay--ontop="{windowOntop}"
