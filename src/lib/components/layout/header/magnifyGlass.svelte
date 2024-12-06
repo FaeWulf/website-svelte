@@ -26,7 +26,7 @@
 	];
 
 	function trigger() {
-		elements.forEach(element => {
+		elements.forEach((element) => {
 			let el = document.getElementById(element.id);
 			if (el) {
 				let infoTooltip = tooltip(el, {
@@ -44,7 +44,6 @@
 			}
 		});
 	}
-
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -70,7 +69,6 @@
       margin: 0;
       transition: transform 0.2s ease;
       line-height: 0;
-
     }
 
     &:hover {

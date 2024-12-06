@@ -44,7 +44,7 @@
 			theme: 'catppuccin-light',
 			animation: 'scale',
 			allowHTML: true,
-			maxWidth: 320,
+			maxWidth: 280,
 			hideOnClick: false
 		});
 	});
