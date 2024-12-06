@@ -6,6 +6,16 @@
 			url: '/'
 		},
 		{
+			name: 'Projects',
+			icon: '♿',
+			url: '/projects'
+		},
+		{
+			name: 'About',
+			icon: 'ℹ️',
+			url: '/about'
+		},
+		{
 			name: 'My Blog',
 			icon: '📜',
 			url: '/blog'
@@ -15,21 +25,11 @@
 			icon: '🎵',
 			url: '/music'
 		},
-		{
-			name: 'Projects',
-			icon: '♿',
-			url: '/projects'
-		},
 		// {
 		// 	name: 'Game library',
 		// 	icon: '🎮',
 		// 	url: '/games'
 		// },
-		{
-			name: 'About',
-			icon: 'ℹ️',
-			url: '/about'
-		},
 		{
 			name: 'Status page',
 			icon: '📊',
@@ -67,6 +67,8 @@
       -webkit-user-select: none;
       -ms-user-select: none;
       user-select: none;
+
+      font-weight: 500;
 
       &:hover {
         color: rgb(var(--Green));
