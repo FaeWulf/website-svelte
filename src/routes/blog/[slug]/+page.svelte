@@ -27,7 +27,7 @@
 />
 
 {#if postData}
-	<h1>{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>
+	<h1 class="post__title">{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>
 	<h3 class="post__edit-date">
 		Last edit on {new Date(postData.updatedAt).toLocaleDateString('en-us', {
 		weekday: 'long',
@@ -80,6 +80,10 @@
     box-shadow: 10px 10px 15px rgba(black, 0.2);
 
     z-index: 5;
+  }
+
+  .post__title {
+    font-weight: bold;
   }
 
   .post__edit-date {
