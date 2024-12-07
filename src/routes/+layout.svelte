@@ -19,6 +19,7 @@
 	import Background from '$lib/components/layout/background.svelte';
 	import Header from '$lib/components/layout/header/header.svelte';
 	import ScrollToTop from '$lib/components/layout/ScrollToTop.svelte';
+	import ImagePreviewContainer from '$lib/components/custom/ImagePreview/ImagePreviewContainer.svelte';
 
 	import { fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
@@ -70,6 +71,7 @@
 </div>
 
 <ScrollToTop />
+<ImagePreviewContainer />
 
 <!-- Analytics -->
 <svelte:head>

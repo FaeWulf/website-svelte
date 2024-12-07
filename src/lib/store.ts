@@ -5,6 +5,8 @@ import type { track } from '$lib/types';
 //theme
 export const theme = writable('dark');
 
+export const img_preview = writable('');
+
 export const ufoBubble = writable({
 	message: '',
 	timeout: 0
