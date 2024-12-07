@@ -1,0 +1,609 @@
+[
+  {
+    "name": "Recipes",
+    "entry": [
+      {
+        "name": "Bundle recipe",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/recipes/bundleRecipe.png?raw=true",
+        "description": null,
+        "version": [
+          "1.20.1",
+          "1.21.1"
+        ]
+      },
+      {
+        "name": "Suspicious Sand/Gravel",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/recipes/susSand.png?raw=true",
+        "description": null,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "General",
+    "entry": [
+      {
+        "name": "1 tick delay copper bulbs",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/1tickdelayBulbBlock-min.gif?raw=true",
+        "description": "Make copper bulb block delay 1 tick like in the snapshot.",
+        "disabled": true,
+        "version": [
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Backup Enchantments type",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/backup_enchantment.png?raw=true",
+        "description": "Add weaker versions of the four protection enchantments.\nThese provide extra protection with effects identical to the originals but at only 25% of their original power.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Bonemeal Coral fan/block",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/bonemealCoral.gif?raw=true",
+        "description": "Coral fans and Coral blocks can be bonemeal (only in warm ocean biome) to grow into coral reef",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Bonemeal Small flowers",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/bonemealSmallFlower.gif?raw=true",
+        "description": "Small flowers planted on mycelium (except wither rose and torch flower) can be bonemeal to make it spreads around.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Trophy banners",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/trophyBanner.png?raw=true",
+        "description": "Add some Ominous banner-like banners as trophy. Obtains via boss drops, Shepherd Villager's gifts (Hero of the Village),...",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Bundle enchantments",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/bundleEnchantment-min.gif?raw=true",
+        "description": "Add 2 enchantment for bundle (refill and capacity). If mod installed in client-side, slot indicator will calculate correctly.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Better enchanting table",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/expandedEnchatingTable.gif?raw=true",
+        "description": "Enchanting tables can accept bookshelves placed two blocks away and can see bookshelves through non-solid blocks.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Click through wall sign and item frame",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/clickThrough.gif?raw=true",
+        "description": "Allows right-clicking through signs and item frames (must holding item) if they are placed on chests, barrels, or shulker boxes (container blocks). Behave exactly like normally open container.<br/>\r\nShift to rotate item/edit sign.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Day counter",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/day_counter-min.gif?raw=true",
+        "description": "Day counter each day passed",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Deepslate generator",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/deepslate_generator-min.gif?raw=true",
+        "description": "Deepslate will replace stone and cobble stone if lava + water below y-level 8",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Invisible item frame",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/invisibleItemFrame.gif?raw=true",
+        "description": "Make item frames invisible by shift + right-clicking a non-dyed glass pane into them. They stay invisible when holding an item, otherwise, they emit particles as indicators.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Faster copper block oxidation",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/fasterOxidization.gif?raw=true",
+        "description": "Copper block and its variations oxidize faster in rain and water.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Faster minecart",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/fasterMinecart.gif?raw=true",
+        "description": "Rail placed on `Gravel` will make Minecart and its variants travel faster.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Glow berries gives glow effect",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/glow-berries_glow-min.gif?raw=true",
+        "description": null,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Shulker box label",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/shulkerLabel.gif?raw=true",
+        "description": "Shulker box will shows its custom name upon placed.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Usable empty suspicious sand/gravel",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/usableSusBlock.gif?raw=true",
+        "description": "You can add items (by shift right-click) into empty suspicious sand and gravel.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "No xp limit anvil",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/no_level_limit_anvil.png?raw=true",
+        "description": "Removes the \"Too Expensive\" limitation from anvils. In Client side will still displays the \"Too expensive\" label, but still functional. This issue will be fixed if mod also installed in Client-side",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "No farmland trampling",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/farmlandTrampling.gif?raw=true",
+        "description": "Farmland is not trampled if the entity (including players) is wearing Feather Falling boots or has the Slow Falling effect.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "XP from crops",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/xpCrops.gif?raw=true",
+        "description": "Gain xp from harvesting crops.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Sleep without set respawn point",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/skipSetSpawnPoint.gif?raw=true",
+        "description": "Sneak and right-click a bed to sleep without changing your respawn point.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Torch lights target on fire",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/torch_fire_attack-min.gif?raw=true",
+        "description": "If any entity holding torch while holding a torch, soul torch; target will be set on fire.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Weather not skipped by sleeping",
+        "img": null,
+        "description": "<br>Sleeping doesn't clear weather.<br>RAIN_ONLY will keep rain only.<br>ALL_WEATHER will keep rain and thunder (this mode will prevent you from sleeping while thundering)",
+        "disabled": true,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Washing filled maps",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/washingFilledmap.gif?raw=true",
+        "description": "Clean filled maps using cauldron.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Sneaking sweet berry",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/sneakingSweetBerry.gif?raw=true",
+        "description": "Sneaking through sweet berry bushes.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Pants protect from sweet berry",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/sneakingSweetBerry.gif?raw=true",
+        "description": "Wearing pants protects you from sweet berry bush damage.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Faster glass/glowstone mining",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/glassblockMining.gif?raw=true",
+        "description": "Pickaxes mine glass-related blocks and glowstone faster.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "4 element painting",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/elementPaintings.png?raw=true",
+        "description": "4 Element 2x2 paintings can now be placed in survival mode.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Wet sponge dries in warm biomes",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/QoL/wetsponge_dry_warmbiome-min.gif?raw=true",
+        "description": "Wet sponge placed in warm biome will eventually dry out",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Item Tweaks",
+    "entry": [
+      {
+        "name": "Bundle can place block",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/bundlePlaceBlocks-min.gif?raw=true",
+        "description": "Switch to place mode by holding bundle and shift-leftclick to the ground.\r\nThen you can place block that inside the bundle.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Hoe can harvest multiple crops",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/AutoHarvest.gif?raw=true",
+        "description": "Hoe can harvest multiple crops. Default is 3x3, diamond and netherite gives 5x5.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Mace can rotate blocks",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/maceRotateBlocks-min.gif?raw=true",
+        "description": "Use mace (sneaking + right-click) to rotate directional blocks if possible.",
+        "version": [
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Shear defuses TNT",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/shearDefuseTNT.gif?raw=true",
+        "description": "Shears can be used on primed TNT to give a chance to defuse it.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Shear pickpocket Villager",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/pickpocketVillager.gif?raw=true",
+        "description": "Pickpocket villager using `Shear` while `sneaking`.\r\nAttempting to pickpocket from the front has a high chance of making them angry; reduce this risk by pickpocketing from behind, or completely nullify it with an invisibility potion.\r\n Pickpocketing a villager has a chance to reset their profession.\r\n The higher the profession level, the lower the chance of it resetting.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Shear prevents plants grow",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/shearPreventPlantGrow.gif?raw=true",
+        "description": "Shear can be used on `Saplings`, `Bamboo`, `Vine` and `Sugar cane` to prevent it from growing.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Spyglass \"What is that?\"",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/spyglassWhatIsThat-min.gif?raw=true",
+        "description": "See additional block/entity information (noteblock, trailspawner cooldown, redstone power, xp stored inside furnace,...) with a Spyglass, default radius is 5 blocks, zoom with Spyglass will extend to 32 blocks",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Slime chunk detector",
+        "img": null,
+        "description": "Holding a `Slime Ball`, `Slime Block`, or items with the `diversity:slime_detector` tag will emit particles and sound when in a slime chunk, with a 10% chance while walking/running and 70% chance when sneaking.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Trident can call thunderstorm",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/trident_call_thunderstorm-min.gif?raw=true",
+        "description": "If standing at max y-level and throw a channeling trident (with >50% durability) up to the sky\r\n Thunder storm will be summoned, in return trident will lose channeling and all of durability (will not break)",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Clock shows time",
+        "img": null,
+        "description": "Use the clock to show the current world's time.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Clock check Villager schedule",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/clockCheckSchedule-min.gif?raw=true",
+        "description": "Check villager work schedule by holding Clock in hand and right-click any type of workstation block.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Waxed blocks detector",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/item/waxBlockIndicator-min.gif?raw=true",
+        "description": "Waxed copper blocks will emit particles if holding a spyglass while sneaking.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mob Tweaks",
+    "entry": [
+      {
+        "name": "9 lives cat",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/9_lives_cat-min.gif?raw=true",
+        "description": "Cat has 9 lives",
+        "disabled": true,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Silent nametag",
+        "img": null,
+        "description": "Nametag contains 'silent' 'shutup' will make mobs silent",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Baby nametag",
+        "img": null,
+        "description": "Nametag contains 'baby' will force baby animals never grow up",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Brushable parrot/chicken",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/brushChickenParrot.gif?raw=true",
+        "description": "Brushing parrots or chickens will drop feathers.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Explosive sniffer",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/ExplodeSniffer.gif?raw=true",
+        "description": "Right-click powder (gun powder, blaze powder, sugar, redstone, glowstone dust) to Sniffer will make it sniffs and...<br/>\r\n\"To teach kids never to sniff something unknown.\"<br/>\r\n- Faewulf",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Goat drops wool and mutton",
+        "img": null,
+        "description": "Goat drops wool and mutton when killed.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Sniffer on moss block",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/snifferMossBlock.gif?raw=true",
+        "description": "Sniffer will drops spores blossom/Small dripleaf when sniffed on moss blocks.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Pat your pet",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/patYourpets.gif?raw=true",
+        "description": "Interact with your pets via shift + right-click (wolf, cat, horse, parrot) to pat them.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Fox bury items",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/foxBuryItems.gif?raw=true",
+        "description": "Foxes can bury items in sand or gravel.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Smaller bees",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/smallerBee.png?raw=true",
+        "description": "Bees are now half their default size.",
+        "version": [
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Random size fish/squid",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/randomSizeFishes.png?raw=true",
+        "description": "Fish and squid now come in random sizes.",
+        "version": [
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Piglin and golden trimmed armor",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/piglinGoldenTrim-min.gif?raw=true",
+        "description": "Piglins treat golden trimmed armor as golden armor.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Tamed horse/donkey/mule no wandering",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/noWanderingTamedHorse.gif?raw=true",
+        "description": "Tamed animals wearing saddles won't move around.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Horse/mule/donkey in boats",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/horseSitOnBoat.gif?raw=true",
+        "description": "Horses, donkeys, and mules can fit in boats!",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Egg on haybale auto hatch after despawn",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/eggOnGroundTryHatch-min.gif?raw=true",
+        "description": "Chicken eggs on haybale will try to hatch after it despawned.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Rabbit can breed after eat carrot crops.",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/rabbitAutoBreedWithCarrotCrops-min.gif?raw=true",
+        "description": null,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Snow Golem produces Powder snow.",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/entity/snowGolemGivesPowderSnow.gif?raw=true",
+        "description": null,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Wandering trader announcer",
+        "img": null,
+        "description": "Send a message to player when wandering trader appears.",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Commands",
+    "entry": [
+      {
+        "name": "/emote",
+        "img": null,
+        "description": "Perform sound like meow, purr, purroew, and woof in chat",
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cursed",
+    "entry": [
+      {
+        "name": "Hydrophobic elytra",
+        "img": "https://github.com/FaeWulf/public-imgs/blob/main/mods/Diversity/cursed/hydrophobic_elytra-min.gif?raw=true",
+        "description": "Elytra can't be use in rain, or in water.",
+        "disabled": true,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "End stone is cheese",
+        "img": null,
+        "description": "you can eat end stone :)",
+        "disabled": true,
+        "version": [
+          "1.21.x"
+        ]
+      },
+      {
+        "name": "Reverse phantom spawn condition",
+        "img": null,
+        "description": "Phantom will spawn if the player continuously sleeps skipping the night.",
+        "disabled": true,
+        "version": [
+          "1.20.1",
+          "1.21.x"
+        ]
+      }
+    ]
+  }
+]

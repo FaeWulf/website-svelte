@@ -84,7 +84,7 @@
   {
     "name": "Diversity",
     "description": "Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience. From quality of life improvements to new mob behaviors and random sh*t, this mod offers a little bit of everything. The mod is designed to work on server-side only installations as well.",
-    "path": "https://modrinth.com/mod/faewufs-diversity",
+    "path": "/diversity",
     "tags": [
       "java",
       "Multiloader",

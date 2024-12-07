@@ -45,6 +45,7 @@
     "@types/ws": "^8.5.10",
     "lucide-svelte": "^0.354.0",
     "pixi.js": "^7.3.1",
+    "snarkdown": "^2.0.0",
     "svelte-adapter-bun": "^0.5.2",
     "svelte-meta-tags": "3.1.4",
     "tippy.js": "^6.3.7",
