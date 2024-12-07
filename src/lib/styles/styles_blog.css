@@ -20,22 +20,22 @@
 }
 
 #blog-content table {
-    border: 1px solid rgb(var(--Overlay0));
+    border: 1px solid rgb(var(--Subtext0));
     border-collapse: collapse;
 }
 
 #blog-content table td {
-    border: 1px solid rgb(var(--Overlay0));
+    border: 1px solid rgb(var(--Subtext0));
     padding: 8px;
 }
 
 #blog-content table th {
-    border: 1px solid rgb(var(--Overlay0));
+    border: 1px solid rgb(var(--Subtext0));
     padding: 8px;
 }
 
 #blog-content table tr:nth-child(even) {
-    background-color: rgb(var(--Surface0));
+    background-color: rgb(var(--Overlay2));
 }
 
 #blog-content table th {
@@ -74,7 +74,7 @@
     padding: 0.5em;
     background: rgb(var(--Overlay1));
     color: rgb(var(--Text));
-    border: 1px solid rgb(var(--Overlay0));
+    border: 1px solid var(--color-border-0);
     border-radius: 4px;
     -webkit-text-size-adjust: none;
 }
