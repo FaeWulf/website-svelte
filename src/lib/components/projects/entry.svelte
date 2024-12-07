@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ExternalLink } from 'lucide-svelte';
+	import ImagePreview from '$lib/components/custom/ImagePreview/ImagePreview.svelte';
 
 	export let name: string = '';
 	export let description: string = '';
@@ -15,8 +16,10 @@
 	<div class="entry">
 		<div class="entry-wrapper">
 			<div class="entry__preview-wrapper">
-				<img class="entry__preview-img" src="{previewImg}" alt="{name} preview" />
-				<div class="entry__preview-shadow-overlay" />
+				<ImagePreview>
+					<img class="entry__preview-img" src="{previewImg}" alt="{name} preview" />
+				</ImagePreview>
+				<div class="entry__preview-shadow-overlay behavior--click-through" />
 			</div>
 			<div class="entry__description">
 				<h2 class="entry__description-title">{name}</h2>
