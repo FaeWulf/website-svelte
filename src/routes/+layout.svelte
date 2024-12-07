@@ -18,6 +18,7 @@
 	import Window from '$lib/components/layout/window/window.svelte';
 	import Background from '$lib/components/layout/background.svelte';
 	import Header from '$lib/components/layout/header/header.svelte';
+	import ScrollToTop from '$lib/components/layout/ScrollToTop.svelte';
 
 	import { fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
@@ -67,6 +68,8 @@
 		</p>
 	</footer>
 </div>
+
+<ScrollToTop />
 
 <!-- Analytics -->
 <svelte:head>
