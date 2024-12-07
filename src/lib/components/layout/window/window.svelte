@@ -124,7 +124,7 @@
 </script>
 
 <div
-	tabindex="-1"
+	tabindex="0"
 	id="js-window"
 	class="window"
 	class:window--hide="{!windowToggle}"
@@ -138,28 +138,29 @@
 		<div class="window__tab">
 			{#each totalTabs as tab}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div class="window__tab-item" class:window__tab-item--selected="{selectTab === tab.id}"
+				<button class="behavior--reset-button window__tab-item"
+								class:window__tab-item--selected="{selectTab === tab.id}"
 						 on:click={() => onClickTab(tab.id)}>
-					<div class="window__tab-item--name"> {tab.name}</div>
+					<span class="window__tab-item--name"> {tab.name}</span>
 					{#if selectTab === tab.id}
 						<div class="window__tab-item__dummy" />
 					{/if}
-					<div class="window__notification" class:window_notification--show="{tabsNotification[tab.id]}"></div>
-				</div>
+					<span class="window__notification" class:window_notification--show="{tabsNotification[tab.id]}"></span>
+				</button>
 			{/each}
 		</div>
 		<div class="window__title-bar--toggle">
-			<button class="window__button" on:click={onToggleButtonClick}>-</button>
+			<button class="window__button" aria-label="Close window" on:click={onToggleButtonClick}>-</button>
 		</div>
 	</div>
 	<div class="window__content">
-		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 0}">
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 0}" tabindex="0">
 			<Bonsai />
 		</div>
-		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 1}">
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 1}" tabindex="0">
 			<Console />
 		</div>
-		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 2}">
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 2}" tabindex="0">
 			{#if $app3rd === 'boids'}
 				<Controller />
 			{/if}
@@ -169,7 +170,7 @@
 				</div>
 			{/if}
 		</div>
-		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 3}">
+		<div class="window__content--unfocus" class:window__tab-item--selected="{selectTab === 3}" tabindex="0">
 			<Chat />
 		</div>
 	</div>
@@ -259,6 +260,7 @@
 
           line-height: 0;
 
+          &:focus,
           &:hover {
             opacity: 0.5;
           }
@@ -305,7 +307,7 @@
           justify-content: center;
           align-items: center;
 
-          > div.window__tab-item--name {
+          > .window__tab-item--name {
             overflow: hidden;
             box-sizing: border-box;
             padding-left: 5px;

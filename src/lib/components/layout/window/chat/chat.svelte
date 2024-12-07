@@ -133,7 +133,8 @@
 		<div class="content">{@html chatContent}</div>
 	</div>
 	<div class="chat__button-wrapper">
-		<textarea class="chat__text-input" rows="1" bind:value={input} on:keydown={onkeydown_input_chat} />
+		<textarea alt="Chat input here" class="chat__text-input" rows="1" bind:value={input}
+							on:keydown={onkeydown_input_chat} />
 		<button class="chat__button-send" on:click={() => sendMessage()}>Send</button>
 	</div>
 </div>
@@ -200,6 +201,10 @@
         border: 1px solid var(--color-border-0);
         background-color: rgba(var(--Overlay2), 0.2);
         color: rgb(var(--Text));
+
+        &:focus {
+          border: 1px solid var(--color-border-primary);
+        }
       }
 
       .chat__button-send {

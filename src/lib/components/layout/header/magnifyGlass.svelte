@@ -46,13 +46,11 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="search" on:click={() => trigger()}>
-	<div class="search__icon">
+<button class="behavior--reset-button search" aria-label="Magnify button" on:click={() => trigger()}>
+	<span class="search__icon">
 		<Search size={24} color="#a6da95" />
-	</div>
-</div>
+	</span>
+</button>
 
 <style lang="scss">
   .search {
@@ -71,6 +69,7 @@
       line-height: 0;
     }
 
+    &:focus,
     &:hover {
       .search__icon {
         transform: scale(1.2);

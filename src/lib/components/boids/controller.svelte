@@ -49,7 +49,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="main__content-wrapper">
+<div class="main__content-wrapper" tabindex="0">
 	<button on:click={() => S_boidResetSignal.set(!$S_boidResetSignal)}>Reset</button>
 	<div class="component">
 		<label for="boids count">Boids: {boidsCount}</label>

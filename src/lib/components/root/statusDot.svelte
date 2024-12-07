@@ -31,16 +31,22 @@
 <div id="js-status-dot" class="status-wrapper">
 	{#if statusValue}
 		<div
+			tabindex="0"
+			aria-label="{statusText[statusValue]}"
+			role="status"
 			class="status"
 			use:tooltip={{
 			content: statusText[statusValue],
 			theme: 'catppuccin',
-			animation: 'scale'
+			animation: 'scale',
 		}}
 			style="background: {statusColor[statusValue]};"
 		/>
 	{:else}
 		<div
+			tabindex="0"
+			aria-label="{statusText[statusValue]}"
+			role="status"
 			class="status"
 			use:tooltip={{
 			content: statusText[0],

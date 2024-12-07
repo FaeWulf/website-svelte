@@ -22,13 +22,18 @@
 	{#each category.data as badge (badge.name)}
 		<div class="badge-wrapper">
 		<img
-		on:mouseenter={() => sendChangeText(badge.level, badge.name, index !== 0 , badge.time, badge.preferred)}
+			tabindex="0"
+			role="img"
+			on:mouseenter={() => sendChangeText(badge.level, badge.name, index !== 0 , badge.time, badge.preferred)}
+			on:focusin={() => sendChangeText(badge.level, badge.name, index !== 0 , badge.time, badge.preferred)}
 			on:touchstart={() => setTimeout(() => sendChangeText(badge.level, badge.name, index !== 0, badge.time, badge.preferred), 10)}
 			on:touchend={() => sendChangeText(0, '', false, 0, false)}
+			on:focusout={() => sendChangeText(0, '', false, 0, false)}
 			draggable="false"
 			class="badge-img"
 			src="/images/badges/css_sprites.png"
-				alt={badge.name}
+			aria-label="{badge.name}"
+			alt={badge.name}
 				style="width: {badge.sprite.width}px; height: {badge.sprite.height}px; object-position: {badge.sprite.x}px {badge.sprite.y}px;"
 				/>
 				{#if badge.preferred}

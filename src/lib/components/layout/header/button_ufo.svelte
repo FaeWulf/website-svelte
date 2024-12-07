@@ -1,13 +1,20 @@
 <script lang="ts">
+	import { tooltip } from '$lib/utils';
+
 	export let toggle = false;
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="toggle-button"
-		 on:click={() => {
+<button
+	class="behavior--reset-button toggle-button"
+	aria-label="Ufo's movement toggle button"
+	on:click={() => {
 		toggle = !toggle;
 	}}
+	use:tooltip={{
+					content: 'Toggle UFO follows cursor',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
 >
 	{#if toggle}
 		<svg
@@ -42,7 +49,7 @@
 			/>
 		</svg>
 	{/if}
-</div>
+</button>
 
 <style lang="scss">
   .toggle-button {

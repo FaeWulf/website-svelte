@@ -20,3 +20,16 @@
   /* Non-prefixed version, currently
                                    supported by Chrome, Edge, Opera and Firefox */
 }
+
+button.behavior--reset-button {
+  display: inline-block; /* Makes it behave like a block or inline element */
+  cursor: pointer; /* Ensures it still looks interactive */
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}

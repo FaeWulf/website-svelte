@@ -1,21 +1,27 @@
 <script lang="ts">
 	export let toggle = false;
 	import { Volume2, VolumeX } from 'lucide-svelte';
+	import { tooltip } from '$lib/utils';
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="toggle-button"
+<button
+	class="behavior--reset-button toggle-button"
+	aria-label="Volume button"
 		 on:click={() => {
 		toggle = !toggle;
 	}}
+	use:tooltip={{
+					content: 'Toggle mysterious sound',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
 >
 	{#if toggle}
 		<Volume2 />
 	{:else}
 		<VolumeX />
 	{/if}
-</div>
+</button>
 
 <style lang="scss">
   .toggle-button {

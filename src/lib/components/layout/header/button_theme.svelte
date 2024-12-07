@@ -4,6 +4,7 @@
 	import { Moon, Sun } from 'lucide-svelte';
 	import { theme } from '$lib/store';
 	import { onMount } from 'svelte';
+	import { tooltip } from '$lib/utils';
 
 	let darkMode = true;
 
@@ -31,10 +32,9 @@
 
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-	class="toggle-button"
+<button
+	class="behavior--reset-button toggle-button"
+	aria-label="Theme switch button"
 	on:click={() => {
 		darkMode = !darkMode;
 
@@ -45,6 +45,11 @@
 
 		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
 	}}
+	use:tooltip={{
+					content: 'Chagne theme',
+					theme: 'catppuccin',
+					animation: 'scale'
+				}}
 >
 	{#if darkMode}
 		<div class="toggle-button__icon" in:scale={{ duration: 200, easing: quintOut }}
@@ -57,7 +62,7 @@
 			<Sun />
 		</div>
 	{/if}
-</div>
+</button>
 
 <style lang="scss">
   .toggle-button {

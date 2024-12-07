@@ -20,6 +20,7 @@
 		on:click={scrollToTop}
 		class="goto-top-button"
 		title="Go to top"
+		aria-label="Scroll to top"
 		use:tooltip={{
 			theme: 'catpuccin-light'
 		}}>

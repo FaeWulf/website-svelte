@@ -4,8 +4,6 @@
 	// Function to open fullscreen preview
 	const openFullscreen = (event) => {
 		img_preview.set(event.target.src);
-
-		console.log('lmao');
 	};
 </script>
 

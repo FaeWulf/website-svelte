@@ -1,6 +1,7 @@
 <script lang="ts">
 	//libs
 	import { tooltip } from '$lib/utils';
+	import { ChevronsDown } from 'lucide-svelte';
 
 	//comps
 	import Logo from '$lib/components/root/logo.svelte';
@@ -19,6 +20,7 @@
 	import { onMount } from 'svelte';
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import type { badgeInfo } from '$lib/types';
+
 
 	export let data;
 
@@ -106,12 +108,12 @@
 		<FortuneTeller />
 	</div>
 </div>
-<div class="scroll-button" use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-	<img class="scroll-button__icon" draggable="false" src="/svgs/double_down_arrow.svg" alt="down arrow"
-			 on:click={nextTab} />
-</div>
+<button class="behavior--reset-button scroll-button"
+				use:tooltip={{ theme: 'catppuccin', animation: 'scale', content: 'scroll...' }}
+				on:click={nextTab}
+>
+	<ChevronsDown size={35} />
+</button>
 <Social bind:titleChanger />
 
 <style lang="scss">
@@ -166,12 +168,8 @@
     -ms-user-select: none;
     user-select: none;
 
-    .scroll-button__icon {
-      width: 35px;
-      animation: scroll-button__icon__keyframe--animateArrow 0.6s ease-in infinite alternate;
-      cursor: pointer;
-      stroke: black;
-    }
+    animation: scroll-button__icon__keyframe--animateArrow 0.6s ease-in infinite alternate;
+    color: rgb(var(--Text), 0.8);
   }
 
   @keyframes scroll-button__icon__keyframe--animateArrow {

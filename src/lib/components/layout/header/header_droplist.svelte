@@ -43,7 +43,7 @@
 	];
 </script>
 
-<div id="dropDownList" class="nav-dropdown">
+<div id="dropDownList" class="nav-dropdown" tabindex="0">
 	{#each pages as page (page.name)}
 		<a class="nav-dropdown__item" href={page.url} data-sveltekit-preload-code="tap"
 			 data-sveltekit-preload-data="tap">{page.icon}| &nbsp;{page.name}</a>

@@ -319,6 +319,7 @@
 					height: 100%;
 					//background-color: #f9efd6;
 					background-color: #e0d7c0;
+					color: black;
 					border-radius: 5px;
 					//border: 10px solid #833e2a;
 					border: 10px solid #461709;

@@ -52,10 +52,12 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="icon" class:icon--active={!clicked} on:click={() => trigger()} on:pointerenter={() => trigger()}
+<button class="behavior--reset-button icon" class:icon--active={!clicked} on:click={() => trigger()}
+				aria-label="hold to see my announcement"
+				on:pointerenter={() => trigger()}
 		 bind:this={bell}>
 	<Bell />
-</div>
+</button>
 
 <style lang="scss">
   .icon {

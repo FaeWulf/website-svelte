@@ -112,7 +112,9 @@
       }
     }
 
-    &:hover {
+    &:hover,
+    &:focus,
+    {
       .post__wrapper--highlight {
         width: 100%;
       }

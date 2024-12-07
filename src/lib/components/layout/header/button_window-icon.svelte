@@ -1,20 +1,26 @@
 <script lang="ts">
-	export let windowToggle: boolean;
+	import { tooltip } from '$lib/utils';
 	import { AppWindow } from 'lucide-svelte';
+
+	export let windowToggle: boolean;
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-	class="toggle-button"
+<button
+	class="behavior--reset-button toggle-button"
+	aria-label="window toggle button"
 	on:click={() => {
 		windowToggle = !windowToggle;
 	}}
+	use:tooltip={{
+	content: 'Toggle window tab',
+	theme: 'catppuccin',
+	animation: 'scale'
+}}
 	class:toggle-button--off={!windowToggle}
 	class:toggle-button--on={windowToggle}
 >
 	<AppWindow />
-</div>
+</button>
 
 <style lang="scss">
   .toggle-button {

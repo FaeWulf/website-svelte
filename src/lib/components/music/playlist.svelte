@@ -67,11 +67,9 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
 <VirtualList items={list} let:item bind:scrollToIdx>
-	<div
-		class="track"
+	<button
+		class="behavior--reset-button track"
 		class:track--active={selectedItem === item.data.ID}
 		on:click={() => {
 			id = item.data.ID;
@@ -102,15 +100,17 @@
 		{#if selectedItem === item.data.ID}
 			<div class="track__playing-indicator">➤</div>
 		{/if}
-	</div>
+	</button>
 </VirtualList>
 
 <style lang="scss">
   .track {
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    text-align: left;
 
     margin-bottom: 10px;
 
@@ -127,6 +127,7 @@
 
     cursor: pointer;
 
+    &:focus,
     &:hover,
     &--active {
       background: rgb(var(--Overlay2));

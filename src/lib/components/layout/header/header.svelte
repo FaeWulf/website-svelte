@@ -50,7 +50,8 @@
 				interactive: true,
 				arrow: false,
 				content: template,
-				trigger: 'click'
+				trigger: 'click focus',
+				appendTo: 'parent'
 			});
 		} else {
 			tooltip(droplist, {
@@ -62,7 +63,8 @@
 				interactive: true,
 				arrow: false,
 				content: template,
-				trigger: 'mouseenter click'
+				trigger: 'mouseenter click focus',
+				appendTo: 'parent'
 			});
 		}
 	});
@@ -86,50 +88,23 @@
 <header>
 	<div class="nav-wrapper">
 		<div id="js-toolbar" class="nav__toolbar">
-			<div
-				class="nav__toolbar-item"
-				use:tooltip={{
-					content: 'Toggle mysterious sound',
-					theme: 'catppuccin',
-					animation: 'scale'
-				}}
-			>
+			<div class="nav__toolbar-item">
 				<Volume bind:toggle={volumeToggle} />
 			</div>
-			<div
-				class="nav__toolbar-item"
-				use:tooltip={{
-					content: 'Chagne theme',
-					theme: 'catppuccin',
-					animation: 'scale'
-				}}
-			>
+			<div class="nav__toolbar-item">
 				<Theme />
 			</div>
-			<div
-				class="nav__toolbar-item"
-				id="js-ufo_home"
-				use:tooltip={{
-					content: 'Toggle UFO follows cursor',
-					theme: 'catppuccin',
-					animation: 'scale'
-				}}
-			>
+			<div class="nav__toolbar-item" id="js-ufo_home">
 				<ButtonUfo bind:toggle={ufoToggleMovement} />
 			</div>
-			<div
-				class="nav__toolbar-item"
-				use:tooltip={{
-					content: 'Toggle window tab',
-					theme: 'catppuccin',
-					animation: 'scale'
-				}}
-			>
+			<div class="nav__toolbar-item">
 				<WindowIcon bind:windowToggle />
 			</div>
 		</div>
 		<nav>
-			<div id="js-searchbar" class="nav__search-input" aria-label="Drop menu" bind:this={droplist}>
+			<button id="js-searchbar" class="behavior--reset-button nav__search-input" aria-label="Navigation menu"
+							aria-expanded="false"
+							bind:this={droplist}>
 				<MagnifyGlass />
 				{#key $page.url.pathname}
 					<span in:typewriter={{ speed: 2 }}>
@@ -137,8 +112,7 @@
 					</span>
 				{/key}
 				<span class="nav__search-input--blinking">_</span>
-			</div>
-
+			</button>
 			<Bell />
 		</nav>
 	</div>

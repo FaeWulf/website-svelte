@@ -13,7 +13,7 @@
 </script>
 
 {#if !archived}
-	<div class="entry">
+	<div class="entry" tabindex="0">
 		<div class="entry-wrapper">
 			<div class="entry__preview-wrapper">
 				<ImagePreview>

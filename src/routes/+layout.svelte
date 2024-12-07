@@ -47,7 +47,6 @@
 	<Header bind:windowToggle bind:ufoToggleMovement />
 	<Ufo bind:toggleMovement={ufoToggleMovement} />
 
-	<Window bind:windowToggle bind:windowOntop />
 
 	<a class="app__support-banner-link" href="/support">
 		<img class="app__support-banner-image" draggable="false" src="/images/badges/support_button_red.webp"
@@ -68,6 +67,8 @@
 			<a href="https://hotlinewebring.club/faewulf/next">→</a>
 		</p>
 	</footer>
+
+	<Window bind:windowToggle bind:windowOntop />
 </div>
 
 <ScrollToTop />

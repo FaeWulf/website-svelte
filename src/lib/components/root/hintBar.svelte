@@ -77,6 +77,8 @@
 					 on:mouseleave={() => ChoseLevel = 0}
 					 use:tooltip={{ instancesHolder: tippyInstances }}
 					 title="Level: <span class='{colorLevel[index]}'>{level.name}</span><br/> {level.description}"
+					 tabindex="0"
+					 role="img"
 			>
 			</div>
 		{/each}
