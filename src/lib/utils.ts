@@ -1,4 +1,5 @@
 import tippy from 'tippy.js';
+import sanitize from 'sanitize-html';
 
 // place files you want to import through the `$lib` alias in this folder.
 function typewriter(node: Node, { delay = 0, speed = 1 }: any) {
@@ -260,6 +261,26 @@ function timeAgo(datetime: number): string {
 	return date.toLocaleDateString() + ' ' + formatAMPM(date);
 }
 
+function sanitizeHTML(str: string): string {
+	return sanitize(str, {
+		allowedTags: sanitize.defaults.allowedTags.concat(['span', 'div', 'img']), // Allow tags needed
+		allowedAttributes: {
+			'*': ['style', 'class'], // Allow 'style' and 'class' attributes on any element
+			img: ['align', 'style', 'src', 'alt'] // Allow required attributes for 'img'
+		},
+		allowedStyles: {
+			'*': {
+				// Allow specific styles on any element
+				color: [/^rgb\((.+)\)$/, /^var\(--[\w-]+\)$/, /^#[0-9a-fA-F]{3,6}$/], // Allow RGB color
+				'font-weight': [/^bold$/] // Allow bold text
+			},
+			img: {
+				width: [/^\d+%$/] // Allow 'width' as a percentage
+			}
+		}
+	});
+}
+
 export {
 	typewriter,
 	gibberish,
@@ -272,5 +293,6 @@ export {
 	isMobile,
 	angleBetween2Points,
 	parseDiscordEmoji,
-	timeAgo
+	timeAgo,
+	sanitizeHTML
 };

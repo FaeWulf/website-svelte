@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { isMobile } from '$lib/utils';
+	import { isMobile, sanitizeHTML } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import BadgeCategories from '$lib/data/badge.json';
 	import type { badgeInfo } from '$lib/types';
@@ -106,7 +106,7 @@
 	<span class="description__level-list" bind:this={levelScroll} style="width: {adjustedWidth}px">
 		{#each textLevel as textlvl, index (textlvl)}
 			<span class="description__level-text {colorLevel[index]} {index}" class:animate={!mobileMode} aria-hidden={level !== index}>
-				{@html textlvl}
+				{@html sanitizeHTML(textlvl)}
 			</span>
 		{/each}
 	</span>
@@ -119,7 +119,7 @@
 						in:slide={{ delay: 200, axis: 'x' }}
 						style="color: #{badgeText.color}"
 			>
-				{@html badgeText.name.replaceAll(' ', '&nbsp;')}
+				{@html sanitizeHTML(badgeText.name.replaceAll(' ', '&nbsp;'))}
 			</span>
 		{/if}
 	{/each}

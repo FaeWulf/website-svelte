@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ImagePreview from '$lib/components/custom/ImagePreview/ImagePreview.svelte';
+	import { sanitizeHTML } from '$lib/utils';
 
 	export let name: string;
 	export let description: string;
@@ -22,7 +23,8 @@
 	<div class="entry__info-wrapper">
 		<h2 class="entry__info-name"> ✪ {name}</h2>
 		{#if description}
-			<p class="entry__info-description">{@html description}</p>
+			<p class="entry__info-description">{@html sanitizeHTML(description)}</p>
+
 		{/if}
 		<div class="entry__info-tag-wrapper">
 			{#if version}

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { sanitizeHTML } from '$lib/utils';
+
 	export let output: string = '';
 	export let input: string = '';
 	export let triggerEnter: boolean = false;
@@ -88,10 +90,10 @@ Dreams of mastering coding, enjoying every seconds of sleep, and listening music
 	$: output += run(triggerEnter);
 </script>
 
-{@html output}
+{@html sanitizeHTML(output)}
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="current-line">
-	{@html root}
+	{@html sanitizeHTML(root)}
 	{input}<span class="current-line__cursor ">_</span>
 	<div class="current-line__command-helper-wrapper">
 		{#each commands as command}

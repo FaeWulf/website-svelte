@@ -4,6 +4,7 @@
 	import { fade, fly } from 'svelte/transition';
 
 	import { onDestroy } from 'svelte';
+	import { Render } from '@jill64/svelte-sanitize';
 
 	let toggleBubbbleChat0 = false;
 	let toggleBubbbleChat1 = false;
@@ -111,7 +112,7 @@
 			class="bubble-chat__chat-wrapper"
 		>
 			<!-- svelte-ignore a11y-invalid-attribute -->
-			{@html bubbleChatContent}
+			<Render html={bubbleChatContent} />
 		</div>
 	{/if}
 </div>

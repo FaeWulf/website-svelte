@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { parseDiscordEmoji, timeAgo } from '$lib/utils';
+	import { parseDiscordEmoji, sanitizeHTML, timeAgo } from '$lib/utils';
 	import { PUBLIC_chatServer } from '$env/static/public';
 	import { dev } from '$app/environment';
 
@@ -130,7 +130,7 @@
 <audio src="/sfx/ping.mp3" preload="auto" volume="0.5" bind:this={ping} />
 <div class="chat-wrapper">
 	<div class="chat__content-wrapper" bind:this={content}>
-		<div class="content">{@html chatContent}</div>
+		<div class="content">{@html sanitizeHTML(chatContent)}</div>
 	</div>
 	<div class="chat__button-wrapper">
 		<textarea alt="Chat input here" class="chat__text-input" rows="1" bind:value={input}

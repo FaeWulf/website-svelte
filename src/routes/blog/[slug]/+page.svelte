@@ -9,6 +9,7 @@
 	import Giscus from '@giscus/svelte';
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
+	import { sanitizeHTML } from '$lib/utils';
 
 	export let data;
 	let postData: any;
@@ -45,7 +46,7 @@
 		{/each}
 	</div>
 	<div id="blog-content">
-		{@html postData.content}
+		{@html sanitizeHTML(postData.content)}
 	</div>
 {:else}
 	<LoadingCircle />

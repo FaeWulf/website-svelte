@@ -2,6 +2,7 @@
 	import { apiURL } from '$lib/store';
 	import { onMount } from 'svelte';
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
+	import { sanitizeHTML } from '$lib/utils';
 
 	let fortune: string;
 
@@ -13,7 +14,7 @@
 
 {#if fortune}
 	<div class="badge-title" id="js-infotabs-fortuneteller">🔮 Fortune Teller</div>
-	<div class="post__description">{@html fortune.replaceAll(/\n/g, '<br />')}</div>
+	<div class="post__description">{@html sanitizeHTML(fortune.replaceAll(/\n/g, '<br />'))}</div>
 {:else}
 	<LoadingCircle />
 {/if}

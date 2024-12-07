@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { apiURL } from '$lib/store.js';
-	import { parseDiscordEmoji } from '$lib/utils.js';
+	import { parseDiscordEmoji, sanitizeHTML } from '$lib/utils.js';
 	import { onMount } from 'svelte';
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import NeonSign from '$lib/components/custom/NeonSign.svelte';
@@ -64,7 +64,7 @@
 <div class="main-wrapper behavior--click-through">
 	<NeonSign title="Blog Posts" description="Posts I barely write now and then." />
 	{#if randomThought}
-		<div class="main__random-thought-text">{@html randomThought}</div>
+		<div class="main__random-thought-text">{@html sanitizeHTML(randomThought)}</div>
 	{/if}
 	{#if postData}
 		<div class="main__content-wrapper behavior--click-through">

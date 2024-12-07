@@ -4,6 +4,7 @@
 
 	import { ufoBubble } from '$lib/store';
 	import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
+	import { sanitizeHTML } from '$lib/utils';
 
 	let bubbleHTML: HTMLElement, ufoBoundingHTML: HTMLElement, bubbleArrowHTML: HTMLElement;
 	let storeContent = { message: '', timeout: 0 };
@@ -115,7 +116,7 @@
 			 bind:this={bubbleHTML}>
 		<div class="bubble-chat__message-arrow" bind:this={bubbleArrowHTML} />
 		<div class="bubble-chat__message-text behavior--not-click-through">
-			{@html message}
+			{@html sanitizeHTML(message)}
 		</div>
 	</div>
 {/if}

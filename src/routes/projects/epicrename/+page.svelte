@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MetaTags from '$lib/components/custom/MetaTags.svelte';
+	import {sanitizeHTML} from '$lib/utils';
 
 	//vvars declare
 	let input: string = "First line is for Item's name\nThis is line #1\n\nYou can skip for line #3\n&bNow create your own...";
@@ -221,7 +222,7 @@
 		</div>
 
 		<div class="main__editor-preview-wrapper">
-			<div class="main__editor-preview" bind:this={previewTab}>{@html preview}</div>
+			<div class="main__editor-preview" bind:this={previewTab}>{@html sanitizeHTML(preview)}</div>
 		</div>
 
 		<div class="main__editor-button-wrapper" bind:this={buttonWrapper}>
