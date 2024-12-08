@@ -4,6 +4,7 @@
 	import { fade, scale } from 'svelte/transition';
 	import { backInOut } from 'svelte/easing';
 
+	let wrapper: HTMLElement;
 	let isFullscreen = false;
 	let imgSrc = '';
 
@@ -19,10 +20,21 @@
 		imgSrc = '';
 		img_preview.set('');
 	};
+
+	function onKeyDown(event) {
+		if (event.key === 'Enter' || event.key === ' ' || event.key === 'Escape' || event.key === 'Backspace' || event.key === 'Tab') {
+			event.preventDefault(); // Prevent scrolling when Space is pressed
+			closeFullscreen();
+		}
+	}
+
+	$: if (isFullscreen && wrapper) {
+		wrapper.focus();
+	}
 </script>
 
 {#if isFullscreen}
-	<div class="image-previewer-wrapper">
+	<div class="image-previewer-wrapper" bind:this={wrapper} on:keydown={onKeyDown} tabindex="0">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div class="image-previewer__bg" on:click={closeFullscreen} transition:fade={{duration: 200}} />
