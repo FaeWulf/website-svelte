@@ -203,9 +203,11 @@
       .nav__search-input {
         position: relative;
         width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: row;
         cursor: pointer;
+        text-align: left;
 
         overflow: hidden;
 

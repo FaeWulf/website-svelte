@@ -25,6 +25,13 @@
 		}
 	];
 
+	function handleKeydown(event) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault(); // Prevent scrolling when Space is pressed
+			trigger();
+		}
+	}
+
 	function trigger() {
 		elements.forEach((element) => {
 			let el = document.getElementById(element.id);
@@ -46,11 +53,14 @@
 	}
 </script>
 
-<button class="behavior--reset-button search" aria-label="Magnify button" on:click={() => trigger()}>
+<div class="search" aria-label="Magnify button" role="button" tabindex="0"
+		 on:click={() => trigger()}
+		 on:keydown={handleKeydown}
+>
 	<span class="search__icon">
 		<Search size={24} color="#a6da95" />
 	</span>
-</button>
+</div>
 
 <style lang="scss">
   .search {
