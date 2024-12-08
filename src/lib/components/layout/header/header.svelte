@@ -1,72 +1,23 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import 'tippy.js/animations/perspective-subtle.css';
-	import HeaderDroplist from '$lib/components/layout/header/header_droplist.svelte';
 	import { onMount } from 'svelte';
-	import { capitalFirstLeter, isMobile, tooltip, typewriter } from '$lib/utils';
+	import { capitalFirstLeter } from '$lib/utils';
 
 	//import toolbar comps
 	import Volume from '$lib/components/layout/header/button_volume.svelte';
 	import Theme from '$lib/components/layout/header/button_theme.svelte';
 	import WindowIcon from '$lib/components/layout/header/button_window-icon.svelte';
 	import ButtonUfo from '$lib/components/layout/header/button_ufo.svelte';
-	import Bell from '$lib/components/layout/header/bell.svelte';
-	import MagnifyGlass from '$lib/components/layout/header/magnifyGlass.svelte';
+	import NavigationBar from '$lib/components/layout/header/naviation_bar.svelte';
 
 	export let windowToggle: boolean;
 	export let ufoToggleMovement: boolean;
 
-	let template: HTMLElement;
-	let droplist: any;
-
 	onMount(() => {
-		//get droplist, this DOM Elemtent is used for tooltip, currently display: none
-		template = <HTMLElement>document.getElementById('dropDownList');
-		template.style.display = 'flex';
-
 		//set sound volumn
 		spaceSound.volume = 0.05;
 		thinkfast.volume = 0.5;
-
-		/* use:tooltip={{
-					allowHTML: true,
-					theme: 'catppuccin-transparent',
-					animation: 'perspective-subtle',
-					interactive: true,
-					arrow: false,
-					content: template,
-					maxWidth: 400,
-					offset: [0, 6],
-					trigger: 'mouseenter click'
-				}} */
-
-		if (isMobile(window, window.navigator)) {
-			tooltip(droplist, {
-				offset: [0, 10],
-				maxWidth: 1000,
-				allowHTML: true,
-				theme: 'catppuccin-transparent',
-				animation: 'perspective-subtle',
-				interactive: true,
-				arrow: false,
-				content: template,
-				trigger: 'click focus',
-				appendTo: 'parent'
-			});
-		} else {
-			tooltip(droplist, {
-				offset: [0, 8],
-				maxWidth: 400,
-				allowHTML: true,
-				theme: 'catppuccin-transparent',
-				animation: 'perspective-subtle',
-				interactive: true,
-				arrow: false,
-				content: template,
-				trigger: 'mouseenter click focus',
-				appendTo: 'parent'
-			});
-		}
 	});
 
 	//making sub path in main path
@@ -101,23 +52,8 @@
 				<WindowIcon bind:windowToggle />
 			</div>
 		</div>
-		<nav>
-			<button id="js-searchbar" class="behavior--reset-button nav__search-input" aria-label="Navigation menu"
-							aria-expanded="false"
-							bind:this={droplist}>
-				<MagnifyGlass />
-				{#key $page.url.pathname}
-					<span in:typewriter={{ speed: 2 }}>
-						{pathname}
-					</span>
-				{/key}
-				<span class="nav__search-input--blinking">_</span>
-			</button>
-			<Bell />
-		</nav>
+		<NavigationBar pageUrl={pathname} />
 	</div>
-
-	<HeaderDroplist />
 	<audio src="/sfx/space-sound.mp3" preload="auto" bind:this={spaceSound} loop />
 	<audio src="/sfx/think-fast.mp3" preload="auto" bind:this={thinkfast} />
 </header>
@@ -179,45 +115,6 @@
       }
     }
 
-    nav {
-      position: relative;
-      flex: 1;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      max-width: 400px;
-      height: 30px;
-
-      border: 1px solid var(--color-border-secondary);
-      border-radius: 0.5rem;
-      padding: 4px;
-      background-color: rgba(var(--Overlay1), 1);
-      //backdrop-filter: blur(10px);
-
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-
-      transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-      .nav__search-input {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        cursor: pointer;
-        text-align: left;
-
-        overflow: hidden;
-
-        &--blinking {
-          color: rgb(var(--Rosewater));
-          animation: blink 1s step-end infinite;
-        }
-
-      }
-    }
   }
 
   #js-ufo_home {
@@ -257,28 +154,8 @@
     }
   }
 
-  /*
-	nav:hover {
-		transform: scale(1.05) translateY(5px);
-				filter: drop-shadow(0px 0px 5px rgba(var(--Yellow), 0.2));
-	}
-	*/
-
   span {
     line-height: 30px;
   }
 
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
 </style>
