@@ -140,6 +140,7 @@
     margin-top: 5px;
     display: flex;
     gap: 5px;
+		width: max-content;
   }
 
   .description__level-list {

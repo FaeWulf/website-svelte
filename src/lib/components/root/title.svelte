@@ -50,7 +50,7 @@
     margin-top: 10px;
     align-items: flex-end;
 
-    text-wrap: nowrap;
+    width: max-content;
 
     //-webkit-user-select: none;
     //-ms-user-select: none;
@@ -65,14 +65,12 @@
       position: relative;
       margin-left: 0;
       margin-right: 0;
-      font-family: 'Daydream', 'Tahoma';
+      font-family: 'Daydream', 'Tahoma', serif;
       font-size: 2rem;
     }
 
     .title-text__hand-icon {
-      animation-name: wave-animation;
-      animation-duration: 2.5s;
-      animation-iteration-count: infinite;
+      animation: wave-animation 2.5s infinite;
       transform-origin: 70% 70%;
       display: inline-block;
       text-align: center;

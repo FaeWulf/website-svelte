@@ -65,8 +65,7 @@
 <style lang="scss">
   .search {
     margin-right: 10px;
-    margin-left: 5px;
-    padding-right: 9px;
+    padding-right: 7px;
     border-right: 2px solid rgba(var(--Text), 0.2);
 
     display: flex;
