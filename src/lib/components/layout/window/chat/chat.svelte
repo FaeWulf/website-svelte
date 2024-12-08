@@ -133,7 +133,7 @@
 		<div class="content">{@html sanitizeHTML(chatContent)}</div>
 	</div>
 	<div class="chat__button-wrapper">
-		<textarea alt="Chat input here" class="chat__text-input" rows="1" bind:value={input}
+		<textarea aria-label="Chat input here" class="chat__text-input" rows="1" bind:value={input}
 							on:keydown={onkeydown_input_chat} />
 		<button class="chat__button-send" on:click={() => sendMessage()}>Send</button>
 	</div>
