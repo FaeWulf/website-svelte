@@ -63,7 +63,6 @@
 							arrow({ element: bubbleArrowHTML })
 						]
 					}).then(({ x, y, middlewareData, placement }) => {
-
 						//bubble it self
 						Object.assign(bubbleHTML.style, {
 							top: `${y}px`,
@@ -115,7 +114,7 @@
 	<div transition:scale={{easing: customBounceEasing, duration: 400}} class="bubble-chat__message-box"
 			 bind:this={bubbleHTML}>
 		<div class="bubble-chat__message-arrow" bind:this={bubbleArrowHTML} />
-		<div class="bubble-chat__message-text behavior--not-click-through">
+		<div class="bubble-chat__message-text">
 			{@html sanitizeHTML(message)}
 		</div>
 	</div>
@@ -132,7 +131,8 @@
   }
 
   .bubble-chat__message-box {
-    position: fixed;
+    position: absolute;
+    width: max-content;
     max-width: 300px;
 
     border-radius: 0.5rem;
