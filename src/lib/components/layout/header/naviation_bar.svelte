@@ -19,7 +19,7 @@
 
 </script>
 
-<nav class="nav-bar">
+<nav class="nav-bar" id="js-searchbar">
 	<div class="nav-bar__dropdown">
 		<!-- aria-expanded needs managed with Javascript -->
 		<button
@@ -121,7 +121,7 @@
         transform-origin: top center;
         opacity: 0.3;
 
-        transition: 280ms all 120ms ease;
+        transition: 280ms all ease;
 
         li.nav-bar__dropdown-item {
           width: 100%;
