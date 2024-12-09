@@ -38,8 +38,8 @@
 				bgCtx.fillStyle = '#ffffffaa';
 				bgCtx.strokeStyle = '#ffffffaa';
 			} else {
-				bgCtx.fillStyle = '#000000aa';
-				bgCtx.strokeStyle = '#000000aa';
+				bgCtx.fillStyle = '#00000000';
+				bgCtx.strokeStyle = '#00000000';
 			}
 
 
