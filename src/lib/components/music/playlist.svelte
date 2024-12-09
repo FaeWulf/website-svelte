@@ -6,6 +6,7 @@
 	export let id: string;
 	export let search = '';
 	export let playList: { index: number; data: track }[];
+	export let height = '100%';
 
 	//for random choose function
 	export let currentList: any;
@@ -67,7 +68,7 @@
 	}
 </script>
 
-<VirtualList items={list} let:item bind:scrollToIdx>
+<VirtualList items={list} let:item bind:scrollToIdx height={height}>
 	<button
 		class="behavior--reset-button track"
 		class:track--active={selectedItem === item.data.ID}

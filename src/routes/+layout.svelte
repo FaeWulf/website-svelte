@@ -74,12 +74,13 @@
 <ScrollToTop />
 <ImagePreviewContainer />
 
-<!-- Analytics -->
 <svelte:head>
 	{#if !dev}
+		<!-- Analytics -->
 		<script defer src="https://analytics.us.umami.is/script.js" data-website-id="274fa86e-1c19-458a-a9b9-555a24ffe748">
 		</script>
 	{/if}
+	<!-- Theme -->
 	<meta name="color-scheme" content={$theme === 'system' ? 'light dark' : $theme} />
 	<link rel="stylesheet" href={`/styles/theme/${$theme}.css`} />
 </svelte:head>
@@ -87,8 +88,10 @@
 <style lang="scss">
   .app {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 30px;
+
     overflow-x: hidden;
     min-height: 100vh;
     width: 100%;
@@ -120,20 +123,21 @@
     }
 
     .app__main-wrapper {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 1rem;
       width: 100%;
+      height: calc(100% - 30px); // 100% - footer
       max-width: 64rem;
+
       margin: 50px auto 0;
+      padding: 1rem;
       box-sizing: border-box;
 
       .app__main {
         display: flex;
         flex-direction: column;
         width: 100%;
-        flex: 1;
+        height: 100%;
 
         justify-content: center;
         align-items: center;

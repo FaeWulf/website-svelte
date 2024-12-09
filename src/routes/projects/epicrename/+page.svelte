@@ -249,13 +249,13 @@
 	}
 
 	.main-wrapper {
-		flex: 1;
+		height: 100%;
 		width: 100%;
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
 		flex-direction: column;
-		font-family: 'minecraft';
+		font-family: 'minecraft', serif;
 
 		z-index: 5;
 

@@ -77,7 +77,7 @@
 
 <style lang="scss">
   .main-wrapper {
-    flex: 1;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -91,7 +91,7 @@
     overflow: hidden;
     margin-top: 40px;
     width: 100%;
-    flex: 1;
+    height: 100%;
 
     .container-fixed-size {
       position: relative;

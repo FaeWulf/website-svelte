@@ -10,6 +10,8 @@
   .loader--spin {
     line-height: 0;
     animation: spin 1.5s infinite linear;
+    width: max-content;
+    height: max-content;
   }
 
   @keyframes spin {

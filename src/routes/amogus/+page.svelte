@@ -112,8 +112,9 @@
 
 <style lang="scss">
   .main-wrapper {
-    flex: 1;
     width: 100%;
+    height: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
