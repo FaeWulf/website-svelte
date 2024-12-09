@@ -26,7 +26,7 @@
 		},
 		{
 			name: 'Proficient',
-			description: ' - I have lots of experience and a deep understanding.<br/> - I’m confident in my intuition and able to carefully think, making plans before doing any task.<br/> - I can handle tough problems and help others learn.'
+			description: ' - I have lots of experience and a deep understanding about it.<br/> - I’m confident in my intuition and able to carefully think, making plans before doing any task.<br/> - I can handle tough problems and help others learn.'
 		},
 		{
 			name: 'Expert',
@@ -52,7 +52,7 @@
 </script>
 
 <fieldset id="js-info-bar" class="menu-bar-wrapper">
-	<legend>Info</legend>
+	<!--	<legend>Info</legend>-->
 
 	<div class="menu-bar__extra-wrapper" use:tooltip={{ instancesHolder: tippyInstances }}
 			 title="How long have I used '...'?"

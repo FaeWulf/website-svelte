@@ -16,34 +16,34 @@
 
 	const badges = [
 		{
-			name: 'youtube',
-			url: 'https://www.youtube.com/channel/UC20U4ou9cuZBH9atdMvUa6Q',
-			component: youtube
-		},
-		{
-			name: 'discord',
-			url: '/discord',
-			component: discord
-		},
-		{
-			name: 'steam',
-			url: 'https://steamcommunity.com/id/notfaewulf',
-			component: steam
-		},
-		{
-			name: 'website',
+			name: 'Website',
 			url: 'https://faewulf.xyz',
 			component: website
 		},
 		{
-			name: 'github',
+			name: 'Github',
 			url: 'https://github.com/FaeWulf',
 			component: github
 		},
 		{
-			name: 'email',
+			name: 'Email',
 			url: 'mailto:contact@faewulf.xyz',
 			component: email
+		},
+		{
+			name: 'Discord',
+			url: '/discord',
+			component: discord
+		},
+		{
+			name: 'Youtube',
+			url: 'https://www.youtube.com/channel/UC20U4ou9cuZBH9atdMvUa6Q',
+			component: youtube
+		},
+		{
+			name: 'Steam',
+			url: 'https://steamcommunity.com/id/notfaewulf',
+			component: steam
 		}
 		//"facebook",
 	];

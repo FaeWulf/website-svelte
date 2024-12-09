@@ -8,12 +8,12 @@
 	$: type = titleChanger;
 
 	let infoMap: Map<string, { first: string; last: string }> = new Map([
-		['email', { first: 'contact@', last: '.xyz' }],
-		['discord', { first: '@', last: '' }],
-		['steam', { first: '', last: '' }],
-		['website', { first: '', last: '.xyz' }],
-		['github', { first: 'github.com/', last: '' }],
-		['youtube', { first: '', last: '' }]
+		['Email', { first: 'contact@', last: '.xyz' }],
+		['Discord', { first: '@', last: '' }],
+		['Steam', { first: '', last: '' }],
+		['Website', { first: '', last: '.xyz' }],
+		['Github', { first: 'github.com/', last: '' }],
+		['Youtube', { first: '', last: '' }]
 	]);
 
 	//invalidate discord Status every 30 seconds

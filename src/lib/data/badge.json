@@ -4,7 +4,7 @@
     "data": [
       {
         "name": "c",
-        "level": 4,
+        "level": 3,
         "time": 2.5,
         "url": "",
         "sprite": {
@@ -17,7 +17,7 @@
       },
       {
         "name": "cPlusPlus",
-        "level": 4,
+        "level": 3,
         "time": 2.5,
         "url": "",
         "sprite": {
@@ -72,7 +72,7 @@
       },
       {
         "name": "javascript",
-        "level": 4,
+        "level": 3,
         "time": 2.5,
         "url": "",
         "sprite": {
@@ -86,7 +86,7 @@
       },
       {
         "name": "typescript",
-        "level": 4,
+        "level": 3,
         "time": 2,
         "url": "",
         "sprite": {
@@ -114,7 +114,91 @@
     ]
   },
   {
-    "name": "🌟 Experience with",
+    "name": "⚙️ Experience with",
+    "data": [
+      {
+        "name": "vuejs",
+        "level": 2,
+        "time": 1,
+        "url": "",
+        "sprite": {
+          "width": 90,
+          "height": 28,
+          "x": -189,
+          "y": -252
+        },
+        "color": "4ebe8c"
+      },
+      {
+        "name": "sveltekit",
+        "level": 3,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 116,
+          "height": 28,
+          "x": -186,
+          "y": -112
+        },
+        "color": "fd3e00",
+        "preferred": true
+      },
+      {
+        "name": "expressjs",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 123,
+          "height": 28,
+          "x": -186,
+          "y": -56
+        },
+        "color": "476f81"
+      },
+      {
+        "name": "mongodb",
+        "level": 2,
+        "time": 2,
+        "url": "",
+        "sprite": {
+          "width": 111,
+          "height": 28,
+          "x": 0,
+          "y": -168
+        },
+        "color": "4da84a"
+      },
+      {
+        "name": "sqlite",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 93,
+          "height": 28,
+          "x": -96,
+          "y": -252
+        },
+        "color": "4378a0"
+      },
+      {
+        "name": "mysql",
+        "level": 2,
+        "time": 1.5,
+        "url": "",
+        "sprite": {
+          "width": 88,
+          "height": 28,
+          "x": -176,
+          "y": -280
+        },
+        "color": "4378a0"
+      }
+    ]
+  },
+  {
+    "name": "🌟 Other",
     "data": [
       {
         "name": "git",
@@ -168,33 +252,6 @@
           "y": 0
         },
         "color": "f49120"
-      },
-      {
-        "name": "vuejs",
-        "level": 2,
-        "time": 1,
-        "url": "",
-        "sprite": {
-          "width": 90,
-          "height": 28,
-          "x": -189,
-          "y": -252
-        },
-        "color": "4ebe8c"
-      },
-      {
-        "name": "sveltekit",
-        "level": 3,
-        "time": 1.5,
-        "url": "",
-        "sprite": {
-          "width": 116,
-          "height": 28,
-          "x": -186,
-          "y": -112
-        },
-        "color": "fd3e00",
-        "preferred": true
       },
       {
         "name": "svelte",
@@ -251,58 +308,6 @@
         "color": "0768ac"
       },
       {
-        "name": "expressjs",
-        "level": 2,
-        "time": 1.5,
-        "url": "",
-        "sprite": {
-          "width": 123,
-          "height": 28,
-          "x": -186,
-          "y": -56
-        },
-        "color": "476f81"
-      },
-      {
-        "name": "mongodb",
-        "level": 2,
-        "time": 2,
-        "url": "",
-        "sprite": {
-          "width": 111,
-          "height": 28,
-          "x": 0,
-          "y": -168
-        },
-        "color": "4da84a"
-      },
-      {
-        "name": "sqlite",
-        "level": 2,
-        "time": 1.5,
-        "url": "",
-        "sprite": {
-          "width": 93,
-          "height": 28,
-          "x": -96,
-          "y": -252
-        },
-        "color": "4378a0"
-      },
-      {
-        "name": "mysql",
-        "level": 2,
-        "time": 1.5,
-        "url": "",
-        "sprite": {
-          "width": 88,
-          "height": 28,
-          "x": -176,
-          "y": -280
-        },
-        "color": "4378a0"
-      },
-      {
         "name": "raspberrypi",
         "level": 3,
         "time": 2.5,
@@ -318,7 +323,7 @@
     ]
   },
   {
-    "name": "🔨 Software I use",
+    "name": "🔨 Tools I use",
     "data": [
       {
         "name": "intellij",
