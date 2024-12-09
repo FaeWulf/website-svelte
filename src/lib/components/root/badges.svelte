@@ -54,10 +54,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: 600;
-
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    scroll-snap-align: start;
   }
 
   .badge-wrapper {

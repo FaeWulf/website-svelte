@@ -10,7 +10,7 @@
 	});
 </script>
 
-<div class="badge-title" id="js-infotabs-recentblog">📝 Recent blog</div>
+<div class="badge-title" id="js-infotabs-recentblog">📝 Recent Blog</div>
 {#if blogs}
 	{#each blogs as blog (blog.name)}
 		<a class="post" href="/blog/{blog.path}">
@@ -57,6 +57,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: 600;
+    scroll-snap-align: start;
   }
 
   .post {

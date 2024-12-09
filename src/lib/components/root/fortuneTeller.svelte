@@ -31,6 +31,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: 600;
+    scroll-snap-align: start;
   }
 
   .post__description {

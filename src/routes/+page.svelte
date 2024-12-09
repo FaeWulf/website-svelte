@@ -15,6 +15,7 @@
 	import RecentTracks from '$lib/components/root/recentTracks.svelte';
 	import RecentBlog from '$lib/components/root/recentBlog.svelte';
 	import FortuneTeller from '$lib/components/root/fortuneTeller.svelte';
+	import Projects from '$lib/components/root/projects.svelte';
 
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
@@ -24,7 +25,7 @@
 
 	export let data;
 
-	const tabs: string[] = ['js-infotabs-1', 'js-infotabs-2', 'js-infotabs-3', 'js-infotabs-4', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
+	const tabs: string[] = ['js-infotabs-1', 'js-infotabs-2', 'js-infotabs-3', 'js-infotabs-4', 'js-infotabs-project', 'js-infotabs-recentblog', 'js-infotabs-recenttracks', 'js-infotabs-fortuneteller'];
 	let tab_index = 0;
 
 	onMount(async () => {
@@ -103,6 +104,7 @@
 			 role="img"
 	>
 		<Badges bind:descriptionChanger />
+		<Projects />
 		<RecentBlog />
 		<RecentTracks />
 		<FortuneTeller />
@@ -126,6 +128,7 @@
     max-width: 420px;
     height: 240px;
 
+
     &:hover {
       opacity: 1;
       background-color: rgba(var(--Overlay0), 0.5);
@@ -139,6 +142,7 @@
       flex-wrap: wrap;
       overflow-y: auto;
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
 
       padding: 5px;
       gap: 5px;
