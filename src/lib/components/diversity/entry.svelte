@@ -8,16 +8,19 @@
 	export let version: string[];
 	export let disabled: boolean = false;
 
-	img = '/images/diversity/temp.gif';
-
 	if (description)
 		description = description.replaceAll('\n', '<br/>');
+
+	if (img == null) [
+		img = '/images/diversity/placeholder.png'
+	];
+
 </script>
 
 <div class="entry-wrapper">
 	<div class="entry__img-wrapper">
 		<ImagePreview>
-			<img class="entry__img" src="{img}" alt="temp.webp" />
+			<img class="entry__img" src="{img}" alt="{name} preview}" />
 		</ImagePreview>
 	</div>
 	<div class="entry__info-wrapper">

@@ -61,10 +61,10 @@
 		</div>
 
 		<div class="feature__showcase-entries-list">
-			{#each entries[select].entry as entry}
+			{#each entries[select].entry as entry (entry.name)}
 				{#if entry.version?.includes(selectedFilter) || selectedFilter === "all"}
 					<Entry name="{entry.name}" description="{entry.description}" version={entry.version}
-								 disabled={entry.disabled} />
+								 disabled={entry.disabled} img={entry.img} />
 				{/if}
 			{/each}
 		</div>
