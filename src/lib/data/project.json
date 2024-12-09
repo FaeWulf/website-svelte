@@ -42,14 +42,17 @@
     "old": true
   },
   {
-    "name": "EpicRename Generator",
-    "description": "A small tool to generates commands for the EpicRename plugin and my ItemRename mod! You can add color with an easy-to-use editor, preview it and then export it into commands!",
-    "path": "/projects/epicrename",
-    "img": "/images/projects/epicrename.webp",
+    "name": "Diversity",
+    "description": "Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience. From quality of life improvements to new mob behaviors and random sh*t, this mod offers a little bit of everything. The mod is designed to work on server-side only installations as well.",
+    "path": "/diversity",
     "tags": [
-      "html",
-      "javascript"
+      "java",
+      "Multiloader",
+      "Minecraft",
+      "Server-side"
     ],
+    "source": "https://github.com/FaeWulf/Diversity",
+    "img": "/images/projects/diversity.webp",
     "old": false
   },
   {
@@ -82,20 +85,6 @@
     "old": true
   },
   {
-    "name": "Diversity",
-    "description": "Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience. From quality of life improvements to new mob behaviors and random sh*t, this mod offers a little bit of everything. The mod is designed to work on server-side only installations as well.",
-    "path": "/diversity",
-    "tags": [
-      "java",
-      "Multiloader",
-      "Minecraft",
-      "Server-side"
-    ],
-    "source": "https://github.com/FaeWulf/Diversity",
-    "img": "/images/projects/diversity.webp",
-    "old": false
-  },
-  {
     "name": "ItemRename",
     "description": "The Item Rename mod for Fabric that allows players to edit various properties of items in the game, such as their name, lore, and enchantment glow. With support for color and formatting, you can personalize your items like a piece of cake.",
     "path": "https://modrinth.com/mod/faewulf-itemrename",
@@ -121,6 +110,17 @@
     ],
     "source": "https://github.com/FaeWulf/squaremap_banner",
     "img": "/images/projects/squaremap-banner.webp",
+    "old": false
+  },
+  {
+    "name": "EpicRename Generator",
+    "description": "A small tool to generates commands for the EpicRename plugin and my ItemRename mod! You can add color with an easy-to-use editor, preview it and then export it into commands!",
+    "path": "/projects/epicrename",
+    "img": "/images/projects/epicrename.webp",
+    "tags": [
+      "html",
+      "javascript"
+    ],
     "old": false
   }
 ]

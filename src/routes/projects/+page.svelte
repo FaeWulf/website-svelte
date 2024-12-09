@@ -19,12 +19,38 @@
 	let isMounted = false;
 	let projects: project[] = ProjectData;
 
+	// Sort list a-z
 	projects.sort((a: project, b: project) => {
 		return a.name.localeCompare(b.name);
 	});
 
 	onMount(() => {
 		isMounted = true;
+
+		// Get the hash fragment when the component mounts
+		let hash = window.location.hash.replace('#', '').replace('%20', ' ');
+
+		// Optionally listen for hash changes
+		const handleHashChange = () => {
+			hash = window.location.hash;
+		};
+
+		//scroll into specific project and focus
+		setTimeout(() => {
+			let el = document.getElementById(`js-project-${hash}`);
+			el?.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+				inline: 'center'
+			});
+		}, 200);
+
+		window.addEventListener('hashchange', handleHashChange);
+
+		// Cleanup listener on component destruction
+		return () => {
+			window.removeEventListener('hashchange', handleHashChange);
+		};
 	});
 
 </script>
@@ -41,12 +67,10 @@
 
 	<div class="main__content-wrapper behavior--click-through">
 		<div class="container-fixed-size behavior--click-through">
-			{#if isMounted}
 				{#each projects as project (project)}
 					<Entry name={project.name} description={project.description} url={project.path} tags={project.tags}
 								 source={project.source} previewImg={project.img} archived={project.old} />
 				{/each}
-			{/if}
 		</div>
 	</div>
 </div>
