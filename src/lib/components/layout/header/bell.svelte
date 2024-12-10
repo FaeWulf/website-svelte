@@ -16,6 +16,7 @@
 
 		data.reverse().forEach((element) => {
 			element = element.split('\n').shift() ?? element;
+			element = element.replaceAll('#', '');
 			processedData.push('<span style="color: rgb(var(--Yellow))">✪</span> ' + parseDiscordEmoji(element));
 		});
 
