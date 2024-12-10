@@ -109,8 +109,8 @@
           left: -120%;
 
           mask-image: linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%);
-
           transform: skew(60deg);
+          pointer-events: none !important;
         }
 
         .entry__preview-shadow-overlay {
@@ -214,6 +214,7 @@
                       rgba(white, 0.8),
                       rgba(white, 0)
               );
+              pointer-events: none !important;
             }
 
             &:hover {
