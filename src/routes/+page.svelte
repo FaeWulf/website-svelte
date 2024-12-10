@@ -16,6 +16,7 @@
 	import RecentBlog from '$lib/components/root/recentBlog.svelte';
 	import FortuneTeller from '$lib/components/root/fortuneTeller.svelte';
 	import Projects from '$lib/components/root/projects.svelte';
+	import EndCard from '$lib/components/root/endCard.svelte';
 
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
@@ -105,6 +106,7 @@
 	>
 		<Badges bind:descriptionChanger />
 		<Projects />
+		<EndCard />
 		<RecentBlog />
 		<RecentTracks />
 		<FortuneTeller />
