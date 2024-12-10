@@ -1,14 +1,3 @@
-<script>
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
-</script>
-
-<MetaTags
-	title="Diversity | Faewulf's Basement"
-	description="Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience."
-	keywords={['faewulf', 'projects', 'minecraft', 'diversity', 'server-side', 'fabric', 'neoforge']}
-	canonical="https://faewulf.xyz/diversity/"
-/>
-
 <img class="main-page__banner-img" src="/images/diversity/banner.png" alt="Mod's banner" />
 <p>Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience. From
 	quality of life improvements to new mob behaviors and random sh*t, this mod offers a little bit of everything. The mod

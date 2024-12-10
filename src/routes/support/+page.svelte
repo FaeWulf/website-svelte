@@ -1,13 +1,4 @@
-<script>
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
-</script>
-
-<MetaTags
-	title="Support | Faewulf's Basement"
-	description="Support Faewulf with any kind of donation or support."
-	keywords={['faewulf', 'donations', 'support']}
-	canonical="https://faewulf.xyz/support"
-/>
+<script></script>
 
 <div class="post__wrapper behavior--click-through">
 	<h1>Support me via</h1>

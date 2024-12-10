@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	import Background from '$lib/components/amogus/background.svelte';
 
@@ -80,13 +79,6 @@
 		}, 2000);
 	}
 </script>
-
-<MetaTags
-	title="Amongusify | Faewulf's Basement"
-	description="Instead of shortening your url, this simple tool will convert urls into a bunch of crew mates."
-	keywords={['link converter', 'amongus', 'sus']}
-	canonical="https://faewulf.xyz/amogus"
-/>
 
 <Background />
 <div class="main-wrapper behavior--click-through">

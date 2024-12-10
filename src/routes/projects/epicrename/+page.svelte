@@ -1,5 +1,4 @@
 <script lang="ts">
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import {sanitizeHTML} from '$lib/utils';
 
 	//vvars declare
@@ -206,12 +205,6 @@
 	}, 20);
 </script>
 
-<MetaTags
-		title="EpicRename Generator | Faewulf's Basement"
-		description="A generator for EpicRename spigot plugin and for my mod ItemRename."
-		keywords={['faewulf', 'projects', 'epicrename', 'tool', 'generator']}
-		canonical="https://faewulf.xyz/projects/epicrename"
-/>
 
 <div class="main-wrapper" bind:clientHeight={mainHeight} bind:clientWidth={mainWidth}>
 	<h1>EpicRename Generator</h1>

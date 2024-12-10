@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { apiURL, mp_autoNext, mp_autoPlay, mp_currentList, mp_id, ufoBubble } from '$lib/store';
 	import type { track } from '$lib/types';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 	import Screen from '$lib/components/music/screen.svelte';
@@ -87,13 +86,6 @@
 
 	//auto play and shuffle. random music
 </script>
-
-<MetaTags
-	title="Music list | Faewulf's Basement"
-	description="Faewulf's favorite music list."
-	keywords={['faewulf', 'music', 'list', 'infomation']}
-	canonical="https://faewulf.xyz/music"
-/>
 
 <svelte:window bind:innerWidth />
 

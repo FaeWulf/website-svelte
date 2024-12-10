@@ -7,6 +7,11 @@ export async function load({ url }) {
         idx = 1
 
     return {
-        idx
+        idx,
+        meta: {
+            title: 'Blog',
+            description: 'A personal blog site of Faewulf.',
+            keywords: ['faewulf', 'blog', 'info', 'information']
+        }
     };
 }

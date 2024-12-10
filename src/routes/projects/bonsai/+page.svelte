@@ -1,20 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { apiURL } from '$lib/store';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	let respone: any;
 	onMount(async () => {
 		respone = $apiURL + '/api/v1/misc/bonsai?background=0.5&time=40&seed="faewulf"';
 	});
 </script>
-
-<MetaTags
-	title="Bonsai API | Faewulf's Basement"
-	description="An API for generating bonsai trees. Ported from cBonsai."
-	keywords={['faewulf', 'projects', 'bonsai', 'cbonsai', 'tree', 'generator', 'API']}
-	canonical="https://faewulf.xyz/projects/bonsai"
-/>
 
 <div class="main-wrapper">
 	<h1>Bonsai API</h1>

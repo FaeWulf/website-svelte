@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import Entry from '$lib/components/projects/entry.svelte';
 	import NeonSign from '$lib/components/custom/NeonSign.svelte';
 
@@ -54,13 +53,6 @@
 	});
 
 </script>
-
-<MetaTags
-	title="Projects | Faewulf's Basement"
-	description="Faewulf's projects."
-	keywords={['faewulf', 'projects', 'list', 'infomation']}
-	canonical="https://faewulf.xyz/projects"
-/>
 
 <div class="main-wrapper behavior--click-through">
 	<NeonSign title="Projects" description="Here is a few projects I've created." />

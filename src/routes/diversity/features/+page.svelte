@@ -1,5 +1,4 @@
 <script lang="ts">
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import Entry from '$lib/components/diversity/entry.svelte';
 
 	import entries from '$lib/data/diversity_data.json';
@@ -23,12 +22,6 @@
 	}
 </script>
 
-<MetaTags
-	title="Diversity | Faewulf's Basement"
-	description="Diversity is a Minecraft mod that introduces a wide range of features to enhance the gameplay experience."
-	keywords={['faewulf', 'projects', 'minecraft', 'diversity', 'server-side', 'fabric', 'neoforge']}
-	canonical="https://faewulf.xyz/diversity/features"
-/>
 
 <h1 class="feature__title">Features</h1>
 <a href="/diversity" class=feature__return>⬅️ return Home</a>

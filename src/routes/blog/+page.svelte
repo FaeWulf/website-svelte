@@ -3,7 +3,6 @@
 	import { apiURL } from '$lib/store.js';
 	import { parseDiscordEmoji, sanitizeHTML } from '$lib/utils.js';
 	import { onMount } from 'svelte';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import NeonSign from '$lib/components/custom/NeonSign.svelte';
 	import Post from '$lib/components/blog/post.svelte';
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
@@ -54,12 +53,6 @@
 	}
 </script>
 
-<MetaTags
-	title="Blog | Faewulf's Basement"
-	description="A personal blog site of Faewulf."
-	keywords={['faewulf', 'blog', 'info', 'information']}
-	canonical="https://faewulf.xyz/blog"
-/>
 
 <div class="main-wrapper behavior--click-through">
 	<NeonSign title="Blog Posts" description="Posts I barely write now and then." />

@@ -27,31 +27,6 @@
     }
   }
 
-  .project-wrapper {
-    position: relative;
-    width: max-content;
-    height: max-content;
-
-    display: block;
-    border: 1px var(--color-border-0) solid;
-    border-radius: 5px;
-    color: rgb(var(--Text));
-    background: rgb(var(--Overlay1));
-    text-decoration: none;
-    overflow: hidden;
-
-    transition: all 0.3s ease;
-
-    .project-name {
-      padding: 5px;
-    }
-
-    &:hover {
-      border: 1px var(--color-border-primary) solid;
-      color: rgb(var(--Green));
-    }
-  }
-
   .badge-dummy {
     height: 20px;
     flex-basis: 100%;

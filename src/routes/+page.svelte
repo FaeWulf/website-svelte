@@ -20,7 +20,6 @@
 
 	import { ufoBubble } from '$lib/store';
 	import { onMount } from 'svelte';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import type { badgeInfo } from '$lib/types';
 
 
@@ -81,13 +80,6 @@
 <svelte:head>
 	<link rel="preload" as="image" href="/images/badges/css_sprites.png" />
 </svelte:head>
-
-<MetaTags
-	title="HQ | Faewulf's Basement"
-	description="Faewulf's landing page. Includes information you might find useful about me! :/"
-	keywords={['faewulf', 'hq', 'bio', 'landing page', 'portfolio']}
-	canonical="https://faewulf.xyz/" ,
-/>
 
 <Logo />
 <Title bind:titleChanger />

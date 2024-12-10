@@ -1,5 +1,6 @@
 <script lang="ts">
 	//checking dev mode
+	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import { theme } from '$lib/store';
 
@@ -14,6 +15,7 @@
 	import 'tippy.js/dist/border.css';
 	import '@splidejs/svelte-splide/css';
 
+	import Meta from '$lib/components/custom/MetaTag.svelte';
 	import Ufo from '$lib/components/layout/ufo/ufo.svelte';
 	import Window from '$lib/components/layout/window/window.svelte';
 	import Background from '$lib/components/layout/background.svelte';
@@ -75,6 +77,13 @@
 <ImagePreviewContainer />
 
 <svelte:head>
+	{#if $page.data.meta}
+		<Meta
+			title={$page.data.meta.title}
+			description={$page.data.meta.description}
+			keywords={$page.data.meta.keywords}
+		/>
+	{/if}
 	{#if !dev}
 		<!-- Analytics -->
 		<script defer src="https://analytics.us.umami.is/script.js" data-website-id="274fa86e-1c19-458a-a9b9-555a24ffe748">

@@ -231,11 +231,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Faewulf's Basement | GeoReimage</title>
-	<meta name="description" content="About this website" />
-</svelte:head>
-
 <div class="main-wrapper">
 	<input type="file" id="inputImage" accept="image/*" />
 	<canvas id="workflow" bind:this={canvas}></canvas>

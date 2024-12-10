@@ -7,6 +7,11 @@ export async function load() {
 		throw redirect(307, fetchData.data);
 
 	return {
-		success: fetchData.data
+		success: fetchData.data,
+		meta: {
+			title: 'Discord invite',
+			description: 'Invite link to faewulf\'s Discord',
+			keywords: ['discord invite', 'faewulf', 'discord']
+		}
 	};
 }

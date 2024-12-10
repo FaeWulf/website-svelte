@@ -3,7 +3,6 @@
 	import Infos from './infos.svelte';
 
 	import { gibberish, shuffleArray, typewriter } from '$lib/utils';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 
 	function onClickInvite() {
 		window.open('https://discord.com/api/oauth2/authorize?client_id=874974280495026186&permissions=1071631366721&scope=bot', '_blank');
@@ -24,12 +23,6 @@
 	}, 4000);
 </script>
 
-<MetaTags
-	title="Ninym Ralei | Faewulf's Basement"
-	description="Ninym Ralei is a discord bot, with a lot of useful features for developer in general."
-	keywords={['faewulf', 'discord bot', 'bot', 'converter', 'image processing', 'ciphers', 'text tools', 'generators', 'ocr']}
-	canonical="https://faewulf.xyz/ninym"
-/>
 
 <Logo />
 <h1>Ninym Ralei</h1>

@@ -7,7 +7,6 @@
 
 	//comments component
 	import Giscus from '@giscus/svelte';
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 	import { sanitizeHTML } from '$lib/utils';
 
@@ -19,13 +18,6 @@
 		postData = fetchBlog.data;
 	});
 </script>
-
-<MetaTags
-	title={data.id.replaceAll('-', ' ').replaceAll('.md', '') + ' | Faewulf'}
-	description={data.id.replaceAll('-', ' ').replaceAll('.md', '')}
-	keywords={['faewulf', 'blog', data.id.replaceAll('-', ' ').replaceAll('.md', '')]}
-	canonical="https://faewulf.xyz/blog/{data.id}"
-/>
 
 {#if postData}
 	<h1 class="post__title">{data.id.replaceAll('-', ' ').replaceAll('.md', '')}</h1>

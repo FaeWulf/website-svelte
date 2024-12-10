@@ -1,17 +1,9 @@
-//import { getPlaylist, lastUpdatePlaylistDate } from '../../lib/playlist';
-
-export async function load({ params }) {
-
-    // const playlistData = async () => {
-    //     return {
-    //         playList: await getPlaylist(),
-    //         lastUpdatePlaylistDate: await lastUpdatePlaylistDate()
-    //     }
-    // }
-
-    return {
-        // streamed: {
-        //     playlist: playlistdata()
-        // }
-    };
+export async function load() {
+	return {
+		meta: {
+			title: 'Music list',
+			description: 'Faewulf\'s favorite music list.',
+			keywords: ['faewulf', 'music', 'list', 'infomation']
+		}
+	};
 }

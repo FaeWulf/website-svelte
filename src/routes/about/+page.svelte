@@ -1,12 +1,3 @@
-<script>
-	import MetaTags from '$lib/components/custom/MetaTags.svelte';
-</script>
-
-<MetaTags title="Faewulf's Basement | About"
-					description="Information about this website"
-					keywords={['about']}
-					canonical="https://faewulf.xyz/about" />
-
 <div class="text-column behavior--click-through">
 	<h1>About this website</h1>
 
