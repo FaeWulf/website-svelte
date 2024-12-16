@@ -2,8 +2,7 @@
 	//checking dev mode
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
-	import { theme } from '$lib/store';
-
+	import { theme, monitor } from '$lib/store';
 
 	//some main styles
 	import '$lib/styles/reset.css';
@@ -40,6 +39,7 @@
 	function onHideDistractingComps_Changes(pseudo: any) {
 		if (windowToggle) windowToggle = pseudo;
 	}
+
 </script>
 
 <div class="app">
@@ -86,7 +86,7 @@
 	{/if}
 		<!-- Analytics -->
 	{#if !dev}
-		<script async defer src={$page.data.monitor.domain} data-website-id={$page.data.monitor.id}></script>
+		<script async defer src={monitor.domain} data-website-id={monitor.id}></script>
 	{/if}
 	<!-- Theme -->
 	<meta name="color-scheme" content={$theme === 'system' ? 'light dark' : $theme} />

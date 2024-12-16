@@ -1,6 +1,11 @@
 import { readable, writable } from 'svelte/store';
-import { PUBLIC_server } from '$env/static/public';
+import { PUBLIC_MONITOR_DOMAIN, PUBLIC_MONITOR_ID, PUBLIC_server } from '$env/static/public';
 import type { track } from '$lib/types';
+
+export const monitor = {
+	domain: PUBLIC_MONITOR_DOMAIN,
+	id: PUBLIC_MONITOR_ID
+};
 
 //theme
 export const theme = writable('dark');
@@ -37,4 +42,3 @@ export const mp_id = writable('qWNQUvIk954');
 export const mp_autoPlay = writable(false);
 export const mp_autoNext = writable(false);
 export const mp_currentList = writable([] as { index: number; data: track }[]); //readonly
-

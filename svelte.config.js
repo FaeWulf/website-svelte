@@ -15,11 +15,23 @@ const config = {
 		adapter: adapter(),
 		csp: {
 			directives: {
-				'script-src': ['self', 'https://www.youtube.com', 'https://s.ytimg.com', 'http://www.youtube.com/iframe_api'],
+				'script-src': [
+					'self',
+					'https://www.youtube.com',
+					'https://s.ytimg.com',
+					'http://www.youtube.com/iframe_api',
+					'https://uptime.faewulf.xyz/tracker.js'
+				],
 				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com']
 			},
 			reportOnly: {
-				'script-src': ['self', 'https://www.youtube.com', 'https://s.ytimg.com', 'http://www.youtube.com/iframe_api'],
+				'script-src': [
+					'self',
+					'https://www.youtube.com',
+					'https://s.ytimg.com',
+					'http://www.youtube.com/iframe_api',
+					'https://uptime.faewulf.xyz/tracker.js'
+				],
 				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com'],
 				'report-uri': ['/']
 			}
