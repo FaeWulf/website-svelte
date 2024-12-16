@@ -84,10 +84,9 @@
 			keywords={$page.data.meta.keywords}
 		/>
 	{/if}
-	{#if !dev}
 		<!-- Analytics -->
-		<script defer src="https://analytics.us.umami.is/script.js" data-website-id="274fa86e-1c19-458a-a9b9-555a24ffe748">
-		</script>
+	{#if !dev}
+		<script async defer src={$page.data.monitor.domain} data-website-id={$page.data.monitor.id}></script>
 	{/if}
 	<!-- Theme -->
 	<meta name="color-scheme" content={$theme === 'system' ? 'light dark' : $theme} />
