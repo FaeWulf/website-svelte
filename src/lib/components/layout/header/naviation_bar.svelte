@@ -19,7 +19,7 @@
 
 </script>
 
-<nav class="nav-bar" id="js-searchbar">
+<nav class="nav-bar" id="js-searchbar" onclick="">
 	<div class="nav-bar__dropdown">
 		<!-- aria-expanded needs managed with Javascript -->
 		<button
@@ -52,7 +52,7 @@
 			{/each}
 		</ul>
 	</div>
-	<Bell />
+<!--	<Bell />-->
 </nav>
 
 <style lang="scss">
