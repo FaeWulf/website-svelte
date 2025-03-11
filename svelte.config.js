@@ -22,7 +22,7 @@ const config = {
 					'http://www.youtube.com/iframe_api',
 					'https://uptime.faewulf.xyz/tracker.js'
 				],
-				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com']
+				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://giscus.app/', ' https://github.com']
 			},
 			reportOnly: {
 				'script-src': [
@@ -32,7 +32,7 @@ const config = {
 					'http://www.youtube.com/iframe_api',
 					'https://uptime.faewulf.xyz/tracker.js'
 				],
-				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com'],
+				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://giscus.app/', ' https://github.com'],
 				'report-uri': ['/']
 			}
 		}
