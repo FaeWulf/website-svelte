@@ -4,9 +4,9 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { apiURL } from '$lib/store';
+	import 'giscus';
 
 	//comments component
-	import Giscus from '@giscus/svelte';
 	import LoadingCircle from '$lib/components/custom/LoadingCircle.svelte';
 	import { sanitizeHTML } from '$lib/utils';
 
@@ -16,7 +16,10 @@
 		const url = $apiURL;
 		const fetchBlog = await fetch(url + '/api/v1/blog/' + data.id).then((res) => res.json());
 		postData = fetchBlog.data;
+
+
 	});
+
 </script>
 
 {#if postData}
@@ -40,32 +43,42 @@
 	<div id="blog-content">
 		{@html sanitizeHTML(postData.content)}
 	</div>
+
 {:else}
 	<LoadingCircle />
 {/if}
 <a class="post__back-link" href={$page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'))}>Back</a>
-<Giscus
-	id="comments"
-	repo="FaeWulf/blog-discus"
-	repoId="R_kgDOLbJ5pg"
-	category="Comments"
-	categoryId="DIC_kwDOLbJ5ps4CdsPB"
-	mapping="title"
-	term=""
-	strict="1"
-	reactionsEnabled="1"
-	emitMetadata="0"
-	inputPosition="top"
-	theme="preferred_color_scheme"
-	lang="en"
-	loading="lazy"
-></Giscus>
+
+{#if postData}
+	<div class="post__comment-wrapper">
+		<giscus-widget
+			repo="FaeWulf/blog-discus"
+			repo-id="R_kgDOLbJ5pg"
+			category="Comments"
+			category-id="DIC_kwDOLbJ5ps4CdsPB"
+			mapping="title"
+			strict="1"
+			enabled="1"
+			emit-metadata="0"
+			input-position="top"
+			reactionsenabled="1"
+			theme="preferred_color_scheme"
+			lang="en"
+		>
+		</giscus-widget>
+	</div>
+{/if}
+
+
+<div class="post__separator"></div>
 
 <style lang="scss">
   #blog-content {
     width: 100%;
     height: 100%;
     background-color: rgba(var(--Overlay0), 1);
+
+		padding: 2rem 0;
 
     border: 1px solid var(--color-border-1);
     border-radius: 0.5rem;
@@ -123,5 +136,16 @@
       border-radius: 0.5rem;
       opacity: 0.8;
     }
+
+
   }
+
+  .post__separator {
+    min-height: 1.5rem;
+  }
+
+	.post__comment-wrapper {
+		width: 100%;
+	}
+
 </style>

@@ -20,9 +20,13 @@ const config = {
 					'https://www.youtube.com',
 					'https://s.ytimg.com',
 					'http://www.youtube.com/iframe_api',
-					'https://uptime.faewulf.xyz/tracker.js'
+					'https://uptime.faewulf.xyz/tracker.js',
+					'https://giscus.app/',
+					'https://github.com',
+					'https://esm.sh',
+					'https://cdn.jsdelivr.net/'
 				],
-				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://giscus.app/', ' https://github.com']
+				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://giscus.app/', 'https://github.com']
 			},
 			reportOnly: {
 				'script-src': [
@@ -30,9 +34,13 @@ const config = {
 					'https://www.youtube.com',
 					'https://s.ytimg.com',
 					'http://www.youtube.com/iframe_api',
-					'https://uptime.faewulf.xyz/tracker.js'
+					'https://uptime.faewulf.xyz/tracker.js',
+					'https://giscus.app/',
+					'https://github.com',
+					'https://esm.sh',
+					'https://cdn.jsdelivr.net/'
 				],
-				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://giscus.app/', ' https://github.com'],
+				'frame-src': ['self', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://giscus.app/', 'https://github.com'],
 				'report-uri': ['/']
 			}
 		}
