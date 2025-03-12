@@ -155,7 +155,7 @@ const clearAsyncInterval = (intervalIndex: number) => {
 //function to check device type is mobile or not
 function isMobile(window: any, navigator: any) {
 	let check = false;
-	(function(a) {
+	(function (a) {
 		if (
 			/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
 				a
@@ -257,16 +257,18 @@ function timeAgo(datetime: number): string {
 		return `Yesterday at ${formatAMPM(date)}`;
 	}
 
-
 	return date.toLocaleDateString() + ' ' + formatAMPM(date);
 }
 
 function sanitizeHTML(str: string): string {
 	return sanitize(str, {
-		allowedTags: sanitize.defaults.allowedTags.concat(['span', 'div', 'img']), // Allow tags needed
+		allowedTags: sanitize.defaults.allowedTags.concat(['span', 'div', 'img', 'svg', 'path', 'g']), // Allow tags needed
 		allowedAttributes: {
 			'*': ['style', 'class'], // Allow 'style' and 'class' attributes on any element
-			img: ['align', 'style', 'src', 'alt'] // Allow required attributes for 'img'
+			img: ['align', 'style', 'src', 'alt'], // Allow required attributes for 'img'
+			svg: ['width', 'height', 'viewBox', 'xmlns', 'fill'], // Allow safe SVG attributes
+			path: ['d', 'fill', 'stroke', 'stroke-width'], // Allow path attributes
+			g: ['transform'] // Allow group transformations
 		},
 		allowedStyles: {
 			'*': {
@@ -276,6 +278,10 @@ function sanitizeHTML(str: string): string {
 			},
 			img: {
 				width: [/^\d+%$/] // Allow 'width' as a percentage
+			},
+			svg: {
+				width: [/^\d+(px|em|%)$/], // Allow px, em, and % for width
+				height: [/^\d+(px|em|%)$/] // Allow px, em, and % for height
 			}
 		}
 	});
