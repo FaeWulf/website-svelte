@@ -41,7 +41,7 @@
 			dayState = 'Night';
 		}
 
-		const greetings = ['Merry Xmas 2025!', 'Hello!', 'Greetings!', 'Good ' + dayState + '!'];
+		const greetings = ['Nice to meet you :D', 'Hello!', 'Greetings!', 'Good ' + dayState + '!'];
 		setTimeout(() => {
 			ufoBubble.set({ message: greetings[Math.floor(Math.random() * greetings.length)], timeout: 5000 });
 		}, 500);
