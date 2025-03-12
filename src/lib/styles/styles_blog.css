@@ -82,3 +82,103 @@
 #blog-content .hljs.language-bash {
     color: rgb(var(--Subtext0));
 }
+
+/*
+ Mark down
+*/
+
+:root {
+    --color-note: 9, 105, 218;
+    --color-tip: 26, 127, 55;
+    --color-warning: 154, 103, 0;
+    --color-severe: 188, 76, 0;
+    --color-caution: 209, 36, 47;
+    --color-important: 130, 80, 223;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-note: 47, 129, 247;
+        --color-tip: 63, 185, 80;
+        --color-warning: 210, 153, 34;
+        --color-severe: 219, 109, 40;
+        --color-caution: 248, 81, 73;
+        --color-important: 163, 113, 247;
+    }
+}
+
+.markdown-alert {
+    padding: 0.7rem 1rem;
+    margin-bottom: 16px;
+    color: inherit;
+    border-left: .25em solid #888;
+    border-radius: 4px;
+}
+
+.markdown-alert>:first-child {
+    margin-top: 0
+}
+
+.markdown-alert>:last-child {
+    margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+    margin-right: 0.5rem;
+    display: inline-block;
+    overflow: visible !important;
+    vertical-align: text-bottom;
+    fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+    border-left-color: rgb(var(--color-note));
+    background: rgba(var(--color-note), 0.1);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+    color: rgb(var(--color-note));
+}
+
+.markdown-alert.markdown-alert-important {
+    border-left-color: rgb(var(--color-important));
+    background: rgba(var(--color-important), 0.1);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+    color: rgb(var(--color-important));
+}
+
+.markdown-alert.markdown-alert-warning {
+    border-left-color: rgb(var(--color-warning));
+    background: rgba(var(--color-warning), 0.1);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+    color: rgb(var(--color-warning));
+}
+
+.markdown-alert.markdown-alert-tip {
+    border-left-color: rgb(var(--color-tip));
+    background: rgba(var(--color-tip), 0.1);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+    color: rgb(var(--color-tip));
+}
+
+.markdown-alert.markdown-alert-caution {
+    border-left-color: rgb(var(--color-caution));
+    background: rgba(var(--color-caution), 0.1);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+    color: rgb(var(--color-caution));
+}
