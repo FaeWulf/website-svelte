@@ -159,6 +159,7 @@
     }
 
     &:hover,
+		&:active,
     &:focus-within {
       border: 1px solid var(--color-border-primary);
     }
