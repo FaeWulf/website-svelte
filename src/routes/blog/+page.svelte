@@ -62,7 +62,7 @@
 	{#if postData}
 		<div class="main__content-wrapper behavior--click-through">
 			{#each postData as post (post.name)}
-				<Post path={post.path} name={post.name} tags={post.tags} date={post.date} />
+				<Post path={post.path.replaceAll(" ", "-")} name={post.name} tags={post.tags} date={post.date} />
 			{/each}
 		</div>
 		<div class="main__pagination">

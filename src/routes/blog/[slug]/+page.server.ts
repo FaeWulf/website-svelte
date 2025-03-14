@@ -1,6 +1,6 @@
 export async function load({ params, url }) {
 	return {
-		id: params.slug,
+		id: params.slug.replaceAll('-', ' '),
 		host: url.host,
 		protocol: url.protocol,
 		meta: {
